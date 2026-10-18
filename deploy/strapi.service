@@ -1,0 +1,21 @@
+[Unit]
+Description=Thinking People Strapi
+After=network.target postgresql.service
+Requires=postgresql.service
+[Service]
+Type=simple
+User=bsadmin
+Group=bsadmin
+WorkingDirectory=/home/bsadmin/runtime/strapi
+EnvironmentFile=/home/bsadmin/shared/strapi/runtime.env
+Environment=HOST=127.0.0.1
+Environment=PORT=8080
+Environment=NODE_OPTIONS=--max-old-space-size=4096
+Environment=STRAPI_TELEMETRY_DISABLED=true
+ExecStart=/bin/bash -c 'exec /usr/bin/npm run "$STRAPI_MODE"'
+Restart=always
+RestartSec=5
+TimeoutStartSec=180
+UMask=0077
+[Install]
+WantedBy=multi-user.target

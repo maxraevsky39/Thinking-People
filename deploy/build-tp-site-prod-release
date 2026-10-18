@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+[[ $(id -un) == bsadmin ]] || { echo 'Run as bsadmin'; exit 1; }
+exec 9>/home/bsadmin/shared/tp-site/build.lock
+flock -n 9 || { echo 'A build is already running'; exit 1; }
+SOURCE=/home/bsadmin/tp_site
+ROOT=/home/bsadmin/releases/tp-site
+LINK=/home/bsadmin/runtime/tp-site
+# Never reset local migration work or overwrite uncommitted user changes.
+if [[ ${1:-} != --local ]]; then
+  git -C "$SOURCE" fetch origin main
+  if [[ -z $(git -C "$SOURCE" status --porcelain) ]]; then
+    git -C "$SOURCE" merge --ff-only origin/main
+  else
+    echo "Local changes detected: building them without overwriting from origin/main."
+  fi
+fi
+RELEASE="$ROOT/$(date -u +%Y%m%d%H%M%S)"
+mkdir -p "$RELEASE"
+rsync -a --exclude=.git --exclude=node_modules --exclude=.next --exclude='.env*' "$SOURCE/" "$RELEASE/"
+cp /home/bsadmin/shared/tp-site/app.env "$RELEASE/.env.production"
+cd "$RELEASE"
+npm ci --ignore-scripts --no-audit --no-fund
+NODE_ENV=production NODE_OPTIONS=--max-old-space-size=4096 npm run build
+RUNTIME="$RELEASE/.next/standalone"
+test -f "$RUNTIME/server.js"
+cp -a .next/static "$RUNTIME/.next/static"
+[[ ! -d public ]] || cp -a public "$RUNTIME/public"
+mkdir -p "$RUNTIME/.next/cache" /home/bsadmin/shared/tp-site/image-cache
+rm -rf "$RUNTIME/.next/cache/images"
+ln -s /home/bsadmin/shared/tp-site/image-cache "$RUNTIME/.next/cache/images"
+previous=$(readlink -f "$LINK" || true)
+ln -sfn "$RUNTIME" "$LINK.next"
+mv -Tf "$LINK.next" "$LINK"
+healthy() { for attempt in $(seq 1 30); do curl -fsS --max-time 3 http://127.0.0.1:3000/ >/dev/null && return 0; sleep 2; done; return 1; }
+if ! sudo -n systemctl restart tp-site || ! healthy; then
+  if [[ -n "$previous" && -f "$previous/server.js" ]]; then
+    ln -sfn "$previous" "$LINK.next"; mv -Tf "$LINK.next" "$LINK"
+    sudo -n systemctl restart tp-site
+    healthy || echo 'Previous release also failed health check' >&2
+  else
+    sudo -n systemctl stop tp-site
+    rm -f "$LINK"
+  fi
+  exit 1
+fi
+printf '%s\n' "$RELEASE" > "$LINK.release"
+mapfile -t releases < <(find "$ROOT" -mindepth 1 -maxdepth 1 -type d -regextype posix-extended -regex '.*/[0-9]{14}' | sort -r)
+for old in "${releases[@]:3}"; do
+  [[ "$old/.next/standalone" == "$RUNTIME" || "$old/.next/standalone" == "$previous" ]] || rm -rf -- "$old"
+done
+echo "Active: $RELEASE"

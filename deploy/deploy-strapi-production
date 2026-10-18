@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+[[ $EUID == 0 ]] || { echo 'Run: sudo deploy-strapi-production'; exit 1; }
+exec 9>/run/lock/tp-strapi-deploy.lock
+flock -n 9 || { echo 'Another deployment is active'; exit 1; }
+SOURCE=/home/bsadmin/my-strapi
+ROOT=/home/bsadmin/releases/strapi
+LINK=/home/bsadmin/runtime/strapi
+ENV=/home/bsadmin/shared/strapi/runtime.env
+STAMP=$(date -u +%Y%m%d%H%M%S)
+RELEASE="$ROOT/$STAMP"
+BACKUP="/var/backups/tp-strapi/$STAMP"
+# Local Strapi model edits are the source of truth until a remote is configured.
+if git -C "$SOURCE" remote get-url origin >/dev/null 2>&1; then
+  [[ -z $(runuser -u bsadmin -- git -C "$SOURCE" status --porcelain) ]] || { echo 'Commit Strapi changes before deploying'; exit 1; }
+  runuser -u bsadmin -- git -C "$SOURCE" fetch origin main
+  runuser -u bsadmin -- git -C "$SOURCE" merge --ff-only origin/main
+fi
+mkdir -p "$RELEASE" "$BACKUP"
+chmod 700 "$BACKUP"
+rsync -a --exclude=.git --exclude=node_modules --exclude=dist --exclude=.cache --exclude=.tmp --exclude=.strapi --exclude=.env --exclude=public/uploads "$SOURCE/" "$RELEASE/"
+mkdir -p "$RELEASE/public" "$SOURCE/public/uploads"
+ln -s "$SOURCE/.env" "$RELEASE/.env"
+ln -s "$SOURCE/public/uploads" "$RELEASE/public/uploads"
+chown -R bsadmin:bsadmin "$RELEASE"
+runuser -u bsadmin -- bash -c 'cd "$1"; npm ci --no-audit --no-fund; NODE_ENV=production NODE_OPTIONS=--max-old-space-size=4096 npm run build' _ "$RELEASE"
+test -d "$RELEASE/dist"
+previous=$(readlink -f "$LINK")
+cp "$ENV" "$BACKUP/runtime.env"
+# Stop writes for a consistent database/upload backup.
+systemctl stop strapi
+switched=0
+restore_service() {
+  status=$?
+  if [[ $status != 0 ]]; then
+    if [[ $switched == 1 ]]; then
+      ln -sfn "$previous" "$LINK.next"; mv -Tf "$LINK.next" "$LINK"
+      cp "$BACKUP/runtime.env" "$ENV"
+    fi
+    systemctl restart strapi || true
+    echo "Deployment failed. Previous runtime restored. Database backup: $BACKUP (schema rollback is manual)." >&2
+  fi
+  exit "$status"
+}
+trap restore_service EXIT
+runuser -u postgres -- pg_dump -Fc tp_strapi > "$BACKUP/database.dump"
+tar -czf "$BACKUP/uploads.tar.gz" -C "$SOURCE/public" uploads
+sha256sum "$BACKUP/database.dump" "$BACKUP/uploads.tar.gz" > "$BACKUP/SHA256SUMS"
+ln -sfn "$RELEASE" "$LINK.next"; mv -Tf "$LINK.next" "$LINK"
+switched=1
+printf 'NODE_ENV=production\nSTRAPI_MODE=start\n' > "$ENV"
+systemctl restart strapi
+for attempt in $(seq 1 60); do
+  if curl -fsS --max-time 3 http://127.0.0.1:8080/_health >/dev/null; then
+    printf '%s\n' "$RELEASE" > "$LINK.release"
+    trap - EXIT
+    echo "Production active: $RELEASE; backup: $BACKUP"
+    exit 0
+  fi
+  sleep 2
+done
+exit 1

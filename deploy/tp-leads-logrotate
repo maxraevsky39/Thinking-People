@@ -1,0 +1,10 @@
+/home/bsadmin/logs/tp-leads.txt {
+  daily
+  rotate 30
+  compress
+  delaycompress
+  missingok
+  notifempty
+  su bsadmin bsadmin
+  create 0600 bsadmin bsadmin
+}

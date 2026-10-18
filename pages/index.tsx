@@ -7,6 +7,9 @@ import { PlasmicHomepage } from "../components/plasmic/thinking_people/PlasmicHo
 import { useRouter } from "next/router";
 import { PlasmicQueryDataProvider } from "@plasmicapp/react-web/lib/query";
 
+// Explicit SSG enables on-demand revalidation through /api/revalidate.
+export const getStaticProps = async () => ({ props: {} });
+
 function Homepage() {
   // Use PlasmicHomepage to render this component as it was
   // designed in Plasmic, by activating the appropriate variants,
