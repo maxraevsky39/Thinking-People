@@ -40,3 +40,11 @@ a {
     color-scheme: dark;
   }
 }
+
+/* FormWebhookBridge feedback and validation states. */
+.js-form-error,
+.js-form-success { display: none; }
+.js-form-req-active {
+  border-color: #ff3b30 !important;
+  box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.14) !important;
+}
