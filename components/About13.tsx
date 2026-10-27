@@ -12,20 +12,23 @@ const VALUES = [
   { word: "kind.", name: "Kind", line: "We assume good intent and leave things better than we found them." },
 ];
 
-const FLASH_DARK = "#ffc247";
-const FLASH_LIGHT = "#ffaa00";
-const INTERVAL = 3.6;
-const DURATION = 1.1;
-const STAGGER = 0.25;
-const TRAVEL = 0.5;
-const GOO = 0.1;
-const SWELL = 0.02;
-const SOFTNESS = 0.8;
-const ZOOM = 0.04;
-const TINT = 0.45;
 const MAX_GLYPHS = 64;
 
-interface Settings {
+interface AnimationSettings {
+  flashDark: string;
+  flashLight: string;
+  interval: number;
+  duration: number;
+  stagger: number;
+  travel: number;
+  goo: number;
+  swell: number;
+  softness: number;
+  zoom: number;
+  tint: number;
+}
+
+interface Settings extends AnimationSettings {
   held: boolean;
   reduced: boolean;
   onChange: (index: number) => void;
@@ -352,7 +355,7 @@ function createMorph(root: HTMLElement, settingsRef: { current: Settings }): Mor
     uInk: { value: new THREE.Color(1, 1, 1) },
     uInkAlpha: { value: 1 },
     uTint: { value: new THREE.Color(1, 0.4, 0.2) },
-    uTintAmount: { value: TINT },
+    uTintAmount: { value: S().tint },
   };
   const material = new THREE.ShaderMaterial({
     vertexShader,
@@ -585,7 +588,7 @@ function createMorph(root: HTMLElement, settingsRef: { current: Settings }): Mor
     const ink = readColor(view.getComputedStyle(root).color) ?? [1, 1, 1, 1];
     uniforms.uInk.value.setRGB(ink[0], ink[1], ink[2], THREE.LinearSRGBColorSpace);
     uniforms.uInkAlpha.value = ink[3];
-    const tint = readColor(surfaceIsDark() ? FLASH_DARK : FLASH_LIGHT) ?? [1, 0.7, 0.2, 1];
+    const tint = readColor(surfaceIsDark() ? S().flashDark : S().flashLight) ?? [1, 0.7, 0.2, 1];
     uniforms.uTint.value.setRGB(tint[0], tint[1], tint[2], THREE.LinearSRGBColorSpace);
   };
 
@@ -602,7 +605,7 @@ function createMorph(root: HTMLElement, settingsRef: { current: Settings }): Mor
     return rtl ? 1 - u : u;
   };
 
-  const progress = (u: number, t: number) => smooth((t - u * STAGGER) / (1 - STAGGER));
+  const progress = (u: number, t: number) => smooth((t - u * S().stagger) / (1 - S().stagger));
 
   const write = (row: number, index: number, glyph: Glyph, scale: number, a: number, b: number, act: number) => {
     const uv = (row * MAX_GLYPHS + index) * 4;
@@ -644,10 +647,10 @@ function createMorph(root: HTMLElement, settingsRef: { current: Settings }): Mor
           write(0, countA, glyph, 1, 0, 0, Math.sin(Math.PI * p) * 0.35);
         } else {
           const e = ramp(0, 0.62, progress(along(a, glyph.cx), t));
-          const dx = b ? (carry(glyph.cx, a.left, a.right, b.left, b.right) - glyph.cx) * TRAVEL * e : 0;
-          const scale = 1 + ZOOM * e;
+          const dx = b ? (carry(glyph.cx, a.left, a.right, b.left, b.right) - glyph.cx) * S().travel * e : 0;
+          const scale = 1 + S().zoom * e;
           put(uniforms.uRectA.value[countA], glyph, dx, 0, scale);
-          write(0, countA, glyph, scale, ramp(0, 0.6, e) * SOFTNESS, reach * Math.pow(e, 1.25), Math.sin(Math.PI * e));
+          write(0, countA, glyph, scale, ramp(0, 0.6, e) * S().softness, reach * Math.pow(e, 1.25), Math.sin(Math.PI * e));
         }
         countA++;
       }
@@ -661,10 +664,10 @@ function createMorph(root: HTMLElement, settingsRef: { current: Settings }): Mor
         const p = progress(along(b, glyph.cx), t);
         const e = a ? ramp(0.38, 1, p) : p;
         const rest = 1 - e;
-        const dx = a ? (carry(glyph.cx, b.left, b.right, a.left, a.right) - glyph.cx) * TRAVEL * rest : 0;
-        const scale = 1 - ZOOM * rest;
+        const dx = a ? (carry(glyph.cx, b.left, b.right, a.left, a.right) - glyph.cx) * S().travel * rest : 0;
+        const scale = 1 - S().zoom * rest;
         put(uniforms.uRectB.value[countB], glyph, dx, 0, scale);
-        write(2, countB, glyph, scale, rest * SOFTNESS, reach * Math.pow(rest, 0.85), Math.sin(Math.PI * e));
+        write(2, countB, glyph, scale, rest * S().softness, reach * Math.pow(rest, 0.85), Math.sin(Math.PI * e));
         countB++;
       }
     }
@@ -677,7 +680,7 @@ function createMorph(root: HTMLElement, settingsRef: { current: Settings }): Mor
     if (lost) return;
     let t = 1;
     if (morphAt >= 0) {
-      t = clamp((time - morphAt) / DURATION, 0, 1);
+      t = clamp((time - morphAt) / S().duration, 0, 1);
       if (t >= 1) {
         morphAt = -1;
         current = target;
@@ -688,11 +691,11 @@ function createMorph(root: HTMLElement, settingsRef: { current: Settings }): Mor
     const a = active && from >= 0 ? wordAt(from) : null;
     const b = started ? wordAt(active ? target : current) : null;
     layout(a, b, active ? t : 1);
-    uniforms.uTintAmount.value = a ? TINT : 0;
+    uniforms.uTintAmount.value = a ? S().tint : 0;
     uniforms.uAtlasA.value = a?.texture ?? empty;
     uniforms.uAtlasB.value = b?.texture ?? empty;
-    uniforms.uGoo.value = GOO * fontPx;
-    uniforms.uSwell.value = SWELL * fontPx;
+    uniforms.uGoo.value = S().goo * fontPx;
+    uniforms.uSwell.value = S().swell * fontPx;
     uniforms.uBand.value = Math.max(0.5, fontPx * 0.05);
     uniforms.uCap.value = cap;
     renderer.render(scene, camera);
@@ -735,7 +738,7 @@ function createMorph(root: HTMLElement, settingsRef: { current: Settings }): Mor
     if (destroyed) return;
     const time = now();
     const waiting = started && !S().reduced && morphAt < 0 && words.length > 1;
-    if (waiting && !S().held && visible && time - lastSwitch >= INTERVAL) advance();
+    if (waiting && !S().held && visible && time - lastSwitch >= S().interval) advance();
     render(time);
     if (morphAt >= 0) schedule();
     else if (waiting && visible && !S().held) {
@@ -743,7 +746,7 @@ function createMorph(root: HTMLElement, settingsRef: { current: Settings }): Mor
       timer = view.setTimeout(() => {
         timer = 0;
         schedule();
-      }, Math.max(16, (INTERVAL - (time - lastSwitch)) * 1000));
+      }, Math.max(16, (S().interval - (time - lastSwitch)) * 1000));
     }
   }
 
@@ -774,6 +777,11 @@ function createMorph(root: HTMLElement, settingsRef: { current: Settings }): Mor
     render(now());
   });
   themes.observe(doc.documentElement, { attributes: true, attributeFilter: ["class", "style", "data-theme"] });
+  const refreshStyles = () => { build(false); colours(); render(now()); };
+  const styleObserver = new MutationObserver(refreshStyles);
+  styleObserver.observe(root, { attributes: true, attributeFilter: ["class", "style"] });
+  if (doc.head) styleObserver.observe(doc.head, { subtree: true, childList: true, characterData: true });
+  doc.fonts?.addEventListener("loadingdone", refreshStyles);
   const scheme = view.matchMedia("(prefers-color-scheme: dark)");
   const onScheme = () => {
     colours();
@@ -820,6 +828,9 @@ function createMorph(root: HTMLElement, settingsRef: { current: Settings }): Mor
       const held = S().held;
       if (wasHeld && !held) lastSwitch = now();
       wasHeld = held;
+      build(false);
+      colours();
+      render(now());
       schedule();
     },
     destroy: () => {
@@ -829,6 +840,8 @@ function createMorph(root: HTMLElement, settingsRef: { current: Settings }): Mor
       resizer.disconnect();
       observer.disconnect();
       themes.disconnect();
+      styleObserver.disconnect();
+      doc.fonts?.removeEventListener("loadingdone", refreshStyles);
       scheme.removeEventListener("change", onScheme);
       canvas.removeEventListener("webglcontextlost", onLost);
       canvas.removeEventListener("webglcontextrestored", onRestored);
@@ -857,30 +870,65 @@ const rise: Variants = {
   },
 };
 
-export interface About13Props {
+export interface About13Props extends Partial<AnimationSettings> {
+  paused?: boolean;
+  pauseOnHover?: boolean;
+  entranceAnimation?: boolean;
+  ariaLabel?: string;
+  wordClassName?: string;
+  headingClassName?: string;
+  descriptionClassName?: string;
+  containerClassName?: string;
+  introClassName?: string;
+  valuesClassName?: string;
+  itemClassName?: string;
+  trackClassName?: string;
+  progressClassName?: string;
+  nameClassName?: string;
+  activeNameClassName?: string;
+  lineClassName?: string;
+  activeLineClassName?: string;
+
   className?: string;
   heading?: string;
   description?: string;
   values?: { word: string; name: string; line: string }[];
 }
 
-export function About13({ className, heading = "We stay", description = "Four habits we hire for, work by and hold each other to.", values }: About13Props) {
+export function About13({
+  className, heading = "We stay", description = "Four habits we hire for, work by and hold each other to.", values,
+  paused = false, pauseOnHover = true, entranceAnimation = true, ariaLabel = "Our values",
+  wordClassName, headingClassName, descriptionClassName, containerClassName, introClassName, valuesClassName, itemClassName, trackClassName, progressClassName, nameClassName, activeNameClassName, lineClassName, activeLineClassName,
+  flashDark = "#ffc247", flashLight = "#ffaa00", interval = 3.6, duration = 1.1, stagger = 0.25, travel = 0.5, goo = 0.1, swell = 0.02, softness = 0.8, zoom = 0.04, tint = 0.45
+}: About13Props) {
+  const finite = (value: number, fallback: number, min: number, max: number) =>
+    Number.isFinite(value) ? Math.min(max, Math.max(min, value)) : fallback;
+  const animation: AnimationSettings = {
+    interval: finite(interval, 3.6, 0.1, 3600), duration: finite(duration, 1.1, 0.05, 60),
+    stagger: finite(stagger, 0.25, 0, 0.95), travel: finite(travel, 0.5, 0, 2),
+    goo: finite(goo, 0.1, 0, 1), swell: finite(swell, 0.02, 0, 1),
+    softness: finite(softness, 0.8, 0, 4), zoom: finite(zoom, 0.04, 0, 0.9),
+    tint: finite(tint, 0.45, 0, 1), flashDark, flashLight,
+  };
+  const animationKey = JSON.stringify(animation);
+  const cx = (...names: (string | undefined | false)[]) => names.filter(Boolean).join(" ");
   const entries = values?.length ? values : VALUES;
   const entriesKey = JSON.stringify(entries);
   const [failed, setFailed] = useState(false);
   const reduceMotion = useReducedMotion();
   const wordRef = useRef<HTMLSpanElement>(null);
   const morphRef = useRef<Morph | null>(null);
-  const settingsRef = useRef<Settings>({ held: false, reduced: false, onChange: () => {} });
+  const settingsRef = useRef<Settings>({ ...animation, held: paused, reduced: false, onChange: () => {} });
   const [active, setActive] = useState(0);
   const [held, setHeld] = useState(false);
 
   useEffect(() => {
-    settingsRef.current.held = held;
+    Object.assign(settingsRef.current, animation);
+    settingsRef.current.held = held || paused;
     settingsRef.current.reduced = Boolean(reduceMotion);
     settingsRef.current.onChange = setActive;
     morphRef.current?.sync();
-  }, [held, reduceMotion]);
+  }, [held, paused, reduceMotion, animationKey]);
 
   useEffect(() => {
     const root = wordRef.current;
@@ -901,29 +949,29 @@ export function About13({ className, heading = "We stay", description = "Four ha
     morphRef.current?.goTo(index);
   };
 
-  const still = held || Boolean(reduceMotion);
+  const still = held || paused || Boolean(reduceMotion);
 
   return (
     <section className={[styles.root, className].filter(Boolean).join(" ")}>
       <motion.div
         variants={sequence}
-        initial={reduceMotion ? false : "hidden"}
+        initial={reduceMotion || !entranceAnimation ? false : "hidden"}
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
-        className={styles.container}
+        className={cx(styles.container, containerClassName)}
       >
-        <div className={styles.intro}>
+        <div className={cx(styles.intro, introClassName)}>
           <h2 className={styles.heading}>
             <motion.span
               variants={rise}
-              className={styles.prefix}
+              className={cx(styles.prefix, headingClassName)}
             >
               {heading}
             </motion.span>
             <span
               ref={wordRef}
               aria-hidden="true"
-              className={styles.word}
+              className={cx(styles.word, wordClassName)}
             >
               {entries.map((value) => (
                 <span key={value.word} data-morph-word="" className={`${styles.wordSizer} ${failed && value === entries[active] ? styles.fallback : ""}`}>
@@ -935,7 +983,7 @@ export function About13({ className, heading = "We stay", description = "Four ha
           </h2>
           <motion.p
             variants={rise}
-            className={styles.description}
+            className={cx(styles.description, descriptionClassName)}
           >
             {description}
           </motion.p>
@@ -943,9 +991,9 @@ export function About13({ className, heading = "We stay", description = "Four ha
 
         <motion.ul
           variants={rise}
-          aria-label="Our values"
+          aria-label={ariaLabel}
           onPointerLeave={() => setHeld(false)}
-          className={styles.values}
+          className={cx(styles.values, valuesClassName)}
         >
           {entries.map((value, index) => {
             const on = index === active;
@@ -955,31 +1003,31 @@ export function About13({ className, heading = "We stay", description = "Four ha
                   type="button"
                   aria-pressed={on}
                   onPointerEnter={(event) => {
-                    if (event.pointerType === "mouse") choose(index);
+                    if (pauseOnHover && event.pointerType === "mouse") choose(index);
                   }}
                   onFocus={() => choose(index)}
                   onBlur={() => setHeld(false)}
                   onClick={() => choose(index)}
-                  className={styles.button}
+                  className={cx(styles.button, itemClassName)}
                 >
-                  <span className={styles.track}>
+                  <span className={cx(styles.track, trackClassName)}>
                     {on && (
                       <motion.span
-                        key={`${index}-${still ? "still" : "run"}`}
-                        className={styles.progress}
+                        key={`${index}-${still ? "still" : "run"}-${animation.interval}`}
+                        className={cx(styles.progress, progressClassName)}
                         initial={{ scaleX: still ? 1 : 0 }}
                         animate={{ scaleX: 1 }}
-                        transition={{ duration: still ? 0 : INTERVAL, ease: "linear" }}
+                        transition={{ duration: still ? 0 : animation.interval, ease: "linear" }}
                       />
                     )}
                   </span>
                   <span
-                    className={`${styles.valueName} ${on ? styles.activeName : ""}`}
+                    className={cx(styles.valueName, nameClassName, on && styles.activeName, on && activeNameClassName)}
                   >
                     {value.name}
                   </span>
                   <span
-                    className={`${styles.valueLine} ${on ? styles.activeLine : ""}`}
+                    className={cx(styles.valueLine, lineClassName, on && styles.activeLine, on && activeLineClassName)}
                   >
                     {value.line}
                   </span>
