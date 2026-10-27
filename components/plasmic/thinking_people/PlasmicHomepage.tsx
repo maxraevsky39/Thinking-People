@@ -59,12 +59,28 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { useMutablePlasmicQueryData } from "@plasmicapp/query";
+
+import { usePlasmicQueries } from "@plasmicapp/react-web/lib/data-sources";
+import type {
+  PlasmicQuery,
+  PlasmicQueryResult
+} from "@plasmicapp/react-web/lib/data-sources";
+import type { QueryComponentNode } from "@plasmicapp/react-web/lib/data-sources";
+
+import { ContactSheet } from "../../ContactSheet"; // plasmic-import: A9lCeBSgsYEF/codeComponent
+import H2 from "../../H2"; // plasmic-import: Yl_PbqD71djV/component
+import { OptimizedImage } from "../../OptimizedImage"; // plasmic-import: 2sAw0k_qEFgf/codeComponent
+import { About13 } from "../../About13"; // plasmic-import: w2c8KkWos3P4/codeComponent
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/styleTokensProvider
+import { strapiUrl as $dataTokens_5CArW_strapiUrl } from "./plasmic-data-tokens"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/dataTokens
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import sty from "./PlasmicHomepage.module.css"; // plasmic-import: Zi_mnrHDL1l9/css
+
+import { fetchGraphQL as __fn_fetchGraphQL } from "@plasmicpkgs/graphql";
 
 const emptyProxy: any = new Proxy(() => "", {
   get(_, prop) {
@@ -110,12 +126,67 @@ export const PlasmicHomepage__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicHomepage__OverridesType = {
   root?: Flex__<"div">;
-  text?: Flex__<"div">;
+  navbar?: Flex__<"div">;
+  logo?: Flex__<"div">;
+  img?: Flex__<typeof PlasmicImg__>;
+  heroSection?: Flex__<"div">;
+  contactSheet?: Flex__<typeof ContactSheet>;
+  content?: Flex__<"div">;
+  dynamicBlock?: Flex__<"div">;
+  basicCardSection?: Flex__<"div">;
+  cardWrapper?: Flex__<"div">;
+  card?: Flex__<"div">;
+  optimizedImage?: Flex__<typeof OptimizedImage>;
+  leadershipSection2?: Flex__<"div">;
+  about13?: Flex__<typeof About13>;
 };
 
 export interface DefaultHomepageProps {}
 
-const $$ = {};
+const $$ = {
+  fetchGraphQL: __fn_fetchGraphQL
+};
+
+export const serverQueryTree: QueryComponentNode = {
+  type: "component",
+  queries: {
+    strapi: {
+      id: "fetchGraphQL",
+      fn: $$.fetchGraphQL,
+      args: ({ $q, $props, $ctx, $state }) => [
+        (() => {
+          const __composite = {
+            method: null,
+            url: null,
+            headers: null,
+            request: null,
+            varOverrides: null
+          };
+          __composite["method"] = "POST";
+          __composite["url"] =
+            "https://staging-strapi-tp.brainfitness.info/graphql/";
+          __composite["headers"] = {
+            Authorization:
+              "Bearer 8585dac783096db3353adbe6700152577354351428bd76c7f4df05cd75a2bff935a8552cc96ff76b3ffdd86213571fcb8c3955d8688752ca5de19b6f6a40b964f700a8a071af500d3e9fa6332440b1298a4a5293c675a08504f3d9bd0294548abc7d11d05d49efa5b98bcbf90ef68299d4ed9985790bc4b4cde7d64e7a325dfa",
+            "Content-Type": "application/json"
+          };
+          __composite["request"] = {
+            query:
+              "query Strapi($local: I18NLocaleCode!) {\n  homepage(locale: $local) {\n    heroSpan\n    h1\n    heroBtnText\n    heroBtnLink\n    heroSecondBtnText\n    heroSecondBtnLink\n    heroImg {\n      url\n      width\n      height\n    }\n    section {\n      ... on ComponentBasicBlock {\n        id\n        shared_block {\n          btnLink\n          btnText\n          card {\n            btnLink\n            btnText\n            description\n            icon {\n              url\n              width\n              height\n            }\n            title\n          }\n          description\n          extraDescription\n          extraTitle\n          name\n          title\n          type\n        }\n      }\n    }\n    heroDescription\n  }\n}",
+            variables: { local: "en" }
+          };
+          __composite["varOverrides"] = {
+            local: $ctx.params.locale
+          };
+          return __composite;
+        })()
+      ]
+    }
+  },
+  propsContext: {},
+  stateSpecs: [],
+  children: []
+};
 
 function useNextRouter() {
   try {
@@ -154,8 +225,10 @@ function PlasmicHomepage__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const $q = usePlasmicQueries(serverQueryTree, { $ctx, $props, $state: null });
+
   const pageMetadata = generateDynamicMetadata(
-    wrapQueriesWithLoadingProxy({}),
+    wrapQueriesWithLoadingProxy($q),
     $ctx as PageCtx
   );
 
@@ -187,13 +260,444 @@ function PlasmicHomepage__RenderFunc(props: {
           )}
         >
           <div
-            data-plasmic-name={"text"}
-            data-plasmic-override={overrides.text}
+            data-plasmic-name={"navbar"}
+            data-plasmic-override={overrides.navbar}
 
-            className={classNames("all", "__wab_text", sty.text)}
+            className={classNames("all", sty.navbar)}
           >
-            {"\u041d\u043e\u0432\u044b\u0439 \u0441\u0430\u0439\u0442 TP\n"}
+            <div
+              data-plasmic-name={"logo"}
+              data-plasmic-override={overrides.logo}
+
+              className={classNames("all", sty.logo)}
+            >
+              <PlasmicImg__
+                data-plasmic-name={"img"}
+                data-plasmic-override={overrides.img}
+
+                alt={""}
+                className={classNames(sty.img)}
+                displayHeight={"40px"}
+                displayMaxHeight={"none"}
+                displayMaxWidth={"100%"}
+                displayMinHeight={"0"}
+                displayMinWidth={"0"}
+                displayWidth={"auto"}
+                loading={"lazy"}
+                src={{
+                  src: "/plasmic/thinking_people/images/thinkingPeople02Svg.svg",
+                  fullWidth: 1090.65,
+                  fullHeight: 361.14,
+                  aspectRatio: undefined
+                }}
+              />
+            </div>
           </div>
+          <div
+            data-plasmic-name={"heroSection"}
+            data-plasmic-override={overrides.heroSection}
+
+            className={classNames("all", sty.heroSection)}
+          >
+            <ContactSheet
+              data-plasmic-name={"contactSheet"}
+              data-plasmic-override={overrides.contactSheet}
+
+              aspect={0.8}
+              backgroundColor={"transparent"}
+              blankArea={0.2}
+              border={0}
+              borderColor={"#ffffff"}
+              captions={true}
+              catchOnHover={true}
+              className={classNames("__wab_instance", sty.contactSheet)}
+              count={18}
+              develop={0.85}
+              dpr={2}
+              draggable={true}
+              edgeFade={0}
+              hoverSlow={0.6}
+              paused={false}
+              radius={0}
+              rim={0.12}
+              roll={0}
+              rush={0.35}
+              shadow={0.1}
+              size={0.17}
+              sizeVariance={0.25}
+              speed={0.1}
+              spiral={0}
+              wheel={false}
+            />
+
+            <div
+              data-plasmic-name={"content"}
+              data-plasmic-override={overrides.content}
+
+              className={classNames("all", sty.content)}
+            >
+              <div className={classNames("all", sty.freeBox__tCfO1)}>
+                <div
+                  className={classNames("all", "__wab_text", sty.text___66Va5)}
+                  contentEditable={"true"}
+                >
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return $q.strapi.data.body.data.homepage.heroSpan;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "\u041d\u043e\u0432\u044b\u0439 \u0441\u0430\u0439\u0442 TP\n";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
+                </div>
+              </div>
+              <div
+                className={classNames("all", "__wab_text", sty.text__rxP2X)}
+                contentEditable={"true"}
+              >
+                <React.Fragment>
+                  {(() => {
+                    try {
+                      return $q.strapi.data.body.data.homepage.h1;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "\u041d\u043e\u0432\u044b\u0439 \u0441\u0430\u0439\u0442 TP\n";
+                      }
+                      throw e;
+                    }
+                  })()}
+                </React.Fragment>
+              </div>
+            </div>
+          </div>
+          {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+            (() => {
+              try {
+                return $q.strapi.data.body.data.homepage.section;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return [];
+                }
+                throw e;
+              }
+            })()
+          ).map((__plasmic_item_0, __plasmic_idx_0) => {
+            const currentItem = __plasmic_item_0;
+            const currentIndex = __plasmic_idx_0;
+            return (
+              <div
+                data-plasmic-name={"dynamicBlock"}
+                data-plasmic-override={overrides.dynamicBlock}
+
+                className={classNames("all", sty.dynamicBlock)}
+                key={currentIndex}
+              >
+                {(() => {
+                  try {
+                    return currentItem.shared_block.type === "basicCards";
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <div
+                    data-plasmic-name={"basicCardSection"}
+                    data-plasmic-override={overrides.basicCardSection}
+
+                    className={classNames("all", sty.basicCardSection)}
+                  >
+                    <div className={classNames("all", sty.freeBox__dJnP)}>
+                      <H2
+                        className={classNames("__wab_instance", sty.h2__vND8)}
+                        title={(() => {
+                          try {
+                            return currentItem.shared_block.title;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()}
+                      />
+                    </div>
+                    <div
+                      data-plasmic-name={"cardWrapper"}
+                      data-plasmic-override={overrides.cardWrapper}
+
+                      className={classNames("all", sty.cardWrapper)}
+                    >
+                      {(_par =>
+                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                        (() => {
+                          try {
+                            return currentItem.shared_block.card;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      ).map((__plasmic_item_1, __plasmic_idx_1) => {
+                        const currentItem = __plasmic_item_1;
+                        const currentIndex = __plasmic_idx_1;
+                        return (
+                          <div
+                            data-plasmic-name={"card"}
+                            data-plasmic-override={overrides.card}
+
+                            className={classNames("all", sty.card)}
+                            key={currentIndex}
+                          >
+                            {(() => {
+                              try {
+                                return currentItem?.icon;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })() ? (
+                              <div
+                                className={classNames(
+                                  "all",
+                                  sty.freeBox__joi9X
+                                )}
+                              >
+                                <OptimizedImage
+                                  data-plasmic-name={"optimizedImage"}
+                                  data-plasmic-override={
+                                    overrides.optimizedImage
+                                  }
+
+                                  alt={""}
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.optimizedImage
+                                  )}
+                                  fill={true}
+                                  format={"auto"}
+                                  height={(() => {
+                                    try {
+                                      return currentItem.icon.width;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return 600;
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                  loading={"lazy"}
+                                  objectFit={"contain"}
+                                  objectPosition={"center"}
+                                  placeholder={"blur"}
+                                  quality={75}
+                                  sizes={"(max-width: 768px) 100vw, 50vw"}
+                                  src={
+                                    $dataTokens_5CArW_strapiUrl +
+                                    currentItem.icon.url
+                                  }
+                                  width={(() => {
+                                    try {
+                                      return currentItem.icon.width;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return 800;
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                />
+                              </div>
+                            ) : null}
+                            <div
+                              className={classNames("all", sty.freeBox___8Tu60)}
+                            >
+                              <div
+                                className={classNames(
+                                  "all",
+                                  "__wab_text",
+                                  sty.text__bgRrV
+                                )}
+                              >
+                                <React.Fragment>
+                                  {currentItem.title}
+                                </React.Fragment>
+                              </div>
+                              <div
+                                className={classNames(
+                                  "all",
+                                  "__wab_text",
+                                  sty.text__eGAx9
+                                )}
+                              >
+                                <React.Fragment>
+                                  {currentItem.description}
+                                </React.Fragment>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ) : null}
+                {(() => {
+                  try {
+                    return currentItem.shared_block.type === "leadership";
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <div
+                    data-plasmic-name={"leadershipSection2"}
+                    data-plasmic-override={overrides.leadershipSection2}
+
+                    className={classNames("all", sty.leadershipSection2)}
+                  >
+                    <H2
+                      className={classNames("__wab_instance", sty.h2__ieUqs)}
+                      title={(() => {
+                        try {
+                          return currentItem.shared_block.title;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()}
+                      white={true}
+                    />
+
+                    <About13
+                      data-plasmic-name={"about13"}
+                      data-plasmic-override={overrides.about13}
+
+                      activeLineClassName={classNames({
+                        [sty["pcls_2oowlfKAtC2I"]]: true
+                      })}
+                      activeNameClassName={classNames({
+                        [sty["pcls_04imm0v2BAJK"]]: true
+                      })}
+                      ariaLabel={"Our values"}
+                      className={classNames("__wab_instance", sty.about13)}
+                      description={"Four Leadership Roles"}
+                      descriptionClassName={classNames({
+                        [sty["pcls_PrMwwPQyqmKe"]]: true
+                      })}
+                      duration={1.1}
+                      entranceAnimation={true}
+                      flashDark={"#FCAAD6"}
+                      flashLight={"#FCAAD6"}
+                      goo={0.1}
+                      heading={""}
+                      interval={3.6}
+                      lineClassName={classNames({
+                        [sty["pcls_te6jZ0lSotSP"]]: true
+                      })}
+                      nameClassName={classNames({
+                        [sty["pcls_UutrmF3L93_p"]]: true
+                      })}
+                      pauseOnHover={true}
+                      paused={false}
+                      softness={0.8}
+                      stagger={0.25}
+                      swell={0.02}
+                      tint={0.45}
+                      travel={0.5}
+                      values={(() => {
+                        const __composite = [
+                          { word: null, name: null, line: null },
+                          { word: null, name: null, line: null },
+                          { word: null, name: null, line: null },
+                          { word: null, name: null, line: null }
+                        ];
+                        __composite["0"]["word"] =
+                          currentItem.shared_block.card[0].title;
+                        __composite["0"]["name"] =
+                          currentItem.shared_block.card[0].title;
+                        __composite["0"]["line"] =
+                          currentItem.shared_block.card[0].description;
+                        __composite["1"]["word"] =
+                          currentItem.shared_block.card[1].title;
+                        __composite["1"]["name"] =
+                          currentItem.shared_block.card[1].title;
+                        __composite["1"]["line"] =
+                          currentItem.shared_block.card[1].description;
+                        __composite["2"]["word"] =
+                          currentItem.shared_block.card[2].title;
+                        __composite["2"]["name"] =
+                          currentItem.shared_block.card[2].title;
+                        __composite["2"]["line"] =
+                          currentItem.shared_block.card[2].description;
+                        __composite["3"]["word"] =
+                          currentItem.shared_block.card[3].title;
+                        __composite["3"]["name"] =
+                          currentItem.shared_block.card[3].title;
+                        __composite["3"]["line"] =
+                          currentItem.shared_block.card[3].description;
+                        return __composite;
+                      })()}
+                      valuesClassName={classNames({
+                        [sty["pcls_-WPBQt4ciS2E"]]: true
+                      })}
+                      wordClassName={classNames({
+                        [sty["pcls_LI1AlQPfbOpX"]]: true
+                      })}
+                      zoom={0.04}
+                    />
+                  </div>
+                ) : null}
+              </div>
+            );
+          })}
         </div>
       </div>
     </React.Fragment>
@@ -201,15 +705,67 @@ function PlasmicHomepage__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "text"],
-  text: ["text"]
+  root: [
+    "root",
+    "navbar",
+    "logo",
+    "img",
+    "heroSection",
+    "contactSheet",
+    "content",
+    "dynamicBlock",
+    "basicCardSection",
+    "cardWrapper",
+    "card",
+    "optimizedImage",
+    "leadershipSection2",
+    "about13"
+  ],
+  navbar: ["navbar", "logo", "img"],
+  logo: ["logo", "img"],
+  img: ["img"],
+  heroSection: ["heroSection", "contactSheet", "content"],
+  contactSheet: ["contactSheet"],
+  content: ["content"],
+  dynamicBlock: [
+    "dynamicBlock",
+    "basicCardSection",
+    "cardWrapper",
+    "card",
+    "optimizedImage",
+    "leadershipSection2",
+    "about13"
+  ],
+  basicCardSection: [
+    "basicCardSection",
+    "cardWrapper",
+    "card",
+    "optimizedImage"
+  ],
+  cardWrapper: ["cardWrapper", "card", "optimizedImage"],
+  card: ["card", "optimizedImage"],
+  optimizedImage: ["optimizedImage"],
+  leadershipSection2: ["leadershipSection2", "about13"],
+  about13: ["about13"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  text: "div";
+  navbar: "div";
+  logo: "div";
+  img: typeof PlasmicImg__;
+  heroSection: "div";
+  contactSheet: typeof ContactSheet;
+  content: "div";
+  dynamicBlock: "div";
+  basicCardSection: "div";
+  cardWrapper: "div";
+  card: "div";
+  optimizedImage: typeof OptimizedImage;
+  leadershipSection2: "div";
+  about13: typeof About13;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -274,15 +830,27 @@ export const PlasmicHomepage = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    text: makeNodeComponent("text"),
+    navbar: makeNodeComponent("navbar"),
+    logo: makeNodeComponent("logo"),
+    img: makeNodeComponent("img"),
+    heroSection: makeNodeComponent("heroSection"),
+    contactSheet: makeNodeComponent("contactSheet"),
+    content: makeNodeComponent("content"),
+    dynamicBlock: makeNodeComponent("dynamicBlock"),
+    basicCardSection: makeNodeComponent("basicCardSection"),
+    cardWrapper: makeNodeComponent("cardWrapper"),
+    card: makeNodeComponent("card"),
+    optimizedImage: makeNodeComponent("optimizedImage"),
+    leadershipSection2: makeNodeComponent("leadershipSection2"),
+    about13: makeNodeComponent("about13"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,
     internalArgProps: PlasmicHomepage__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
-      pageRoute: "/",
-      pagePath: "/",
+      pageRoute: "/[locale]",
+      pagePath: "/[locale]",
       params: {},
       query: {}
     })

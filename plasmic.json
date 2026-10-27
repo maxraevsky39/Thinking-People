@@ -31,21 +31,40 @@
           "projectId": "5CArWwg3qxRa1A2Avpz5j5",
           "renderModuleFilePath": "plasmic/thinking_people/PlasmicHomepage.tsx",
           "importSpec": {
-            "modulePath": "../pages/index.tsx"
+            "modulePath": "../pages/[locale].tsx"
           },
           "cssFilePath": "plasmic/thinking_people/PlasmicHomepage.module.css",
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/"
+        },
+        {
+          "id": "Yl_PbqD71djV",
+          "name": "H2",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicH2.tsx",
+          "importSpec": {
+            "modulePath": "H2.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicH2.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [],
-      "images": [],
+      "images": [
+        {
+          "id": "rwoN9y9vqKdJ",
+          "name": "Thinking_People-02.svg",
+          "filePath": "../public/plasmic/thinking_people/images/thinkingPeople02Svg.svg"
+        }
+      ],
       "indirect": false,
-      "globalContextsFilePath": "",
+      "globalContextsFilePath": "plasmic/thinking_people/PlasmicGlobalContextsProvider.tsx",
       "splitsProviderFilePath": "",
       "styleTokensProviderFilePath": "plasmic/thinking_people/PlasmicStyleTokensProvider.tsx",
-      "dataTokensFilePath": "",
+      "dataTokensFilePath": "plasmic/thinking_people/plasmic-data-tokens.ts",
       "projectModuleFilePath": "plasmic/thinking_people/plasmic.tsx",
       "codeComponents": [
         {
@@ -59,6 +78,195 @@
           "name": "Fetcher",
           "displayName": "plasmic-data-source-fetcher",
           "componentImportPath": "@plasmicapp/react-web/lib/data-sources"
+        },
+        {
+          "id": "r5rTRqZyIIeV",
+          "name": "CookiePopup",
+          "displayName": "CookiePopup",
+          "componentImportPath": "./components/CookiePopup"
+        },
+        {
+          "id": "A9lCeBSgsYEF",
+          "name": "ContactSheet",
+          "displayName": "ContactSheet",
+          "componentImportPath": "./components/ContactSheet"
+        },
+        {
+          "id": "w2c8KkWos3P4",
+          "name": "About13",
+          "displayName": "About13",
+          "componentImportPath": "./components/About13"
+        },
+        {
+          "id": "Rfk36X7boEIV",
+          "name": "FormGatedVideo",
+          "displayName": "FormGatedVideo",
+          "componentImportPath": "./components/FormGatedVideo"
+        },
+        {
+          "id": "g2Q--3aMH66f",
+          "name": "DynamicBottomNav",
+          "displayName": "DynamicBottomNav",
+          "componentImportPath": "./components/DynamicBottomNav"
+        },
+        {
+          "id": "RJZqi16poKES",
+          "name": "MovingSlotCarousel",
+          "displayName": "MovingSlotCarousel",
+          "componentImportPath": "./components/MovingSlotCarousel"
+        },
+        {
+          "id": "xTTXAeE_EZCm",
+          "name": "NavbarRevealOnBlock",
+          "displayName": "NavbarRevealOnBlock",
+          "componentImportPath": "./components/NavbarRevealOnBlock"
+        },
+        {
+          "id": "UAGtXE0273VT",
+          "name": "MouseFollower",
+          "displayName": "MouseFollower",
+          "componentImportPath": "./components/MouseFollower"
+        },
+        {
+          "id": "2sAw0k_qEFgf",
+          "name": "OptimizedImage",
+          "displayName": "OptimizedImage",
+          "componentImportPath": "./components/OptimizedImage"
+        },
+        {
+          "id": "PqHM-RyzNCzw",
+          "name": "SlotSlider",
+          "displayName": "SlotSlider",
+          "componentImportPath": "./components/SlotSlider"
+        },
+        {
+          "id": "aX-eymI_laZQ",
+          "name": "StrapiRichText",
+          "displayName": "StrapiRichText",
+          "componentImportPath": "./components/StrapiRichText"
+        },
+        {
+          "id": "h9vyPw8CaKtX",
+          "name": "MarkdownRenderer",
+          "displayName": "MarkdownRenderer",
+          "componentImportPath": "./components/MarkdownRenderer"
+        },
+        {
+          "id": "fBKilVUOE0KV",
+          "name": "StrapiTableOfContents",
+          "displayName": "StrapiTableOfContents",
+          "componentImportPath": "./components/StrapiTableOfContents"
+        },
+        {
+          "id": "ffHIT2Q2I_mj",
+          "name": "PhosphorIcon",
+          "displayName": "PhosphorIcon",
+          "componentImportPath": "./components/PhosphorIcon"
+        },
+        {
+          "id": "9eRmd_u_ufIl",
+          "name": "AnimatedFilterGrid",
+          "displayName": "AnimatedFilterGrid",
+          "componentImportPath": "./components/AnimatedFilterGrid"
+        },
+        {
+          "id": "7OBkxGnR56aL",
+          "name": "HoverRevealStack",
+          "displayName": "HoverRevealStack",
+          "componentImportPath": "./components/HoverRevealStack"
+        },
+        {
+          "id": "Ij3RX9WOpbVv",
+          "name": "ViewportTrigger",
+          "displayName": "ViewportTrigger",
+          "componentImportPath": "./components/ViewportTrigger"
+        },
+        {
+          "id": "iIAT2n3xd1if",
+          "name": "HistoryEvent",
+          "displayName": "HistoryEvent",
+          "componentImportPath": "./components/HistoryTimeline"
+        },
+        {
+          "id": "w0o8idarNyVJ",
+          "name": "HistoryTimeline",
+          "displayName": "HistoryTimeline",
+          "componentImportPath": "./components/HistoryTimeline"
+        },
+        {
+          "id": "_de8YQH9enrw",
+          "name": "ScrollReveal",
+          "displayName": "TextScrollReval",
+          "componentImportPath": "./components/ScrollReveal"
+        },
+        {
+          "id": "mqp2cBG_dizY",
+          "name": "ScrollSection",
+          "displayName": "ScrollSection",
+          "componentImportPath": "./components/ScrollSection"
+        },
+        {
+          "id": "za2mx6yd4yJR",
+          "name": "MotionScrollSection",
+          "displayName": "MotionScrollSection",
+          "componentImportPath": "./components/MotionScrollSection"
+        },
+        {
+          "id": "TBsWvbPdcslG",
+          "name": "ScrollStorySection",
+          "displayName": "ScrollStorySection",
+          "componentImportPath": "./components/ScrollStorySection"
+        }
+      ],
+      "customFunctions": []
+    },
+    {
+      "projectId": "fDWv2E51KMppM4Ticmmxiy",
+      "projectApiToken": "JVKY4l5fYzRnIknlhk9gdO4iB6TyugIb7ExjkVlpu16NtinzglNwDuCvh1oOvZ3cLb6ewtgmIgp1qzByrg",
+      "projectName": "graphql",
+      "version": ">0.0.0",
+      "cssFilePath": "plasmic/graphql/plasmic.css",
+      "components": [],
+      "icons": [],
+      "images": [],
+      "indirect": true,
+      "globalContextsFilePath": "",
+      "splitsProviderFilePath": "",
+      "styleTokensProviderFilePath": "plasmic/graphql/PlasmicStyleTokensProvider.tsx",
+      "dataTokensFilePath": "",
+      "projectModuleFilePath": "plasmic/graphql/plasmic.tsx",
+      "codeComponents": [],
+      "customFunctions": [
+        {
+          "defaultExport": false,
+          "id": "fetchGraphQL",
+          "importPath": "@plasmicpkgs/graphql",
+          "name": "fetchGraphQL",
+          "namespace": null
+        }
+      ]
+    },
+    {
+      "projectId": "8PtdGodUbexNYgkuyBUcWu",
+      "projectApiToken": "34o5R5KswluuZ4sD83F88oQrcLWsNNeUpCptQ8Okf4hYqgjnHnX2idGAlhtB7WWQQelNAInf5XFazR1cGw",
+      "projectName": "plasmic-embed-css",
+      "version": ">0.0.0",
+      "cssFilePath": "plasmic/plasmic_embed_css/plasmic.css",
+      "components": [],
+      "icons": [],
+      "images": [],
+      "indirect": true,
+      "globalContextsFilePath": "plasmic/plasmic_embed_css/PlasmicGlobalContextsProvider.tsx",
+      "splitsProviderFilePath": "",
+      "styleTokensProviderFilePath": "plasmic/plasmic_embed_css/PlasmicStyleTokensProvider.tsx",
+      "dataTokensFilePath": "",
+      "projectModuleFilePath": "plasmic/plasmic_embed_css/plasmic.tsx",
+      "codeComponents": [
+        {
+          "id": "qF0uJxFztB",
+          "name": "EmbedCss",
+          "displayName": "global-embed-css",
+          "componentImportPath": "@plasmicpkgs/plasmic-embed-css"
         }
       ],
       "customFunctions": []
@@ -72,6 +280,6 @@
   "nextjsConfig": {
     "pagesDir": "../pages"
   },
-  "cliVersion": "0.1.382",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.382/dist/plasmic.schema.json"
+  "cliVersion": "0.1.384",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.384/dist/plasmic.schema.json"
 }

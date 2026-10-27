@@ -1,0 +1,15 @@
+.root {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  position: relative;
+  font-family: "Wix Madefor Display";
+  font-size: 55px;
+  font-weight: 700;
+  text-align: center;
+  justify-self: flex-start;
+  display: inline-block;
+}
+.rootwhite {
+  color: var(--token-ojJ1CdgTqXk8);
+}

@@ -1,4 +1,31 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter%3Aital%2Cwght%400%2C400%3B0%2C600%3B0%2C700&family=Inconsolata%3Aital%2Cwght%400%2C400%3B0%2C600%3B0%2C700&display=swap");
+@import "../plasmic_embed_css/plasmic.css"; /* plasmic-import: 8PtdGodUbexNYgkuyBUcWu/projectcss */
+@import "../graphql/plasmic.css"; /* plasmic-import: fDWv2E51KMppM4Ticmmxiy/projectcss */
+@import url("https://fonts.googleapis.com/css2?family=Inter%3Aital%2Cwght%400%2C400%3B0%2C600%3B0%2C700%3B0%2C900&family=Inconsolata%3Aital%2Cwght%400%2C400%3B0%2C600%3B0%2C700%3B0%2C900&display=swap");
+
+.plasmic_tokens_5CArWwg3qxRa1A2Avpz5j5 {
+  --token-ZodPwl1Os-DS: #f6b1b5;
+  --plasmic-token-primitives-brand-0: var(--token-ZodPwl1Os-DS);
+  --token-wcuYw8MJPyYy: #1a1a18;
+  --plasmic-token-primitives-dark: var(--token-wcuYw8MJPyYy);
+  --token-3tn3WUUWkfiz: #292a2a;
+  --plasmic-token-primitives-dark-light: var(--token-3tn3WUUWkfiz);
+  --token-L3MOQ4h6Pxqz: var(--token-ZodPwl1Os-DS);
+  --plasmic-token-semantic-primery: var(--token-L3MOQ4h6Pxqz);
+  --token-knMaQj4lE16i: var(--token-3tn3WUUWkfiz);
+  --plasmic-token-semantic-bg-1: var(--token-knMaQj4lE16i);
+  --token-ojJ1CdgTqXk8: #ffffff;
+  --plasmic-token-primitives-white: var(--token-ojJ1CdgTqXk8);
+  --token-iD0fioAtLFjr: 24px;
+  --plasmic-token-h-3: var(--token-iD0fioAtLFjr);
+  --token-R-ud6gsLyokM: 18px;
+  --plasmic-token-p-l: var(--token-R-ud6gsLyokM);
+  --token-v76dtiDyq82u: 16px;
+  --plasmic-token-p-m: var(--token-v76dtiDyq82u);
+  --token-Ggt6yPNI1DZ8: 70px;
+  --plasmic-token-h-0: var(--token-Ggt6yPNI1DZ8);
+  --token-N01VPHaGlP-4: #d0d0d0;
+  --plasmic-token-primitives-white-2: var(--token-N01VPHaGlP-4);
+}
 
 .plasmic_tokens_5CArWwg3qxRa1A2Avpz5j5 {
   --plsmc-standard-width: 800px;
@@ -126,6 +153,11 @@
   --mixin-db2L0pjkSlTH_white-space: pre-wrap;
   --mixin-zboDs8gKNjMB_white-space: pre-wrap;
   --mixin-TeddAxctr9MO_white-space: pre-wrap;
+}
+
+.plasmic_mixins {
+  --mixin-jxt158593BW-_white-space: pre-wrap;
+  --plasmic-mixin-h-1_white-space: var(--mixin-jxt158593BW-_white-space);
 }
 
 :where(.all) {
