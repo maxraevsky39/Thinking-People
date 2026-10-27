@@ -69,3 +69,13 @@ sudo deploy-strapi-production
 nginx: 80 (TP), 1337 (Strapi). Next.js: loopback 3000; Strapi: loopback 8080; PostgreSQL: локально. Для домена обновите nginx, SITE_URL, PUBLIC_URL Strapi, allowlist изображений и настройки капчи, затем включите HTTPS и пересоберите приложения.
 
 Файлы в `deploy/` — воспроизводимые конфигурации. `install-services.sh` предназначен для начальной установки: повторный запуск возвращает Strapi в development.
+
+## Git and deployment recovery (2026-10-28)
+
+An interrupted pull left the worktree partially updated. A source archive and repaired lockfile are saved under /var/backups/tp-site/git-repair-20261028; the original worktree is also kept in git stash. The matching upstream Plasmic sync was applied with fast-forward.
+
+The GraphQL and Embed CSS packages imported by generated code are explicit dependencies. The fetch package's old host peer range is overridden to the same host 2.0.20 used by react-web, keeping one Plasmic context instance.
+
+The locale page statically generates /en/ and /lv/ (current Strapi locales); / redirects temporarily to /en/. Add newly introduced languages to supportedLocales in pages/[locale].tsx.
+
+The normal tp-site command now stops with an explanation if there are uncommitted changes; commit/stash first, or use tp-site --local deliberately. It never silently ignores upstream updates. Deployment health checks follow the root redirect.

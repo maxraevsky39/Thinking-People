@@ -8,6 +8,13 @@ import { useRouter } from "next/router";
 import { PlasmicQueryDataProvider } from "@plasmicapp/react-web/lib/query";
 
 // Explicit SSG enables on-demand revalidation through /api/revalidate.
+const supportedLocales = ["en", "lv"];
+
+export const getStaticPaths = async () => ({
+  paths: supportedLocales.map((locale) => ({ params: { locale } })),
+  fallback: false,
+});
+
 export const getStaticProps = async () => ({ props: {} });
 
 function Homepage() {

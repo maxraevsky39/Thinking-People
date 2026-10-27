@@ -12,7 +12,10 @@ if [[ ${1:-} != --local ]]; then
   if [[ -z $(git -C "$SOURCE" status --porcelain) ]]; then
     git -C "$SOURCE" merge --ff-only origin/main
   else
-    echo "Local changes detected: building them without overwriting from origin/main."
+    echo "Uncommitted changes in $SOURCE. Commit or stash them before deployment."
+    echo "To intentionally build local changes without updating Git, run: tp-site --local"
+    git -C "$SOURCE" status --short
+    exit 1
   fi
 fi
 RELEASE="$ROOT/$(date -u +%Y%m%d%H%M%S)"
@@ -32,7 +35,7 @@ ln -s /home/bsadmin/shared/tp-site/image-cache "$RUNTIME/.next/cache/images"
 previous=$(readlink -f "$LINK" || true)
 ln -sfn "$RUNTIME" "$LINK.next"
 mv -Tf "$LINK.next" "$LINK"
-healthy() { for attempt in $(seq 1 30); do curl -fsS --max-time 3 http://127.0.0.1:3000/ >/dev/null && return 0; sleep 2; done; return 1; }
+healthy() { for attempt in $(seq 1 30); do curl -fsSL --max-time 3 http://127.0.0.1:3000/ >/dev/null && return 0; sleep 2; done; return 1; }
 if ! sudo -n systemctl restart tp-site || ! healthy; then
   if [[ -n "$previous" && -f "$previous/server.js" ]]; then
     ln -sfn "$previous" "$LINK.next"; mv -Tf "$LINK.next" "$LINK"
