@@ -1,3 +1,4 @@
+import { registerReactBits } from "../components/registerReactBits";
 import * as React from "react";
 import {
   PlasmicCanvasHost,
@@ -31,6 +32,7 @@ import { DynamicBottomNav } from "../components/DynamicBottomNav";
 import { FormGatedVideo } from "../components/FormGatedVideo";
 import { registerCookiePopup } from "../components/registerCookiePopup";
 registerCookiePopup();
+registerReactBits();
 registerComponent<React.ComponentType<any>>(FormGatedVideo, {
   name: "FormGatedVideo",
   displayName: "Видео после формы",
