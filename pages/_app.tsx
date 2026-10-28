@@ -6,11 +6,14 @@ import Head from "next/head";
 import Link from "next/link";
 import { FormWebhookBridge } from "../components/FormWebhookBridge";
 import "../styles/ScrollReveal.css";
+import GlobalContextsProvider from "../components/plasmic/thinking_people/PlasmicGlobalContextsProvider";
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <PlasmicRootProvider Head={Head} Link={Link}>
       <FormWebhookBridge />
-      <Component {...pageProps} />
+      <GlobalContextsProvider>
+        <Component {...pageProps} />
+      </GlobalContextsProvider>
     </PlasmicRootProvider>
   );
 }
