@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# Run from an isolated release directory, under the deployment build lock.
+set -Eeuo pipefail
+CACHE_ROOT=/home/bsadmin/shared/tp-site/dependencies
+key=$({
+  sha256sum package.json package-lock.json
+  [[ ! -f .npmrc ]] || sha256sum .npmrc
+  node --version
+  npm --version
+  uname -sm
+} | sha256sum | cut -d ' ' -f 1)
+cache="$CACHE_ROOT/$key"
+if [[ -f "$cache/ready" && -d "$cache/node_modules" ]]; then
+  echo 'Dependencies unchanged: reusing installed packages (no npm install).'
+  cp -a --reflink=auto "$cache/node_modules" ./node_modules
+  cp "$cache/package-lock.json" ./package-lock.json
+  exit 0
+fi
+
+echo 'Dependencies changed: installing packages for this release.'
+log=$(mktemp)
+trap 'rm -f "$log"' EXIT
+if npm ci --ignore-scripts --no-audit --no-fund >"$log" 2>&1; then
+  cat "$log"
+else
+  # Plasmic sync can omit peer/optional entries from the lockfile.
+  # Repair only this known mismatch, without modifying the source checkout.
+  if grep -q 'npm error code EUSAGE' "$log" && grep -q 'Missing:.*from lock file' "$log"; then
+    echo 'Incomplete lockfile from sync: restoring missing entries in the release only.'
+    npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+    npm ci --ignore-scripts --no-audit --no-fund
+  else
+    cat "$log" >&2
+    exit 1
+  fi
+fi
+mkdir -p "$CACHE_ROOT"
+tmp=$(mktemp -d "$CACHE_ROOT/.prepare-XXXXXX")
+trap 'rm -f "$log"; [[ -z "${tmp:-}" ]] || rm -rf -- "$tmp"' EXIT
+cp -a --reflink=auto node_modules "$tmp/node_modules"
+cp package-lock.json "$tmp/package-lock.json"
+touch "$tmp/ready"
+# A previous incomplete entry is never used.
+[[ ! -e "$cache" ]] || rm -rf -- "$cache"
+mv "$tmp" "$cache"
+tmp=''
+echo 'Dependencies cached for subsequent releases.'

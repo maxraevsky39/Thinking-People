@@ -79,3 +79,10 @@ The GraphQL and Embed CSS packages imported by generated code are explicit depen
 The locale page statically generates /en/ and /lv/ (current Strapi locales); / redirects temporarily to /en/. Add newly introduced languages to supportedLocales in pages/[locale].tsx.
 
 The normal tp-site command now stops with an explanation if there are uncommitted changes; commit/stash first, or use tp-site --local deliberately. It never silently ignores upstream updates. Deployment health checks follow the root redirect.
+
+
+## Dependency reuse
+
+`tp-site` caches installed dependencies in `/home/bsadmin/shared/tp-site/dependencies`. The cache key includes package.json, package-lock.json, .npmrc (if present), Node/npm versions and OS/architecture. Unchanged inputs reuse a copy of node_modules without running npm installation. Each release retains its own files; the running release and shared image cache are untouched.
+
+Changed dependencies are installed with npm ci. If Plasmic synchronization omitted entries and npm reports missing lockfile packages, the script repairs the lockfile in the isolated release with npm install --package-lock-only, then validates it using npm ci. Other installation errors stop deployment. The source checkout is never silently modified. The resolved lockfile is saved with the dependency cache.

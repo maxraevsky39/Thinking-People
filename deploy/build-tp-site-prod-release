@@ -23,7 +23,7 @@ mkdir -p "$RELEASE"
 rsync -a --exclude=.git --exclude=node_modules --exclude=.next --exclude='.env*' "$SOURCE/" "$RELEASE/"
 cp /home/bsadmin/shared/tp-site/app.env "$RELEASE/.env.production"
 cd "$RELEASE"
-npm ci --ignore-scripts --no-audit --no-fund
+bash "$RELEASE/deploy/prepare-dependencies"
 NODE_ENV=production NODE_OPTIONS=--max-old-space-size=4096 npm run build
 RUNTIME="$RELEASE/.next/standalone"
 test -f "$RUNTIME/server.js"
