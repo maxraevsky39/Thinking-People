@@ -143,7 +143,6 @@ export type PlasmicHomepage__OverridesType = {
   pointsWrapper?: Flex__<"div">;
   pointsWrapper3?: Flex__<"div">;
   provenProgram?: Flex__<"div">;
-  btnSecond?: Flex__<typeof BtnSecond>;
   dynamicBlock?: Flex__<"div">;
   basicCardSection?: Flex__<"div">;
   cardWrapper?: Flex__<"div">;
@@ -382,7 +381,7 @@ function PlasmicHomepage__RenderFunc(props: {
                   fromScale={1.5}
                   fromX={0}
                   fromY={80}
-                  offsetEnd={"0 +200px"}
+                  offsetEnd={"0 -200px"}
                   offsetStart={"start start"}
                   perspective={1000}
                   smoothing={0.5}
@@ -502,8 +501,8 @@ function PlasmicHomepage__RenderFunc(props: {
             data-plasmic-name={"heroSection"}
             data-plasmic-override={overrides.heroSection}
 
-            className={classNames("all", sty.heroSection)}
-            id={""}
+            className={classNames("all", sty.heroSection, "heroSection")}
+            id={"heroSection"}
           >
             <ContactSheet
               data-plasmic-name={"contactSheet"}
@@ -586,10 +585,7 @@ function PlasmicHomepage__RenderFunc(props: {
               </div>
             </div>
           </div>
-          <div
-            className={classNames("all", sty.freeBox__epJuv, "heroSection")}
-            id={"heroSection"}
-          >
+          <div className={classNames("all", sty.freeBox__epJuv, "")} id={""}>
             <div
               data-plasmic-name={"howWeWorkSection"}
               data-plasmic-override={overrides.howWeWorkSection}
@@ -717,10 +713,10 @@ function PlasmicHomepage__RenderFunc(props: {
                     {"Or start with a proven program."}
                   </div>
                   <BtnSecond
-                    data-plasmic-name={"btnSecond"}
-                    data-plasmic-override={overrides.btnSecond}
-
-                    className={classNames("__wab_instance", sty.btnSecond)}
+                    className={classNames(
+                      "__wab_instance",
+                      sty.btnSecond___35NXt
+                    )}
                     text={"Explore"}
                   />
                 </div>
@@ -970,6 +966,26 @@ function PlasmicHomepage__RenderFunc(props: {
                         })()}
                         white={true}
                       />
+
+                      <BtnSecond
+                        className={classNames(
+                          "__wab_instance",
+                          sty.btnSecond__vUlDc
+                        )}
+                        text={(() => {
+                          try {
+                            return currentItem.shared_block.btnText;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()}
+                      />
                     </div>
                     <div className={classNames("all", sty.freeBox__hAl2B)}>
                       <div
@@ -1089,7 +1105,6 @@ const PlasmicDescendants = {
     "pointsWrapper",
     "pointsWrapper3",
     "provenProgram",
-    "btnSecond",
     "dynamicBlock",
     "basicCardSection",
     "cardWrapper",
@@ -1126,8 +1141,7 @@ const PlasmicDescendants = {
   howWeWorkSection: ["howWeWorkSection", "pointsWrapper", "pointsWrapper3"],
   pointsWrapper: ["pointsWrapper"],
   pointsWrapper3: ["pointsWrapper3"],
-  provenProgram: ["provenProgram", "btnSecond"],
-  btnSecond: ["btnSecond"],
+  provenProgram: ["provenProgram"],
   dynamicBlock: [
     "dynamicBlock",
     "basicCardSection",
@@ -1168,7 +1182,6 @@ type NodeDefaultElementType = {
   pointsWrapper: "div";
   pointsWrapper3: "div";
   provenProgram: "div";
-  btnSecond: typeof BtnSecond;
   dynamicBlock: "div";
   basicCardSection: "div";
   cardWrapper: "div";
@@ -1254,7 +1267,6 @@ export const PlasmicHomepage = Object.assign(
     pointsWrapper: makeNodeComponent("pointsWrapper"),
     pointsWrapper3: makeNodeComponent("pointsWrapper3"),
     provenProgram: makeNodeComponent("provenProgram"),
-    btnSecond: makeNodeComponent("btnSecond"),
     dynamicBlock: makeNodeComponent("dynamicBlock"),
     basicCardSection: makeNodeComponent("basicCardSection"),
     cardWrapper: makeNodeComponent("cardWrapper"),

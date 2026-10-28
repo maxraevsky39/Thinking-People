@@ -1,13 +1,13 @@
 .points {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
   height: auto;
   max-width: 100%;
   justify-content: space-between;
-  align-items: flex-start;
-  row-gap: 8px;
+  align-items: center;
   position: relative;
+  column-gap: 8px;
   min-width: 0;
   border-radius: 4px;
   padding: 24px;
@@ -25,12 +25,12 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  align-items: stretch;
+  align-items: center;
   justify-content: flex-start;
-  width: 100%;
+  width: 45px;
   height: auto;
   max-width: 100%;
-  min-width: 0;
+  flex-shrink: 1;
   padding: 0px;
 }
 .point {
@@ -38,11 +38,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: auto;
+  width: 100%;
   height: auto;
   max-width: 100%;
   background: var(--token-knMaQj4lE16i);
   aspect-ratio: 1/1;
+  min-width: 0;
   border-radius: 999px;
   padding: 12px;
 }
@@ -73,7 +74,6 @@
   font-family: "Wix Madefor Display";
   text-align: left;
   font-weight: 700;
-  max-width: 90%;
 }
 .textlast__gkeCviV4V8 {
   color: var(--token-ojJ1CdgTqXk8);
