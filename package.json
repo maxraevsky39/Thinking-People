@@ -36,8 +36,6 @@
     "typescript": "^5"
   },
   "overrides": {
-    "@plasmicpkgs/fetch": {
-      "@plasmicapp/host": "2.0.20"
-    }
+    "@plasmicpkgs/fetch": "0.0.56"
   }
 }
