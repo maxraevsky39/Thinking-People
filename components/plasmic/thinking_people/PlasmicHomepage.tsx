@@ -525,7 +525,7 @@ function PlasmicHomepage__RenderFunc(props: {
               draggable={true}
               edgeFade={0}
               hoverSlow={0.6}
-              paused={true}
+              paused={false}
               radius={0}
               rim={0.12}
               roll={0}
