@@ -28,7 +28,7 @@ export default function GlobalContextsProvider(
       css={
         embedCssProps && "css" in embedCssProps
           ? embedCssProps.css!
-          : "@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400..800&display=swap');"
+          : "@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400..800&display=swap');\n\n.hww-point:not(:last-child)::after {\n  content: \"\u2014\";\n  position: absolute;\n  right: -24px;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.hww-point {\n  position: relative;\n}\n.nice-trans-1, .nice-trans-1:hover {\n  transition: all 620ms cubic-bezier(0.075, 0.82, 0.165, 1);\n}\n.nice-show-1 {\nanimation: show-1 400ms both cubic-bezier(0.23, 1, 0.320, 1)\n}\n.hww-row:nth-child(1) > .nice-show-1:nth-child(1) { animation-delay: 0s; }\n.hww-row:nth-child(1) > .nice-show-1:nth-child(2) { animation-delay: .1s; }\n.hww-row:nth-child(1) > .nice-show-1:nth-child(3) { animation-delay: .2s; }\n\n.hww-row:nth-child(2) > .nice-show-1:nth-child(1) { animation-delay: .3s; }\n.hww-row:nth-child(2) > .nice-show-1:nth-child(2) { animation-delay: .4s; }\n.hww-row:nth-child(2) > .nice-show-1:nth-child(3) { animation-delay: .5s; }\n\n@keyframes show-1{\n  from {\ntransform: translateX(-40px);\nopacity: 0;\n  }\n  to {\ntransform: translateY(0px);\nopacity: 100;\n  }\n}"
       }
     >
       {children}

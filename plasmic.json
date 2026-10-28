@@ -50,6 +50,32 @@
           "cssFilePath": "plasmic/thinking_people/PlasmicH2.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "9uBh2eQE-yqj",
+          "name": "HwwCard",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicHwwCard.tsx",
+          "importSpec": {
+            "modulePath": "HwwCard.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicHwwCard.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "gKCTmQN19iqg",
+          "name": "BtnSecond",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicBtnSecond.tsx",
+          "importSpec": {
+            "modulePath": "BtnSecond.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicBtnSecond.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [],

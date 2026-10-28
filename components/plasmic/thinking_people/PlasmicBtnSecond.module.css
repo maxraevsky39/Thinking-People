@@ -1,0 +1,25 @@
+.btnSecond {
+  display: inline-flex;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  position: relative;
+  justify-self: flex-start;
+  flex-direction: column;
+  background: var(--token-L3MOQ4h6Pxqz);
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 8px 24px;
+}
+.text {
+  line-height: 100%;
+  width: auto;
+  height: auto;
+  font-size: var(--token-R-ud6gsLyokM);
+  font-family: "Wix Madefor Display";
+  position: relative;
+  left: auto;
+  top: auto;
+  font-weight: 700;
+  border-radius: 4px;
+}

@@ -1,0 +1,80 @@
+.points {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+  row-gap: 8px;
+  position: relative;
+  min-width: 0;
+  border-radius: 4px;
+  padding: 24px;
+  border: 0.13em solid var(--token-knMaQj4lE16i);
+}
+.pointslast {
+  background: var(--token-knMaQj4lE16i);
+  border-width: 0em;
+  border-style: none;
+}
+.points:hover:hover {
+  border-color: var(--token-L3MOQ4h6Pxqz);
+}
+.freeBox {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0px;
+}
+.point {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  background: var(--token-knMaQj4lE16i);
+  aspect-ratio: 1/1;
+  border-radius: 999px;
+  padding: 12px;
+}
+.pointlast {
+  background: var(--token-ojJ1CdgTqXk8);
+}
+.points:hover .point {
+  background: var(--token-L3MOQ4h6Pxqz);
+}
+.text___92YWg {
+  line-height: 115%;
+  width: auto;
+  height: auto;
+  max-width: 80%;
+  font-size: var(--token-R-ud6gsLyokM);
+  font-family: "Wix Madefor Display";
+  font-weight: 700;
+  color: var(--token-ojJ1CdgTqXk8);
+}
+.textlast___92YWgiV4V8 {
+  color: var(--token-knMaQj4lE16i);
+}
+.text__gkeCv {
+  line-height: 115%;
+  width: auto;
+  height: auto;
+  font-size: var(--token-iD0fioAtLFjr);
+  font-family: "Wix Madefor Display";
+  text-align: left;
+  font-weight: 700;
+  max-width: 90%;
+}
+.textlast__gkeCviV4V8 {
+  color: var(--token-ojJ1CdgTqXk8);
+}
