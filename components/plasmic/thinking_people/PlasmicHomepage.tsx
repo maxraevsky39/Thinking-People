@@ -150,6 +150,9 @@ export type PlasmicHomepage__OverridesType = {
   optimizedImage?: Flex__<typeof OptimizedImage>;
   leadershipSection2?: Flex__<"div">;
   about13?: Flex__<typeof About13>;
+  basicCardSection2?: Flex__<"div">;
+  cardWrapper2?: Flex__<"div">;
+  card2?: Flex__<"div">;
 };
 
 export interface DefaultHomepageProps {}
@@ -372,7 +375,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     "__wab_instance",
                     sty.motionScrollSection
                   )}
-                  ease={"power2.inOut"}
+                  ease={"none"}
                   fromBlur={0}
                   fromOpacity={1}
                   fromRotation={0}
@@ -380,8 +383,8 @@ function PlasmicHomepage__RenderFunc(props: {
                   fromRotationY={0}
                   fromScale={1.5}
                   fromX={0}
-                  fromY={80}
-                  offsetEnd={"0 -200px"}
+                  fromY={70}
+                  offsetEnd={"0 -100px"}
                   offsetStart={"start start"}
                   perspective={1000}
                   smoothing={0.5}
@@ -1082,6 +1085,140 @@ function PlasmicHomepage__RenderFunc(props: {
               </div>
             );
           })}
+          <div
+            data-plasmic-name={"basicCardSection2"}
+            data-plasmic-override={overrides.basicCardSection2}
+
+            className={classNames("all", sty.basicCardSection2)}
+          >
+            <div className={classNames("all", sty.freeBox__rFdqE)}>
+              <H2
+                className={classNames("__wab_instance", sty.h2__hO5Tr)}
+                title={"Key Areas of Expertise"}
+              />
+            </div>
+            <div
+              data-plasmic-name={"cardWrapper2"}
+              data-plasmic-override={overrides.cardWrapper2}
+
+              className={classNames("all", sty.cardWrapper2)}
+            >
+              {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                (() => {
+                  try {
+                    return [
+                      {
+                        title: "Business Communication",
+                        description:
+                          "Helping people understand each other faster and solve work-related challenges more effectively.",
+                        topics: ["Negotiation", "Feedback", "Public Speaking"]
+                      },
+                      {
+                        title: "Cognitive Skills",
+                        description:
+                          "Helping teams think more clearly, analyze information, and make better decisions.",
+                        topics: [
+                          "Critical Thinking",
+                          "Cognitive Skills",
+                          "Decision-Making"
+                        ]
+                      },
+                      {
+                        title: "Leadership and Management Skills",
+                        description:
+                          "Helping strong professionals become effective leaders.",
+                        topics: [
+                          "Team Management",
+                          "Delegation",
+                          "Leading Through Change"
+                        ]
+                      }
+                    ];
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return [];
+                    }
+                    throw e;
+                  }
+                })()
+              ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                const currentItem = __plasmic_item_0;
+                const currentIndex = __plasmic_idx_0;
+                return (
+                  <div
+                    data-plasmic-name={"card2"}
+                    data-plasmic-override={overrides.card2}
+
+                    className={classNames("all", sty.card2)}
+                    key={currentIndex}
+                  >
+                    <div className={classNames("all", sty.freeBox__ehi7B)}>
+                      <div
+                        className={classNames(
+                          "all",
+                          "__wab_text",
+                          sty.text__lJv4R
+                        )}
+                      >
+                        <React.Fragment>{currentItem.title}</React.Fragment>
+                      </div>
+                      <div
+                        className={classNames(
+                          "all",
+                          "__wab_text",
+                          sty.text__gEyUt
+                        )}
+                      >
+                        <React.Fragment>
+                          {currentItem.description}
+                        </React.Fragment>
+                      </div>
+                    </div>
+                    <div className={classNames("all", sty.freeBox__cGo4B)}>
+                      {(_par =>
+                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                        (() => {
+                          try {
+                            return currentItem.topics;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      ).map((__plasmic_item_1, __plasmic_idx_1) => {
+                        const currentItem = __plasmic_item_1;
+                        const currentIndex = __plasmic_idx_1;
+                        return (
+                          <div
+                            className={classNames("all", sty.freeBox__kOc0G)}
+                            key={currentIndex}
+                          >
+                            <div
+                              className={classNames(
+                                "all",
+                                "__wab_text",
+                                sty.text__hsHci
+                              )}
+                            >
+                              <React.Fragment>{currentItem}</React.Fragment>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </React.Fragment>
@@ -1111,7 +1248,10 @@ const PlasmicDescendants = {
     "card",
     "optimizedImage",
     "leadershipSection2",
-    "about13"
+    "about13",
+    "basicCardSection2",
+    "cardWrapper2",
+    "card2"
   ],
   navbar: [
     "navbar",
@@ -1161,7 +1301,10 @@ const PlasmicDescendants = {
   card: ["card", "optimizedImage"],
   optimizedImage: ["optimizedImage"],
   leadershipSection2: ["leadershipSection2", "about13"],
-  about13: ["about13"]
+  about13: ["about13"],
+  basicCardSection2: ["basicCardSection2", "cardWrapper2", "card2"],
+  cardWrapper2: ["cardWrapper2", "card2"],
+  card2: ["card2"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1189,6 +1332,9 @@ type NodeDefaultElementType = {
   optimizedImage: typeof OptimizedImage;
   leadershipSection2: "div";
   about13: typeof About13;
+  basicCardSection2: "div";
+  cardWrapper2: "div";
+  card2: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1274,6 +1420,9 @@ export const PlasmicHomepage = Object.assign(
     optimizedImage: makeNodeComponent("optimizedImage"),
     leadershipSection2: makeNodeComponent("leadershipSection2"),
     about13: makeNodeComponent("about13"),
+    basicCardSection2: makeNodeComponent("basicCardSection2"),
+    cardWrapper2: makeNodeComponent("cardWrapper2"),
+    card2: makeNodeComponent("card2"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,
