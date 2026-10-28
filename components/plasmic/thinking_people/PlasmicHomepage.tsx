@@ -75,6 +75,8 @@ import HwwCard from "../../HwwCard"; // plasmic-import: 9uBh2eQE-yqj/component
 import BtnSecond from "../../BtnSecond"; // plasmic-import: gKCTmQN19iqg/component
 import { OptimizedImage } from "../../OptimizedImage"; // plasmic-import: 2sAw0k_qEFgf/codeComponent
 import { About13 } from "../../About13"; // plasmic-import: w2c8KkWos3P4/codeComponent
+import { ScrollSection } from "../../ScrollSection"; // plasmic-import: mqp2cBG_dizY/codeComponent
+import MainForm from "../../MainForm"; // plasmic-import: WC23AdBWqnVp/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/styleTokensProvider
 import { strapiUrl as $dataTokens_5CArW_strapiUrl } from "./plasmic-data-tokens"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/dataTokens
@@ -133,7 +135,6 @@ export type PlasmicHomepage__OverridesType = {
   menu?: Flex__<"div">;
   menuPoints?: Flex__<"div">;
   logo?: Flex__<"div">;
-  motionScrollSection?: Flex__<typeof MotionScrollSection>;
   img?: Flex__<typeof PlasmicImg__>;
   menuPoints2?: Flex__<"div">;
   heroSection?: Flex__<"div">;
@@ -147,12 +148,18 @@ export type PlasmicHomepage__OverridesType = {
   basicCardSection?: Flex__<"div">;
   cardWrapper?: Flex__<"div">;
   card?: Flex__<"div">;
-  optimizedImage?: Flex__<typeof OptimizedImage>;
   leadershipSection2?: Flex__<"div">;
   about13?: Flex__<typeof About13>;
   basicCardSection2?: Flex__<"div">;
   cardWrapper2?: Flex__<"div">;
+  scrollSection?: Flex__<typeof ScrollSection>;
   card2?: Flex__<"div">;
+  chelik?: Flex__<"div">;
+  mainForm?: Flex__<typeof MainForm>;
+  footer?: Flex__<"div">;
+  fb?: Flex__<"div">;
+  ig?: Flex__<"div">;
+  ld?: Flex__<"div">;
 };
 
 export interface DefaultHomepageProps {}
@@ -279,6 +286,38 @@ function PlasmicHomepage__RenderFunc(props: {
 
             className={classNames("all", sty.navbar)}
           >
+            <MotionScrollSection
+              className={classNames(
+                "__wab_instance",
+                sty.motionScrollSection__icd29
+              )}
+              ease={"none"}
+              fromBlur={0}
+              fromOpacity={0}
+              fromRotation={0}
+              fromRotationX={0}
+              fromRotationY={0}
+              fromScale={1}
+              fromX={0}
+              fromY={0}
+              offsetEnd={"0 -80px"}
+              offsetStart={"start start"}
+              perspective={1000}
+              smoothing={0.5}
+              targetSelector={".heroSection"}
+              toBlur={0}
+              toOpacity={1}
+              toRotation={0}
+              toRotationX={0}
+              toRotationY={0}
+              toScale={1}
+              toX={0}
+              toY={0}
+              trackContentSize={false}
+              transformOrigin={"center center"}
+            >
+              <div className={classNames("all", sty.freeBox__dgzDr)} />
+            </MotionScrollSection>
             <div
               data-plasmic-name={"menu"}
               data-plasmic-override={overrides.menu}
@@ -368,12 +407,9 @@ function PlasmicHomepage__RenderFunc(props: {
                 className={classNames("all", sty.logo)}
               >
                 <MotionScrollSection
-                  data-plasmic-name={"motionScrollSection"}
-                  data-plasmic-override={overrides.motionScrollSection}
-
                   className={classNames(
                     "__wab_instance",
-                    sty.motionScrollSection
+                    sty.motionScrollSection___9Lm1H
                   )}
                   ease={"none"}
                   fromBlur={0}
@@ -847,15 +883,10 @@ function PlasmicHomepage__RenderFunc(props: {
                                 )}
                               >
                                 <OptimizedImage
-                                  data-plasmic-name={"optimizedImage"}
-                                  data-plasmic-override={
-                                    overrides.optimizedImage
-                                  }
-
                                   alt={""}
                                   className={classNames(
                                     "__wab_instance",
-                                    sty.optimizedImage
+                                    sty.optimizedImage__rShBe
                                   )}
                                   fill={true}
                                   format={"auto"}
@@ -1021,8 +1052,8 @@ function PlasmicHomepage__RenderFunc(props: {
                       })}
                       duration={1.1}
                       entranceAnimation={true}
-                      flashDark={"#FCAAD6"}
-                      flashLight={"#FCAAD6"}
+                      flashDark={true ? "#FFFFFF" : undefined}
+                      flashLight={true ? "#FFFFFF" : undefined}
                       goo={0.1}
                       heading={""}
                       interval={3.6}
@@ -1032,8 +1063,11 @@ function PlasmicHomepage__RenderFunc(props: {
                       nameClassName={classNames({
                         [sty["pcls_UutrmF3L93_p"]]: true
                       })}
-                      pauseOnHover={true}
+                      pauseOnHover={false}
                       paused={false}
+                      progressClassName={classNames({
+                        [sty["pcls_nMi8GutvW4Qv"]]: true
+                      })}
                       softness={0.8}
                       stagger={0.25}
                       swell={0.02}
@@ -1148,75 +1182,289 @@ function PlasmicHomepage__RenderFunc(props: {
                 const currentItem = __plasmic_item_0;
                 const currentIndex = __plasmic_idx_0;
                 return (
-                  <div
-                    data-plasmic-name={"card2"}
-                    data-plasmic-override={overrides.card2}
+                  <ScrollSection
+                    data-plasmic-name={"scrollSection"}
+                    data-plasmic-override={overrides.scrollSection}
 
-                    className={classNames("all", sty.card2)}
+                    animationClassName={""}
+                    className={classNames("__wab_instance", sty.scrollSection)}
+                    ease={"power2.inOut"}
+                    end={"top 50%"}
+                    fromBlur={0}
+                    fromOpacity={0}
+                    fromRotation={0}
+                    fromRotationX={0}
+                    fromRotationY={0}
+                    fromScale={0.95}
+                    fromX={0}
+                    fromY={80}
                     key={currentIndex}
+                    markers={false}
+                    perspective={1000}
+                    pin={false}
+                    scrub={0.5}
+                    start={"top 90%"}
+                    toBlur={0}
+                    toOpacity={1}
+                    toRotation={0}
+                    toRotationX={0}
+                    toRotationY={0}
+                    toScale={1}
+                    toX={0}
+                    toY={(() => {
+                      try {
+                        return currentIndex === 0
+                          ? "40px"
+                          : currentIndex === 1
+                            ? "20px"
+                            : 0;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return 0;
+                        }
+                        throw e;
+                      }
+                    })()}
+                    transformOrigin={"center center"}
                   >
-                    <div className={classNames("all", sty.freeBox__ehi7B)}>
-                      <div
-                        className={classNames(
-                          "all",
-                          "__wab_text",
-                          sty.text__lJv4R
-                        )}
-                      >
-                        <React.Fragment>{currentItem.title}</React.Fragment>
+                    <div
+                      data-plasmic-name={"card2"}
+                      data-plasmic-override={overrides.card2}
+
+                      className={classNames("all", sty.card2, "")}
+                    >
+                      <div className={classNames("all", sty.freeBox__ehi7B)}>
+                        <div
+                          className={classNames(
+                            "all",
+                            "__wab_text",
+                            sty.text__lJv4R
+                          )}
+                        >
+                          <React.Fragment>{currentItem.title}</React.Fragment>
+                        </div>
+                        <div
+                          className={classNames(
+                            "all",
+                            "__wab_text",
+                            sty.text__gEyUt
+                          )}
+                        >
+                          <React.Fragment>
+                            {currentItem.description}
+                          </React.Fragment>
+                        </div>
                       </div>
-                      <div
-                        className={classNames(
-                          "all",
-                          "__wab_text",
-                          sty.text__gEyUt
-                        )}
-                      >
-                        <React.Fragment>
-                          {currentItem.description}
-                        </React.Fragment>
-                      </div>
-                    </div>
-                    <div className={classNames("all", sty.freeBox__cGo4B)}>
-                      {(_par =>
-                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                        (() => {
-                          try {
-                            return currentItem.topics;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
+                      <div className={classNames("all", sty.freeBox__cGo4B)}>
+                        {(_par =>
+                          !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                          (() => {
+                            try {
+                              return currentItem.topics;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return [];
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
-                      ).map((__plasmic_item_1, __plasmic_idx_1) => {
-                        const currentItem = __plasmic_item_1;
-                        const currentIndex = __plasmic_idx_1;
-                        return (
-                          <div
-                            className={classNames("all", sty.freeBox__kOc0G)}
-                            key={currentIndex}
-                          >
+                          })()
+                        ).map((__plasmic_item_1, __plasmic_idx_1) => {
+                          const currentItem = __plasmic_item_1;
+                          const currentIndex = __plasmic_idx_1;
+                          return (
                             <div
-                              className={classNames(
-                                "all",
-                                "__wab_text",
-                                sty.text__hsHci
-                              )}
+                              className={classNames("all", sty.freeBox__kOc0G)}
+                              key={currentIndex}
                             >
-                              <React.Fragment>{currentItem}</React.Fragment>
+                              <div
+                                className={classNames(
+                                  "all",
+                                  "__wab_text",
+                                  sty.text__hsHci
+                                )}
+                              >
+                                <React.Fragment>{currentItem}</React.Fragment>
+                              </div>
                             </div>
-                          </div>
-                        );
-                      })}
+                          );
+                        })}
+                      </div>
                     </div>
-                  </div>
+                  </ScrollSection>
                 );
               })}
+            </div>
+          </div>
+          <div className={classNames("all", sty.freeBox__dQDcr)}>
+            <div className={classNames("all", sty.freeBox__rb1S7)}>
+              <div
+                data-plasmic-name={"chelik"}
+                data-plasmic-override={overrides.chelik}
+
+                className={classNames("all", sty.chelik)}
+              >
+                <OptimizedImage
+                  alt={""}
+                  className={classNames(
+                    "__wab_instance",
+                    sty.optimizedImage__nzpTc
+                  )}
+                  fill={true}
+                  format={"auto"}
+                  height={971}
+                  loading={"lazy"}
+                  objectFit={"cover"}
+                  objectPosition={"center"}
+                  placeholder={"blur"}
+                  quality={75}
+                  sizes={"(max-width: 768px) 100vw, 50vw"}
+                  src={"/plasmic/thinking_people/images/chelik1Svg.svg"}
+                  width={813}
+                />
+              </div>
+              <div className={classNames("all", sty.freeBox__fzgY7)}>
+                <H2
+                  className={classNames("__wab_instance", sty.h2__jyini)}
+                  title={"Contacts"}
+                  white={true}
+                />
+
+                <div
+                  className={classNames("all", "__wab_text", sty.text__mSLg5)}
+                >
+                  {"welcome@thinking-people.eu"}
+                </div>
+              </div>
+              <MainForm
+                data-plasmic-name={"mainForm"}
+                data-plasmic-override={overrides.mainForm}
+
+                className={classNames("__wab_instance", sty.mainForm)}
+              />
+            </div>
+          </div>
+          <div
+            data-plasmic-name={"footer"}
+            data-plasmic-override={overrides.footer}
+
+            className={classNames("all", sty.footer)}
+          >
+            <div className={classNames("all", sty.freeBox__rne5A)}>
+              <div className={classNames("all", sty.freeBox__sDflm)}>
+                <div
+                  className={classNames("all", "__wab_text", sty.text__oyTiC)}
+                >
+                  {"\u00a9 2023 \u2014 2025, Thinking People"}
+                </div>
+                <div className={classNames("all", sty.freeBox___4RyDd)}>
+                  <div
+                    className={classNames("all", "__wab_text", sty.text__zy5Xw)}
+                  >
+                    {"Terms & Conditions"}
+                  </div>
+                  <div
+                    className={classNames("all", "__wab_text", sty.text__yQtJc)}
+                  >
+                    {"Privacy Policy"}
+                  </div>
+                </div>
+              </div>
+              <div className={classNames("all", sty.freeBox__rC7Rw)}>
+                <div
+                  className={classNames("all", "__wab_text", sty.text___4H7BH)}
+                >
+                  {"Follow us:"}
+                </div>
+                <div className={classNames("all", sty.freeBox__f8EXi)}>
+                  <div
+                    data-plasmic-name={"fb"}
+                    data-plasmic-override={overrides.fb}
+
+                    className={classNames("all", sty.fb)}
+                  >
+                    <OptimizedImage
+                      alt={""}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.optimizedImage__e65Ws
+                      )}
+                      fill={true}
+                      format={"auto"}
+                      height={215}
+                      loading={"lazy"}
+                      objectFit={"contain"}
+                      objectPosition={"center"}
+                      placeholder={"blur"}
+                      quality={75}
+                      sizes={"(max-width: 768px) 100vw, 50vw"}
+                      src={
+                        "/plasmic/thinking_people/images/facebookWhitePng.png"
+                      }
+                      width={215}
+                    />
+                  </div>
+                  <div
+                    data-plasmic-name={"ig"}
+                    data-plasmic-override={overrides.ig}
+
+                    className={classNames("all", sty.ig)}
+                  >
+                    <OptimizedImage
+                      alt={""}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.optimizedImage___34ZvV
+                      )}
+                      fill={true}
+                      format={"auto"}
+                      height={215}
+                      loading={"lazy"}
+                      objectFit={"contain"}
+                      objectPosition={"center"}
+                      placeholder={"blur"}
+                      quality={75}
+                      sizes={"(max-width: 768px) 100vw, 50vw"}
+                      src={
+                        "/plasmic/thinking_people/images/instagramWhitePng.png"
+                      }
+                      width={215}
+                    />
+                  </div>
+                  <div
+                    data-plasmic-name={"ld"}
+                    data-plasmic-override={overrides.ld}
+
+                    className={classNames("all", sty.ld)}
+                  >
+                    <OptimizedImage
+                      alt={""}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.optimizedImage__ps6U6
+                      )}
+                      fill={true}
+                      format={"auto"}
+                      height={215}
+                      loading={"lazy"}
+                      objectFit={"contain"}
+                      objectPosition={"center"}
+                      placeholder={"blur"}
+                      quality={75}
+                      sizes={"(max-width: 768px) 100vw, 50vw"}
+                      src={
+                        "/plasmic/thinking_people/images/linkedInWhitePng.png"
+                      }
+                      width={215}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1232,7 +1480,6 @@ const PlasmicDescendants = {
     "menu",
     "menuPoints",
     "logo",
-    "motionScrollSection",
     "img",
     "menuPoints2",
     "heroSection",
@@ -1246,33 +1493,23 @@ const PlasmicDescendants = {
     "basicCardSection",
     "cardWrapper",
     "card",
-    "optimizedImage",
     "leadershipSection2",
     "about13",
     "basicCardSection2",
     "cardWrapper2",
-    "card2"
+    "scrollSection",
+    "card2",
+    "chelik",
+    "mainForm",
+    "footer",
+    "fb",
+    "ig",
+    "ld"
   ],
-  navbar: [
-    "navbar",
-    "menu",
-    "menuPoints",
-    "logo",
-    "motionScrollSection",
-    "img",
-    "menuPoints2"
-  ],
-  menu: [
-    "menu",
-    "menuPoints",
-    "logo",
-    "motionScrollSection",
-    "img",
-    "menuPoints2"
-  ],
+  navbar: ["navbar", "menu", "menuPoints", "logo", "img", "menuPoints2"],
+  menu: ["menu", "menuPoints", "logo", "img", "menuPoints2"],
   menuPoints: ["menuPoints"],
-  logo: ["logo", "motionScrollSection", "img"],
-  motionScrollSection: ["motionScrollSection", "img"],
+  logo: ["logo", "img"],
   img: ["img"],
   menuPoints2: ["menuPoints2"],
   heroSection: ["heroSection", "contactSheet", "content"],
@@ -1287,24 +1524,29 @@ const PlasmicDescendants = {
     "basicCardSection",
     "cardWrapper",
     "card",
-    "optimizedImage",
     "leadershipSection2",
     "about13"
   ],
-  basicCardSection: [
-    "basicCardSection",
-    "cardWrapper",
-    "card",
-    "optimizedImage"
-  ],
-  cardWrapper: ["cardWrapper", "card", "optimizedImage"],
-  card: ["card", "optimizedImage"],
-  optimizedImage: ["optimizedImage"],
+  basicCardSection: ["basicCardSection", "cardWrapper", "card"],
+  cardWrapper: ["cardWrapper", "card"],
+  card: ["card"],
   leadershipSection2: ["leadershipSection2", "about13"],
   about13: ["about13"],
-  basicCardSection2: ["basicCardSection2", "cardWrapper2", "card2"],
-  cardWrapper2: ["cardWrapper2", "card2"],
-  card2: ["card2"]
+  basicCardSection2: [
+    "basicCardSection2",
+    "cardWrapper2",
+    "scrollSection",
+    "card2"
+  ],
+  cardWrapper2: ["cardWrapper2", "scrollSection", "card2"],
+  scrollSection: ["scrollSection", "card2"],
+  card2: ["card2"],
+  chelik: ["chelik"],
+  mainForm: ["mainForm"],
+  footer: ["footer", "fb", "ig", "ld"],
+  fb: ["fb"],
+  ig: ["ig"],
+  ld: ["ld"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1315,7 +1557,6 @@ type NodeDefaultElementType = {
   menu: "div";
   menuPoints: "div";
   logo: "div";
-  motionScrollSection: typeof MotionScrollSection;
   img: typeof PlasmicImg__;
   menuPoints2: "div";
   heroSection: "div";
@@ -1329,12 +1570,18 @@ type NodeDefaultElementType = {
   basicCardSection: "div";
   cardWrapper: "div";
   card: "div";
-  optimizedImage: typeof OptimizedImage;
   leadershipSection2: "div";
   about13: typeof About13;
   basicCardSection2: "div";
   cardWrapper2: "div";
+  scrollSection: typeof ScrollSection;
   card2: "div";
+  chelik: "div";
+  mainForm: typeof MainForm;
+  footer: "div";
+  fb: "div";
+  ig: "div";
+  ld: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1403,7 +1650,6 @@ export const PlasmicHomepage = Object.assign(
     menu: makeNodeComponent("menu"),
     menuPoints: makeNodeComponent("menuPoints"),
     logo: makeNodeComponent("logo"),
-    motionScrollSection: makeNodeComponent("motionScrollSection"),
     img: makeNodeComponent("img"),
     menuPoints2: makeNodeComponent("menuPoints2"),
     heroSection: makeNodeComponent("heroSection"),
@@ -1417,12 +1663,18 @@ export const PlasmicHomepage = Object.assign(
     basicCardSection: makeNodeComponent("basicCardSection"),
     cardWrapper: makeNodeComponent("cardWrapper"),
     card: makeNodeComponent("card"),
-    optimizedImage: makeNodeComponent("optimizedImage"),
     leadershipSection2: makeNodeComponent("leadershipSection2"),
     about13: makeNodeComponent("about13"),
     basicCardSection2: makeNodeComponent("basicCardSection2"),
     cardWrapper2: makeNodeComponent("cardWrapper2"),
+    scrollSection: makeNodeComponent("scrollSection"),
     card2: makeNodeComponent("card2"),
+    chelik: makeNodeComponent("chelik"),
+    mainForm: makeNodeComponent("mainForm"),
+    footer: makeNodeComponent("footer"),
+    fb: makeNodeComponent("fb"),
+    ig: makeNodeComponent("ig"),
+    ld: makeNodeComponent("ld"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,

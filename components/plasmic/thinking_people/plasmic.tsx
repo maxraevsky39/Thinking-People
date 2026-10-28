@@ -7,4 +7,8 @@
 
 import { createUseGlobalVariants } from "@plasmicapp/react-web";
 
-export const _useGlobalVariants = createUseGlobalVariants({});
+import { useScreenVariants as useScreenVariantsprv3GYhmDuqd } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: prv3gYHMDuqd/globalVariant
+
+export const _useGlobalVariants = createUseGlobalVariants({
+  screen: useScreenVariantsprv3GYhmDuqd
+});

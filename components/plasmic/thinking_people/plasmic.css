@@ -29,6 +29,14 @@
   --plasmic-token-primitives-brand-second: var(--token-hzGJr7QB7Q7_);
   --token-wFM1UvlVu4kv: var(--token-hzGJr7QB7Q7_);
   --plasmic-token-semantic-bg-2: var(--token-wFM1UvlVu4kv);
+  --token-5HSauQvnqWJr: #030712;
+  --plasmic-token-basic-text-primary: var(--token-5HSauQvnqWJr);
+  --token-N__cFi959EAE: 16px;
+  --plasmic-token-caption-c-0: var(--token-N__cFi959EAE);
+  --token-Sn34tkCxHfuY: #07152699;
+  --plasmic-token-semantic-text-secondary: var(--token-Sn34tkCxHfuY);
+  --token-tdb1P_3CpWrk: 18px;
+  --plasmic-token-paragraph-m: var(--token-tdb1P_3CpWrk);
 }
 
 .plasmic_tokens_5CArWwg3qxRa1A2Avpz5j5 {

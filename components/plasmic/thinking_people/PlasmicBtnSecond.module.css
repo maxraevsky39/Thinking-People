@@ -8,6 +8,8 @@
   flex-direction: column;
   background: var(--token-L3MOQ4h6Pxqz);
   cursor: pointer;
+  align-items: center;
+  justify-content: center;
   border-radius: 4px;
   padding: 8px 24px;
 }

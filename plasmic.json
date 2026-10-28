@@ -76,6 +76,32 @@
           "cssFilePath": "plasmic/thinking_people/PlasmicBtnSecond.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "SufTH7TwDoua",
+          "name": "InputForm",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicInputForm.tsx",
+          "importSpec": {
+            "modulePath": "InputForm.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicInputForm.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "WC23AdBWqnVp",
+          "name": "MainForm",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicMainForm.tsx",
+          "importSpec": {
+            "modulePath": "MainForm.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicMainForm.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [],
@@ -84,6 +110,26 @@
           "id": "rwoN9y9vqKdJ",
           "name": "Thinking_People-02.svg",
           "filePath": "../public/plasmic/thinking_people/images/thinkingPeople02Svg.svg"
+        },
+        {
+          "id": "mtsgGzygsvw7",
+          "name": "Facebook_white.png",
+          "filePath": "../public/plasmic/thinking_people/images/facebookWhitePng.png"
+        },
+        {
+          "id": "i4bATf9vAyG-",
+          "name": "Instagram_white.png",
+          "filePath": "../public/plasmic/thinking_people/images/instagramWhitePng.png"
+        },
+        {
+          "id": "9IzJQltDkaM0",
+          "name": "LinkedIn_white.png",
+          "filePath": "../public/plasmic/thinking_people/images/linkedInWhitePng.png"
+        },
+        {
+          "id": "hMKuAVzDgowV",
+          "name": "chelik-1.svg",
+          "filePath": "../public/plasmic/thinking_people/images/chelik1Svg.svg"
         }
       ],
       "indirect": false,
@@ -299,7 +345,14 @@
     }
   ],
   "globalVariants": {
-    "variantGroups": []
+    "variantGroups": [
+      {
+        "id": "prv3gYHMDuqd",
+        "name": "Screen",
+        "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+        "contextFilePath": "plasmic/thinking_people/PlasmicGlobalVariant__Screen.tsx"
+      }
+    ]
   },
   "wrapPagesWithGlobalContexts": true,
   "preserveJsImportExtensions": false,

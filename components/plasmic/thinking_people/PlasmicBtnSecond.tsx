@@ -73,17 +73,21 @@ export type PlasmicBtnSecond__VariantsArgs = {};
 type VariantPropType = keyof PlasmicBtnSecond__VariantsArgs;
 export const PlasmicBtnSecond__VariantProps = new Array<VariantPropType>();
 
-export type PlasmicBtnSecond__ArgsType = { text?: string };
+export type PlasmicBtnSecond__ArgsType = { text?: string; type?: string };
 type ArgPropType = keyof PlasmicBtnSecond__ArgsType;
-export const PlasmicBtnSecond__ArgProps = new Array<ArgPropType>("text");
+export const PlasmicBtnSecond__ArgProps = new Array<ArgPropType>(
+  "text",
+  "type"
+);
 
 export type PlasmicBtnSecond__OverridesType = {
-  btnSecond?: Flex__<"div">;
+  btnSecond?: Flex__<"button">;
   text?: Flex__<"div">;
 };
 
 export interface DefaultBtnSecondProps {
   text?: string;
+  type?: string;
   className?: string;
 }
 
@@ -131,19 +135,37 @@ function PlasmicBtnSecond__RenderFunc(props: {
   const styleTokensClassNames = _useStyleTokens();
 
   return (
-    <div
+    <button
       data-plasmic-name={"btnSecond"}
       data-plasmic-override={overrides.btnSecond}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
         "all",
+        "button",
+        "button__5CArW",
         "root_reset_5CArWwg3qxRa1A2Avpz5j5",
         "plasmic_default_styles",
         "plasmic_mixins",
         styleTokensClassNames,
         sty.btnSecond
       )}
+      ref={ref => {
+        $refs["btnSecond"] = ref;
+      }}
+      type={(() => {
+        try {
+          return $props.type;
+        } catch (e) {
+          if (
+            e instanceof TypeError ||
+            e?.plasmicType === "PlasmicUndefinedDataError"
+          ) {
+            return undefined;
+          }
+          throw e;
+        }
+      })()}
     >
       <div
         data-plasmic-name={"text"}
@@ -167,7 +189,7 @@ function PlasmicBtnSecond__RenderFunc(props: {
           })()}
         </React.Fragment>
       </div>
-    </div>
+    </button>
   ) as React.ReactElement | null;
 }
 
@@ -179,7 +201,7 @@ type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  btnSecond: "div";
+  btnSecond: "button";
   text: "div";
 };
 

@@ -1,0 +1,28 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  position: relative;
+  row-gap: 12px;
+  min-width: 0;
+  padding: 0px;
+}
+.inputForm__fvxdo:global(.__wab_instance) {
+  animation: none;
+}
+.inputForm___7Onbi:global(.__wab_instance) {
+  animation: none;
+}
+.inputForm__uVMi:global(.__wab_instance) {
+  animation: none;
+}
+.inputForm__x8M3V:global(.__wab_instance) {
+  animation: none;
+}
+.btnSecond:global(.__wab_instance) {
+  max-width: 100%;
+}
