@@ -740,8 +740,11 @@ function createMorph(root: HTMLElement, settingsRef: { current: Settings }): Mor
     const waiting = started && !S().reduced && morphAt < 0 && words.length > 1;
     if (waiting && !S().held && visible && time - lastSwitch >= S().interval) advance();
     render(time);
+    // Rendering can complete the morph; decide whether to arm the timer from
+    // the updated state so the final animation frame cannot stop autoplay.
+    const readyForNext = started && !S().reduced && morphAt < 0 && words.length > 1;
     if (morphAt >= 0) schedule();
-    else if (waiting && visible && !S().held) {
+    else if (readyForNext && visible && !S().held) {
       if (timer) view.clearTimeout(timer);
       timer = view.setTimeout(() => {
         timer = 0;
