@@ -154,6 +154,7 @@ export type PlasmicHomepage__OverridesType = {
   cardWrapper2?: Flex__<"div">;
   scrollSection?: Flex__<typeof ScrollSection>;
   card2?: Flex__<"div">;
+  point?: Flex__<"div">;
   chelik?: Flex__<"div">;
   mainForm?: Flex__<typeof MainForm>;
   footer?: Flex__<"div">;
@@ -303,7 +304,7 @@ function PlasmicHomepage__RenderFunc(props: {
               offsetEnd={"0 -80px"}
               offsetStart={"start start"}
               perspective={1000}
-              smoothing={0.5}
+              smoothing={0.2}
               targetSelector={".heroSection"}
               toBlur={0}
               toOpacity={1}
@@ -420,10 +421,10 @@ function PlasmicHomepage__RenderFunc(props: {
                   fromScale={1.5}
                   fromX={0}
                   fromY={70}
-                  offsetEnd={"0 -100px"}
+                  offsetEnd={"0 -80px"}
                   offsetStart={"start start"}
                   perspective={1000}
-                  smoothing={0.5}
+                  smoothing={0.2}
                   targetSelector={".heroSection"}
                   toBlur={0}
                   toOpacity={1}
@@ -1195,9 +1196,25 @@ function PlasmicHomepage__RenderFunc(props: {
                     fromRotation={0}
                     fromRotationX={0}
                     fromRotationY={0}
-                    fromScale={0.95}
+                    fromScale={1}
                     fromX={0}
-                    fromY={80}
+                    fromY={(() => {
+                      try {
+                        return currentIndex === 0
+                          ? "210px"
+                          : currentIndex === 1
+                            ? "160px"
+                            : "80px";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return 80;
+                        }
+                        throw e;
+                      }
+                    })()}
                     key={currentIndex}
                     markers={false}
                     perspective={1000}
@@ -1236,15 +1253,52 @@ function PlasmicHomepage__RenderFunc(props: {
 
                       className={classNames("all", sty.card2, "")}
                     >
-                      <div className={classNames("all", sty.freeBox__ehi7B)}>
-                        <div
-                          className={classNames(
-                            "all",
-                            "__wab_text",
-                            sty.text__lJv4R
-                          )}
-                        >
-                          <React.Fragment>{currentItem.title}</React.Fragment>
+                      <div className={classNames("all", sty.freeBox__aiMu1)}>
+                        <div className={classNames("all", sty.freeBox__bgWCj)}>
+                          <div
+                            data-plasmic-name={"point"}
+                            data-plasmic-override={overrides.point}
+
+                            className={classNames(
+                              "all",
+                              sty.point,
+                              "nice-trans-1"
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                "all",
+                                "__wab_text",
+                                sty.text__eZvw6
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentIndex + 1;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "1";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                          </div>
+                          <div
+                            className={classNames(
+                              "all",
+                              "__wab_text",
+                              sty.text__lJv4R
+                            )}
+                          >
+                            <React.Fragment>{currentItem.title}</React.Fragment>
+                          </div>
                         </div>
                         <div
                           className={classNames(
@@ -1499,6 +1553,7 @@ const PlasmicDescendants = {
     "cardWrapper2",
     "scrollSection",
     "card2",
+    "point",
     "chelik",
     "mainForm",
     "footer",
@@ -1536,11 +1591,13 @@ const PlasmicDescendants = {
     "basicCardSection2",
     "cardWrapper2",
     "scrollSection",
-    "card2"
+    "card2",
+    "point"
   ],
-  cardWrapper2: ["cardWrapper2", "scrollSection", "card2"],
-  scrollSection: ["scrollSection", "card2"],
-  card2: ["card2"],
+  cardWrapper2: ["cardWrapper2", "scrollSection", "card2", "point"],
+  scrollSection: ["scrollSection", "card2", "point"],
+  card2: ["card2", "point"],
+  point: ["point"],
   chelik: ["chelik"],
   mainForm: ["mainForm"],
   footer: ["footer", "fb", "ig", "ld"],
@@ -1576,6 +1633,7 @@ type NodeDefaultElementType = {
   cardWrapper2: "div";
   scrollSection: typeof ScrollSection;
   card2: "div";
+  point: "div";
   chelik: "div";
   mainForm: typeof MainForm;
   footer: "div";
@@ -1669,6 +1727,7 @@ export const PlasmicHomepage = Object.assign(
     cardWrapper2: makeNodeComponent("cardWrapper2"),
     scrollSection: makeNodeComponent("scrollSection"),
     card2: makeNodeComponent("card2"),
+    point: makeNodeComponent("point"),
     chelik: makeNodeComponent("chelik"),
     mainForm: makeNodeComponent("mainForm"),
     footer: makeNodeComponent("footer"),

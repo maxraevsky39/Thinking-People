@@ -1,15 +1,42 @@
 .root {
+  display: inline-flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: center;
   width: auto;
   height: auto;
   max-width: 100%;
-  position: relative;
+  justify-self: flex-start;
+  padding: 0px;
+}
+.h2 {
+  width: auto;
+  height: auto;
+  max-width: 100%;
   font-family: "Wix Madefor Display";
   font-size: 45px;
   font-weight: 700;
   text-align: center;
-  justify-self: flex-start;
-  display: inline-block;
+  z-index: 2;
 }
-.rootwhite {
+.h2white {
   color: var(--token-ojJ1CdgTqXk8);
+}
+.freeBox {
+  display: block;
+  position: absolute;
+  width: 105%;
+  height: 8px;
+  background: var(--token-ZodPwl1Os-DS);
+  left: 50%;
+  top: auto;
+  right: auto;
+  bottom: -30%;
+  z-index: 1;
+  transform: translate3d(-50%, 0%, 0px);
+  padding: 0px;
+}
+.freeBoxwhite {
+  display: none;
 }

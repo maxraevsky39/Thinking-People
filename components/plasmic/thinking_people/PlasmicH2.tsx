@@ -83,6 +83,8 @@ export const PlasmicH2__ArgProps = new Array<ArgPropType>("title");
 
 export type PlasmicH2__OverridesType = {
   root?: Flex__<"div">;
+  h2?: Flex__<"h2">;
+  freeBox?: Flex__<"div">;
 };
 
 export interface DefaultH2Props {
@@ -162,7 +164,6 @@ function PlasmicH2__RenderFunc(props: {
       data-plasmic-for-node={forNode}
       className={classNames(
         "all",
-        "__wab_text",
         "root_reset_5CArWwg3qxRa1A2Avpz5j5",
         "plasmic_default_styles",
         "plasmic_mixins",
@@ -171,19 +172,40 @@ function PlasmicH2__RenderFunc(props: {
         { [sty.rootwhite]: hasVariant($state, "white", "white") }
       )}
     >
-      <React.Fragment>{$props.title}</React.Fragment>
+      <h2
+        data-plasmic-name={"h2"}
+        data-plasmic-override={overrides.h2}
+
+        className={classNames("all", "h2", "h2__5CArW", "__wab_text", sty.h2, {
+          [sty.h2white]: hasVariant($state, "white", "white")
+        })}
+      >
+        <React.Fragment>{$props.title}</React.Fragment>
+      </h2>
+      <div
+        data-plasmic-name={"freeBox"}
+        data-plasmic-override={overrides.freeBox}
+
+        className={classNames("all", sty.freeBox, {
+          [sty.freeBoxwhite]: hasVariant($state, "white", "white")
+        })}
+      />
     </div>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root"]
+  root: ["root", "h2", "freeBox"],
+  h2: ["h2"],
+  freeBox: ["freeBox"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  h2: "h2";
+  freeBox: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -248,6 +270,8 @@ export const PlasmicH2 = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    h2: makeNodeComponent("h2"),
+    freeBox: makeNodeComponent("freeBox"),
 
     // Metadata about props expected for PlasmicH2
     internalVariantProps: PlasmicH2__VariantProps,
