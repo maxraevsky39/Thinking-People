@@ -6,6 +6,7 @@
   align-content: flex-start;
   justify-items: center;
   grid-row-gap: 100px;
+  background: var(--token-ojJ1CdgTqXk8);
   min-width: 0;
   min-height: 0;
   grid-template-columns:
