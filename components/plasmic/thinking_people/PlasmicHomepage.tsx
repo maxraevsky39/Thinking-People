@@ -71,11 +71,11 @@ import type { QueryComponentNode } from "@plasmicapp/react-web/lib/data-sources"
 import { MotionScrollSection } from "../../MotionScrollSection"; // plasmic-import: za2mx6yd4yJR/codeComponent
 import { ContactSheet } from "../../ContactSheet"; // plasmic-import: A9lCeBSgsYEF/codeComponent
 import H2 from "../../H2"; // plasmic-import: Yl_PbqD71djV/component
+import { ScrollSection } from "../../ScrollSection"; // plasmic-import: mqp2cBG_dizY/codeComponent
 import HwwCard from "../../HwwCard"; // plasmic-import: 9uBh2eQE-yqj/component
 import BtnSecond from "../../BtnSecond"; // plasmic-import: gKCTmQN19iqg/component
 import { OptimizedImage } from "../../OptimizedImage"; // plasmic-import: 2sAw0k_qEFgf/codeComponent
 import { About13 } from "../../About13"; // plasmic-import: w2c8KkWos3P4/codeComponent
-import { ScrollSection } from "../../ScrollSection"; // plasmic-import: mqp2cBG_dizY/codeComponent
 import MainForm from "../../MainForm"; // plasmic-import: WC23AdBWqnVp/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/styleTokensProvider
@@ -152,7 +152,6 @@ export type PlasmicHomepage__OverridesType = {
   about13?: Flex__<typeof About13>;
   basicCardSection2?: Flex__<"div">;
   cardWrapper2?: Flex__<"div">;
-  scrollSection?: Flex__<typeof ScrollSection>;
   card2?: Flex__<"div">;
   point?: Flex__<"div">;
   chelik?: Flex__<"div">;
@@ -675,15 +674,63 @@ function PlasmicHomepage__RenderFunc(props: {
                     const currentItem = __plasmic_item_0;
                     const currentIndex = __plasmic_idx_0;
                     return (
-                      <HwwCard
+                      <ScrollSection
+                        animationClassName={""}
                         className={classNames(
                           "__wab_instance",
-                          sty.hwwCard__hFnNy
+                          sty.scrollSection__wV32O
                         )}
-                        currentIndex={currentIndex}
-                        currentItem={currentItem}
+                        ease={"power2.inOut"}
+                        end={"top 60%"}
+                        fromBlur={0}
+                        fromOpacity={0}
+                        fromRotation={0}
+                        fromRotationX={0}
+                        fromRotationY={0}
+                        fromScale={1}
+                        fromX={0}
+                        fromY={(() => {
+                          try {
+                            return currentIndex === 0
+                              ? "30px"
+                              : currentIndex === 1
+                                ? "60px"
+                                : "120px";
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return 0;
+                            }
+                            throw e;
+                          }
+                        })()}
                         key={currentIndex}
-                      />
+                        markers={false}
+                        perspective={1000}
+                        pin={false}
+                        scrub={0.5}
+                        start={"top bottom"}
+                        toBlur={0}
+                        toOpacity={1}
+                        toRotation={0}
+                        toRotationX={0}
+                        toRotationY={0}
+                        toScale={1}
+                        toX={0}
+                        toY={0}
+                        transformOrigin={"center center"}
+                      >
+                        <HwwCard
+                          className={classNames(
+                            "__wab_instance",
+                            sty.hwwCard__hFnNy
+                          )}
+                          currentIndex={currentIndex}
+                          currentItem={currentItem}
+                        />
+                      </ScrollSection>
                     );
                   })}
                 </div>
@@ -711,29 +758,77 @@ function PlasmicHomepage__RenderFunc(props: {
                     const currentItem = __plasmic_item_0;
                     const currentIndex = __plasmic_idx_0;
                     return (
-                      <HwwCard
+                      <ScrollSection
+                        animationClassName={""}
                         className={classNames(
                           "__wab_instance",
-                          sty.hwwCard__t3KBh
+                          sty.scrollSection___93AAj
                         )}
-                        currentIndex={currentIndex}
-                        currentItem={currentItem}
-                        key={currentIndex}
-                        last={(() => {
+                        ease={"power2.inOut"}
+                        end={"top 55%"}
+                        fromBlur={0}
+                        fromOpacity={0}
+                        fromRotation={0}
+                        fromRotationX={0}
+                        fromRotationY={0}
+                        fromScale={1}
+                        fromX={0}
+                        fromY={(() => {
                           try {
-                            return currentIndex === 2;
+                            return currentIndex === 0
+                              ? "30px"
+                              : currentIndex === 1
+                                ? "60px"
+                                : "120px";
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
                               e?.plasmicType === "PlasmicUndefinedDataError"
                             ) {
-                              return [];
+                              return 0;
                             }
                             throw e;
                           }
                         })()}
-                        secondRow={true}
-                      />
+                        key={currentIndex}
+                        markers={false}
+                        perspective={1000}
+                        pin={false}
+                        scrub={0.5}
+                        start={"top 95%"}
+                        toBlur={0}
+                        toOpacity={1}
+                        toRotation={0}
+                        toRotationX={0}
+                        toRotationY={0}
+                        toScale={1}
+                        toX={0}
+                        toY={0}
+                        transformOrigin={"center center"}
+                      >
+                        <HwwCard
+                          className={classNames(
+                            "__wab_instance",
+                            sty.hwwCard__fU4Sk
+                          )}
+                          currentIndex={currentIndex}
+                          currentItem={currentItem}
+                          last={(() => {
+                            try {
+                              return currentIndex === 2;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return [];
+                              }
+                              throw e;
+                            }
+                          })()}
+                          secondRow={true}
+                        />
+                      </ScrollSection>
                     );
                   })}
                 </div>
@@ -1184,11 +1279,11 @@ function PlasmicHomepage__RenderFunc(props: {
                 const currentIndex = __plasmic_idx_0;
                 return (
                   <ScrollSection
-                    data-plasmic-name={"scrollSection"}
-                    data-plasmic-override={overrides.scrollSection}
-
                     animationClassName={""}
-                    className={classNames("__wab_instance", sty.scrollSection)}
+                    className={classNames(
+                      "__wab_instance",
+                      sty.scrollSection__ki0Oa
+                    )}
                     ease={"power2.inOut"}
                     end={"top 50%"}
                     fromBlur={0}
@@ -1551,7 +1646,6 @@ const PlasmicDescendants = {
     "about13",
     "basicCardSection2",
     "cardWrapper2",
-    "scrollSection",
     "card2",
     "point",
     "chelik",
@@ -1587,15 +1681,8 @@ const PlasmicDescendants = {
   card: ["card"],
   leadershipSection2: ["leadershipSection2", "about13"],
   about13: ["about13"],
-  basicCardSection2: [
-    "basicCardSection2",
-    "cardWrapper2",
-    "scrollSection",
-    "card2",
-    "point"
-  ],
-  cardWrapper2: ["cardWrapper2", "scrollSection", "card2", "point"],
-  scrollSection: ["scrollSection", "card2", "point"],
+  basicCardSection2: ["basicCardSection2", "cardWrapper2", "card2", "point"],
+  cardWrapper2: ["cardWrapper2", "card2", "point"],
   card2: ["card2", "point"],
   point: ["point"],
   chelik: ["chelik"],
@@ -1631,7 +1718,6 @@ type NodeDefaultElementType = {
   about13: typeof About13;
   basicCardSection2: "div";
   cardWrapper2: "div";
-  scrollSection: typeof ScrollSection;
   card2: "div";
   point: "div";
   chelik: "div";
@@ -1725,7 +1811,6 @@ export const PlasmicHomepage = Object.assign(
     about13: makeNodeComponent("about13"),
     basicCardSection2: makeNodeComponent("basicCardSection2"),
     cardWrapper2: makeNodeComponent("cardWrapper2"),
-    scrollSection: makeNodeComponent("scrollSection"),
     card2: makeNodeComponent("card2"),
     point: makeNodeComponent("point"),
     chelik: makeNodeComponent("chelik"),
