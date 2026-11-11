@@ -175,7 +175,6 @@ function PlasmicH2__RenderFunc(props: {
       <h2
         data-plasmic-name={"h2"}
         data-plasmic-override={overrides.h2}
-
         className={classNames("all", "h2", "h2__5CArW", "__wab_text", sty.h2, {
           [sty.h2white]: hasVariant($state, "white", "white")
         })}
@@ -185,7 +184,6 @@ function PlasmicH2__RenderFunc(props: {
       <div
         data-plasmic-name={"freeBox"}
         data-plasmic-override={overrides.freeBox}
-
         className={classNames("all", sty.freeBox, {
           [sty.freeBoxwhite]: hasVariant($state, "white", "white")
         })}

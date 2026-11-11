@@ -283,7 +283,6 @@ function PlasmicHomepage__RenderFunc(props: {
           <div
             data-plasmic-name={"navbar"}
             data-plasmic-override={overrides.navbar}
-
             className={classNames("all", sty.navbar)}
           >
             <MotionScrollSection
@@ -321,13 +320,11 @@ function PlasmicHomepage__RenderFunc(props: {
             <div
               data-plasmic-name={"menu"}
               data-plasmic-override={overrides.menu}
-
               className={classNames("all", sty.menu)}
             >
               <div
                 data-plasmic-name={"menuPoints"}
                 data-plasmic-override={overrides.menuPoints}
-
                 className={classNames("all", sty.menuPoints)}
               >
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
@@ -403,7 +400,6 @@ function PlasmicHomepage__RenderFunc(props: {
               <div
                 data-plasmic-name={"logo"}
                 data-plasmic-override={overrides.logo}
-
                 className={classNames("all", sty.logo)}
               >
                 <MotionScrollSection
@@ -439,7 +435,6 @@ function PlasmicHomepage__RenderFunc(props: {
                   <PlasmicImg__
                     data-plasmic-name={"img"}
                     data-plasmic-override={overrides.img}
-
                     alt={""}
                     className={classNames(sty.img)}
                     displayHeight={"40px"}
@@ -461,7 +456,6 @@ function PlasmicHomepage__RenderFunc(props: {
               <div
                 data-plasmic-name={"menuPoints2"}
                 data-plasmic-override={overrides.menuPoints2}
-
                 className={classNames("all", sty.menuPoints2)}
               >
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
@@ -539,14 +533,12 @@ function PlasmicHomepage__RenderFunc(props: {
           <div
             data-plasmic-name={"heroSection"}
             data-plasmic-override={overrides.heroSection}
-
             className={classNames("all", sty.heroSection, "heroSection")}
             id={"heroSection"}
           >
             <ContactSheet
               data-plasmic-name={"contactSheet"}
               data-plasmic-override={overrides.contactSheet}
-
               aspect={0.8}
               backgroundColor={"transparent"}
               blankArea={0.2}
@@ -577,7 +569,6 @@ function PlasmicHomepage__RenderFunc(props: {
             <div
               data-plasmic-name={"content"}
               data-plasmic-override={overrides.content}
-
               className={classNames("all", sty.content)}
             >
               <div className={classNames("all", sty.freeBox__tCfO1)}>
@@ -628,7 +619,6 @@ function PlasmicHomepage__RenderFunc(props: {
             <div
               data-plasmic-name={"howWeWorkSection"}
               data-plasmic-override={overrides.howWeWorkSection}
-
               className={classNames("all", sty.howWeWorkSection)}
             >
               <div className={classNames("all", sty.freeBox__a0KyH)}>
@@ -649,7 +639,6 @@ function PlasmicHomepage__RenderFunc(props: {
                 <div
                   data-plasmic-name={"pointsWrapper"}
                   data-plasmic-override={overrides.pointsWrapper}
-
                   className={classNames("all", sty.pointsWrapper, "hww-row")}
                 >
                   {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
@@ -737,7 +726,6 @@ function PlasmicHomepage__RenderFunc(props: {
                 <div
                   data-plasmic-name={"pointsWrapper3"}
                   data-plasmic-override={overrides.pointsWrapper3}
-
                   className={classNames("all", sty.pointsWrapper3, "hww-row")}
                 >
                   {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
@@ -837,7 +825,6 @@ function PlasmicHomepage__RenderFunc(props: {
             <div
               data-plasmic-name={"provenProgram"}
               data-plasmic-override={overrides.provenProgram}
-
               className={classNames("all", sty.provenProgram)}
             >
               <div className={classNames("all", sty.freeBox__dmP4Z)}>
@@ -886,7 +873,6 @@ function PlasmicHomepage__RenderFunc(props: {
               <div
                 data-plasmic-name={"dynamicBlock"}
                 data-plasmic-override={overrides.dynamicBlock}
-
                 className={classNames("all", sty.dynamicBlock)}
                 key={currentIndex}
               >
@@ -906,7 +892,6 @@ function PlasmicHomepage__RenderFunc(props: {
                   <div
                     data-plasmic-name={"basicCardSection"}
                     data-plasmic-override={overrides.basicCardSection}
-
                     className={classNames("all", sty.basicCardSection)}
                   >
                     <div className={classNames("all", sty.freeBox__dJnP)}>
@@ -930,7 +915,6 @@ function PlasmicHomepage__RenderFunc(props: {
                     <div
                       data-plasmic-name={"cardWrapper"}
                       data-plasmic-override={overrides.cardWrapper}
-
                       className={classNames("all", sty.cardWrapper)}
                     >
                       {(_par =>
@@ -955,7 +939,6 @@ function PlasmicHomepage__RenderFunc(props: {
                           <div
                             data-plasmic-name={"card"}
                             data-plasmic-override={overrides.card}
-
                             className={classNames("all", sty.card)}
                             key={currentIndex}
                           >
@@ -1075,7 +1058,6 @@ function PlasmicHomepage__RenderFunc(props: {
                   <div
                     data-plasmic-name={"leadershipSection2"}
                     data-plasmic-override={overrides.leadershipSection2}
-
                     className={classNames("all", sty.leadershipSection2)}
                   >
                     <div className={classNames("all", sty.freeBox__u1YL)}>
@@ -1133,7 +1115,6 @@ function PlasmicHomepage__RenderFunc(props: {
                     <About13
                       data-plasmic-name={"about13"}
                       data-plasmic-override={overrides.about13}
-
                       activeLineClassName={classNames({
                         [sty["pcls_2oowlfKAtC2I"]]: true
                       })}
@@ -1218,7 +1199,6 @@ function PlasmicHomepage__RenderFunc(props: {
           <div
             data-plasmic-name={"basicCardSection2"}
             data-plasmic-override={overrides.basicCardSection2}
-
             className={classNames("all", sty.basicCardSection2)}
           >
             <div className={classNames("all", sty.freeBox__rFdqE)}>
@@ -1230,7 +1210,6 @@ function PlasmicHomepage__RenderFunc(props: {
             <div
               data-plasmic-name={"cardWrapper2"}
               data-plasmic-override={overrides.cardWrapper2}
-
               className={classNames("all", sty.cardWrapper2)}
             >
               {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
@@ -1345,7 +1324,6 @@ function PlasmicHomepage__RenderFunc(props: {
                     <div
                       data-plasmic-name={"card2"}
                       data-plasmic-override={overrides.card2}
-
                       className={classNames("all", sty.card2, "")}
                     >
                       <div className={classNames("all", sty.freeBox__aiMu1)}>
@@ -1353,7 +1331,6 @@ function PlasmicHomepage__RenderFunc(props: {
                           <div
                             data-plasmic-name={"point"}
                             data-plasmic-override={overrides.point}
-
                             className={classNames(
                               "all",
                               sty.point,
@@ -1455,7 +1432,6 @@ function PlasmicHomepage__RenderFunc(props: {
               <div
                 data-plasmic-name={"chelik"}
                 data-plasmic-override={overrides.chelik}
-
                 className={classNames("all", sty.chelik)}
               >
                 <OptimizedImage
@@ -1493,7 +1469,6 @@ function PlasmicHomepage__RenderFunc(props: {
               <MainForm
                 data-plasmic-name={"mainForm"}
                 data-plasmic-override={overrides.mainForm}
-
                 className={classNames("__wab_instance", sty.mainForm)}
               />
             </div>
@@ -1501,7 +1476,6 @@ function PlasmicHomepage__RenderFunc(props: {
           <div
             data-plasmic-name={"footer"}
             data-plasmic-override={overrides.footer}
-
             className={classNames("all", sty.footer)}
           >
             <div className={classNames("all", sty.freeBox__rne5A)}>
@@ -1534,7 +1508,6 @@ function PlasmicHomepage__RenderFunc(props: {
                   <div
                     data-plasmic-name={"fb"}
                     data-plasmic-override={overrides.fb}
-
                     className={classNames("all", sty.fb)}
                   >
                     <OptimizedImage
@@ -1561,7 +1534,6 @@ function PlasmicHomepage__RenderFunc(props: {
                   <div
                     data-plasmic-name={"ig"}
                     data-plasmic-override={overrides.ig}
-
                     className={classNames("all", sty.ig)}
                   >
                     <OptimizedImage
@@ -1588,7 +1560,6 @@ function PlasmicHomepage__RenderFunc(props: {
                   <div
                     data-plasmic-name={"ld"}
                     data-plasmic-override={overrides.ld}
-
                     className={classNames("all", sty.ld)}
                   >
                     <OptimizedImage

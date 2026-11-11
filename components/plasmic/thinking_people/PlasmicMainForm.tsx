@@ -176,7 +176,6 @@ function PlasmicMainForm__RenderFunc(props: {
       <BtnSecond
         data-plasmic-name={"btnSecond"}
         data-plasmic-override={overrides.btnSecond}
-
         className={classNames("__wab_instance", sty.btnSecond)}
         text={"Send"}
         type={"submit"}

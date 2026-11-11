@@ -196,7 +196,6 @@ function PlasmicHwwCard__RenderFunc(props: {
       <div
         data-plasmic-name={"freeBox"}
         data-plasmic-override={overrides.freeBox}
-
         className={classNames("all", sty.freeBox, {
           [sty.freeBoxlast]: hasVariant($state, "last", "last")
         })}
@@ -204,7 +203,6 @@ function PlasmicHwwCard__RenderFunc(props: {
         <div
           data-plasmic-name={"point"}
           data-plasmic-override={overrides.point}
-
           className={classNames("all", sty.point, "nice-trans-1", {
             [sty.pointlast]: hasVariant($state, "last", "last")
           })}

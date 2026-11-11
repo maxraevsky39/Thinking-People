@@ -102,6 +102,34 @@
           "cssFilePath": "plasmic/thinking_people/PlasmicMainForm.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "wOdb8AoicCeB",
+          "name": "Communication",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicCommunication.tsx",
+          "importSpec": {
+            "modulePath": "../pages/en/communication.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicCommunication.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/en/communication"
+        },
+        {
+          "id": "etkfjESuxyJa",
+          "name": "LeadershipDevelopmentOnTrial",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicLeadershipDevelopmentOnTrial.tsx",
+          "importSpec": {
+            "modulePath": "../pages/en/leadership-on-trial.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicLeadershipDevelopmentOnTrial.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/en/leadership-on-trial"
         }
       ],
       "icons": [],
@@ -130,6 +158,11 @@
           "id": "hMKuAVzDgowV",
           "name": "chelik-1.svg",
           "filePath": "../public/plasmic/thinking_people/images/chelik1Svg.svg"
+        },
+        {
+          "id": "g1FhkxcIlnEu",
+          "name": "image",
+          "filePath": "../public/plasmic/thinking_people/images/image.jpg"
         }
       ],
       "indirect": false,
@@ -359,6 +392,6 @@
   "nextjsConfig": {
     "pagesDir": "../pages"
   },
-  "cliVersion": "0.1.384",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.384/dist/plasmic.schema.json"
+  "cliVersion": "0.1.385",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.385/dist/plasmic.schema.json"
 }

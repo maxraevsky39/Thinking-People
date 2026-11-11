@@ -204,7 +204,6 @@ function PlasmicInputForm__RenderFunc(props: {
         <input
           data-plasmic-name={"frame268"}
           data-plasmic-override={overrides.frame268}
-
           className={classNames(
             "all",
             "input",
@@ -260,7 +259,6 @@ function PlasmicInputForm__RenderFunc(props: {
         <textarea
           data-plasmic-name={"frame274"}
           data-plasmic-override={overrides.frame274}
-
           className={classNames(
             "all",
             "textarea",
@@ -288,7 +286,6 @@ function PlasmicInputForm__RenderFunc(props: {
       <label
         data-plasmic-name={"label"}
         data-plasmic-override={overrides.label}
-
         className={classNames("all", "__wab_text", sty.label)}
       >
         <React.Fragment>

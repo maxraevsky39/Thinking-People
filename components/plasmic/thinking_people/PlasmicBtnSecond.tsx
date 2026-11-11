@@ -170,7 +170,6 @@ function PlasmicBtnSecond__RenderFunc(props: {
       <div
         data-plasmic-name={"text"}
         data-plasmic-override={overrides.text}
-
         className={classNames("all", "__wab_text", sty.text)}
       >
         <React.Fragment>
