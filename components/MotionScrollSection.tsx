@@ -163,7 +163,8 @@ export function MotionScrollSection({
     for (let parent = targetRef.current?.parentElement; parent; parent = parent.parentElement) {
       // Body overflow can propagate to the viewport on ordinary pages.
       const isViewportBody = parent === doc.body &&
-        view?.getComputedStyle(doc.documentElement).overflowY === "visible";
+        parent.scrollHeight <= parent.clientHeight &&
+        doc.documentElement.scrollHeight > doc.documentElement.clientHeight;
       if (!isViewportBody && view && /^(auto|scroll|overlay)$/.test(view.getComputedStyle(parent).overflowY)) {
         containerRef.current = parent;
         break;
