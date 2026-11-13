@@ -1,18 +1,4 @@
-import {
-  InvisibleSmartCaptcha,
-} from "@yandex/smart-captcha";
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-
-type PendingCaptcha = {
-  resolve: (token: string) => void;
-  reject: (error: Error) => void;
-  timeoutId: number;
-};
+import { useEffect } from "react";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^\+?\d+$/;
@@ -35,25 +21,6 @@ function logFormEvent(fields: Record<string, unknown>) {
     }).catch(() => {});
   } catch {}
 }
-
-function diagnosticErrorCode(message: string, stage: string) {
-  const codes: Record<string, string> = {
-    "Не удалось выполнить проверку. Попробуйте ещё раз.": "captcha_timeout",
-    "Проверка на робота была отменена": "captcha_cancelled",
-    "Ошибка соединения с сервисом проверки на робота": "captcha_network_error",
-    "Не удалось загрузить сервис проверки на робота": "captcha_script_error",
-    "Время проверки на робота истекло. Попробуйте ещё раз.": "captcha_expired",
-    "SmartCaptcha не вернула токен": "captcha_empty_token",
-    "Проверка была прервана": "captcha_interrupted",
-    "Проверка уже выполняется": "captcha_busy",
-    "Капча не настроена": "captcha_not_configured",
-  };
-  return codes[message] || `${stage}_error`;
-}
-
-const SMARTCAPTCHA_SITE_KEY =
-  process.env.NEXT_PUBLIC_YANDEX_SMARTCAPTCHA_SITE_KEY ||
-  "";
 
 function getSubmitCooldownLeft() {
   const lastSubmit = Number(
@@ -220,173 +187,6 @@ function getCookies() {
 }
 
 export function FormWebhookBridge() {
-  const [captchaVisible, setCaptchaVisible] =
-    useState(false);
-
-  /*
-   * Изменение key полностью пересоздаёт
-   * InvisibleSmartCaptcha.
-   *
-   * Это необходимо, потому что токен CAPTCHA
-   * одноразовый и старое состояние виджета
-   * нельзя использовать для следующей заявки.
-   */
-  const [captchaKey, setCaptchaKey] =
-    useState(0);
-
-  const pendingCaptchaRef =
-    useRef<PendingCaptcha | null>(null);
-
-  /*
-   * Единая функция завершения проверки.
-   *
-   * Важно сначала очистить pendingCaptchaRef,
-   * а уже потом resolve/reject Promise.
-   */
-  const finishCaptcha = useCallback(
-    (result: {
-      token?: string;
-      error?: string;
-    }) => {
-      const pending =
-        pendingCaptchaRef.current;
-
-      if (!pending) {
-        return;
-      }
-
-      pendingCaptchaRef.current = null;
-
-      window.clearTimeout(
-        pending.timeoutId
-      );
-
-      setCaptchaVisible(false);
-
-      /*
-       * Подготавливаем чистый экземпляр
-       * CAPTCHA для следующей заявки.
-       */
-      setCaptchaKey(
-        (currentKey) => currentKey + 1
-      );
-
-      if (result.token) {
-        pending.resolve(result.token);
-        return;
-      }
-
-      pending.reject(
-        new Error(
-          result.error ||
-            "Не удалось пройти проверку"
-        )
-      );
-    },
-    []
-  );
-
-  const rejectCaptcha = useCallback(
-    (message: string) => {
-      finishCaptcha({
-        error: message,
-      });
-    },
-    [finishCaptcha]
-  );
-
-  const handleCaptchaSuccess =
-    useCallback(
-      (token: string) => {
-        if (!token) {
-          rejectCaptcha(
-            "SmartCaptcha не вернула токен"
-          );
-
-          return;
-        }
-
-        finishCaptcha({
-          token,
-        });
-      },
-      [
-        finishCaptcha,
-        rejectCaptcha,
-      ]
-    );
-
-  const requestCaptchaToken =
-    useCallback(() => {
-      return new Promise<string>(
-        (resolve, reject) => {
-          if (!SMARTCAPTCHA_SITE_KEY) {
-            reject(
-              new Error(
-                "Капча не настроена"
-              )
-            );
-
-            return;
-          }
-
-          if (
-            pendingCaptchaRef.current
-          ) {
-            reject(
-              new Error(
-                "Проверка уже выполняется"
-              )
-            );
-
-            return;
-          }
-
-          const timeoutId =
-            window.setTimeout(() => {
-              rejectCaptcha(
-                "Не удалось выполнить проверку. Попробуйте ещё раз."
-              );
-            }, 60_000);
-
-          pendingCaptchaRef.current = {
-            resolve,
-            reject,
-            timeoutId,
-          };
-
-          setCaptchaVisible(true);
-        }
-      );
-    }, [rejectCaptcha]);
-
-  /*
-   * При размонтировании компонента очищаем
-   * таймер и незавершённую проверку.
-   */
-  useEffect(() => {
-    return () => {
-      const pending =
-        pendingCaptchaRef.current;
-
-      if (!pending) {
-        return;
-      }
-
-      pendingCaptchaRef.current = null;
-
-      window.clearTimeout(
-        pending.timeoutId
-      );
-
-      pending.reject(
-        new Error(
-          "Проверка была прервана"
-        )
-      );
-    };
-  }, []);
-
   useEffect(() => {
     const formTokens = new WeakMap<HTMLFormElement, Promise<string>>();
     const formSessions = new WeakMap<HTMLFormElement, string>();
@@ -719,16 +519,7 @@ if (submitText) {
   submitText.textContent = "Проверяем...";
 }
 
-        /*
-         * Для каждой отправки получаем
-         * новый одноразовый токен.
-         */
-        stage = "captcha";
-        stageStartedAt = performance.now();
-        diagnostic("captcha_started");
-        const captchaToken =
-          await requestCaptchaToken();
-        diagnostic("captcha_passed");
+        // SmartCaptcha is temporarily disabled; server time and rate guards remain active.
         stage = "lead_request";
         stageStartedAt = performance.now();
 
@@ -746,7 +537,6 @@ if (submitText) {
               ...data,
               attemptId,
               formSessionId,
-              captchaToken,
               formToken,
               soglasie:
                 consentField?.checked ??
@@ -820,7 +610,7 @@ document.dispatchEvent(
             : "Не получилось отправить форму";
 
         diagnostic("attempt_failed", {
-          code: diagnosticErrorCode(message, stage), message,
+          code: `${stage}_error`, message,
         });
 
         showFormError(
@@ -854,56 +644,7 @@ if (submitText) {
         handleSubmit
       );
     };
-  }, [requestCaptchaToken]);
+  }, []);
 
-  if (!SMARTCAPTCHA_SITE_KEY) {
-    return null;
-  }
-
-  return (
-    <InvisibleSmartCaptcha
-      key={captchaKey}
-      sitekey={
-        SMARTCAPTCHA_SITE_KEY
-      }
-      visible={captchaVisible}
-      language="ru"
-      hideShield={true}
-      onSuccess={
-        handleCaptchaSuccess
-      }
-      onChallengeHidden={() => {
-        /*
-         * При успешной проверке событие hidden
-         * иногда приходит раньше success.
-         * Небольшая задержка позволяет сначала
-         * обработать onSuccess.
-         */
-        window.setTimeout(() => {
-          if (
-            pendingCaptchaRef.current
-          ) {
-            rejectCaptcha(
-              "Проверка на робота была отменена"
-            );
-          }
-        }, 200);
-      }}
-      onNetworkError={() => {
-        rejectCaptcha(
-          "Ошибка соединения с сервисом проверки на робота"
-        );
-      }}
-      onJavascriptError={() => {
-        rejectCaptcha(
-          "Не удалось загрузить сервис проверки на робота"
-        );
-      }}
-      onTokenExpired={() => {
-        rejectCaptcha(
-          "Время проверки на робота истекло. Попробуйте ещё раз."
-        );
-      }}
-    />
-  );
+  return null;
 }

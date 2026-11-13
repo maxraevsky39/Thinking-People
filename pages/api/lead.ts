@@ -2,12 +2,6 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs/promises";
 import { checkFormToken, issueFormToken, reserveLead } from "../../lib/leadGuard";
 
-type CaptchaResponse = {
-  status?: "ok" | "failed";
-  message?: string;
-  host?: string;
-};
-
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^\+?\d+$/;
 
@@ -15,43 +9,6 @@ const PHONE_PATTERN = /^\+?\d+$/;
 
 // Лог рядом с приложением
 const LOG_FILE = (process.env.LEAD_LOG_FILE || "/home/bsadmin/logs/tp-leads.txt");
-
-async function validateCaptcha(
-  token: string,
-  ip: string
-): Promise<boolean> {
-  const secret = process.env.YANDEX_SMARTCAPTCHA_SECRET_KEY;
-
-  if (!secret || !token) {
-    return false;
-  }
-
-  const params = new URLSearchParams({
-    secret,
-    token,
-    ip,
-  });
-
-  const response = await fetch(
-    "https://smartcaptcha.cloud.yandex.ru/validate",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: params.toString(),
-      signal: AbortSignal.timeout(5_000),
-    }
-  );
-
-  if (!response.ok) {
-    throw new Error(`SmartCaptcha HTTP ${response.status}`);
-  }
-
-  const result = (await response.json()) as CaptchaResponse;
-
-  return result.status === "ok";
-}
 
 function normalizePhone(phone: string) {
   const digits = phone.replace(/\D/g, "");
@@ -174,35 +131,7 @@ export default async function handler(
     source: "plasmic_form",
   };
 
-  const captchaToken = String(body.captchaToken || "");
-
-let captchaPassed = false;
-
-try {
-  captchaPassed = await validateCaptcha(captchaToken, ip);
-} catch (error) {
-  console.error("SmartCaptcha validation error:", error);
-  await log({ status: "captcha_error", ip, email, phone: normalizedPhone });
-
-  return res.status(503).json({
-    ok: false,
-    error: "Сервис проверки временно недоступен",
-  });
-}
-
-if (!captchaPassed) {
-  await log({
-    status: "captcha_failed",
-    ip,
-  });
-
-  return res.status(403).json({
-    ok: false,
-    error: "Проверка не пройдена. Попробуйте ещё раз.",
-  });
-}
-
-
+  // SmartCaptcha is temporarily disabled. Keep checkFormToken/reserveLead above.
 
   const webhookUrl =
     process.env.LEAD_WEBHOOK_URL;
