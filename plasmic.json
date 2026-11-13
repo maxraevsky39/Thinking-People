@@ -31,7 +31,7 @@
           "projectId": "5CArWwg3qxRa1A2Avpz5j5",
           "renderModuleFilePath": "plasmic/thinking_people/PlasmicHomepage.tsx",
           "importSpec": {
-            "modulePath": "../pages/[locale].tsx"
+            "modulePath": "../pages/[locale]/test.tsx"
           },
           "cssFilePath": "plasmic/thinking_people/PlasmicHomepage.module.css",
           "scheme": "blackbox",
@@ -124,12 +124,51 @@
           "projectId": "5CArWwg3qxRa1A2Avpz5j5",
           "renderModuleFilePath": "plasmic/thinking_people/PlasmicLeadershipDevelopmentOnTrial.tsx",
           "importSpec": {
-            "modulePath": "../pages/en/leadership-on-trial.tsx"
+            "modulePath": "../pages/en.tsx"
           },
           "cssFilePath": "plasmic/thinking_people/PlasmicLeadershipDevelopmentOnTrial.module.css",
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/en/leadership-on-trial"
+        },
+        {
+          "id": "fw8uA1_Fbkxj",
+          "name": "FormSection",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicFormSection.tsx",
+          "importSpec": {
+            "modulePath": "FormSection.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicFormSection.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "DEX99TX1WJZn",
+          "name": "FooterSection",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicFooterSection.tsx",
+          "importSpec": {
+            "modulePath": "FooterSection.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicFooterSection.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "7oIiUelc00Y9",
+          "name": "Navbar",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicNavbar.tsx",
+          "importSpec": {
+            "modulePath": "Navbar.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicNavbar.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [],

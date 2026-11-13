@@ -59,7 +59,10 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import BtnSecond from "../../BtnSecond"; // plasmic-import: gKCTmQN19iqg/component
+import Navbar from "../../Navbar"; // plasmic-import: 7oIiUelc00Y9/component
+import { OptimizedImage } from "../../OptimizedImage"; // plasmic-import: 2sAw0k_qEFgf/codeComponent
+import FormSection from "../../FormSection"; // plasmic-import: fw8uA1_Fbkxj/component
+import FooterSection from "../../FooterSection"; // plasmic-import: DEX99TX1WJZn/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/styleTokensProvider
 
@@ -118,14 +121,11 @@ export const PlasmicLeadershipDevelopmentOnTrial__ArgProps =
 
 export type PlasmicLeadershipDevelopmentOnTrial__OverridesType = {
   page?: Flex__<"div">;
-  nav?: Flex__<"nav">;
+  navbar?: Flex__<typeof Navbar>;
   h1?: Flex__<"h1">;
   img?: Flex__<typeof PlasmicImg__>;
-  registration?: Flex__<"section">;
-  textbox?: Flex__<"input">;
-  textbox2?: Flex__<"input">;
-  textbox3?: Flex__<"input">;
-  btnSecond?: Flex__<typeof BtnSecond>;
+  formSection?: Flex__<typeof FormSection>;
+  footerSection?: Flex__<typeof FooterSection>;
 };
 
 export interface DefaultLeadershipDevelopmentOnTrialProps {}
@@ -169,38 +169,6 @@ function PlasmicLeadershipDevelopmentOnTrial__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
-    () => [
-      {
-        path: "textbox.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
-      },
-      {
-        path: "textbox2.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
-      },
-      {
-        path: "textbox3.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
-      }
-    ],
-    [$props, $ctx, $refs]
-  );
-
-  const $state = useDollarState(stateSpecs, {
-    $props,
-    $ctx,
-    $queries: {},
-    $q: {},
-    $refs
-  });
-
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
     $ctx as PageCtx
@@ -242,50 +210,14 @@ function PlasmicLeadershipDevelopmentOnTrial__RenderFunc(props: {
             sty.page
           )}
         >
-          <nav
-            data-plasmic-name={"nav"}
-            data-plasmic-override={overrides.nav}
-            className={classNames("all", sty.nav)}
-          >
-            <PlasmicLink__
-              className={classNames(
-                "all",
-                "a",
-                "a__5CArW",
-                "__wab_text",
-                sty.link___7Jhcj
-              )}
-              component={Link}
-              href={`/${encodeURIComponent("en")}`}
-              legacyBehavior={false}
-              platform={"nextjs"}
-            >
-              {"THINKING PEOPLE"}
-            </PlasmicLink__>
-            <span
-              className={classNames(
-                "all",
-                "span",
-                "span__5CArW",
-                "__wab_text",
-                sty.span__w0Wy
-              )}
-            >
-              {"LIVE DEBATE / 26 NOV 2026"}
-            </span>
-          </nav>
+          <Navbar
+            data-plasmic-name={"navbar"}
+            data-plasmic-override={overrides.navbar}
+            className={classNames("__wab_instance", sty.navbar)}
+            noAnimation={true}
+          />
+
           <section className={classNames("all", sty.section___7VRiP)}>
-            <span
-              className={classNames(
-                "all",
-                "span",
-                "span__5CArW",
-                "__wab_text",
-                sty.span__oHrie
-              )}
-            >
-              {"LIVE ONLINE DEBATE \u00b7 EXCLUSIVE INVITATION"}
-            </span>
             <div className={classNames("all", sty.freeBox__uGs5O)}>
               <div className={classNames("all", sty.freeBox__zybs8)}>
                 <h1
@@ -430,30 +362,6 @@ function PlasmicLeadershipDevelopmentOnTrial__RenderFunc(props: {
                   </span>
                 </div>
               </div>
-            </div>
-            <div className={classNames("all", sty.freeBox__xaFUj)}>
-              <p
-                className={classNames(
-                  "all",
-                  "p",
-                  "p__5CArW",
-                  "__wab_text",
-                  sty.p__fzVBh
-                )}
-              >
-                {"November 26, 2026 \u00b7 15:00 (Riga time)"}
-              </p>
-              <span
-                className={classNames(
-                  "all",
-                  "span",
-                  "span__5CArW",
-                  "__wab_text",
-                  sty.span__icKyx
-                )}
-              >
-                {"Online via Zoom \u00b7 In English \u00b7 75 minutes"}
-              </span>
             </div>
           </section>
           <section className={classNames("all", sty.section__mj2W)}>
@@ -661,26 +569,28 @@ function PlasmicLeadershipDevelopmentOnTrial__RenderFunc(props: {
             </p>
             <div className={classNames("all", sty.freeBox__fAk9X)}>
               <div className={classNames("all", sty.freeBox__iLr)}>
-                <span
-                  className={classNames(
-                    "all",
-                    "span",
-                    "span__5CArW",
-                    sty.span__b61Jh
-                  )}
-                >
-                  <span
+                <div className={classNames("all", sty.freeBox___1WhBh)}>
+                  <OptimizedImage
+                    alt={""}
                     className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__ysOlN
+                      "__wab_instance",
+                      sty.optimizedImage___6Pnsm
                     )}
-                  >
-                    {"60\u2032"}
-                  </span>
-                </span>
+                    fill={true}
+                    format={"auto"}
+                    height={484}
+                    loading={"lazy"}
+                    objectFit={"contain"}
+                    objectPosition={"center"}
+                    placeholder={"blur"}
+                    quality={75}
+                    sizes={"(max-width: 768px) 100vw, 50vw"}
+                    src={
+                      "https://staging-strapi-tp.brainfitness.info/uploads/icon_4_fa2fb3fe13.png"
+                    }
+                    width={484}
+                  />
+                </div>
                 <div className={classNames("all", sty.freeBox__byJsb)}>
                   <h3
                     className={classNames(
@@ -709,26 +619,28 @@ function PlasmicLeadershipDevelopmentOnTrial__RenderFunc(props: {
                 </div>
               </div>
               <div className={classNames("all", sty.freeBox__t0Fpu)}>
-                <span
-                  className={classNames(
-                    "all",
-                    "span",
-                    "span__5CArW",
-                    sty.span__fiOZy
-                  )}
-                >
-                  <span
+                <div className={classNames("all", sty.freeBox__h6R8C)}>
+                  <OptimizedImage
+                    alt={""}
                     className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__vPvpH
+                      "__wab_instance",
+                      sty.optimizedImage__sgz5X
                     )}
-                  >
-                    {"15\u2032"}
-                  </span>
-                </span>
+                    fill={true}
+                    format={"auto"}
+                    height={484}
+                    loading={"lazy"}
+                    objectFit={"contain"}
+                    objectPosition={"center"}
+                    placeholder={"blur"}
+                    quality={75}
+                    sizes={"(max-width: 768px) 100vw, 50vw"}
+                    src={
+                      "https://staging-strapi-tp.brainfitness.info/uploads/icon_2_16740c0b61.png"
+                    }
+                    width={484}
+                  />
+                </div>
                 <div className={classNames("all", sty.freeBox__mv6Sv)}>
                   <h3
                     className={classNames(
@@ -814,179 +726,23 @@ function PlasmicLeadershipDevelopmentOnTrial__RenderFunc(props: {
               {"November 26 \u00b7 15:00 Riga time \u00b7 Live on Zoom"}
             </span>
           </section>
-          <section
-            data-plasmic-name={"registration"}
-            data-plasmic-override={overrides.registration}
-            className={classNames("all", sty.registration)}
+          <div
+            className={classNames("all", sty.freeBox___07UMn)}
+            id={"registration"}
           >
-            <div className={classNames("all", sty.freeBox___8IpWo)}>
-              <div className={classNames("all", sty.freeBox__tlMbl)}>
-                <span
-                  className={classNames(
-                    "all",
-                    "span",
-                    "span__5CArW",
-                    "__wab_text",
-                    sty.span___1WJAd
-                  )}
-                >
-                  {"REGISTRATION"}
-                </span>
-                <h2
-                  className={classNames(
-                    "all",
-                    "h2",
-                    "h2__5CArW",
-                    "__wab_text",
-                    sty.h2___515PV
-                  )}
-                >
-                  {"Join the debate"}
-                </h2>
-                <p
-                  className={classNames(
-                    "all",
-                    "p",
-                    "p__5CArW",
-                    "__wab_text",
-                    sty.p__jBzCj
-                  )}
-                >
-                  {"Register to receive your Zoom access details."}
-                </p>
-              </div>
-              <div className={classNames("all", sty.freeBox__hcgzq)}>
-                <label className={classNames("all", sty.label__utiIs)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__ig33I
-                    )}
-                  >
-                    {"Full name"}
-                  </span>
-                  <input
-                    data-plasmic-name={"textbox"}
-                    data-plasmic-override={overrides.textbox}
-                    autocomplete={"name"}
-                    className={classNames(
-                      "all",
-                      "input",
-                      "input__5CArW",
-                      sty.textbox
-                    )}
-                    name={"fullName"}
-                    onChange={async (...eventArgs: any) => {
-                      (e => {
-                        generateStateOnChangeProp($state, ["textbox", "value"])(
-                          e.target.value
-                        );
-                      }).apply(null, eventArgs);
-                    }}
-                    ref={ref => {
-                      $refs["textbox"] = ref;
-                    }}
-                    type={"text"}
-                    value={
-                      generateStateValueProp($state, ["textbox", "value"]) ?? ""
-                    }
-                  />
-                </label>
-                <label className={classNames("all", sty.label___2Ux8D)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__qw6Fx
-                    )}
-                  >
-                    {"Work email"}
-                  </span>
-                  <input
-                    data-plasmic-name={"textbox2"}
-                    data-plasmic-override={overrides.textbox2}
-                    autocomplete={"email"}
-                    className={classNames(
-                      "all",
-                      "input",
-                      "input__5CArW",
-                      sty.textbox2
-                    )}
-                    name={"email"}
-                    onChange={async (...eventArgs: any) => {
-                      (e => {
-                        generateStateOnChangeProp($state, [
-                          "textbox2",
-                          "value"
-                        ])(e.target.value);
-                      }).apply(null, eventArgs);
-                    }}
-                    ref={ref => {
-                      $refs["textbox2"] = ref;
-                    }}
-                    type={"email"}
-                    value={
-                      generateStateValueProp($state, ["textbox2", "value"]) ??
-                      ""
-                    }
-                  />
-                </label>
-                <label className={classNames("all", sty.label__xk0Cq)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__xhI0J
-                    )}
-                  >
-                    {"Company"}
-                  </span>
-                  <input
-                    data-plasmic-name={"textbox3"}
-                    data-plasmic-override={overrides.textbox3}
-                    autocomplete={"organization"}
-                    className={classNames(
-                      "all",
-                      "input",
-                      "input__5CArW",
-                      sty.textbox3
-                    )}
-                    name={"company"}
-                    onChange={async (...eventArgs: any) => {
-                      (e => {
-                        generateStateOnChangeProp($state, [
-                          "textbox3",
-                          "value"
-                        ])(e.target.value);
-                      }).apply(null, eventArgs);
-                    }}
-                    ref={ref => {
-                      $refs["textbox3"] = ref;
-                    }}
-                    type={"text"}
-                    value={
-                      generateStateValueProp($state, ["textbox3", "value"]) ??
-                      ""
-                    }
-                  />
-                </label>
-                <BtnSecond
-                  data-plasmic-name={"btnSecond"}
-                  data-plasmic-override={overrides.btnSecond}
-                  className={classNames("__wab_instance", sty.btnSecond)}
-                  text={"REGISTER NOW →"}
-                  type={"button"}
-                />
-              </div>
-            </div>
-          </section>
+            <FormSection
+              data-plasmic-name={"formSection"}
+              data-plasmic-override={overrides.formSection}
+              className={classNames("__wab_instance", sty.formSection)}
+              description={"Register to receive your Zoom access details."}
+              title={"Join the debate"}
+            />
+          </div>
+          <FooterSection
+            data-plasmic-name={"footerSection"}
+            data-plasmic-override={overrides.footerSection}
+            className={classNames("__wab_instance", sty.footerSection)}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -994,45 +750,23 @@ function PlasmicLeadershipDevelopmentOnTrial__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  page: [
-    "page",
-    "nav",
-    "h1",
-    "img",
-    "registration",
-    "textbox",
-    "textbox2",
-    "textbox3",
-    "btnSecond"
-  ],
-  nav: ["nav"],
+  page: ["page", "navbar", "h1", "img", "formSection", "footerSection"],
+  navbar: ["navbar"],
   h1: ["h1"],
   img: ["img"],
-  registration: [
-    "registration",
-    "textbox",
-    "textbox2",
-    "textbox3",
-    "btnSecond"
-  ],
-  textbox: ["textbox"],
-  textbox2: ["textbox2"],
-  textbox3: ["textbox3"],
-  btnSecond: ["btnSecond"]
+  formSection: ["formSection"],
+  footerSection: ["footerSection"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   page: "div";
-  nav: "nav";
+  navbar: typeof Navbar;
   h1: "h1";
   img: typeof PlasmicImg__;
-  registration: "section";
-  textbox: "input";
-  textbox2: "input";
-  textbox3: "input";
-  btnSecond: typeof BtnSecond;
+  formSection: typeof FormSection;
+  footerSection: typeof FooterSection;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1098,22 +832,19 @@ export const PlasmicLeadershipDevelopmentOnTrial = Object.assign(
   makeNodeComponent("page"),
   {
     // Helper components rendering sub-elements
-    nav: makeNodeComponent("nav"),
+    navbar: makeNodeComponent("navbar"),
     h1: makeNodeComponent("h1"),
     img: makeNodeComponent("img"),
-    registration: makeNodeComponent("registration"),
-    textbox: makeNodeComponent("textbox"),
-    textbox2: makeNodeComponent("textbox2"),
-    textbox3: makeNodeComponent("textbox3"),
-    btnSecond: makeNodeComponent("btnSecond"),
+    formSection: makeNodeComponent("formSection"),
+    footerSection: makeNodeComponent("footerSection"),
 
     // Metadata about props expected for PlasmicLeadershipDevelopmentOnTrial
     internalVariantProps: PlasmicLeadershipDevelopmentOnTrial__VariantProps,
     internalArgProps: PlasmicLeadershipDevelopmentOnTrial__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
-      pageRoute: "/en/leadership-on-trial",
-      pagePath: "/en/leadership-on-trial",
+      pageRoute: "/en",
+      pagePath: "/en",
       params: {},
       query: {}
     })

@@ -303,7 +303,7 @@ function PlasmicCommunication__RenderFunc(props: {
             <PlasmicLink__
               className={classNames("all", "a", "a__5CArW", sty.link__u797U)}
               component={Link}
-              href={`/${encodeURIComponent("en")}`}
+              href={`/${encodeURIComponent("en")}/test`}
               legacyBehavior={false}
               platform={"nextjs"}
             >
@@ -3724,7 +3724,7 @@ function PlasmicCommunication__RenderFunc(props: {
                 sty.link__fO6W7
               )}
               component={Link}
-              href={`/${encodeURIComponent("en")}`}
+              href={`/${encodeURIComponent("en")}/test`}
               legacyBehavior={false}
               platform={"nextjs"}
             >

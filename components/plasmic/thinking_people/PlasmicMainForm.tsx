@@ -80,7 +80,7 @@ type ArgPropType = keyof PlasmicMainForm__ArgsType;
 export const PlasmicMainForm__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicMainForm__OverridesType = {
-  form?: Flex__<"div">;
+  form?: Flex__<"form">;
   btnSecond?: Flex__<typeof BtnSecond>;
 };
 
@@ -130,7 +130,7 @@ function PlasmicMainForm__RenderFunc(props: {
   const styleTokensClassNames = _useStyleTokens();
 
   return (
-    <div
+    <form
       data-plasmic-name={"form"}
       data-plasmic-override={overrides.form}
       data-plasmic-root={true}
@@ -141,7 +141,8 @@ function PlasmicMainForm__RenderFunc(props: {
         "plasmic_default_styles",
         "plasmic_mixins",
         styleTokensClassNames,
-        sty.form
+        sty.form,
+        "js-lead-form"
       )}
     >
       <InputForm
@@ -180,7 +181,7 @@ function PlasmicMainForm__RenderFunc(props: {
         text={"Send"}
         type={"submit"}
       />
-    </div>
+    </form>
   ) as React.ReactElement | null;
 }
 
@@ -192,7 +193,7 @@ type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  form: "div";
+  form: "form";
   btnSecond: typeof BtnSecond;
 };
 
