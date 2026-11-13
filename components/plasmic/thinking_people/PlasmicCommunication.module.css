@@ -1803,6 +1803,60 @@
     letter-spacing: -1px;
   }
 }
+.scrollSectionHeadings:global(.__wab_instance) {
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+.text__anwdI {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 36px;
+  font-weight: 600;
+  min-width: 0;
+}
+.text___167Mg {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 36px;
+  font-weight: 600;
+  min-width: 0;
+}
+.text___0Ydev {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 36px;
+  font-weight: 600;
+  min-width: 0;
+}
+.freeBox___8FDSx {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  row-gap: 32px;
+  column-gap: 32px;
+  min-height: 500px;
+  min-width: 0;
+  padding: 24px 0;
+}
+.text__hnR2N {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
 .programTopic1 {
   display: flex;
   flex-direction: row;
@@ -1827,19 +1881,15 @@
   justify-content: flex-start;
   width: 34%;
   row-gap: 12px;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  position: sticky;
 }
 @media (max-width: 511px) {
   .freeBox__zXfLr {
     width: 100%;
   }
-}
-.span__uc2NV {
-  font-family: "Wix Madefor Display";
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 1.8px;
-  line-height: 1.5;
-  text-transform: uppercase;
 }
 .h3__du6H6 {
   font-family: "Wix Madefor Display";
@@ -1847,7 +1897,20 @@
   line-height: 1.2;
   font-weight: 600;
   color: inherit;
+  left: auto;
+  top: auto;
+  z-index: 1;
+  position: relative;
   margin: 0;
+}
+.motionScrollSection:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  position: sticky;
+  display: none;
 }
 .freeBox__zgfqe {
   display: flex;
@@ -1870,61 +1933,13 @@
   margin: 0;
   border-bottom: 1px solid #ecebe7;
 }
-.p___8G85C {
-  font-family: "Wix Madefor Display";
-  font-size: 18px;
-  line-height: 1.5;
-  padding-bottom: 12px;
-  margin: 0;
-  border-bottom: 1px solid #ecebe7;
-}
-.p__d8Y8C {
-  font-family: "Wix Madefor Display";
-  font-size: 18px;
-  line-height: 1.5;
-  padding-bottom: 12px;
-  margin: 0;
-  border-bottom: 1px solid #ecebe7;
-}
-.p__syqyj {
-  font-family: "Wix Madefor Display";
-  font-size: 18px;
-  line-height: 1.5;
-  padding-bottom: 12px;
-  margin: 0;
-  border-bottom: 1px solid #ecebe7;
-}
-.p__cmTeG {
-  font-family: "Wix Madefor Display";
-  font-size: 18px;
-  line-height: 1.5;
-  padding-bottom: 12px;
-  margin: 0;
-  border-bottom: 1px solid #ecebe7;
-}
-.p__rmQT {
-  font-family: "Wix Madefor Display";
-  font-size: 18px;
-  line-height: 1.5;
-  padding-bottom: 12px;
-  margin: 0;
-  border-bottom: 1px solid #ecebe7;
-}
-.p__iMim {
-  font-family: "Wix Madefor Display";
-  font-size: 18px;
-  line-height: 1.5;
-  padding-bottom: 12px;
-  margin: 0;
-  border-bottom: 1px solid #ecebe7;
-}
 .programTopic2 {
-  display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
   column-gap: 40px;
+  display: none;
   padding: 30px 0;
   border-top: 1px solid #d7d7d1;
 }
@@ -2026,12 +2041,12 @@
   border-bottom: 1px solid #ecebe7;
 }
 .programTopic3 {
-  display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
   column-gap: 40px;
+  display: none;
   padding: 30px 0;
   border-top: 1px solid #d7d7d1;
 }
@@ -2141,12 +2156,12 @@
   border-bottom: 1px solid #ecebe7;
 }
 .programTopic4 {
-  display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
   column-gap: 40px;
+  display: none;
   padding: 30px 0;
   border-top: 1px solid #d7d7d1;
 }
@@ -2248,12 +2263,12 @@
   border-bottom: 1px solid #ecebe7;
 }
 .programTopic5 {
-  display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
   column-gap: 40px;
+  display: none;
   padding: 30px 0;
   border-top: 1px solid #d7d7d1;
 }
@@ -2347,12 +2362,12 @@
   border-bottom: 1px solid #ecebe7;
 }
 .programTopic6 {
-  display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
   column-gap: 40px;
+  display: none;
   padding: 30px 0;
   border-top: 1px solid #d7d7d1;
 }

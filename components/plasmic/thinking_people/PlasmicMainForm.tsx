@@ -174,6 +174,26 @@ function PlasmicMainForm__RenderFunc(props: {
         textArea={true}
       />
 
+      <div
+        className={classNames(
+          "all",
+          "__wab_text",
+          sty.text__fmmuJ,
+          "js-form-error"
+        )}
+      >
+        {"Error!"}
+      </div>
+      <div
+        className={classNames(
+          "all",
+          "__wab_text",
+          sty.text___2Uazb,
+          "js-form-success"
+        )}
+      >
+        {"success!"}
+      </div>
       <BtnSecond
         data-plasmic-name={"btnSecond"}
         data-plasmic-override={overrides.btnSecond}

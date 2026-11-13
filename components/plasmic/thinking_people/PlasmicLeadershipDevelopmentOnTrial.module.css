@@ -1,7 +1,7 @@
 .page {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   width: 100%;
   color: #1a1a18;
@@ -30,13 +30,13 @@
 .section___7VRiP {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   width: 100%;
   color: white;
   row-gap: 36px;
   background: var(--token-wcuYw8MJPyYy);
-  padding: 90px 7%;
+  padding: 90px 0%;
 }
 @media (max-width: 1023px) {
   .section___7VRiP {
@@ -55,6 +55,9 @@
   justify-content: space-between;
   width: 100%;
   column-gap: 40px;
+  max-width: 1244px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 @media (max-width: 1023px) {
   .freeBox__uGs5O {
@@ -204,8 +207,9 @@
   overflow: hidden;
   align-self: center;
   row-gap: 0;
-  background: #f6b1b5;
+  background: none;
   transform: rotate3d(0, 0, 1, -4deg);
+  filter: drop-shadow(0px 0px 30px #f6b1b53d);
   border-radius: 8px;
 }
 @media (max-width: 1023px) {
@@ -236,6 +240,7 @@
   align-items: flex-start;
   justify-content: center;
   row-gap: 8px;
+  background: var(--token-L3MOQ4h6Pxqz);
   padding: 22px 24px;
 }
 @media (max-width: 511px) {
@@ -276,7 +281,8 @@
   justify-content: flex-start;
   width: 100%;
   row-gap: 36px;
-  padding: 90px 7%;
+  max-width: 1244px;
+  padding: 90px 12px;
 }
 @media (max-width: 1023px) {
   .section__mj2W {
@@ -503,12 +509,12 @@
 .section__hIeCk {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   width: 100%;
   row-gap: 36px;
   background: #e8e6e6;
-  padding: 90px 7%;
+  padding: 90px 0%;
 }
 @media (max-width: 1023px) {
   .section__hIeCk {
@@ -519,6 +525,19 @@
   .section__hIeCk {
     padding: 48px 22px;
   }
+}
+.freeBox__iWAlh {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 1244px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  row-gap: 36px;
+  min-width: 0;
+  padding: 0px 12px;
 }
 .span__yqinM {
   font-family: "Wix Madefor Display";

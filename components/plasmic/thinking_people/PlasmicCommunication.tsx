@@ -59,6 +59,8 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { ScrollSectionHeadings } from "../../ScrollSectionHeadings"; // plasmic-import: -3PvrcYmT7Js/codeComponent
+import { MotionScrollSection } from "../../MotionScrollSection"; // plasmic-import: za2mx6yd4yJR/codeComponent
 import BtnSecond from "../../BtnSecond"; // plasmic-import: gKCTmQN19iqg/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/styleTokensProvider
@@ -128,7 +130,9 @@ export type PlasmicCommunication__OverridesType = {
   approach?: Flex__<"section">;
   results?: Flex__<"section">;
   programs?: Flex__<"section">;
+  scrollSectionHeadings?: Flex__<typeof ScrollSectionHeadings>;
   programTopic1?: Flex__<"div">;
+  motionScrollSection?: Flex__<typeof MotionScrollSection>;
   programTopic2?: Flex__<"div">;
   programTopic3?: Flex__<"div">;
   programTopic4?: Flex__<"div">;
@@ -1776,7 +1780,7 @@ function PlasmicCommunication__RenderFunc(props: {
             className={classNames("all", sty.programs)}
             id={"programs"}
           >
-            <div className={classNames("all", sty.freeBox__yA4Rc)}>
+            <div className={classNames("all", sty.freeBox__yA4Rc)} id={"topic"}>
               <div className={classNames("all", sty.freeBox__edF85)}>
                 <span
                   className={classNames(
@@ -1801,126 +1805,508 @@ function PlasmicCommunication__RenderFunc(props: {
                   {"We'll build the program around your topics"}
                 </h2>
               </div>
-              <div
-                data-plasmic-name={"programTopic1"}
-                data-plasmic-override={overrides.programTopic1}
-                className={classNames("all", sty.programTopic1)}
-                id={"topic-1"}
-              >
-                <div className={classNames("all", sty.freeBox__zXfLr)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__uc2NV
-                    )}
-                  >
-                    {"01"}
-                  </span>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__du6H6
-                    )}
-                  >
-                    {"Assertive Communication"}
-                  </h3>
-                </div>
-                <div className={classNames("all", sty.freeBox__zgfqe)}>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__frTfH
-                    )}
-                  >
-                    {
-                      "Quality and effectiveness of communication: principles and obstacles"
+              <ScrollSectionHeadings
+                data-plasmic-name={"scrollSectionHeadings"}
+                data-plasmic-override={overrides.scrollSectionHeadings}
+                className={classNames(
+                  "__wab_instance",
+                  sty.scrollSectionHeadings
+                )}
+                columnGap={64}
+                headingWidth={35}
+                headings={
+                  <React.Fragment>
+                    {(_par =>
+                      !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                      (() => {
+                        try {
+                          return [
+                            {
+                              title: "Assertive Communication",
+                              items: [
+                                "Quality and effectiveness of communication: principles and obstacles",
+                                "Cognitive, emotional, and behavioral traps that hinder communication",
+                                "The nature of assertive communication",
+                                "Balancing assertiveness with emotional sensitivity",
+                                "Analyzing yourself and others: recognizing communication styles and emotional states",
+                                "Building relationships, strengthening boundaries, managing communication",
+                                "Tools for managing communication: empathic listening, feedback, and tools for influencing others"
+                              ]
+                            },
+                            {
+                              title: "Customer-Centric Communication",
+                              items: [
+                                "Trends in client behavior: how has it changed?",
+                                "Managing expectations as a foundation of customer-centricity",
+                                "Explicit and implicit expectations: what's the difference?",
+                                "Inner and outer customer-centricity: how to do both",
+                                "Customer Journey Map: how to apply it to everyday work",
+                                "Managing complaints without losing customer loyalty"
+                              ]
+                            },
+                            {
+                              title: "Negotiation Tools for Today's Context",
+                              items: [
+                                "Effective goal-setting in negotiations",
+                                "Strategic planning: how to plan ahead",
+                                "Understanding your counterparts: how to analyze them",
+                                "Persuasion in negotiation",
+                                "Effective bargaining",
+                                "Countering manipulation and coercion",
+                                "Managing your emotions"
+                              ]
+                            },
+                            {
+                              title: "Effective Persuasion",
+                              items: [
+                                'What is "persuasion"? Two levels of persuasion',
+                                "The psychological foundation for effective persuasion",
+                                "Optimal number of arguments: how many should you choose?",
+                                "How to make your arguments perfectly clear for your audience",
+                                "The secret of logic: how to be sure your speech is logically sound",
+                                "Effective visualization of your persuasion"
+                              ]
+                            },
+                            {
+                              title: "Pitching",
+                              items: [
+                                "What is a pitch? What makes it so unique?",
+                                "Pitch types: idea pitch, founder's pitch, elevator pitch",
+                                "Pitch preparation questions: what to know before you start building your pitch",
+                                "Pitch structure: a step-by-step algorithm",
+                                "Pitching workshop"
+                              ]
+                            },
+                            {
+                              title: "Public Speaking",
+                              items: [
+                                "Analyzing your audience",
+                                "Goal-setting in public speech",
+                                "Structuring your ideas",
+                                "Improving one's delivery: body language, gestures, tone of voice, etc.",
+                                "How to handle any question",
+                                "Online vs. offline public speaking: nuances and how to address them"
+                              ]
+                            }
+                          ];
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [];
+                          }
+                          throw e;
+                        }
+                      })()
+                    ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                      const currentItem = __plasmic_item_0;
+                      const currentIndex = __plasmic_idx_0;
+                      return (
+                        <div
+                          className={classNames(
+                            "all",
+                            "__wab_text",
+                            sty.text__anwdI
+                          )}
+                          key={currentIndex}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return currentItem.title;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "Section 1";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </div>
+                      );
+                    })}
+                    <div
+                      className={classNames(
+                        "all",
+                        "__wab_text",
+                        sty.text___167Mg
+                      )}
+                    >
+                      {"Section 2"}
+                    </div>
+                    <div
+                      className={classNames(
+                        "all",
+                        "__wab_text",
+                        sty.text___0Ydev
+                      )}
+                    >
+                      {"Section 3"}
+                    </div>
+                  </React.Fragment>
+                }
+                mobileBreakpoint={767}
+                mobileHeadingGap={24}
+                sectionGap={96}
+                sections={(_par =>
+                  !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                  (() => {
+                    try {
+                      return [
+                        {
+                          title: "Assertive Communication",
+                          items: [
+                            "Quality and effectiveness of communication: principles and obstacles",
+                            "Cognitive, emotional, and behavioral traps that hinder communication",
+                            "The nature of assertive communication",
+                            "Balancing assertiveness with emotional sensitivity",
+                            "Analyzing yourself and others: recognizing communication styles and emotional states",
+                            "Building relationships, strengthening boundaries, managing communication",
+                            "Tools for managing communication: empathic listening, feedback, and tools for influencing others"
+                          ]
+                        },
+                        {
+                          title: "Customer-Centric Communication",
+                          items: [
+                            "Trends in client behavior: how has it changed?",
+                            "Managing expectations as a foundation of customer-centricity",
+                            "Explicit and implicit expectations: what's the difference?",
+                            "Inner and outer customer-centricity: how to do both",
+                            "Customer Journey Map: how to apply it to everyday work",
+                            "Managing complaints without losing customer loyalty"
+                          ]
+                        },
+                        {
+                          title: "Negotiation Tools for Today's Context",
+                          items: [
+                            "Effective goal-setting in negotiations",
+                            "Strategic planning: how to plan ahead",
+                            "Understanding your counterparts: how to analyze them",
+                            "Persuasion in negotiation",
+                            "Effective bargaining",
+                            "Countering manipulation and coercion",
+                            "Managing your emotions"
+                          ]
+                        },
+                        {
+                          title: "Effective Persuasion",
+                          items: [
+                            'What is "persuasion"? Two levels of persuasion',
+                            "The psychological foundation for effective persuasion",
+                            "Optimal number of arguments: how many should you choose?",
+                            "How to make your arguments perfectly clear for your audience",
+                            "The secret of logic: how to be sure your speech is logically sound",
+                            "Effective visualization of your persuasion"
+                          ]
+                        },
+                        {
+                          title: "Pitching",
+                          items: [
+                            "What is a pitch? What makes it so unique?",
+                            "Pitch types: idea pitch, founder's pitch, elevator pitch",
+                            "Pitch preparation questions: what to know before you start building your pitch",
+                            "Pitch structure: a step-by-step algorithm",
+                            "Pitching workshop"
+                          ]
+                        },
+                        {
+                          title: "Public Speaking",
+                          items: [
+                            "Analyzing your audience",
+                            "Goal-setting in public speech",
+                            "Structuring your ideas",
+                            "Improving one's delivery: body language, gestures, tone of voice, etc.",
+                            "How to handle any question",
+                            "Online vs. offline public speaking: nuances and how to address them"
+                          ]
+                        }
+                      ];
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
                     }
-                  </p>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p___8G85C
-                    )}
-                  >
-                    {
-                      "Cognitive, emotional, and behavioral traps that hinder communication"
+                  })()
+                ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                  const currentItem = __plasmic_item_0;
+                  const currentIndex = __plasmic_idx_0;
+                  return (
+                    <div
+                      className={classNames("all", sty.freeBox___8FDSx)}
+                      key={currentIndex}
+                    >
+                      {(_par =>
+                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                        (() => {
+                          try {
+                            return currentItem.items;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      ).map((__plasmic_item_1, __plasmic_idx_1) => {
+                        const currentItem = __plasmic_item_1;
+                        const currentIndex = __plasmic_idx_1;
+                        return (
+                          <div
+                            className={classNames(
+                              "all",
+                              "__wab_text",
+                              sty.text__hnR2N
+                            )}
+                            key={currentIndex}
+                          >
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return currentItem;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "Section 1 \u2014 item 1";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
+                stickyTop={96}
+                switchPoint={35}
+                transitionDuration={0.35}
+              />
+
+              {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                (() => {
+                  try {
+                    return [
+                      {
+                        title: "Assertive Communication",
+                        items: [
+                          "Quality and effectiveness of communication: principles and obstacles",
+                          "Cognitive, emotional, and behavioral traps that hinder communication",
+                          "The nature of assertive communication",
+                          "Balancing assertiveness with emotional sensitivity",
+                          "Analyzing yourself and others: recognizing communication styles and emotional states",
+                          "Building relationships, strengthening boundaries, managing communication",
+                          "Tools for managing communication: empathic listening, feedback, and tools for influencing others"
+                        ]
+                      },
+                      {
+                        title: "Customer-Centric Communication",
+                        items: [
+                          "Trends in client behavior: how has it changed?",
+                          "Managing expectations as a foundation of customer-centricity",
+                          "Explicit and implicit expectations: what's the difference?",
+                          "Inner and outer customer-centricity: how to do both",
+                          "Customer Journey Map: how to apply it to everyday work",
+                          "Managing complaints without losing customer loyalty"
+                        ]
+                      },
+                      {
+                        title: "Negotiation Tools for Today's Context",
+                        items: [
+                          "Effective goal-setting in negotiations",
+                          "Strategic planning: how to plan ahead",
+                          "Understanding your counterparts: how to analyze them",
+                          "Persuasion in negotiation",
+                          "Effective bargaining",
+                          "Countering manipulation and coercion",
+                          "Managing your emotions"
+                        ]
+                      },
+                      {
+                        title: "Effective Persuasion",
+                        items: [
+                          'What is "persuasion"? Two levels of persuasion',
+                          "The psychological foundation for effective persuasion",
+                          "Optimal number of arguments: how many should you choose?",
+                          "How to make your arguments perfectly clear for your audience",
+                          "The secret of logic: how to be sure your speech is logically sound",
+                          "Effective visualization of your persuasion"
+                        ]
+                      },
+                      {
+                        title: "Pitching",
+                        items: [
+                          "What is a pitch? What makes it so unique?",
+                          "Pitch types: idea pitch, founder's pitch, elevator pitch",
+                          "Pitch preparation questions: what to know before you start building your pitch",
+                          "Pitch structure: a step-by-step algorithm",
+                          "Pitching workshop"
+                        ]
+                      },
+                      {
+                        title: "Public Speaking",
+                        items: [
+                          "Analyzing your audience",
+                          "Goal-setting in public speech",
+                          "Structuring your ideas",
+                          "Improving one's delivery: body language, gestures, tone of voice, etc.",
+                          "How to handle any question",
+                          "Online vs. offline public speaking: nuances and how to address them"
+                        ]
+                      }
+                    ];
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return [];
                     }
-                  </p>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__d8Y8C
-                    )}
+                    throw e;
+                  }
+                })()
+              ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                const currentItem = __plasmic_item_0;
+                const currentIndex = __plasmic_idx_0;
+                return (
+                  <div
+                    data-plasmic-name={"programTopic1"}
+                    data-plasmic-override={overrides.programTopic1}
+                    className={classNames("all", sty.programTopic1)}
+                    id={"topic-1"}
+                    key={currentIndex}
                   >
-                    {"The nature of assertive communication"}
-                  </p>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__syqyj
-                    )}
-                  >
-                    {"Balancing assertiveness with emotional sensitivity"}
-                  </p>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__cmTeG
-                    )}
-                  >
-                    {
-                      "Analyzing yourself and others: recognizing communication styles and emotional states"
-                    }
-                  </p>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__rmQT
-                    )}
-                  >
-                    {
-                      "Building relationships, strengthening boundaries, managing communication"
-                    }
-                  </p>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__iMim
-                    )}
-                  >
-                    {
-                      "Tools for managing communication: empathic listening, feedback, and tools for influencing others"
-                    }
-                  </p>
-                </div>
-              </div>
+                    <div className={classNames("all", sty.freeBox__zXfLr)}>
+                      <h3
+                        className={classNames(
+                          "all",
+                          "h3",
+                          "h3__5CArW",
+                          "__wab_text",
+                          sty.h3__du6H6
+                        )}
+                      >
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return currentItem.title;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "Assertive Communication";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
+                      </h3>
+                    </div>
+                    <MotionScrollSection
+                      data-plasmic-name={"motionScrollSection"}
+                      data-plasmic-override={overrides.motionScrollSection}
+                      children={null}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.motionScrollSection
+                      )}
+                      ease={"power2.inOut"}
+                      fromBlur={0}
+                      fromOpacity={0}
+                      fromRotation={0}
+                      fromRotationX={0}
+                      fromRotationY={0}
+                      fromScale={0.95}
+                      fromX={0}
+                      fromY={80}
+                      offsetEnd={"end start"}
+                      offsetStart={"start end"}
+                      perspective={1000}
+                      smoothing={0.5}
+                      targetSelector={"#section-1"}
+                      toBlur={0}
+                      toOpacity={1}
+                      toRotation={0}
+                      toRotationX={0}
+                      toRotationY={0}
+                      toScale={1}
+                      toX={0}
+                      toY={0}
+                      trackContentSize={false}
+                      transformOrigin={"center center"}
+                    />
+
+                    <div
+                      className={classNames("all", sty.freeBox__zgfqe)}
+                      id={"section-1"}
+                    >
+                      {(_par =>
+                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                        (() => {
+                          try {
+                            return currentItem.items;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      ).map((__plasmic_item_1, __plasmic_idx_1) => {
+                        const currentItem = __plasmic_item_1;
+                        const currentIndex = __plasmic_idx_1;
+                        return (
+                          <p
+                            className={classNames(
+                              "all",
+                              "p",
+                              "p__5CArW",
+                              "__wab_text",
+                              sty.p__frTfH
+                            )}
+                            key={currentIndex}
+                          >
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return currentItem;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "Quality and effectiveness of communication: principles and obstacles";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          </p>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
               <div
                 data-plasmic-name={"programTopic2"}
                 data-plasmic-override={overrides.programTopic2}
@@ -3773,7 +4159,9 @@ const PlasmicDescendants = {
     "approach",
     "results",
     "programs",
+    "scrollSectionHeadings",
     "programTopic1",
+    "motionScrollSection",
     "programTopic2",
     "programTopic3",
     "programTopic4",
@@ -3800,14 +4188,18 @@ const PlasmicDescendants = {
   results: ["results"],
   programs: [
     "programs",
+    "scrollSectionHeadings",
     "programTopic1",
+    "motionScrollSection",
     "programTopic2",
     "programTopic3",
     "programTopic4",
     "programTopic5",
     "programTopic6"
   ],
-  programTopic1: ["programTopic1"],
+  scrollSectionHeadings: ["scrollSectionHeadings"],
+  programTopic1: ["programTopic1", "motionScrollSection"],
+  motionScrollSection: ["motionScrollSection"],
   programTopic2: ["programTopic2"],
   programTopic3: ["programTopic3"],
   programTopic4: ["programTopic4"],
@@ -3847,7 +4239,9 @@ type NodeDefaultElementType = {
   approach: "section";
   results: "section";
   programs: "section";
+  scrollSectionHeadings: typeof ScrollSectionHeadings;
   programTopic1: "div";
+  motionScrollSection: typeof MotionScrollSection;
   programTopic2: "div";
   programTopic3: "div";
   programTopic4: "div";
@@ -3936,7 +4330,9 @@ export const PlasmicCommunication = Object.assign(
     approach: makeNodeComponent("approach"),
     results: makeNodeComponent("results"),
     programs: makeNodeComponent("programs"),
+    scrollSectionHeadings: makeNodeComponent("scrollSectionHeadings"),
     programTopic1: makeNodeComponent("programTopic1"),
+    motionScrollSection: makeNodeComponent("motionScrollSection"),
     programTopic2: makeNodeComponent("programTopic2"),
     programTopic3: makeNodeComponent("programTopic3"),
     programTopic4: makeNodeComponent("programTopic4"),

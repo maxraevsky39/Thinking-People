@@ -521,151 +521,153 @@ function PlasmicLeadershipDevelopmentOnTrial__RenderFunc(props: {
             </div>
           </section>
           <section className={classNames("all", sty.section__hIeCk)}>
-            <span
-              className={classNames(
-                "all",
-                "span",
-                "span__5CArW",
-                "__wab_text",
-                sty.span__yqinM
-              )}
-            >
-              {"WHAT TO EXPECT"}
-            </span>
-            <h2
-              className={classNames(
-                "all",
-                "h2",
-                "h2__5CArW",
-                "__wab_text",
-                sty.h2__ogZjO
-              )}
-            >
-              {"Two experts. Two perspectives. \nOne important question."}
-            </h2>
-            <h3
-              className={classNames(
-                "all",
-                "h3",
-                "h3__5CArW",
-                "__wab_text",
-                sty.h3__jpOtl
-              )}
-            >
-              {"How do we develop leaders who actually lead better?"}
-            </h3>
-            <p
-              className={classNames(
-                "all",
-                "p",
-                "p__5CArW",
-                "__wab_text",
-                sty.p___6AOxr
-              )}
-            >
-              {
-                "Not another presentation filled with slides and familiar theories. An open debate where different perspectives meet, assumptions are challenged, and practical answers matter."
-              }
-            </p>
-            <div className={classNames("all", sty.freeBox__fAk9X)}>
-              <div className={classNames("all", sty.freeBox__iLr)}>
-                <div className={classNames("all", sty.freeBox___1WhBh)}>
-                  <OptimizedImage
-                    alt={""}
-                    className={classNames(
-                      "__wab_instance",
-                      sty.optimizedImage___6Pnsm
-                    )}
-                    fill={true}
-                    format={"auto"}
-                    height={484}
-                    loading={"lazy"}
-                    objectFit={"contain"}
-                    objectPosition={"center"}
-                    placeholder={"blur"}
-                    quality={75}
-                    sizes={"(max-width: 768px) 100vw, 50vw"}
-                    src={
-                      "https://staging-strapi-tp.brainfitness.info/uploads/icon_4_fa2fb3fe13.png"
-                    }
-                    width={484}
-                  />
+            <div className={classNames("all", sty.freeBox__iWAlh)}>
+              <span
+                className={classNames(
+                  "all",
+                  "span",
+                  "span__5CArW",
+                  "__wab_text",
+                  sty.span__yqinM
+                )}
+              >
+                {"WHAT TO EXPECT"}
+              </span>
+              <h2
+                className={classNames(
+                  "all",
+                  "h2",
+                  "h2__5CArW",
+                  "__wab_text",
+                  sty.h2__ogZjO
+                )}
+              >
+                {"Two experts. Two perspectives. \nOne important question."}
+              </h2>
+              <h3
+                className={classNames(
+                  "all",
+                  "h3",
+                  "h3__5CArW",
+                  "__wab_text",
+                  sty.h3__jpOtl
+                )}
+              >
+                {"How do we develop leaders who actually lead better?"}
+              </h3>
+              <p
+                className={classNames(
+                  "all",
+                  "p",
+                  "p__5CArW",
+                  "__wab_text",
+                  sty.p___6AOxr
+                )}
+              >
+                {
+                  "Not another presentation filled with slides and familiar theories. An open debate where different perspectives meet, assumptions are challenged, and practical answers matter."
+                }
+              </p>
+              <div className={classNames("all", sty.freeBox__fAk9X)}>
+                <div className={classNames("all", sty.freeBox__iLr)}>
+                  <div className={classNames("all", sty.freeBox___1WhBh)}>
+                    <OptimizedImage
+                      alt={""}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.optimizedImage___6Pnsm
+                      )}
+                      fill={true}
+                      format={"auto"}
+                      height={484}
+                      loading={"lazy"}
+                      objectFit={"contain"}
+                      objectPosition={"center"}
+                      placeholder={"blur"}
+                      quality={75}
+                      sizes={"(max-width: 768px) 100vw, 50vw"}
+                      src={
+                        "https://staging-strapi-tp.brainfitness.info/uploads/icon_4_fa2fb3fe13.png"
+                      }
+                      width={484}
+                    />
+                  </div>
+                  <div className={classNames("all", sty.freeBox__byJsb)}>
+                    <h3
+                      className={classNames(
+                        "all",
+                        "h3",
+                        "h3__5CArW",
+                        "__wab_text",
+                        sty.h3__gB2L
+                      )}
+                    >
+                      {"60 minutes of live debate"}
+                    </h3>
+                    <p
+                      className={classNames(
+                        "all",
+                        "p",
+                        "p__5CArW",
+                        "__wab_text",
+                        sty.p__dnYtr
+                      )}
+                    >
+                      {
+                        "Two experts explore the effectiveness of leadership development, challenge conventional approaches, and share practical insights."
+                      }
+                    </p>
+                  </div>
                 </div>
-                <div className={classNames("all", sty.freeBox__byJsb)}>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__gB2L
-                    )}
-                  >
-                    {"60 minutes of live debate"}
-                  </h3>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__dnYtr
-                    )}
-                  >
-                    {
-                      "Two experts explore the effectiveness of leadership development, challenge conventional approaches, and share practical insights."
-                    }
-                  </p>
-                </div>
-              </div>
-              <div className={classNames("all", sty.freeBox__t0Fpu)}>
-                <div className={classNames("all", sty.freeBox__h6R8C)}>
-                  <OptimizedImage
-                    alt={""}
-                    className={classNames(
-                      "__wab_instance",
-                      sty.optimizedImage__sgz5X
-                    )}
-                    fill={true}
-                    format={"auto"}
-                    height={484}
-                    loading={"lazy"}
-                    objectFit={"contain"}
-                    objectPosition={"center"}
-                    placeholder={"blur"}
-                    quality={75}
-                    sizes={"(max-width: 768px) 100vw, 50vw"}
-                    src={
-                      "https://staging-strapi-tp.brainfitness.info/uploads/icon_2_16740c0b61.png"
-                    }
-                    width={484}
-                  />
-                </div>
-                <div className={classNames("all", sty.freeBox__mv6Sv)}>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__kcWoD
-                    )}
-                  >
-                    {"15 minutes of live Q&A"}
-                  </h3>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__iFOt
-                    )}
-                  >
-                    {
-                      "Bring your questions, challenge the speakers, and join the conversation."
-                    }
-                  </p>
+                <div className={classNames("all", sty.freeBox__t0Fpu)}>
+                  <div className={classNames("all", sty.freeBox__h6R8C)}>
+                    <OptimizedImage
+                      alt={""}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.optimizedImage__sgz5X
+                      )}
+                      fill={true}
+                      format={"auto"}
+                      height={484}
+                      loading={"lazy"}
+                      objectFit={"contain"}
+                      objectPosition={"center"}
+                      placeholder={"blur"}
+                      quality={75}
+                      sizes={"(max-width: 768px) 100vw, 50vw"}
+                      src={
+                        "https://staging-strapi-tp.brainfitness.info/uploads/icon_2_16740c0b61.png"
+                      }
+                      width={484}
+                    />
+                  </div>
+                  <div className={classNames("all", sty.freeBox__mv6Sv)}>
+                    <h3
+                      className={classNames(
+                        "all",
+                        "h3",
+                        "h3__5CArW",
+                        "__wab_text",
+                        sty.h3__kcWoD
+                      )}
+                    >
+                      {"15 minutes of live Q&A"}
+                    </h3>
+                    <p
+                      className={classNames(
+                        "all",
+                        "p",
+                        "p__5CArW",
+                        "__wab_text",
+                        sty.p__iFOt
+                      )}
+                    >
+                      {
+                        "Bring your questions, challenge the speakers, and join the conversation."
+                      }
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
