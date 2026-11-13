@@ -1783,7 +1783,7 @@ registerComponent<React.ComponentType<any>>(MotionScrollSection, {
     containerSelector: {
       type: "string",
       displayName: "Селектор container",
-      description: "CSS-селектор прокручиваемого контейнера. Пусто — окно браузера.",
+      description: "CSS-селектор прокручиваемого контейнера. Пусто — автоматическое определение, включая Preview Plasmic.",
     },
     trackContentSize: {
       type: "boolean",

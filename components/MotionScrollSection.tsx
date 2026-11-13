@@ -24,7 +24,7 @@ export interface MotionScrollSectionProps {
   offsetEnd?: string;
   /** CSS selector for the element whose position drives the animation. */
   targetSelector?: string;
-  /** CSS selector for the scrollable element. The viewport is used by default. */
+  /** CSS selector for the scrollable element. By default detect the target's scroll container. */
   containerSelector?: string;
   /** Recalculate the scroll range when the tracked content changes size. */
   trackContentSize?: boolean;
@@ -130,16 +130,17 @@ export function MotionScrollSection({
     const section = sectionRef.current;
     if (!section) return;
 
+    const doc = section.ownerDocument;
+    const view = doc.defaultView;
     targetRef.current = section;
     containerRef.current =
-      (document.scrollingElement as HTMLElement | null) ||
-      document.documentElement;
+      (doc.scrollingElement as HTMLElement | null) || doc.documentElement;
 
     if (normalizedTargetSelector) {
       try {
         const target =
           section.querySelector<HTMLElement>(normalizedTargetSelector) ||
-          document.querySelector<HTMLElement>(normalizedTargetSelector);
+          doc.querySelector<HTMLElement>(normalizedTargetSelector);
 
         if (target) {
           targetRef.current = target;
@@ -156,22 +157,35 @@ export function MotionScrollSection({
       }
     }
 
+    // Plasmic Preview scrolls its iframe body instead of the host window.
+    // Use the target's nearest scroll container, including overflow containers
+    // whose content has not loaded yet. Explicit container selectors win below.
+    for (let parent = targetRef.current?.parentElement; parent; parent = parent.parentElement) {
+      // Body overflow can propagate to the viewport on ordinary pages.
+      const isViewportBody = parent === doc.body &&
+        view?.getComputedStyle(doc.documentElement).overflowY === "visible";
+      if (!isViewportBody && view && /^(auto|scroll|overlay)$/.test(view.getComputedStyle(parent).overflowY)) {
+        containerRef.current = parent;
+        break;
+      }
+    }
+
     if (normalizedContainerSelector) {
       try {
         const container =
           section.closest<HTMLElement>(normalizedContainerSelector) ||
-          document.querySelector<HTMLElement>(normalizedContainerSelector);
+          doc.querySelector<HTMLElement>(normalizedContainerSelector);
 
         if (container) {
           containerRef.current = container;
         } else {
           console.warn(
-            `[MotionScrollSection] Container not found for selector "${normalizedContainerSelector}". Using the viewport instead.`
+            `[MotionScrollSection] Container not found for selector "${normalizedContainerSelector}". Using the detected scroll container instead.`
           );
         }
       } catch (error) {
         console.warn(
-          `[MotionScrollSection] Invalid container selector "${normalizedContainerSelector}". Using the viewport instead.`,
+          `[MotionScrollSection] Invalid container selector "${normalizedContainerSelector}". Using the detected scroll container instead.`,
           error
         );
       }
@@ -186,7 +200,7 @@ export function MotionScrollSection({
   const prefersReducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: normalizedTargetSelector ? targetRef : sectionRef,
-    ...(normalizedContainerSelector ? { container: containerRef } : {}),
+    container: containerRef,
     offset: [offsetStart, offsetEnd] as any,
     trackContentSize,
   });
