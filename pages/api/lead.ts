@@ -93,7 +93,7 @@ export default async function handler(
 
     return res.status(400).json({
       ok: false,
-      error: "Введите корректный email",
+      error: "Enter a valid email address",
     });
   }
 
@@ -106,7 +106,7 @@ export default async function handler(
 
     return res.status(400).json({
       ok: false,
-      error: "Телефон может содержать только цифры и + в начале",
+      error: "Phone number can only contain digits and + at the beginning",
     });
   }
 
@@ -114,14 +114,14 @@ export default async function handler(
 
   if (!checkFormToken(body.formToken)) {
     await log({ status: "invalid_form_time", ip, email, phone: normalizedPhone });
-    return res.status(400).json({ ok: false, error: "Подождите 3 секунды и повторите отправку. Если ошибка повторится, обновите страницу." });
+    return res.status(400).json({ ok: false, error: "Please wait 3 seconds and try submitting again. If the error persists, refresh the page." });
   }
 
   const reservation = reserveLead(ip, email, normalizedPhone);
   if (!reservation.ok) {
     res.setHeader("Retry-After", String(reservation.seconds));
-    await log({ status: reservation.status, ip, email, phone: normalizedPhone, message: `Повторная отправка через ${reservation.seconds} сек.` });
-    return res.status(429).json({ ok: false, error: `Повторную заявку можно отправить через ${reservation.seconds} сек.` });
+    await log({ status: reservation.status, ip, email, phone: normalizedPhone, message: `Retry after ${reservation.seconds} seconds` });
+    return res.status(429).json({ ok: false, error: `You can submit the application again in ${reservation.seconds} seconds` });
   }
   try {
   const payload = {

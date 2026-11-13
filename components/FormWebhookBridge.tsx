@@ -196,9 +196,9 @@ export function FormWebhookBridge() {
       if (!token) {
         token = fetch("/api/lead", { cache: "no-store" })
           .then(async response => {
-            if (!response.ok) throw new Error("Не удалось начать проверку формы");
+            if (!response.ok) throw new Error("Failed to start form validation");
             const result = await response.json();
-            if (!result.formToken) throw new Error("Не удалось начать проверку формы");
+            if (!result.formToken) throw new Error("Failed to start form validation");
             return String(result.formToken);
           });
         formTokens.set(form, token);
@@ -267,7 +267,7 @@ const submitButton = submitText?.closest<HTMLButtonElement>("button");
 
         showFormError(
           errorEl,
-          `Повторную заявку можно отправить через ${secondsLeft} сек.`
+          `You can submit the application again in ${secondsLeft} seconds`
         );
 
         return;
@@ -322,7 +322,7 @@ const submitButton = submitText?.closest<HTMLButtonElement>("button");
       if (hasRequiredErrors) {
         showFormError(
           errorEl,
-          "Не заполнены обязательные поля"
+          "Required fields are not filled"
         );
 
         const firstInvalidField =
@@ -353,7 +353,7 @@ const submitButton = submitText?.closest<HTMLButtonElement>("button");
 
         showFormError(
           errorEl,
-          "Необходимо дать согласие на обработку персональных данных"
+          "You must consent to the processing of personal data"
         );
 
         consentField.addEventListener(
@@ -425,7 +425,7 @@ const submitButton = submitText?.closest<HTMLButtonElement>("button");
 
         showFormError(
           errorEl,
-          "Введите корректный email"
+          "Enter a valid email address"
         );
 
         emailField?.focus();
@@ -450,7 +450,7 @@ const submitButton = submitText?.closest<HTMLButtonElement>("button");
 
         showFormError(
           errorEl,
-          "Телефон может содержать только цифры и + в начале"
+          "Phone number can only contain digits and + at the beginning"
         );
 
         phoneField?.focus();
@@ -475,7 +475,7 @@ const submitButton = submitText?.closest<HTMLButtonElement>("button");
 
         showFormError(
           errorEl,
-          "Введите корректный номер телефона"
+          "Enter a valid phone number"
         );
 
         phoneField?.focus();
@@ -510,20 +510,20 @@ const submitButton = submitText?.closest<HTMLButtonElement>("button");
         if (Date.now() - Number(formToken.split(".")[0]) > 86_400_000) {
           formTokens.delete(form);
           void getFormToken(form).catch(() => {});
-          throw new Error("Подождите 3 секунды и повторите отправку");
+          throw new Error("Please wait 3 seconds and try submitting again");
         }
         if (submitButton) submitButton.disabled = true;
 
 if (submitText) {
-  submitText.dataset.originalText = submitText.textContent || "Отправить";
-  submitText.textContent = "Проверяем...";
+  submitText.dataset.originalText = submitText.textContent || "Send";
+  submitText.textContent = "Checking...";
 }
 
         // SmartCaptcha is temporarily disabled; server time and rate guards remain active.
         stage = "lead_request";
         stageStartedAt = performance.now();
 
-        if (submitText) submitText.textContent = "Отправляем...";
+        if (submitText) submitText.textContent = "Sending...";
 
         const response = await fetch(
           "/api/lead",
@@ -565,7 +565,7 @@ if (submitText) {
         ) {
           throw new Error(
             result.error ||
-              "Не получилось отправить форму"
+              "Failed to submit form"
           );
         }
 
@@ -600,14 +600,14 @@ document.dispatchEvent(
             "block";
         } else {
           window.alert(
-            "Спасибо! Мы скоро свяжемся с вами."
+            "Thank you! We will be in touch with you soon."
           );
         }
       } catch (error) {
         const message =
           error instanceof Error
             ? error.message
-            : "Не получилось отправить форму";
+            : "Failed to submit the form";
 
         diagnostic("attempt_failed", {
           code: `${stage}_error`, message,
@@ -622,7 +622,7 @@ document.dispatchEvent(
         if (submitButton) submitButton.disabled = false;
 
 if (submitText) {
-  submitText.textContent = submitText.dataset.originalText || "Отправить";
+  submitText.textContent = submitText.dataset.originalText || "Send";
 }
       }
     }
