@@ -10,6 +10,10 @@ import GlobalContextsProvider from "../components/plasmic/thinking_people/Plasmi
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <PlasmicRootProvider Head={Head} Link={Link}>
+      <Head>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=tp1" key="favicon" />
+        <link rel="shortcut icon" href="/favicon.ico?v=tp1" />
+      </Head>
       <FormWebhookBridge />
       <GlobalContextsProvider>
         <Component {...pageProps} />
