@@ -1,0 +1,38 @@
+.root {
+  display: grid;
+  grid-template-columns: minmax(0, var(--ssh-width)) minmax(0, 1fr);
+  column-gap: var(--ssh-column-gap);
+  width: 100%;
+  position: relative;
+  align-items: stretch;
+}
+.left { min-width: 0; }
+.sticky {
+  position: sticky;
+  top: var(--ssh-top);
+  display: grid;
+  /* Overlapping cells reserve the height of the tallest heading. */
+  grid-template-columns: minmax(0, 1fr);
+}
+.heading {
+  grid-area: 1 / 1;
+  align-self: start;
+  min-width: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--ssh-duration) ease, visibility 0s var(--ssh-duration);
+}
+.heading[data-active="true"] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity var(--ssh-duration) ease, visibility 0s;
+}
+.right { display: flex; flex-direction: column; gap: var(--ssh-section-gap); min-width: 0; }
+.section { min-width: 0; display: flow-root; }
+.root[data-mobile="true"] { grid-template-columns: minmax(0, 1fr); }
+.mobileHeading { margin-bottom: var(--ssh-mobile-heading-gap); }
+@media (prefers-reduced-motion: reduce) {
+  .heading, .heading[data-active="true"] { transition: none; }
+}

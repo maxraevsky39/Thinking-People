@@ -1,3 +1,4 @@
+import { ScrollSectionHeadings } from "../components/ScrollSectionHeadings";
 import { registerReactBits } from "../components/registerReactBits";
 import * as React from "react";
 import {
@@ -33,6 +34,35 @@ import { FormGatedVideo } from "../components/FormGatedVideo";
 import { registerCookiePopup } from "../components/registerCookiePopup";
 registerCookiePopup();
 registerReactBits();
+registerComponent(ScrollSectionHeadings, {
+  name: "ScrollSectionHeadings",
+  displayName: "Scroll Section Headings",
+  importPath: "./components/ScrollSectionHeadings",
+  importName: "ScrollSectionHeadings",
+  defaultStyles: { width: "100%" },
+  props: {
+    headings: {
+      type: "slot", displayName: "Заголовки слева",
+      description: "Отдельный элемент для каждого заголовка. Порядок соответствует секциям справа; не объединяйте их общим контейнером.",
+      defaultValue: [1, 2, 3].map(n => ({ type: "text" as const, value: `Section ${n}`, styles: { fontSize: "36px", fontWeight: "600" } })),
+    },
+    sections: {
+      type: "slot", displayName: "Секции справа",
+      description: "Каждый непосредственный элемент слота — отдельная секция. Пункты каждой секции объедините своим контейнером. Число секций и заголовков должно совпадать.",
+      defaultValue: [1, 2, 3].map(n => ({ type: "vbox" as const, styles: { gap: "32px", padding: "24px 0", minHeight: "500px" }, children: [1, 2, 3, 4, 5].map(i => ({ type: "text" as const, value: `Section ${n} — item ${i}` })) })),
+    },
+    stickyTop: { type: "number", displayName: "Отступ сверху, px", defaultValue: 96, min: 0, max: 2000 },
+    switchPoint: { type: "number", displayName: "Точка переключения, %", description: "Расстояние от верха видимой области. Когда верх следующей секции пересечёт эту линию, заголовок сменится.", defaultValue: 35, min: 0, max: 100 },
+    transitionDuration: { type: "number", displayName: "Переход, сек.", defaultValue: 0.35, min: 0, max: 5, step: 0.05 },
+    headingWidth: { type: "number", displayName: "Ширина левой колонки, %", defaultValue: 35, min: 10, max: 70 },
+    columnGap: { type: "number", displayName: "Между колонками, px", defaultValue: 64, min: 0, max: 400 },
+    sectionGap: { type: "number", displayName: "Между секциями, px", defaultValue: 96, min: 0, max: 1000 },
+    mobileBreakpoint: { type: "number", displayName: "Мобильный режим до, px", description: "На узком экране заголовки стоят над своими секциями без закрепления.", defaultValue: 767, min: 0, max: 3000 },
+    mobileHeadingGap: { type: "number", displayName: "Под заголовком на мобильном, px", defaultValue: 24, min: 0, max: 200 },
+  },
+});
+
+
 registerComponent<React.ComponentType<any>>(FormGatedVideo, {
   name: "FormGatedVideo",
   displayName: "Видео после формы",
