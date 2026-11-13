@@ -3,7 +3,7 @@
 import * as React from "react";
 import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-web/lib/host";
 
-import { PlasmicHomepage } from "../components/plasmic/thinking_people/PlasmicHomepage";
+import { PlasmicHomepage } from "../../components/plasmic/thinking_people/PlasmicHomepage";
 import { useRouter } from "next/router";
 import { PlasmicQueryDataProvider } from "@plasmicapp/react-web/lib/query";
 
