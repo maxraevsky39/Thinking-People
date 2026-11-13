@@ -70,12 +70,12 @@ import type { QueryComponentNode } from "@plasmicapp/react-web/lib/data-sources"
 
 import Navbar from "../../Navbar"; // plasmic-import: 7oIiUelc00Y9/component
 import { ContactSheet } from "../../ContactSheet"; // plasmic-import: A9lCeBSgsYEF/codeComponent
+import HowWeWorkSection from "../../HowWeWorkSection"; // plasmic-import: SQRx18Lz1hYn/component
 import H2 from "../../H2"; // plasmic-import: Yl_PbqD71djV/component
-import { ScrollSection } from "../../ScrollSection"; // plasmic-import: mqp2cBG_dizY/codeComponent
-import HwwCard from "../../HwwCard"; // plasmic-import: 9uBh2eQE-yqj/component
-import BtnSecond from "../../BtnSecond"; // plasmic-import: gKCTmQN19iqg/component
 import { OptimizedImage } from "../../OptimizedImage"; // plasmic-import: 2sAw0k_qEFgf/codeComponent
+import BtnSecond from "../../BtnSecond"; // plasmic-import: gKCTmQN19iqg/component
 import { About13 } from "../../About13"; // plasmic-import: w2c8KkWos3P4/codeComponent
+import { ScrollSection } from "../../ScrollSection"; // plasmic-import: mqp2cBG_dizY/codeComponent
 import FormSection from "../../FormSection"; // plasmic-import: fw8uA1_Fbkxj/component
 import FooterSection from "../../FooterSection"; // plasmic-import: DEX99TX1WJZn/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/projectModule
@@ -136,19 +136,18 @@ export type PlasmicHomepage__OverridesType = {
   heroSection?: Flex__<"div">;
   contactSheet?: Flex__<typeof ContactSheet>;
   content?: Flex__<"div">;
-  howWeWorkSection?: Flex__<"div">;
-  pointsWrapper?: Flex__<"div">;
-  pointsWrapper3?: Flex__<"div">;
-  provenProgram?: Flex__<"div">;
+  howWeWorkSection?: Flex__<typeof HowWeWorkSection>;
   dynamicBlock?: Flex__<"div">;
   basicCardSection?: Flex__<"div">;
   cardWrapper?: Flex__<"div">;
   card?: Flex__<"div">;
   optimizedImage?: Flex__<typeof OptimizedImage>;
   leadershipSection2?: Flex__<"div">;
+  btnSecond?: Flex__<typeof BtnSecond>;
   about13?: Flex__<typeof About13>;
   basicCardSection2?: Flex__<"div">;
   cardWrapper2?: Flex__<"div">;
+  scrollSection?: Flex__<typeof ScrollSection>;
   card2?: Flex__<"div">;
   point?: Flex__<"div">;
   formSection?: Flex__<typeof FormSection>;
@@ -364,243 +363,12 @@ function PlasmicHomepage__RenderFunc(props: {
               </div>
             </div>
           </div>
-          <div className={classNames("all", sty.freeBox__epJuv, "")} id={""}>
-            <div
-              data-plasmic-name={"howWeWorkSection"}
-              data-plasmic-override={overrides.howWeWorkSection}
-              className={classNames("all", sty.howWeWorkSection)}
-            >
-              <div className={classNames("all", sty.freeBox__a0KyH)}>
-                <H2
-                  className={classNames("__wab_instance", sty.h2__yYhMc)}
-                  title={"Your goals. Your context. Our solution."}
-                />
+          <HowWeWorkSection
+            data-plasmic-name={"howWeWorkSection"}
+            data-plasmic-override={overrides.howWeWorkSection}
+            className={classNames("__wab_instance", sty.howWeWorkSection)}
+          />
 
-                <div
-                  className={classNames("all", "__wab_text", sty.text__fbBw5)}
-                >
-                  {
-                    "Built around your challenge. We design the program, select the expert, and define how to measure its impact."
-                  }
-                </div>
-              </div>
-              <div className={classNames("all", sty.freeBox__oJJZ, "")}>
-                <div
-                  data-plasmic-name={"pointsWrapper"}
-                  data-plasmic-override={overrides.pointsWrapper}
-                  className={classNames("all", sty.pointsWrapper, "hww-row")}
-                >
-                  {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
-                    (() => {
-                      try {
-                        return [
-                          "Business Challenge",
-                          "Assessment",
-                          "Tailored Program"
-                        ];
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return [];
-                        }
-                        throw e;
-                      }
-                    })()
-                  ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                    const currentItem = __plasmic_item_0;
-                    const currentIndex = __plasmic_idx_0;
-                    return (
-                      <ScrollSection
-                        animationClassName={""}
-                        className={classNames(
-                          "__wab_instance",
-                          sty.scrollSection__wV32O
-                        )}
-                        ease={"power2.inOut"}
-                        end={"top 60%"}
-                        fromBlur={0}
-                        fromOpacity={0}
-                        fromRotation={0}
-                        fromRotationX={0}
-                        fromRotationY={0}
-                        fromScale={1}
-                        fromX={0}
-                        fromY={(() => {
-                          try {
-                            return currentIndex === 0
-                              ? "30px"
-                              : currentIndex === 1
-                                ? "60px"
-                                : "120px";
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return 0;
-                            }
-                            throw e;
-                          }
-                        })()}
-                        key={currentIndex}
-                        markers={false}
-                        perspective={1000}
-                        pin={false}
-                        scrub={0.5}
-                        start={"top bottom"}
-                        toBlur={0}
-                        toOpacity={1}
-                        toRotation={0}
-                        toRotationX={0}
-                        toRotationY={0}
-                        toScale={1}
-                        toX={0}
-                        toY={0}
-                        transformOrigin={"center center"}
-                      >
-                        <HwwCard
-                          className={classNames(
-                            "__wab_instance",
-                            sty.hwwCard__hFnNy
-                          )}
-                          currentIndex={currentIndex}
-                          currentItem={currentItem}
-                        />
-                      </ScrollSection>
-                    );
-                  })}
-                </div>
-                <div
-                  data-plasmic-name={"pointsWrapper3"}
-                  data-plasmic-override={overrides.pointsWrapper3}
-                  className={classNames("all", sty.pointsWrapper3, "hww-row")}
-                >
-                  {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
-                    (() => {
-                      try {
-                        return ["Practice", "Behavior Change", "Results"];
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return [];
-                        }
-                        throw e;
-                      }
-                    })()
-                  ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                    const currentItem = __plasmic_item_0;
-                    const currentIndex = __plasmic_idx_0;
-                    return (
-                      <ScrollSection
-                        animationClassName={""}
-                        className={classNames(
-                          "__wab_instance",
-                          sty.scrollSection___93AAj
-                        )}
-                        ease={"power2.inOut"}
-                        end={"top 55%"}
-                        fromBlur={0}
-                        fromOpacity={0}
-                        fromRotation={0}
-                        fromRotationX={0}
-                        fromRotationY={0}
-                        fromScale={1}
-                        fromX={0}
-                        fromY={(() => {
-                          try {
-                            return currentIndex === 0
-                              ? "30px"
-                              : currentIndex === 1
-                                ? "60px"
-                                : "120px";
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return 0;
-                            }
-                            throw e;
-                          }
-                        })()}
-                        key={currentIndex}
-                        markers={false}
-                        perspective={1000}
-                        pin={false}
-                        scrub={0.5}
-                        start={"top 95%"}
-                        toBlur={0}
-                        toOpacity={1}
-                        toRotation={0}
-                        toRotationX={0}
-                        toRotationY={0}
-                        toScale={1}
-                        toX={0}
-                        toY={0}
-                        transformOrigin={"center center"}
-                      >
-                        <HwwCard
-                          className={classNames(
-                            "__wab_instance",
-                            sty.hwwCard__fU4Sk
-                          )}
-                          currentIndex={currentIndex}
-                          currentItem={currentItem}
-                          last={(() => {
-                            try {
-                              return currentIndex === 2;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return [];
-                              }
-                              throw e;
-                            }
-                          })()}
-                          secondRow={true}
-                        />
-                      </ScrollSection>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-            <div
-              data-plasmic-name={"provenProgram"}
-              data-plasmic-override={overrides.provenProgram}
-              className={classNames("all", sty.provenProgram)}
-            >
-              <div className={classNames("all", sty.freeBox__dmP4Z)}>
-                <div className={classNames("all", sty.freeBox__xxXts)}>
-                  <div
-                    className={classNames("all", "__wab_text", sty.text__hJiYd)}
-                  >
-                    {"Or start with a proven program."}
-                  </div>
-                  <BtnSecond
-                    className={classNames(
-                      "__wab_instance",
-                      sty.btnSecond___35NXt
-                    )}
-                    text={"Explore"}
-                  />
-                </div>
-                <div
-                  className={classNames("all", "__wab_text", sty.text__h3PEh)}
-                >
-                  {
-                    "Explore existing training programs for your team's development needs."
-                  }
-                </div>
-              </div>
-            </div>
-          </div>
           {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
             (() => {
               try {
@@ -833,10 +601,9 @@ function PlasmicHomepage__RenderFunc(props: {
                       />
 
                       <BtnSecond
-                        className={classNames(
-                          "__wab_instance",
-                          sty.btnSecond__vUlDc
-                        )}
+                        data-plasmic-name={"btnSecond"}
+                        data-plasmic-override={overrides.btnSecond}
+                        className={classNames("__wab_instance", sty.btnSecond)}
                         text={(() => {
                           try {
                             return currentItem.shared_block.btnText;
@@ -1011,11 +778,10 @@ function PlasmicHomepage__RenderFunc(props: {
                 const currentIndex = __plasmic_idx_0;
                 return (
                   <ScrollSection
+                    data-plasmic-name={"scrollSection"}
+                    data-plasmic-override={overrides.scrollSection}
                     animationClassName={""}
-                    className={classNames(
-                      "__wab_instance",
-                      sty.scrollSection__ki0Oa
-                    )}
+                    className={classNames("__wab_instance", sty.scrollSection)}
                     ease={"power2.inOut"}
                     end={"top 50%"}
                     fromBlur={0}
@@ -1206,18 +972,17 @@ const PlasmicDescendants = {
     "contactSheet",
     "content",
     "howWeWorkSection",
-    "pointsWrapper",
-    "pointsWrapper3",
-    "provenProgram",
     "dynamicBlock",
     "basicCardSection",
     "cardWrapper",
     "card",
     "optimizedImage",
     "leadershipSection2",
+    "btnSecond",
     "about13",
     "basicCardSection2",
     "cardWrapper2",
+    "scrollSection",
     "card2",
     "point",
     "formSection",
@@ -1227,10 +992,7 @@ const PlasmicDescendants = {
   heroSection: ["heroSection", "contactSheet", "content"],
   contactSheet: ["contactSheet"],
   content: ["content"],
-  howWeWorkSection: ["howWeWorkSection", "pointsWrapper", "pointsWrapper3"],
-  pointsWrapper: ["pointsWrapper"],
-  pointsWrapper3: ["pointsWrapper3"],
-  provenProgram: ["provenProgram"],
+  howWeWorkSection: ["howWeWorkSection"],
   dynamicBlock: [
     "dynamicBlock",
     "basicCardSection",
@@ -1238,6 +1000,7 @@ const PlasmicDescendants = {
     "card",
     "optimizedImage",
     "leadershipSection2",
+    "btnSecond",
     "about13"
   ],
   basicCardSection: [
@@ -1249,10 +1012,18 @@ const PlasmicDescendants = {
   cardWrapper: ["cardWrapper", "card", "optimizedImage"],
   card: ["card", "optimizedImage"],
   optimizedImage: ["optimizedImage"],
-  leadershipSection2: ["leadershipSection2", "about13"],
+  leadershipSection2: ["leadershipSection2", "btnSecond", "about13"],
+  btnSecond: ["btnSecond"],
   about13: ["about13"],
-  basicCardSection2: ["basicCardSection2", "cardWrapper2", "card2", "point"],
-  cardWrapper2: ["cardWrapper2", "card2", "point"],
+  basicCardSection2: [
+    "basicCardSection2",
+    "cardWrapper2",
+    "scrollSection",
+    "card2",
+    "point"
+  ],
+  cardWrapper2: ["cardWrapper2", "scrollSection", "card2", "point"],
+  scrollSection: ["scrollSection", "card2", "point"],
   card2: ["card2", "point"],
   point: ["point"],
   formSection: ["formSection"],
@@ -1267,19 +1038,18 @@ type NodeDefaultElementType = {
   heroSection: "div";
   contactSheet: typeof ContactSheet;
   content: "div";
-  howWeWorkSection: "div";
-  pointsWrapper: "div";
-  pointsWrapper3: "div";
-  provenProgram: "div";
+  howWeWorkSection: typeof HowWeWorkSection;
   dynamicBlock: "div";
   basicCardSection: "div";
   cardWrapper: "div";
   card: "div";
   optimizedImage: typeof OptimizedImage;
   leadershipSection2: "div";
+  btnSecond: typeof BtnSecond;
   about13: typeof About13;
   basicCardSection2: "div";
   cardWrapper2: "div";
+  scrollSection: typeof ScrollSection;
   card2: "div";
   point: "div";
   formSection: typeof FormSection;
@@ -1353,18 +1123,17 @@ export const PlasmicHomepage = Object.assign(
     contactSheet: makeNodeComponent("contactSheet"),
     content: makeNodeComponent("content"),
     howWeWorkSection: makeNodeComponent("howWeWorkSection"),
-    pointsWrapper: makeNodeComponent("pointsWrapper"),
-    pointsWrapper3: makeNodeComponent("pointsWrapper3"),
-    provenProgram: makeNodeComponent("provenProgram"),
     dynamicBlock: makeNodeComponent("dynamicBlock"),
     basicCardSection: makeNodeComponent("basicCardSection"),
     cardWrapper: makeNodeComponent("cardWrapper"),
     card: makeNodeComponent("card"),
     optimizedImage: makeNodeComponent("optimizedImage"),
     leadershipSection2: makeNodeComponent("leadershipSection2"),
+    btnSecond: makeNodeComponent("btnSecond"),
     about13: makeNodeComponent("about13"),
     basicCardSection2: makeNodeComponent("basicCardSection2"),
     cardWrapper2: makeNodeComponent("cardWrapper2"),
+    scrollSection: makeNodeComponent("scrollSection"),
     card2: makeNodeComponent("card2"),
     point: makeNodeComponent("point"),
     formSection: makeNodeComponent("formSection"),

@@ -1903,11 +1903,13 @@ function PlasmicCommunication__RenderFunc(props: {
                       const currentItem = __plasmic_item_0;
                       const currentIndex = __plasmic_idx_0;
                       return (
-                        <div
+                        <h3
                           className={classNames(
                             "all",
+                            "h3",
+                            "h3__5CArW",
                             "__wab_text",
-                            sty.text__anwdI
+                            sty.h3__anwdI
                           )}
                           key={currentIndex}
                         >
@@ -1926,7 +1928,7 @@ function PlasmicCommunication__RenderFunc(props: {
                               }
                             })()}
                           </React.Fragment>
-                        </div>
+                        </h3>
                       );
                     })}
                     <div
@@ -1951,7 +1953,7 @@ function PlasmicCommunication__RenderFunc(props: {
                 }
                 mobileBreakpoint={767}
                 mobileHeadingGap={24}
-                sectionGap={96}
+                sectionGap={32}
                 sections={(_par =>
                   !_par ? [] : Array.isArray(_par) ? _par : [_par])(
                   (() => {
@@ -2093,7 +2095,7 @@ function PlasmicCommunication__RenderFunc(props: {
                   );
                 })}
                 stickyTop={96}
-                switchPoint={35}
+                switchPoint={0}
                 transitionDuration={0.35}
               />
 
@@ -2187,10 +2189,67 @@ function PlasmicCommunication__RenderFunc(props: {
                     data-plasmic-name={"programTopic1"}
                     data-plasmic-override={overrides.programTopic1}
                     className={classNames("all", sty.programTopic1)}
-                    id={"topic-1"}
+                    id={(() => {
+                      try {
+                        return "section-" + currentIndex;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
                     key={currentIndex}
                   >
-                    <div className={classNames("all", sty.freeBox__zXfLr)}>
+                    <div className={classNames("all", sty.freeBox__zXfLr)} />
+
+                    <MotionScrollSection
+                      data-plasmic-name={"motionScrollSection"}
+                      data-plasmic-override={overrides.motionScrollSection}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.motionScrollSection
+                      )}
+                      ease={"power2.inOut"}
+                      fromBlur={0}
+                      fromOpacity={1}
+                      fromRotation={0}
+                      fromRotationX={0}
+                      fromRotationY={0}
+                      fromScale={1}
+                      fromX={0}
+                      fromY={0}
+                      offsetEnd={"end 20px"}
+                      offsetStart={"end 50%"}
+                      perspective={1000}
+                      smoothing={0}
+                      targetSelector={(() => {
+                        try {
+                          return "#section-" + currentIndex;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()}
+                      toBlur={0}
+                      toOpacity={0}
+                      toRotation={0}
+                      toRotationX={0}
+                      toRotationY={0}
+                      toScale={1}
+                      toX={0}
+                      toY={200}
+                      trackContentSize={false}
+                      transformOrigin={"center center"}
+                    >
                       <h3
                         className={classNames(
                           "all",
@@ -2216,45 +2275,8 @@ function PlasmicCommunication__RenderFunc(props: {
                           })()}
                         </React.Fragment>
                       </h3>
-                    </div>
-                    <MotionScrollSection
-                      data-plasmic-name={"motionScrollSection"}
-                      data-plasmic-override={overrides.motionScrollSection}
-                      children={null}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.motionScrollSection
-                      )}
-                      ease={"power2.inOut"}
-                      fromBlur={0}
-                      fromOpacity={0}
-                      fromRotation={0}
-                      fromRotationX={0}
-                      fromRotationY={0}
-                      fromScale={0.95}
-                      fromX={0}
-                      fromY={80}
-                      offsetEnd={"end start"}
-                      offsetStart={"start end"}
-                      perspective={1000}
-                      smoothing={0.5}
-                      targetSelector={"#section-1"}
-                      toBlur={0}
-                      toOpacity={1}
-                      toRotation={0}
-                      toRotationX={0}
-                      toRotationY={0}
-                      toScale={1}
-                      toX={0}
-                      toY={0}
-                      trackContentSize={false}
-                      transformOrigin={"center center"}
-                    />
-
-                    <div
-                      className={classNames("all", sty.freeBox__zgfqe)}
-                      id={"section-1"}
-                    >
+                    </MotionScrollSection>
+                    <div className={classNames("all", sty.freeBox__zgfqe)}>
                       {(_par =>
                         !_par ? [] : Array.isArray(_par) ? _par : [_par])(
                         (() => {
@@ -2814,6 +2836,124 @@ function PlasmicCommunication__RenderFunc(props: {
                       "Online vs. offline public speaking: nuances and how to address them"
                     }
                   </p>
+                </div>
+              </div>
+              <div className={classNames("all", sty.freeBox__dYpor)}>
+                <div className={classNames("all", sty.freeBox__ttloe)}>
+                  {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                    (() => {
+                      try {
+                        return [
+                          {
+                            title: "Assertive Communication",
+                            items: [
+                              "Quality and effectiveness of communication: principles and obstacles",
+                              "Cognitive, emotional, and behavioral traps that hinder communication",
+                              "The nature of assertive communication",
+                              "Balancing assertiveness with emotional sensitivity",
+                              "Analyzing yourself and others: recognizing communication styles and emotional states",
+                              "Building relationships, strengthening boundaries, managing communication",
+                              "Tools for managing communication: empathic listening, feedback, and tools for influencing others"
+                            ]
+                          },
+                          {
+                            title: "Customer-Centric Communication",
+                            items: [
+                              "Trends in client behavior: how has it changed?",
+                              "Managing expectations as a foundation of customer-centricity",
+                              "Explicit and implicit expectations: what's the difference?",
+                              "Inner and outer customer-centricity: how to do both",
+                              "Customer Journey Map: how to apply it to everyday work",
+                              "Managing complaints without losing customer loyalty"
+                            ]
+                          },
+                          {
+                            title: "Negotiation Tools for Today's Context",
+                            items: [
+                              "Effective goal-setting in negotiations",
+                              "Strategic planning: how to plan ahead",
+                              "Understanding your counterparts: how to analyze them",
+                              "Persuasion in negotiation",
+                              "Effective bargaining",
+                              "Countering manipulation and coercion",
+                              "Managing your emotions"
+                            ]
+                          },
+                          {
+                            title: "Effective Persuasion",
+                            items: [
+                              'What is "persuasion"? Two levels of persuasion',
+                              "The psychological foundation for effective persuasion",
+                              "Optimal number of arguments: how many should you choose?",
+                              "How to make your arguments perfectly clear for your audience",
+                              "The secret of logic: how to be sure your speech is logically sound",
+                              "Effective visualization of your persuasion"
+                            ]
+                          },
+                          {
+                            title: "Pitching",
+                            items: [
+                              "What is a pitch? What makes it so unique?",
+                              "Pitch types: idea pitch, founder's pitch, elevator pitch",
+                              "Pitch preparation questions: what to know before you start building your pitch",
+                              "Pitch structure: a step-by-step algorithm",
+                              "Pitching workshop"
+                            ]
+                          },
+                          {
+                            title: "Public Speaking",
+                            items: [
+                              "Analyzing your audience",
+                              "Goal-setting in public speech",
+                              "Structuring your ideas",
+                              "Improving one's delivery: body language, gestures, tone of voice, etc.",
+                              "How to handle any question",
+                              "Online vs. offline public speaking: nuances and how to address them"
+                            ]
+                          }
+                        ];
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()
+                  ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                    const currentItem = __plasmic_item_0;
+                    const currentIndex = __plasmic_idx_0;
+                    return (
+                      <h3
+                        className={classNames(
+                          "all",
+                          "h3",
+                          "h3__5CArW",
+                          "__wab_text",
+                          sty.h3__tdpF
+                        )}
+                        key={currentIndex}
+                      >
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return currentItem.title;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "Section 1";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
+                      </h3>
+                    );
+                  })}
                 </div>
               </div>
               <p

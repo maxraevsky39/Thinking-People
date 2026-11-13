@@ -169,6 +169,19 @@
           "cssFilePath": "plasmic/thinking_people/PlasmicNavbar.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "SQRx18Lz1hYn",
+          "name": "HowWeWorkSection",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicHowWeWorkSection.tsx",
+          "importSpec": {
+            "modulePath": "HowWeWorkSection.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicHowWeWorkSection.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [],

@@ -424,18 +424,6 @@ function PlasmicNavbar__RenderFunc(props: {
               try {
                 return [
                   {
-                    name: "Learning",
-                    link: "https://thinking-people.eu/programs"
-                  },
-                  {
-                    name: "Diagnostics",
-                    link: "https://thinking-people.eu/diagnostics"
-                  },
-                  {
-                    name: "Cases",
-                    link: "https://thinking-people.eu/our-experience"
-                  },
-                  {
                     name: "Our Team",
                     link: "https://thinking-people.eu/experts"
                   },

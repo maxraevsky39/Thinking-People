@@ -22,12 +22,12 @@
         {
           "type": "renderModule",
           "assetId": "Zi_mnrHDL1l9",
-          "checksum": "883a653e5edcc6eabf109822c47b8d30"
+          "checksum": "55712b78dc7811c2fb0132123e93d9c0"
         },
         {
           "type": "cssRules",
           "assetId": "Zi_mnrHDL1l9",
-          "checksum": "883a653e5edcc6eabf109822c47b8d30"
+          "checksum": "55712b78dc7811c2fb0132123e93d9c0"
         },
         {
           "assetId": "5CArWwg3qxRa1A2Avpz5j5",
@@ -117,12 +117,12 @@
         {
           "type": "renderModule",
           "assetId": "wOdb8AoicCeB",
-          "checksum": "9899735f7e0e271d226247c997fff4c0"
+          "checksum": "419d8c2e5598e80372797aa618b04662"
         },
         {
           "type": "cssRules",
           "assetId": "wOdb8AoicCeB",
-          "checksum": "9899735f7e0e271d226247c997fff4c0"
+          "checksum": "419d8c2e5598e80372797aa618b04662"
         },
         {
           "type": "renderModule",
@@ -162,22 +162,32 @@
         {
           "type": "renderModule",
           "assetId": "7oIiUelc00Y9",
-          "checksum": "e1ac7492089a213ec5528d63e6a2be91"
+          "checksum": "05575545649729c0f6579741ded43509"
         },
         {
           "type": "cssRules",
           "assetId": "7oIiUelc00Y9",
-          "checksum": "e1ac7492089a213ec5528d63e6a2be91"
+          "checksum": "05575545649729c0f6579741ded43509"
         },
         {
           "assetId": "5CArWwg3qxRa1A2Avpz5j5",
           "type": "projectCss",
-          "checksum": "19552a45d3601f4271417a92a33c7b1c"
+          "checksum": "d71bc172799314457008fe257439e797"
         },
         {
           "assetId": "5CArWwg3qxRa1A2Avpz5j5",
           "checksum": "6c626aea20ae144429f187ac49b36929",
           "type": "dataTokens"
+        },
+        {
+          "type": "renderModule",
+          "assetId": "SQRx18Lz1hYn",
+          "checksum": "a3dd3a5967c41e605154eac49da5aaf6"
+        },
+        {
+          "type": "cssRules",
+          "assetId": "SQRx18Lz1hYn",
+          "checksum": "a3dd3a5967c41e605154eac49da5aaf6"
         }
       ],
       "codegenVersion": "0.0.3"
