@@ -1154,6 +1154,29 @@ registerComponent<React.ComponentType<any>>(AnimatedFilterGrid, {
   importName: "AnimatedFilterGrid",
 
   props: {
+    layout: {
+      type: "choice",
+      options: ["grid", "masonry"],
+      defaultValue: "grid",
+      displayName: "Layout",
+    },
+    columns: {
+      type: "number", defaultValue: 3, min: 1, max: 12,
+      displayName: "Masonry columns", hidden: (props: any) => props.layout !== "masonry",
+    },
+    tabletColumns: {
+      type: "number", defaultValue: 2, min: 1, max: 12,
+      displayName: "Masonry tablet columns", hidden: (props: any) => props.layout !== "masonry",
+    },
+    mobileColumns: {
+      type: "number", defaultValue: 1, min: 1, max: 12,
+      displayName: "Masonry mobile columns", hidden: (props: any) => props.layout !== "masonry",
+    },
+    gap: {
+      type: "number", defaultValue: 16, min: 0,
+      displayName: "Masonry gap (px)", hidden: (props: any) => props.layout !== "masonry",
+    },
+
     children: {
       type: "slot",
     },
