@@ -2,9 +2,9 @@
 // This file is owned by you, feel free to edit as you see fit.
 import * as React from "react";
 import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-web/lib/host";
-import GlobalContextsProvider from "../../components/plasmic/thinking_people/PlasmicGlobalContextsProvider";
+import GlobalContextsProvider from "../../../components/plasmic/thinking_people/PlasmicGlobalContextsProvider";
 
-import { PlasmicCommunication } from "../../components/plasmic/thinking_people/PlasmicCommunication";
+import { PlasmicCommunication } from "../../../components/plasmic/thinking_people/PlasmicCommunication";
 import { useRouter } from "next/router";
 import { PlasmicQueryDataProvider } from "@plasmicapp/react-web/lib/query";
 
