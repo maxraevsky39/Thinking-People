@@ -6,22 +6,28 @@
   position: relative;
   justify-self: flex-start;
   flex-direction: column;
-  background: var(--token-L3MOQ4h6Pxqz);
+  background: var(--token-LrpHhlLrA2wD);
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
-  padding: 8px 24px;
+  color: var(--token-EiQM1bzsOe9e);
+  font-family: var(--token-NyfZrcORdatl);
+  border-radius: var(--token-KBWwsWTAvqK2);
+  padding: var(--token-sI9gwleT_mai) var(--token-OZAZD-l-J3s2);
 }
 .text {
-  line-height: 100%;
+  font-size: var(--token-k-28lmZ1lA1A);
+  font-weight: 700;
+  line-height: var(--token-vTnE8Xa437lb);
+  letter-spacing: 0;
+  font-style: normal;
+  text-transform: none;
+  color: inherit;
+  font-family: var(--token-NyfZrcORdatl);
   width: auto;
   height: auto;
-  font-size: var(--token-R-ud6gsLyokM);
-  font-family: "Wix Madefor Display";
   position: relative;
   left: auto;
   top: auto;
-  font-weight: 700;
-  border-radius: 4px;
+  border-radius: var(--token-KBWwsWTAvqK2);
 }

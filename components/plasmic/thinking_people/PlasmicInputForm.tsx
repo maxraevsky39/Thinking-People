@@ -174,6 +174,8 @@ function PlasmicInputForm__RenderFunc(props: {
     [$props, $ctx, $refs]
   );
 
+  const globalVariants = _useGlobalVariants();
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,

@@ -110,7 +110,7 @@
           "projectId": "5CArWwg3qxRa1A2Avpz5j5",
           "renderModuleFilePath": "plasmic/thinking_people/PlasmicCommunication.tsx",
           "importSpec": {
-            "modulePath": "../pages/en/communication.tsx"
+            "modulePath": "../pages/learning/[locale]/[slug].tsx"
           },
           "cssFilePath": "plasmic/thinking_people/PlasmicCommunication.module.css",
           "scheme": "blackbox",
@@ -182,6 +182,34 @@
           "cssFilePath": "plasmic/thinking_people/PlasmicHowWeWorkSection.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "NFuSlpSBvOlr",
+          "name": "Cases",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicCases.tsx",
+          "importSpec": {
+            "modulePath": "../pages/[locale]/cases/[slug].tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicCases.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/[locale]/cases/[slug]"
+        },
+        {
+          "id": "TYRKZzvxa8HF",
+          "name": "CasesCollection",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicCasesCollection.tsx",
+          "importSpec": {
+            "modulePath": "../pages/[locale]/cases.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicCasesCollection.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/[locale]/cases"
         }
       ],
       "icons": [],
@@ -433,6 +461,32 @@
         }
       ],
       "customFunctions": []
+    },
+    {
+      "projectId": "xht6ggYXPaEbYDhYJJ7oxU",
+      "projectApiToken": "KIMQgJfi79CvxnH9zBJcMKtcz2wYzpsoPNukHQwsVXI7zV3eLoReOs5nSRMsZTOk1xHvUywnPdg6Z41KJg",
+      "projectName": "@plasmicpkgs/fetch",
+      "version": ">0.0.0",
+      "cssFilePath": "plasmic/plasmicpkgs_fetch/plasmic.css",
+      "components": [],
+      "icons": [],
+      "images": [],
+      "indirect": true,
+      "globalContextsFilePath": "",
+      "splitsProviderFilePath": "",
+      "styleTokensProviderFilePath": "plasmic/plasmicpkgs_fetch/PlasmicStyleTokensProvider.tsx",
+      "dataTokensFilePath": "",
+      "projectModuleFilePath": "plasmic/plasmicpkgs_fetch/plasmic.tsx",
+      "codeComponents": [],
+      "customFunctions": [
+        {
+          "defaultExport": false,
+          "id": "fetch",
+          "importPath": "@plasmicpkgs/fetch",
+          "name": "fetch",
+          "namespace": null
+        }
+      ]
     }
   ],
   "globalVariants": {
@@ -450,6 +504,6 @@
   "nextjsConfig": {
     "pagesDir": "../pages"
   },
-  "cliVersion": "0.1.385",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.385/dist/plasmic.schema.json"
+  "cliVersion": "0.1.386",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.386/dist/plasmic.schema.json"
 }

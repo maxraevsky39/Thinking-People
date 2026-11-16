@@ -240,6 +240,8 @@ function PlasmicHomepage__RenderFunc(props: {
 
   const $q = usePlasmicQueries(serverQueryTree, { $ctx, $props, $state: null });
 
+  const globalVariants = _useGlobalVariants();
+
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy($q),
     $ctx as PageCtx
@@ -707,6 +709,11 @@ function PlasmicHomepage__RenderFunc(props: {
                         [sty["pcls_-WPBQt4ciS2E"]]: true
                       })}
                       wordClassName={classNames({
+                        [sty["pcls_HY93NId03wbx"]]: hasVariant(
+                          globalVariants,
+                          "screen",
+                          "mobile"
+                        ),
                         [sty["pcls_LI1AlQPfbOpX"]]: true
                       })}
                       zoom={0.04}
@@ -731,6 +738,11 @@ function PlasmicHomepage__RenderFunc(props: {
               data-plasmic-name={"cardWrapper2"}
               data-plasmic-override={overrides.cardWrapper2}
               className={classNames("all", sty.cardWrapper2)}
+              style={
+                hasVariant(globalVariants, "screen", "mobile")
+                  ? { gridTemplateColumns: "1fr" }
+                  : undefined
+              }
             >
               {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                 (() => {

@@ -8,27 +8,38 @@
   height: auto;
   max-width: 100%;
   justify-self: flex-start;
+  color: var(--token-EiQM1bzsOe9e);
+  font-family: var(--token-NyfZrcORdatl);
   padding: 0px;
 }
+.rootleft {
+  justify-content: flex-start;
+  align-items: center;
+}
 .h2 {
+  font-size: var(--token-jh6c66tfMfly);
+  font-weight: 700;
+  line-height: var(--token-F2bdi9vpRWco);
+  letter-spacing: -0.025em;
+  font-style: normal;
+  text-transform: none;
+  color: inherit;
+  font-family: var(--token-NyfZrcORdatl);
   width: auto;
   height: auto;
   max-width: 100%;
-  font-family: "Wix Madefor Display";
-  font-size: 45px;
-  font-weight: 700;
   text-align: center;
   z-index: 2;
 }
 .h2white {
-  color: var(--token-ojJ1CdgTqXk8);
+  color: var(--token-IT77AyB9SmEq);
 }
 .freeBox {
   display: block;
   position: absolute;
   width: 105%;
   height: 8px;
-  background: var(--token-ZodPwl1Os-DS);
+  background: var(--token-Bosj2MGV4qhO);
   left: 50%;
   top: auto;
   right: auto;

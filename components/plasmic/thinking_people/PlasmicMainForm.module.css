@@ -7,7 +7,9 @@
   height: auto;
   max-width: 100%;
   position: relative;
-  row-gap: 12px;
+  row-gap: var(--token-mnlEqlMZxQPG);
+  color: var(--token-EiQM1bzsOe9e);
+  font-family: var(--token-NyfZrcORdatl);
   min-width: 0;
   padding: 0px;
 }
@@ -24,22 +26,38 @@
   animation: none;
 }
 .text__fmmuJ {
+  font-size: var(--token-iV7pzmTyxly4);
+  font-weight: 400;
+  line-height: var(--token-W3llFhI2gLwT);
+  letter-spacing: 0;
+  font-style: normal;
+  text-transform: none;
+  color: inherit;
+  font-family: var(--token-NyfZrcORdatl);
   position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
   background: #f26161;
   min-width: 0;
-  padding: 12px;
+  padding: var(--token-mnlEqlMZxQPG);
 }
 .text___2Uazb {
+  font-size: var(--token-iV7pzmTyxly4);
+  font-weight: 400;
+  line-height: var(--token-W3llFhI2gLwT);
+  letter-spacing: 0;
+  font-style: normal;
+  text-transform: none;
+  color: inherit;
+  font-family: var(--token-NyfZrcORdatl);
   position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
   background: #cfffd6;
   min-width: 0;
-  padding: 12px;
+  padding: var(--token-mnlEqlMZxQPG);
 }
 .btnSecond:global(.__wab_instance) {
   max-width: 100%;

@@ -7,9 +7,19 @@
   width: 100%;
   height: auto;
   max-width: 100%;
+  color: var(--token-EiQM1bzsOe9e);
+  font-family: var(--token-NyfZrcORdatl);
   min-width: 0;
 }
 .frame268 {
+  font-size: var(--token-iV7pzmTyxly4);
+  font-weight: 400;
+  line-height: var(--token-W3llFhI2gLwT);
+  letter-spacing: 0;
+  font-style: normal;
+  text-transform: none;
+  color: var(--token-EiQM1bzsOe9e);
+  font-family: var(--token-NyfZrcORdatl);
   animation: none;
   background: rgba(255, 255, 255, 1);
   height: 61px;
@@ -20,18 +30,21 @@
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  line-height: 90.18%;
-  color: var(--token-5HSauQvnqWJr);
-  font-family: "Golos UI VF";
-  font-size: var(--token-N__cFi959EAE);
-  letter-spacing: 0.5%;
   min-width: 0;
-  border-radius: 4px;
-  padding: 28px 16px 10px;
+  border-radius: var(--token-KBWwsWTAvqK2);
+  padding: 28px var(--token-sm4uOpSrGgIV) 10px;
   border-width: 1px;
   border-style: none;
 }
 .frame274 {
+  font-size: var(--token-iV7pzmTyxly4);
+  font-weight: 400;
+  line-height: var(--token-W3llFhI2gLwT);
+  letter-spacing: 0;
+  font-style: normal;
+  text-transform: none;
+  color: var(--token-EiQM1bzsOe9e);
+  font-family: var(--token-NyfZrcORdatl);
   animation: none;
   background: rgba(255, 255, 255, 1);
   height: auto;
@@ -45,13 +58,8 @@
   width: 100%;
   min-width: 100%;
   max-width: 100%;
-  color: var(--token-5HSauQvnqWJr);
-  font-family: "Golos UI VF";
-  font-size: var(--token-N__cFi959EAE);
-  line-height: 115%;
-  letter-spacing: 0.5%;
-  border-radius: 8px;
-  padding: 28px 16px 20px;
+  border-radius: var(--token-WNUOAwSmlV02);
+  padding: 28px var(--token-sm4uOpSrGgIV) 20px;
   border-width: 1px;
   border-style: none;
 }
@@ -59,6 +67,14 @@
   display: flex;
 }
 .label {
+  font-size: var(--token-qcuMvdsuei0z);
+  font-weight: 600;
+  line-height: var(--token-W_DKt57Icmo_);
+  letter-spacing: 0;
+  font-style: normal;
+  text-transform: none;
+  color: var(--token-Cxr_oq7BrLxz);
+  font-family: var(--token-NyfZrcORdatl);
   position: absolute;
   width: auto;
   height: auto;
@@ -66,11 +82,6 @@
   left: 16px;
   top: 50%;
   transform: translate3d(0px, -50%, 0px);
-  line-height: 115%;
-  color: var(--token-Sn34tkCxHfuY);
-  font-family: "Wix Madefor Display";
-  font-size: var(--token-tdb1P_3CpWrk);
-  letter-spacing: 0.5%;
 }
 .root:focus .label {
   transform: scale3d(0.7, 0.7, 1) translate3d(0px, -50%, 0px);

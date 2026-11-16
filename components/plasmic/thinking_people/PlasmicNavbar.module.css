@@ -8,6 +8,8 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  color: var(--token-EiQM1bzsOe9e);
+  font-family: var(--token-NyfZrcORdatl);
   padding: 0px;
 }
 .motionScrollSection__ymsuk:global(.__wab_instance) {
@@ -25,26 +27,28 @@
   width: 100%;
   height: 80px;
   max-width: 100%;
-  background: var(--token-ojJ1CdgTqXk8);
+  background: var(--token-KbpWJO-t_Y4e);
   min-width: 0;
   padding: 0px;
 }
 .menu {
   display: flex;
   flex-direction: row;
-  position: relative;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  max-width: var(--token-vwjor3Wp-O4E);
+  margin-left: auto;
+  margin-right: auto;
+  column-gap: var(--token-IOr-hWik6vtY);
+  position: relative;
   height: 100%;
-  max-width: 1244px;
   top: auto;
   left: auto;
-  column-gap: 48px;
   z-index: 2;
   min-width: 0;
   min-height: 0;
-  padding: 0px 12px;
+  padding: 0px var(--token-hQUcYWzCW8ia);
 }
 .menuPoints {
   display: flex;
@@ -55,7 +59,7 @@
   width: auto;
   height: auto;
   max-width: 100%;
-  column-gap: 24px;
+  column-gap: var(--token-OZAZD-l-J3s2);
   padding: 0px;
 }
 @media (max-width: 511px) {
@@ -64,13 +68,17 @@
   }
 }
 .link__pa4Hy {
-  line-height: 115%;
+  font-size: var(--token-0RcsDVt_keHG);
+  font-weight: 400;
+  line-height: var(--token-W3llFhI2gLwT);
+  letter-spacing: 0;
+  font-style: normal;
+  text-transform: none;
+  color: var(--token-EiQM1bzsOe9e);
+  font-family: var(--token-NyfZrcORdatl);
   width: auto;
   height: auto;
   max-width: 80%;
-  font-size: var(--token-R-ud6gsLyokM);
-  font-family: "Wix Madefor Display";
-  color: var(--token-5HSauQvnqWJr);
 }
 .logo {
   display: flex;
@@ -107,7 +115,7 @@
   width: auto;
   height: auto;
   max-width: 100%;
-  column-gap: 24px;
+  column-gap: var(--token-OZAZD-l-J3s2);
   padding: 0px;
 }
 @media (max-width: 511px) {
@@ -116,11 +124,15 @@
   }
 }
 .link__bggJn {
-  line-height: 115%;
+  font-size: var(--token-0RcsDVt_keHG);
+  font-weight: 400;
+  line-height: var(--token-W3llFhI2gLwT);
+  letter-spacing: 0;
+  font-style: normal;
+  text-transform: none;
+  color: var(--token-EiQM1bzsOe9e);
+  font-family: var(--token-NyfZrcORdatl);
   width: auto;
   height: auto;
   max-width: 80%;
-  font-size: var(--token-R-ud6gsLyokM);
-  font-family: "Wix Madefor Display";
-  color: var(--token-5HSauQvnqWJr);
 }

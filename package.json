@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
-    "@plasmicapp/cli": "^0.1.385",
+    "@plasmicapp/cli": "^0.1.386",
     "@plasmicapp/react-web": "^1.0.40",
     "@plasmicpkgs/graphql": "^0.0.50",
     "@plasmicpkgs/plasmic-embed-css": "^0.1.248",

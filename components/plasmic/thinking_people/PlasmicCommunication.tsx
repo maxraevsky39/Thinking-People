@@ -59,15 +59,30 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { useMutablePlasmicQueryData } from "@plasmicapp/query";
+
+import { usePlasmicQueries } from "@plasmicapp/react-web/lib/data-sources";
+import type {
+  PlasmicQuery,
+  PlasmicQueryResult
+} from "@plasmicapp/react-web/lib/data-sources";
+import type { QueryComponentNode } from "@plasmicapp/react-web/lib/data-sources";
+
+import Navbar from "../../Navbar"; // plasmic-import: 7oIiUelc00Y9/component
+import H2 from "../../H2"; // plasmic-import: Yl_PbqD71djV/component
+import HowWeWorkSection from "../../HowWeWorkSection"; // plasmic-import: SQRx18Lz1hYn/component
 import { ScrollSectionHeadings } from "../../ScrollSectionHeadings"; // plasmic-import: -3PvrcYmT7Js/codeComponent
 import { MotionScrollSection } from "../../MotionScrollSection"; // plasmic-import: za2mx6yd4yJR/codeComponent
-import BtnSecond from "../../BtnSecond"; // plasmic-import: gKCTmQN19iqg/component
+import FormSection from "../../FormSection"; // plasmic-import: fw8uA1_Fbkxj/component
+import FooterSection from "../../FooterSection"; // plasmic-import: DEX99TX1WJZn/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import sty from "./PlasmicCommunication.module.css"; // plasmic-import: wOdb8AoicCeB/css
+
+import { fetchGraphQL as __fn_fetchGraphQL } from "@plasmicpkgs/graphql";
 
 const emptyProxy: any = new Proxy(() => "", {
   get(_, prop) {
@@ -123,16 +138,15 @@ export const PlasmicCommunication__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicCommunication__OverridesType = {
   root?: Flex__<"div">;
-  nav?: Flex__<"nav">;
+  navbar?: Flex__<typeof Navbar>;
   communication?: Flex__<"section">;
   h1?: Flex__<"h1">;
   challenges?: Flex__<"section">;
-  approach?: Flex__<"section">;
+  howWeWorkSection?: Flex__<typeof HowWeWorkSection>;
   results?: Flex__<"section">;
   programs?: Flex__<"section">;
   scrollSectionHeadings?: Flex__<typeof ScrollSectionHeadings>;
   programTopic1?: Flex__<"div">;
-  motionScrollSection?: Flex__<typeof MotionScrollSection>;
   programTopic2?: Flex__<"div">;
   programTopic3?: Flex__<"div">;
   programTopic4?: Flex__<"div">;
@@ -141,20 +155,54 @@ export type PlasmicCommunication__OverridesType = {
   formats?: Flex__<"section">;
   process?: Flex__<"section">;
   cases?: Flex__<"section">;
-  consultation?: Flex__<"section">;
-  textbox?: Flex__<"input">;
-  textbox2?: Flex__<"input">;
-  textbox3?: Flex__<"input">;
-  textbox4?: Flex__<"input">;
-  textbox5?: Flex__<"input">;
-  textbox6?: Flex__<"input">;
-  communicationSubmit?: Flex__<typeof BtnSecond>;
-  footer?: Flex__<"footer">;
+  formSection?: Flex__<typeof FormSection>;
+  footerSection?: Flex__<typeof FooterSection>;
 };
 
 export interface DefaultCommunicationProps {}
 
-const $$ = {};
+const $$ = {
+  fetchGraphQL: __fn_fetchGraphQL
+};
+
+export const serverQueryTree: QueryComponentNode = {
+  type: "component",
+  queries: {
+    programs: {
+      id: "fetchGraphQL",
+      fn: $$.fetchGraphQL,
+      args: ({ $q, $props, $ctx, $state }) => [
+        (() => {
+          const __composite = {
+            method: "POST",
+            url: "https://staging-strapi-tp.brainfitness.info/graphql/",
+            headers: null,
+            varOverrides: null,
+            request: null
+          };
+          __composite["headers"] = {
+            Authorization:
+              "Bearer 8585dac783096db3353adbe6700152577354351428bd76c7f4df05cd75a2bff935a8552cc96ff76b3ffdd86213571fcb8c3955d8688752ca5de19b6f6a40b964f700a8a071af500d3e9fa6332440b1298a4a5293c675a08504f3d9bd0294548abc7d11d05d49efa5b98bcbf90ef68299d4ed9985790bc4b4cde7d64e7a325dfa",
+            "Content-Type": "application/json"
+          };
+          __composite["varOverrides"] = {
+            local: $ctx.params.locale,
+            slug: $ctx.params.slug
+          };
+          __composite["request"] = {
+            query:
+              "query Directions($local: I18NLocaleCode!, $slug: String!) {\n  directions(filters: {slug: {eq: $slug}}, locale: $local) {\n    documentId\n    title\n    slug\n    sections {\n      description\n      footerText\n      groups {\n        description\n        key\n        title\n        cards {\n          btnLink\n          btnText\n          description\n          link {\n            href\n            id\n            label\n          }\n          title\n          image {\n            blurDataURL\n            height\n            url\n            width\n          }\n        }\n      }\n      key\n      title\n      variant\n      id\n      cards {\n        btnLink\n        btnText\n        description\n        id\n        link {\n          href\n          label\n          id\n        }\n        title\n        image {\n          blurDataURL\n          height\n          url\n          width\n        }\n        icon {\n          blurDataURL\n          url\n          width\n          height\n        }\n      }\n    }\n    hero {\n      description\n      eyebrow\n      id\n      title\n      link {\n        href\n        id\n        label\n      }\n      items {\n        btnLink\n        btnText\n        description\n        id\n        link {\n          href\n          id\n          label\n        }\n        title\n      }\n      image {\n        blurDataURL\n        width\n        url\n        height\n      }\n    }\n  }\n}",
+            variables: { local: "en", slug: "sdfsf" }
+          };
+          return __composite;
+        })()
+      ]
+    }
+  },
+  propsContext: {},
+  stateSpecs: [],
+  children: []
+};
 
 function useNextRouter() {
   try {
@@ -193,58 +241,12 @@ function PlasmicCommunication__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
-    () => [
-      {
-        path: "textbox.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
-      },
-      {
-        path: "textbox2.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
-      },
-      {
-        path: "textbox3.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
-      },
-      {
-        path: "textbox4.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
-      },
-      {
-        path: "textbox5.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
-      },
-      {
-        path: "textbox6.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
-      }
-    ],
-    [$props, $ctx, $refs]
-  );
+  const $q = usePlasmicQueries(serverQueryTree, { $ctx, $props, $state: null });
 
-  const $state = useDollarState(stateSpecs, {
-    $props,
-    $ctx,
-    $queries: {},
-    $q: {},
-    $refs
-  });
+  const globalVariants = _useGlobalVariants();
 
   const pageMetadata = generateDynamicMetadata(
-    wrapQueriesWithLoadingProxy({}),
+    wrapQueriesWithLoadingProxy($q),
     $ctx as PageCtx
   );
 
@@ -299,97 +301,13 @@ function PlasmicCommunication__RenderFunc(props: {
             sty.root
           )}
         >
-          <nav
-            data-plasmic-name={"nav"}
-            data-plasmic-override={overrides.nav}
-            className={classNames("all", sty.nav)}
-          >
-            <PlasmicLink__
-              className={classNames("all", "a", "a__5CArW", sty.link__u797U)}
-              component={Link}
-              href={`/${encodeURIComponent("en")}/test`}
-              legacyBehavior={false}
-              platform={"nextjs"}
-            >
-              <span
-                className={classNames(
-                  "all",
-                  "span",
-                  "span__5CArW",
-                  "__wab_text",
-                  sty.span__klay4
-                )}
-              >
-                {"THINKING"}
-              </span>
-              <span
-                className={classNames(
-                  "all",
-                  "span",
-                  "span__5CArW",
-                  "__wab_text",
-                  sty.span__rfoT
-                )}
-              >
-                {"PEOPLE"}
-              </span>
-            </PlasmicLink__>
-            <div className={classNames("all", sty.freeBox___9Rs8K)}>
-              <PlasmicLink__
-                className={classNames("all", "a", "a__5CArW", sty.link__tXKpB)}
-                component={Link}
-                href={"#programs"}
-                legacyBehavior={false}
-                platform={"nextjs"}
-              >
-                <span
-                  className={classNames(
-                    "all",
-                    "span",
-                    "span__5CArW",
-                    "__wab_text",
-                    sty.span__hqEh9
-                  )}
-                >
-                  {"Programs"}
-                </span>
-              </PlasmicLink__>
-              <PlasmicLink__
-                className={classNames("all", "a", "a__5CArW", sty.link__pjvJt)}
-                component={Link}
-                href={"#cases"}
-                legacyBehavior={false}
-                platform={"nextjs"}
-              >
-                <span
-                  className={classNames(
-                    "all",
-                    "span",
-                    "span__5CArW",
-                    "__wab_text",
-                    sty.span__d1Ku8
-                  )}
-                >
-                  {"Cases"}
-                </span>
-              </PlasmicLink__>
-              <PlasmicLink__
-                className={classNames(
-                  "all",
-                  "a",
-                  "a__5CArW",
-                  "__wab_text",
-                  sty.link__iwfNs
-                )}
-                component={Link}
-                href={"#consultation"}
-                legacyBehavior={false}
-                platform={"nextjs"}
-              >
-                {"Let's talk \u2197"}
-              </PlasmicLink__>
-            </div>
-          </nav>
+          <Navbar
+            data-plasmic-name={"navbar"}
+            data-plasmic-override={overrides.navbar}
+            className={classNames("__wab_instance", sty.navbar)}
+            noAnimation={true}
+          />
+
           <section
             data-plasmic-name={"communication"}
             data-plasmic-override={overrides.communication}
@@ -408,7 +326,11 @@ function PlasmicCommunication__RenderFunc(props: {
                       sty.span__pCqy1
                     )}
                   >
-                    {"LEARNING / COMMUNICATION"}
+                    <React.Fragment>
+                      {"LEARNING / " +
+                        ($q.programs.data?.body?.data?.directions?.[0]?.hero
+                          ?.eyebrow ?? "")}
+                    </React.Fragment>
                   </span>
                   <h1
                     data-plasmic-name={"h1"}
@@ -421,9 +343,10 @@ function PlasmicCommunication__RenderFunc(props: {
                       sty.h1
                     )}
                   >
-                    {
-                      "People who get their message across \u2014 and get the results they need"
-                    }
+                    <React.Fragment>
+                      {$q.programs.data?.body?.data?.directions?.[0]?.hero
+                        ?.title ?? ""}
+                    </React.Fragment>
                   </h1>
                   <p
                     className={classNames(
@@ -434,9 +357,10 @@ function PlasmicCommunication__RenderFunc(props: {
                       sty.p___0RFo6
                     )}
                   >
-                    {
-                      "We build communication programs around specific business tasks \u2014 from holding a hard conversation assertively, to negotiating with confidence, to persuading and pitching ideas that actually get heard."
-                    }
+                    <React.Fragment>
+                      {$q.programs.data?.body?.data?.directions?.[0]?.hero
+                        ?.description ?? ""}
+                    </React.Fragment>
                   </p>
                   <PlasmicLink__
                     className={classNames(
@@ -446,7 +370,10 @@ function PlasmicCommunication__RenderFunc(props: {
                       sty.link__db39
                     )}
                     component={Link}
-                    href={"#consultation"}
+                    href={
+                      $q.programs.data?.body?.data?.directions?.[0]?.hero?.link
+                        ?.href || "#consultation"
+                    }
                     legacyBehavior={false}
                     platform={"nextjs"}
                   >
@@ -459,7 +386,10 @@ function PlasmicCommunication__RenderFunc(props: {
                         sty.span__zwwyA
                       )}
                     >
-                      {"Discuss the task"}
+                      <React.Fragment>
+                        {$q.programs.data?.body?.data?.directions?.[0]?.hero
+                          ?.link?.label ?? ""}
+                      </React.Fragment>
                     </span>
                     <span
                       className={classNames(
@@ -507,96 +437,35 @@ function PlasmicCommunication__RenderFunc(props: {
                 </div>
               </div>
               <div className={classNames("all", sty.freeBox__aoEun)}>
-                <PlasmicLink__
-                  className={classNames(
-                    "all",
-                    "a",
-                    "a__5CArW",
-                    "__wab_text",
-                    sty.link__rxNxG
-                  )}
-                  component={Link}
-                  href={"#topic-1"}
-                  legacyBehavior={false}
-                  platform={"nextjs"}
-                >
-                  {"Assertive Communication"}
-                </PlasmicLink__>
-                <PlasmicLink__
-                  className={classNames(
-                    "all",
-                    "a",
-                    "a__5CArW",
-                    "__wab_text",
-                    sty.link__mDcyW
-                  )}
-                  component={Link}
-                  href={"#topic-2"}
-                  legacyBehavior={false}
-                  platform={"nextjs"}
-                >
-                  {"Customer-Centric Communication"}
-                </PlasmicLink__>
-                <PlasmicLink__
-                  className={classNames(
-                    "all",
-                    "a",
-                    "a__5CArW",
-                    "__wab_text",
-                    sty.link__vIgFk
-                  )}
-                  component={Link}
-                  href={"#topic-3"}
-                  legacyBehavior={false}
-                  platform={"nextjs"}
-                >
-                  {"Negotiation"}
-                </PlasmicLink__>
-                <PlasmicLink__
-                  className={classNames(
-                    "all",
-                    "a",
-                    "a__5CArW",
-                    "__wab_text",
-                    sty.link__qryuA
-                  )}
-                  component={Link}
-                  href={"#topic-4"}
-                  legacyBehavior={false}
-                  platform={"nextjs"}
-                >
-                  {"Effective Persuasion"}
-                </PlasmicLink__>
-                <PlasmicLink__
-                  className={classNames(
-                    "all",
-                    "a",
-                    "a__5CArW",
-                    "__wab_text",
-                    sty.link__a2PV
-                  )}
-                  component={Link}
-                  href={"#topic-5"}
-                  legacyBehavior={false}
-                  platform={"nextjs"}
-                >
-                  {"Pitching"}
-                </PlasmicLink__>
-                <PlasmicLink__
-                  className={classNames(
-                    "all",
-                    "a",
-                    "a__5CArW",
-                    "__wab_text",
-                    sty.link__bShOy
-                  )}
-                  component={Link}
-                  href={"#topic-6"}
-                  legacyBehavior={false}
-                  platform={"nextjs"}
-                >
-                  {"Public Speaking"}
-                </PlasmicLink__>
+                {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                  $q.programs.data?.body?.data?.directions?.[0]?.hero?.items ??
+                    []
+                ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                  const heroItem = __plasmic_item_0;
+                  const heroIndex = __plasmic_idx_0;
+                  return (
+                    <PlasmicLink__
+                      className={classNames(
+                        "all",
+                        "a",
+                        "a__5CArW",
+                        "__wab_text",
+                        sty.link__rxNxG
+                      )}
+                      component={Link}
+                      href={
+                        heroItem.link?.href ||
+                        heroItem.btnLink ||
+                        "#topic-" + (heroIndex + 1)
+                      }
+                      key={heroIndex}
+                      legacyBehavior={false}
+                      platform={"nextjs"}
+                    >
+                      <React.Fragment>{heroItem.title}</React.Fragment>
+                    </PlasmicLink__>
+                  );
+                })}
               </div>
             </div>
           </section>
@@ -605,885 +474,116 @@ function PlasmicCommunication__RenderFunc(props: {
             data-plasmic-override={overrides.challenges}
             className={classNames("all", sty.challenges)}
           >
-            <div className={classNames("all", sty.freeBox___0H2Cz)}>
-              <div className={classNames("all", sty.freeBox__h1DFp)}>
-                <span
-                  className={classNames(
-                    "all",
-                    "span",
-                    "span__5CArW",
-                    "__wab_text",
-                    sty.span__mhcVo
-                  )}
-                >
-                  {"01 / REAL CHALLENGES"}
-                </span>
-                <h2
-                  className={classNames(
-                    "all",
-                    "h2",
-                    "h2__5CArW",
-                    "__wab_text",
-                    sty.h2__hFnit
-                  )}
-                >
-                  {"Real challenges we solve"}
-                </h2>
-              </div>
-              <div className={classNames("all", sty.freeBox__w5IVm)}>
-                <article className={classNames("all", sty.article__fi7Wl)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span___4NfYg
-                    )}
-                  >
-                    {"01 / PROGRAM"}
-                  </span>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__afkFr
-                    )}
-                  >
-                    {"Assertive Communication"}
-                  </h3>
-                  <div className={classNames("all", sty.freeBox__lHNu)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__vp5SI
-                      )}
-                    >
-                      {
-                        "Employees avoid difficult conversations \u2014 or become aggressive instead"
-                      }
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__rmUG
-                      )}
-                    >
-                      {
-                        "They either dodge conflict altogether or default to aggression the moment a conversation gets tense."
-                      }
-                    </p>
-                  </div>
-                  <div className={classNames("all", sty.freeBox__xJcc)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__jBb9V
-                      )}
-                    >
-                      {"Poor communication is quietly burning people out"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__eR5Nn
-                      )}
-                    >
-                      {
-                        "Employees struggle to communicate efficiently with colleagues and clients, and the strain adds up over time."
-                      }
-                    </p>
-                  </div>
-                  <div className={classNames("all", sty.freeBox__riw87)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__noS4H
-                      )}
-                    >
-                      {"Working relationships stay shallow and short-lived"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__srDtR
-                      )}
-                    >
-                      {
-                        "Without assertive communication skills, employees fail to build strong, long-lasting relationships with colleagues or clients."
-                      }
-                    </p>
-                  </div>
-                </article>
-                <article className={classNames("all", sty.article__boETv)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__lk5Oa
-                    )}
-                  >
-                    {"02 / PROGRAM"}
-                  </span>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__bqUNu
-                    )}
-                  >
-                    {"Customer-Centric Communication"}
-                  </h3>
-                  <div className={classNames("all", sty.freeBox__bptxC)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__xpFyp
-                      )}
-                    >
-                      {"Managers can't prevent conflicts with clients"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__vfRl6
-                      )}
-                    >
-                      {
-                        "Without the right tools, friction with clients escalates instead of getting defused early."
-                      }
-                    </p>
-                  </div>
-                  <div className={classNames("all", sty.freeBox__eTaD)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__g5Qs6
-                      )}
-                    >
-                      {"Clients complain that results don't meet expectations"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__xrP7
-                      )}
-                    >
-                      {
-                        "Expectations are set \u2014 but rarely managed \u2014 leaving clients disappointed even when the work gets done."
-                      }
-                    </p>
-                  </div>
-                  <div className={classNames("all", sty.freeBox__iDsGi)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__pnVu
-                      )}
-                    >
-                      {"Clients leave the company"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__xO18A
-                      )}
-                    >
-                      {
-                        "Unresolved friction and unmet expectations eventually cost the relationship altogether."
-                      }
-                    </p>
-                  </div>
-                </article>
-                <article className={classNames("all", sty.article__qkvzm)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__kc4Mz
-                    )}
-                  >
-                    {"03 / PROGRAM"}
-                  </span>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__ijfc1
-                    )}
-                  >
-                    {"Negotiation Tools for Today's Context"}
-                  </h3>
-                  <div className={classNames("all", sty.freeBox__tkwIv)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__zy8Nu
-                      )}
-                    >
-                      {"Negotiations with clients lead nowhere"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__xxqyu
-                      )}
-                    >
-                      {
-                        "Without a clear strategy, negotiations drag on and end without a result either side can work with."
-                      }
-                    </p>
-                  </div>
-                  <div className={classNames("all", sty.freeBox__hmxlf)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__z88Z2
-                      )}
-                    >
-                      {"Negotiations aren't analyzed, so nothing improves"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__wvow5
-                      )}
-                    >
-                      {
-                        "People don't review their negotiations afterward, so the same growth areas keep getting missed."
-                      }
-                    </p>
-                  </div>
-                  <div className={classNames("all", sty.freeBox___96KZ6)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__wsIcJ
-                      )}
-                    >
-                      {"Employees lose control over the negotiating process"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__oRUbY
-                      )}
-                    >
-                      {
-                        "Once the other side takes the initiative, it's hard to steer the conversation back toward a good outcome."
-                      }
-                    </p>
-                  </div>
-                </article>
-                <article className={classNames("all", sty.article__la27F)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span___4SnIe
-                    )}
-                  >
-                    {"04 / PROGRAM"}
-                  </span>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__kqYv5
-                    )}
-                  >
-                    {"Effective Persuasion"}
-                  </h3>
-                  <div className={classNames("all", sty.freeBox__pq2To)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__d6C2G
-                      )}
-                    >
-                      {"Participants fail to structure their ideas"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__feabG
-                      )}
-                    >
-                      {
-                        "Without a clear framework, even strong arguments come across as scattered and hard to follow."
-                      }
-                    </p>
-                  </div>
-                  <div className={classNames("all", sty.freeBox___9G9H)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__cgYsE
-                      )}
-                    >
-                      {"Their arguments don't sway the audience"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p___10RrF
-                      )}
-                    >
-                      {
-                        "Ideas are presented, but they don't land \u2014 the audience remains unconvinced."
-                      }
-                    </p>
-                  </div>
-                  <div className={classNames("all", sty.freeBox__dyKnT)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__nlvT
-                      )}
-                    >
-                      {"Their ideas go unheard, or meet resistance"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__nwSv
-                      )}
-                    >
-                      {
-                        "Without the right approach, good ideas get dismissed instead of considered."
-                      }
-                    </p>
-                  </div>
-                </article>
-                <article className={classNames("all", sty.article__urzU)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__kacgM
-                    )}
-                  >
-                    {"05 / PROGRAM"}
-                  </span>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__igQ2F
-                    )}
-                  >
-                    {"Pitching"}
-                  </h3>
-                  <div className={classNames("all", sty.freeBox__jOcse)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__ivPi3
-                      )}
-                    >
-                      {"Participants fail to structure their ideas"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__ephT6
-                      )}
-                    >
-                      {
-                        "A pitch without structure loses the audience before it makes its point."
-                      }
-                    </p>
-                  </div>
-                  <div className={classNames("all", sty.freeBox__iC43F)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__bfqr6
-                      )}
-                    >
-                      {
-                        "They fail to convince the audience their idea is relevant"
-                      }
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__svWxA
-                      )}
-                    >
-                      {
-                        "Even a good idea falls flat if the audience doesn't see why it matters to them."
-                      }
-                    </p>
-                  </div>
-                  <div className={classNames("all", sty.freeBox__bz37N)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__luRqb
-                      )}
-                    >
-                      {
-                        "They can't deliver their ideas concisely or within a time limit"
-                      }
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__qQkTi
-                      )}
-                    >
-                      {
-                        "Under time pressure, the message gets lost instead of sharpened."
-                      }
-                    </p>
-                  </div>
-                </article>
-                <article className={classNames("all", sty.article__uCCqL)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__ff0G
-                    )}
-                  >
-                    {"06 / PROGRAM"}
-                  </span>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__zW5Or
-                    )}
-                  >
-                    {"Public Speaking"}
-                  </h3>
-                  <div className={classNames("all", sty.freeBox__bFOq9)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__s1RrQ
-                      )}
-                    >
-                      {"Employees' speeches are cumbersome and hard to follow"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__xt3CE
-                      )}
-                    >
-                      {
-                        "Without a clear structure, even good content loses the audience along the way."
-                      }
-                    </p>
-                  </div>
-                  <div className={classNames("all", sty.freeBox__fWdCq)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__wsK06
-                      )}
-                    >
-                      {"Employees fail to get their ideas across"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__mpuzv
-                      )}
-                    >
-                      {"The message doesn't land the way it was intended to."}
-                    </p>
-                  </div>
-                  <div className={classNames("all", sty.freeBox__b3CCv)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__vgAll
-                      )}
-                    >
-                      {
-                        "Clients and colleagues get bored listening to participants' speeches"
-                      }
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__rtTiE
-                      )}
-                    >
-                      {
-                        "Delivery that isn't tailored to the audience fails to hold their attention."
-                      }
-                    </p>
-                  </div>
-                  <div className={classNames("all", sty.freeBox___2Qkqk)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__l6XkC
-                      )}
-                    >
-                      {"Employees don't achieve results with their speeches"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p___4Rt5
-                      )}
-                    >
-                      {
-                        "A speech that doesn't move the audience doesn't move the business forward either."
-                      }
-                    </p>
-                  </div>
-                </article>
-              </div>
-            </div>
-          </section>
-          <section
-            data-plasmic-name={"approach"}
-            data-plasmic-override={overrides.approach}
-            className={classNames("all", sty.approach)}
-          >
-            <div className={classNames("all", sty.freeBox__qySw9)}>
-              <div className={classNames("all", sty.freeBox__jwnkV)}>
-                <span
-                  className={classNames(
-                    "all",
-                    "span",
-                    "span__5CArW",
-                    "__wab_text",
-                    sty.span__g0M6K
-                  )}
-                >
-                  {"02 / ABOUT THE TP APPROACH"}
-                </span>
-                <h2
-                  className={classNames(
-                    "all",
-                    "h2",
-                    "h2__5CArW",
-                    "__wab_text",
-                    sty.h2__waGvo
-                  )}
-                >
-                  {"Your needs. Your combination. Our solution."}
-                </h2>
-              </div>
-              <p
+            <div className={classNames("all", sty.freeBox__h1DFp)}>
+              <span
                 className={classNames(
                   "all",
-                  "p",
-                  "p__5CArW",
+                  "span",
+                  "span__5CArW",
                   "__wab_text",
-                  sty.p__qmwny
+                  sty.span__mhcVo
                 )}
               >
-                {
-                  "First, we identify what needs to change in your team's work. Then we design a program around it, select the right expert, and a way to measure the result."
+                {"REAL CHALLENGES"}
+              </span>
+              <H2
+                className={classNames("__wab_instance", sty.h2__xRgMf)}
+                title={
+                  $q.programs.data?.body?.data?.directions?.[0].sections?.find(
+                    s => s.key === "challenges"
+                  )?.title ?? ""
                 }
-              </p>
-              <div className={classNames("all", sty.freeBox___0RPms)}>
-                <div className={classNames("all", sty.freeBox__nRtz7)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__m3VOv
-                    )}
+              />
+            </div>
+            <div className={classNames("all", sty.freeBox__w5IVm)}>
+              {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                $q.programs.data?.body?.data?.directions?.[0].sections?.find(
+                  s => s.key === "challenges"
+                )?.groups ?? []
+              ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                const challengeGroup = __plasmic_item_0;
+                const challengeIndex = __plasmic_idx_0;
+                return (
+                  <article
+                    className={classNames("all", sty.article__fi7Wl)}
+                    key={challengeIndex}
                   >
-                    {"01"}
-                  </span>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__weAqz
-                    )}
-                  >
-                    {"Business task"}
-                  </h3>
-                </div>
-                <div className={classNames("all", sty.freeBox__dpIDm)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__rnmfb
-                    )}
-                  >
-                    {"02"}
-                  </span>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__oJqsq
-                    )}
-                  >
-                    {"Diagnostics"}
-                  </h3>
-                </div>
-                <div className={classNames("all", sty.freeBox__maj4Q)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__xFx3G
-                    )}
-                  >
-                    {"03"}
-                  </span>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__jA2PL
-                    )}
-                  >
-                    {"Individual program"}
-                  </h3>
-                </div>
-                <div className={classNames("all", sty.freeBox__figRb)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__hAkah
-                    )}
-                  >
-                    {"04"}
-                  </span>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__of0Gq
-                    )}
-                  >
-                    {"Practice"}
-                  </h3>
-                </div>
-                <div className={classNames("all", sty.freeBox___5F5Gf)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span___1GUbf
-                    )}
-                  >
-                    {"05"}
-                  </span>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__wijJ1
-                    )}
-                  >
-                    {"Behavior change"}
-                  </h3>
-                </div>
-                <div className={classNames("all", sty.freeBox__kyeTn)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span___2O0Ea
-                    )}
-                  >
-                    {"06"}
-                  </span>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__jr63X
-                    )}
-                  >
-                    {"Result"}
-                  </h3>
-                </div>
-              </div>
-              <PlasmicLink__
-                className={classNames(
-                  "all",
-                  "a",
-                  "a__5CArW",
-                  "__wab_text",
-                  sty.link__xpoEv
-                )}
-                component={Link}
-                href={"#programs"}
-                legacyBehavior={false}
-                platform={"nextjs"}
-              >
-                {"Ready-to-use solution \u2197"}
-              </PlasmicLink__>
+                    <span
+                      className={classNames(
+                        "all",
+                        "span",
+                        "span__5CArW",
+                        "__wab_text",
+                        sty.span___4NfYg
+                      )}
+                    >
+                      <React.Fragment>
+                        {(challengeIndex + 1).toString().padStart(2, "0") +
+                          " / PROGRAM"}
+                      </React.Fragment>
+                    </span>
+                    <h3
+                      className={classNames(
+                        "all",
+                        "h3",
+                        "h3__5CArW",
+                        "__wab_text",
+                        sty.h3__afkFr
+                      )}
+                    >
+                      <React.Fragment>{challengeGroup.title}</React.Fragment>
+                    </h3>
+                    {(_par =>
+                      !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                      challengeGroup.cards ?? []
+                    ).map((__plasmic_item_1, __plasmic_idx_1) => {
+                      const challengeCard = __plasmic_item_1;
+                      const challengeCardIndex = __plasmic_idx_1;
+                      return (
+                        <div
+                          className={classNames("all", sty.freeBox__lHNu)}
+                          key={challengeCardIndex}
+                        >
+                          <h4
+                            className={classNames(
+                              "all",
+                              "h4",
+                              "h4__5CArW",
+                              "__wab_text",
+                              sty.h4__vp5SI
+                            )}
+                          >
+                            <React.Fragment>
+                              {challengeCard.title}
+                            </React.Fragment>
+                          </h4>
+                          <p
+                            className={classNames(
+                              "all",
+                              "p",
+                              "p__5CArW",
+                              "__wab_text",
+                              sty.p__rmUG
+                            )}
+                          >
+                            <React.Fragment>
+                              {challengeCard.description ?? ""}
+                            </React.Fragment>
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </article>
+                );
+              })}
             </div>
           </section>
+          <HowWeWorkSection
+            data-plasmic-name={"howWeWorkSection"}
+            data-plasmic-override={overrides.howWeWorkSection}
+            className={classNames("__wab_instance", sty.howWeWorkSection)}
+          />
+
           <section
             data-plasmic-name={"results"}
             data-plasmic-override={overrides.results}
@@ -1500,277 +600,71 @@ function PlasmicCommunication__RenderFunc(props: {
                     sty.span__bbPP
                   )}
                 >
-                  {"03 / EXPECTED RESULTS"}
+                  {"EXPECTED RESULTS"}
                 </span>
-                <h2
-                  className={classNames(
-                    "all",
-                    "h2",
-                    "h2__5CArW",
-                    "__wab_text",
-                    sty.h2__su3D0
-                  )}
-                >
-                  {"What can change in how your people communicate"}
-                </h2>
+                <H2
+                  className={classNames("__wab_instance", sty.h2__gjqFc)}
+                  title={
+                    $q.programs.data?.body?.data?.directions?.[0].sections?.find(
+                      s => s.key === "results"
+                    )?.title ?? ""
+                  }
+                  white={true}
+                />
               </div>
               <div className={classNames("all", sty.freeBox__xYqx)}>
-                <div className={classNames("all", sty.freeBox__mIk3J)}>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__lubXq
-                    )}
-                  >
-                    {"Assertive Communication"}
-                  </h3>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__nxY2Y
-                    )}
-                  >
-                    {
-                      "\u2713 Participants' communication becomes clear and concise"
-                    }
-                  </p>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p___36DRe
-                    )}
-                  >
-                    {
-                      "\u2713 Participants increase their confidence and leadership potential"
-                    }
-                  </p>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p___1OGy5
-                    )}
-                  >
-                    {
-                      "\u2713 Participants can resolve problems quicker and more efficiently"
-                    }
-                  </p>
-                </div>
-                <div className={classNames("all", sty.freeBox__gwkhs)}>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__aZc2H
-                    )}
-                  >
-                    {"Customer-Centric Communication"}
-                  </h3>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__qnNz
-                    )}
-                  >
-                    {
-                      "\u2713 Participants will be able to retain clients more efficiently"
-                    }
-                  </p>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__aSic6
-                    )}
-                  >
-                    {
-                      "\u2713 Participants will be able to resolve any conflict without damaging long-lasting relationships"
-                    }
-                  </p>
-                </div>
-                <div className={classNames("all", sty.freeBox__ecBed)}>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3___3QddX
-                    )}
-                  >
-                    {"Negotiation Tools for Today's Context"}
-                  </h3>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__qqFwS
-                    )}
-                  >
-                    {
-                      "\u2713 Participants will have total control over the negotiating process"
-                    }
-                  </p>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p___1VMs6
-                    )}
-                  >
-                    {
-                      "\u2713 Participants will be able to achieve results in any context"
-                    }
-                  </p>
-                </div>
-                <div className={classNames("all", sty.freeBox__jt1Hr)}>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3___7VXs6
-                    )}
-                  >
-                    {"Effective Persuasion"}
-                  </h3>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__pTWhn
-                    )}
-                  >
-                    {
-                      "\u2713 Participants can influence others without relying on formal authority"
-                    }
-                  </p>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__a67Wx
-                    )}
-                  >
-                    {
-                      "\u2713 Participants can defend their point of view in an assertive and safe way"
-                    }
-                  </p>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__gehKk
-                    )}
-                  >
-                    {"\u2713 Participants can structure their ideas"}
-                  </p>
-                </div>
-                <div className={classNames("all", sty.freeBox__yvGft)}>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__sFcUv
-                    )}
-                  >
-                    {"Pitching"}
-                  </h3>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p___1WNqN
-                    )}
-                  >
-                    {
-                      "\u2713 Participants will be able to deliver any idea to any audience"
-                    }
-                  </p>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__bzS6
-                    )}
-                  >
-                    {"\u2713 Participants can structure their ideas"}
-                  </p>
-                </div>
-                <div className={classNames("all", sty.freeBox__jn8EB)}>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__n65P2
-                    )}
-                  >
-                    {"Public Speaking"}
-                  </h3>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__upFDi
-                    )}
-                  >
-                    {
-                      "\u2713 Participants' communication becomes clear and concise"
-                    }
-                  </p>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__kAl1S
-                    )}
-                  >
-                    {
-                      "\u2713 Participants always achieve their goals with their speeches"
-                    }
-                  </p>
-                </div>
+                {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                  $q.programs.data?.body?.data?.directions?.[0].sections?.find(
+                    s => s.key === "results"
+                  )?.groups ?? []
+                ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                  const resultGroup = __plasmic_item_0;
+                  const resultIndex = __plasmic_idx_0;
+                  return (
+                    <div
+                      className={classNames("all", sty.freeBox__mIk3J)}
+                      key={resultIndex}
+                    >
+                      <h3
+                        className={classNames(
+                          "all",
+                          "h3",
+                          "h3__5CArW",
+                          "__wab_text",
+                          sty.h3__lubXq
+                        )}
+                      >
+                        <React.Fragment>{resultGroup.title}</React.Fragment>
+                      </h3>
+                      {(_par =>
+                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                        resultGroup.cards ?? []
+                      ).map((__plasmic_item_1, __plasmic_idx_1) => {
+                        const resultCard = __plasmic_item_1;
+                        const resultCardIndex = __plasmic_idx_1;
+                        return (
+                          <p
+                            className={classNames(
+                              "all",
+                              "p",
+                              "p__5CArW",
+                              "__wab_text",
+                              sty.p__nxY2Y
+                            )}
+                            key={resultCardIndex}
+                          >
+                            <React.Fragment>
+                              {"✓ " +
+                                (resultCard.title ||
+                                  resultCard.description ||
+                                  "")}
+                            </React.Fragment>
+                          </p>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </section>
@@ -1791,19 +685,16 @@ function PlasmicCommunication__RenderFunc(props: {
                     sty.span__bt1L6
                   )}
                 >
-                  {"04 / TOPICS IN DETAIL"}
+                  {"TOPICS IN DETAIL"}
                 </span>
-                <h2
-                  className={classNames(
-                    "all",
-                    "h2",
-                    "h2__5CArW",
-                    "__wab_text",
-                    sty.h2__z7G9K
-                  )}
-                >
-                  {"We'll build the program around your topics"}
-                </h2>
+                <H2
+                  className={classNames("__wab_instance", sty.h2__iGbuX)}
+                  title={
+                    $q.programs.data?.body?.data?.directions?.[0].sections?.find(
+                      s => s.key === "topics"
+                    )?.title ?? ""
+                  }
+                />
               </div>
               <ScrollSectionHeadings
                 data-plasmic-name={"scrollSectionHeadings"}
@@ -2100,87 +991,9 @@ function PlasmicCommunication__RenderFunc(props: {
               />
 
               {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
-                (() => {
-                  try {
-                    return [
-                      {
-                        title: "Assertive Communication",
-                        items: [
-                          "Quality and effectiveness of communication: principles and obstacles",
-                          "Cognitive, emotional, and behavioral traps that hinder communication",
-                          "The nature of assertive communication",
-                          "Balancing assertiveness with emotional sensitivity",
-                          "Analyzing yourself and others: recognizing communication styles and emotional states",
-                          "Building relationships, strengthening boundaries, managing communication",
-                          "Tools for managing communication: empathic listening, feedback, and tools for influencing others"
-                        ]
-                      },
-                      {
-                        title: "Customer-Centric Communication",
-                        items: [
-                          "Trends in client behavior: how has it changed?",
-                          "Managing expectations as a foundation of customer-centricity",
-                          "Explicit and implicit expectations: what's the difference?",
-                          "Inner and outer customer-centricity: how to do both",
-                          "Customer Journey Map: how to apply it to everyday work",
-                          "Managing complaints without losing customer loyalty"
-                        ]
-                      },
-                      {
-                        title: "Negotiation Tools for Today's Context",
-                        items: [
-                          "Effective goal-setting in negotiations",
-                          "Strategic planning: how to plan ahead",
-                          "Understanding your counterparts: how to analyze them",
-                          "Persuasion in negotiation",
-                          "Effective bargaining",
-                          "Countering manipulation and coercion",
-                          "Managing your emotions"
-                        ]
-                      },
-                      {
-                        title: "Effective Persuasion",
-                        items: [
-                          'What is "persuasion"? Two levels of persuasion',
-                          "The psychological foundation for effective persuasion",
-                          "Optimal number of arguments: how many should you choose?",
-                          "How to make your arguments perfectly clear for your audience",
-                          "The secret of logic: how to be sure your speech is logically sound",
-                          "Effective visualization of your persuasion"
-                        ]
-                      },
-                      {
-                        title: "Pitching",
-                        items: [
-                          "What is a pitch? What makes it so unique?",
-                          "Pitch types: idea pitch, founder's pitch, elevator pitch",
-                          "Pitch preparation questions: what to know before you start building your pitch",
-                          "Pitch structure: a step-by-step algorithm",
-                          "Pitching workshop"
-                        ]
-                      },
-                      {
-                        title: "Public Speaking",
-                        items: [
-                          "Analyzing your audience",
-                          "Goal-setting in public speech",
-                          "Structuring your ideas",
-                          "Improving one's delivery: body language, gestures, tone of voice, etc.",
-                          "How to handle any question",
-                          "Online vs. offline public speaking: nuances and how to address them"
-                        ]
-                      }
-                    ];
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return [];
-                    }
-                    throw e;
-                  }
-                })()
+                $q.programs.data?.body?.data?.directions?.[0]?.sections?.find(
+                  s => s.key === "topics"
+                )?.groups ?? []
               ).map((__plasmic_item_0, __plasmic_idx_0) => {
                 const currentItem = __plasmic_item_0;
                 const currentIndex = __plasmic_idx_0;
@@ -2191,7 +1004,7 @@ function PlasmicCommunication__RenderFunc(props: {
                     className={classNames("all", sty.programTopic1)}
                     id={(() => {
                       try {
-                        return "section-" + currentIndex;
+                        return "topic-" + currentIndex;
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -2206,123 +1019,101 @@ function PlasmicCommunication__RenderFunc(props: {
                   >
                     <div className={classNames("all", sty.freeBox__zXfLr)} />
 
-                    <MotionScrollSection
-                      data-plasmic-name={"motionScrollSection"}
-                      data-plasmic-override={overrides.motionScrollSection}
+                    <h3
                       className={classNames(
-                        "__wab_instance",
-                        sty.motionScrollSection
+                        "all",
+                        "h3",
+                        "h3__5CArW",
+                        "__wab_text",
+                        sty.h3__du6H6
                       )}
-                      ease={"power2.inOut"}
-                      fromBlur={0}
-                      fromOpacity={1}
-                      fromRotation={0}
-                      fromRotationX={0}
-                      fromRotationY={0}
-                      fromScale={1}
-                      fromX={0}
-                      fromY={0}
-                      offsetEnd={"end 20px"}
-                      offsetStart={"end 50%"}
-                      perspective={1000}
-                      smoothing={0}
-                      targetSelector={(() => {
-                        try {
-                          return "#section-" + currentIndex;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return undefined;
-                          }
-                          throw e;
-                        }
-                      })()}
-                      toBlur={0}
-                      toOpacity={0}
-                      toRotation={0}
-                      toRotationX={0}
-                      toRotationY={0}
-                      toScale={1}
-                      toX={0}
-                      toY={200}
-                      trackContentSize={false}
-                      transformOrigin={"center center"}
                     >
-                      <h3
-                        className={classNames(
-                          "all",
-                          "h3",
-                          "h3__5CArW",
-                          "__wab_text",
-                          sty.h3__du6H6
-                        )}
-                      >
-                        <React.Fragment>
-                          {(() => {
-                            try {
-                              return currentItem.title;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "Assertive Communication";
-                              }
-                              throw e;
-                            }
-                          })()}
-                        </React.Fragment>
-                      </h3>
-                    </MotionScrollSection>
+                      <React.Fragment>{currentItem.title}</React.Fragment>
+                    </h3>
                     <div className={classNames("all", sty.freeBox__zgfqe)}>
                       {(_par =>
                         !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                        (() => {
-                          try {
-                            return currentItem.items;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
+                        currentItem.cards ?? []
                       ).map((__plasmic_item_1, __plasmic_idx_1) => {
                         const currentItem = __plasmic_item_1;
                         const currentIndex = __plasmic_idx_1;
                         return (
-                          <p
+                          <MotionScrollSection
                             className={classNames(
-                              "all",
-                              "p",
-                              "p__5CArW",
-                              "__wab_text",
-                              sty.p__frTfH
+                              "__wab_instance",
+                              sty.motionScrollSection___9I3Fo
                             )}
+                            ease={"none"}
+                            fromBlur={0}
+                            fromOpacity={1}
+                            fromRotation={0}
+                            fromRotationX={0}
+                            fromRotationY={0}
+                            fromScale={0.95}
+                            fromX={0}
+                            fromY={0}
                             key={currentIndex}
+                            offsetEnd={"start 45%"}
+                            offsetStart={"start 55%"}
+                            perspective={1000}
+                            smoothing={0}
+                            toBlur={0}
+                            toOpacity={1}
+                            toRotation={0}
+                            toRotationX={0}
+                            toRotationY={0}
+                            toScale={1}
+                            toX={0}
+                            toY={0}
+                            trackContentSize={false}
+                            transformOrigin={"left center"}
                           >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return currentItem;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "Quality and effectiveness of communication: principles and obstacles";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </p>
+                            <MotionScrollSection
+                              className={classNames(
+                                "__wab_instance",
+                                sty.motionScrollSection__ec7R
+                              )}
+                              ease={"none"}
+                              fromBlur={0}
+                              fromOpacity={1}
+                              fromRotation={0}
+                              fromRotationX={0}
+                              fromRotationY={0}
+                              fromScale={1}
+                              fromX={0}
+                              fromY={0}
+                              offsetEnd={"start 35%"}
+                              offsetStart={"start 45%"}
+                              perspective={1000}
+                              smoothing={0}
+                              toBlur={0}
+                              toOpacity={1}
+                              toRotation={0}
+                              toRotationX={0}
+                              toRotationY={0}
+                              toScale={0.95}
+                              toX={0}
+                              toY={0}
+                              trackContentSize={false}
+                              transformOrigin={"left center"}
+                            >
+                              <p
+                                className={classNames(
+                                  "all",
+                                  "p",
+                                  "p__5CArW",
+                                  "__wab_text",
+                                  sty.p__frTfH
+                                )}
+                              >
+                                <React.Fragment>
+                                  {currentItem.title ||
+                                    currentItem.description ||
+                                    ""}
+                                </React.Fragment>
+                              </p>
+                            </MotionScrollSection>
+                          </MotionScrollSection>
                         );
                       })}
                     </div>
@@ -2965,9 +1756,11 @@ function PlasmicCommunication__RenderFunc(props: {
                   sty.p__bqbA9
                 )}
               >
-                {
-                  "We don't offer a ready-made \"box.\" Every program is designed around the company's context, the participants' level, and the change the client expects."
-                }
+                <React.Fragment>
+                  {$q.programs.data?.body?.data?.directions?.[0].sections?.find(
+                    s => s.key === "topics"
+                  )?.footerText ?? ""}
+                </React.Fragment>
               </p>
             </div>
           </section>
@@ -2988,93 +1781,57 @@ function PlasmicCommunication__RenderFunc(props: {
                     sty.span__kmIhs
                   )}
                 >
-                  {"05 / FORMATS"}
+                  {" FORMATS"}
                 </span>
-                <h2
-                  className={classNames(
-                    "all",
-                    "h2",
-                    "h2__5CArW",
-                    "__wab_text",
-                    sty.h2__cOi2C
-                  )}
-                >
-                  {"We'll select the format for your task and audience"}
-                </h2>
+                <H2
+                  className={classNames("__wab_instance", sty.h2___1JZtm)}
+                  title={
+                    $q.programs.data?.body?.data?.directions?.[0].sections?.find(
+                      s => s.key === "formats"
+                    )?.title ?? ""
+                  }
+                />
               </div>
               <div className={classNames("all", sty.freeBox__ceDs6)}>
-                <div className={classNames("all", sty.freeBox__qlFm2)}>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3___5BakQ
-                    )}
-                  >
-                    {"Delivery"}
-                  </h3>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__kIhV
-                    )}
-                  >
-                    {"in-person or online \u2014 whichever fits the team."}
-                  </p>
-                </div>
-                <div className={classNames("all", sty.freeBox__cfo28)}>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__vXl0W
-                    )}
-                  >
-                    {"Group size"}
-                  </h3>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p___5HERs
-                    )}
-                  >
-                    {"up to 15 people offline, up to 20 people online."}
-                  </p>
-                </div>
-                <div className={classNames("all", sty.freeBox__nlZOz)}>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3___2MD7H
-                    )}
-                  >
-                    {"Timing"}
-                  </h3>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__stS4
-                    )}
-                  >
-                    {"tailored to your schedule and requirements."}
-                  </p>
-                </div>
+                {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                  $q.programs.data?.body?.data?.directions?.[0].sections?.find(
+                    s => s.key === "formats"
+                  )?.cards ?? []
+                ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                  const formatCard = __plasmic_item_0;
+                  const formatIndex = __plasmic_idx_0;
+                  return (
+                    <div
+                      className={classNames("all", sty.freeBox__qlFm2)}
+                      key={formatIndex}
+                    >
+                      <h3
+                        className={classNames(
+                          "all",
+                          "h3",
+                          "h3__5CArW",
+                          "__wab_text",
+                          sty.h3___5BakQ
+                        )}
+                      >
+                        <React.Fragment>{formatCard.title}</React.Fragment>
+                      </h3>
+                      <p
+                        className={classNames(
+                          "all",
+                          "p",
+                          "p__5CArW",
+                          "__wab_text",
+                          sty.p__kIhV
+                        )}
+                      >
+                        <React.Fragment>
+                          {formatCard.description ?? ""}
+                        </React.Fragment>
+                      </p>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </section>
@@ -3084,253 +1841,87 @@ function PlasmicCommunication__RenderFunc(props: {
             className={classNames("all", sty.process)}
             id={"process"}
           >
-            <div className={classNames("all", sty.freeBox__f2Krb)}>
-              <div className={classNames("all", sty.freeBox__oGm3)}>
-                <span
-                  className={classNames(
-                    "all",
-                    "span",
-                    "span__5CArW",
-                    "__wab_text",
-                    sty.span__nuvMq
-                  )}
-                >
-                  {"06 / PROCESS"}
-                </span>
-                <h2
-                  className={classNames(
-                    "all",
-                    "h2",
-                    "h2__5CArW",
-                    "__wab_text",
-                    sty.h2__g38Y2
-                  )}
-                >
-                  {"From request to program: how it works"}
-                </h2>
-              </div>
-              <div className={classNames("all", sty.freeBox__euym)}>
-                <div className={classNames("all", sty.freeBox___759Ey)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__vw07C
-                    )}
+            <div className={classNames("all", sty.freeBox__oGm3)}>
+              <span
+                className={classNames(
+                  "all",
+                  "span",
+                  "span__5CArW",
+                  "__wab_text",
+                  sty.span__nuvMq
+                )}
+              >
+                {"PROCESS"}
+              </span>
+              <h2
+                className={classNames(
+                  "all",
+                  "h2",
+                  "h2__5CArW",
+                  "__wab_text",
+                  sty.h2__g38Y2
+                )}
+              >
+                <React.Fragment>
+                  {$q.programs.data?.body?.data?.directions?.[0]?.sections?.find(
+                    s => s.key === "process"
+                  )?.description ?? ""}
+                </React.Fragment>
+              </h2>
+            </div>
+            <div className={classNames("all", sty.freeBox__euym)}>
+              {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                $q.programs.data?.body?.data?.directions?.[0].sections?.find(
+                  s => s.key === "process"
+                )?.cards ?? []
+              ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                const processCard = __plasmic_item_0;
+                const processIndex = __plasmic_idx_0;
+                return (
+                  <div
+                    className={classNames("all", sty.freeBox___759Ey)}
+                    key={processIndex}
                   >
-                    {"01"}
-                  </span>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__gEjcx
-                    )}
-                  >
-                    {"Break down the business task"}
-                  </h3>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__pj6I7
-                    )}
-                  >
-                    {
-                      "Identify what needs to change after the program: behavior, communication, management, or teamwork."
-                    }
-                  </p>
-                </div>
-                <div className={classNames("all", sty.freeBox__vIeY)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__nDtWj
-                    )}
-                  >
-                    {"02"}
-                  </span>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__dTfIi
-                    )}
-                  >
-                    {"Run diagnostics"}
-                  </h3>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__lhSii
-                    )}
-                  >
-                    {
-                      "Gather context through interviews, surveys, observation, and analysis of existing materials and expectations."
-                    }
-                  </p>
-                </div>
-                <div className={classNames("all", sty.freeBox__vt1Nv)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__nJAuN
-                    )}
-                  >
-                    {"03"}
-                  </span>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__apNg5
-                    )}
-                  >
-                    {"Design the program architecture"}
-                  </h3>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__dZmYu
-                    )}
-                  >
-                    {
-                      "Define topics, formats, module sequence, participant roles, and ways to reinforce the outcome."
-                    }
-                  </p>
-                </div>
-                <div className={classNames("all", sty.freeBox___73Upy)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span___1RSzi
-                    )}
-                  >
-                    {"04"}
-                  </span>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__pChrf
-                    )}
-                  >
-                    {"Deliver training and practice"}
-                  </h3>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p___5ZFfW
-                    )}
-                  >
-                    {
-                      "Work not only with theory, but with participants' real cases."
-                    }
-                  </p>
-                </div>
-                <div className={classNames("all", sty.freeBox__hsojc)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__lnSzw
-                    )}
-                  >
-                    {"05"}
-                  </span>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__uDg4Z
-                    )}
-                  >
-                    {"Support implementation"}
-                  </h3>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__rnjI5
-                    )}
-                  >
-                    {"Help translate new tools into real work situations."}
-                  </p>
-                </div>
-                <div className={classNames("all", sty.freeBox___8UwYo)}>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__dHlgy
-                    )}
-                  >
-                    {"06"}
-                  </span>
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__wTmTy
-                    )}
-                  >
-                    {"Wrap up"}
-                  </h3>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__uVaVz
-                    )}
-                  >
-                    {
-                      "Summarize conclusions, recommendations, and possible next steps."
-                    }
-                  </p>
-                </div>
-              </div>
+                    <span
+                      className={classNames(
+                        "all",
+                        "span",
+                        "span__5CArW",
+                        "__wab_text",
+                        sty.span__vw07C
+                      )}
+                    >
+                      <React.Fragment>
+                        {(processIndex + 1).toString().padStart(2, "0")}
+                      </React.Fragment>
+                    </span>
+                    <h3
+                      className={classNames(
+                        "all",
+                        "h3",
+                        "h3__5CArW",
+                        "__wab_text",
+                        sty.h3__gEjcx
+                      )}
+                    >
+                      <React.Fragment>{processCard.title}</React.Fragment>
+                    </h3>
+                    <p
+                      className={classNames(
+                        "all",
+                        "p",
+                        "p__5CArW",
+                        "__wab_text",
+                        sty.p__pj6I7
+                      )}
+                    >
+                      <React.Fragment>
+                        {processCard.description ?? ""}
+                      </React.Fragment>
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </section>
           <section
@@ -3350,7 +1941,7 @@ function PlasmicCommunication__RenderFunc(props: {
                     sty.span__qRfSu
                   )}
                 >
-                  {"07 / CASES"}
+                  {"CASES"}
                 </span>
                 <h2
                   className={classNames(
@@ -3361,7 +1952,11 @@ function PlasmicCommunication__RenderFunc(props: {
                     sty.h2__ckJlJ
                   )}
                 >
-                  {"Communication in practice"}
+                  <React.Fragment>
+                    {$q.programs.data?.body?.data?.directions?.[0].sections?.find(
+                      s => s.key === "cases"
+                    )?.title ?? ""}
+                  </React.Fragment>
                 </h2>
               </div>
               <p
@@ -3373,916 +1968,104 @@ function PlasmicCommunication__RenderFunc(props: {
                   sty.p__k6271
                 )}
               >
-                {
-                  "We strictly observe NDAs \u2014 we only show cases from clients who consented to publication."
-                }
+                <React.Fragment>
+                  {$q.programs.data?.body?.data?.directions?.[0].sections?.find(
+                    s => s.key === "cases"
+                  )?.description ?? ""}
+                </React.Fragment>
               </p>
-              <article className={classNames("all", sty.article___2SvW3)}>
-                <span
-                  className={classNames(
-                    "all",
-                    "span",
-                    "span__5CArW",
-                    "__wab_text",
-                    sty.span__qMz7L
-                  )}
-                >
-                  {"CASE 01"}
-                </span>
-                <h3
-                  className={classNames(
-                    "all",
-                    "h3",
-                    "h3__5CArW",
-                    "__wab_text",
-                    sty.h3__awIiv
-                  )}
-                >
-                  {"Personal coaching for CEO"}
-                </h3>
-                <div className={classNames("all", sty.freeBox__h2T0)}>
-                  <div className={classNames("all", sty.freeBox__ubvZ)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__tTtm9
-                      )}
-                    >
-                      {"Problem to be solved"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__ngv29
-                      )}
-                    >
-                      {
-                        "A co-founder of an American startup aimed to promote both their company and their personal brand within the US market."
-                      }
-                    </p>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__jmOZf
-                      )}
-                    >
-                      {
-                        "This involved speaking at conferences, participating in podcasts, and joining panel discussions. The co-founder faced challenges like public speaking anxiety and the need to develop strong talking points to make a positive impression."
-                      }
-                    </p>
-                  </div>
-                  <div className={classNames("all", sty.freeBox__c25E9)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__xv1VX
-                      )}
-                    >
-                      {"Solution"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__f7WFy
-                      )}
-                    >
-                      {
-                        "a pre-training questionnaire was conducted to identify the biggest gaps and the most acute problems"
-                      }
-                    </p>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__hjxMd
-                      )}
-                    >
-                      {
-                        "a 4-module online training program was tailor-made to accommodate all the specifics"
-                      }
-                    </p>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__tuMer
-                      )}
-                    >
-                      {
-                        "client had access to post-training support via a chat, where they could ask the trainer any questions."
-                      }
-                    </p>
-                  </div>
-                  <div className={classNames("all", sty.freeBox__tvpGq)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__ySfFl
-                      )}
-                    >
-                      {"Key results"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__azpbZ
-                      )}
-                    >
-                      {
-                        "the client gained confidence in their public speaking capabilities and is now actively performing in public"
-                      }
-                    </p>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__hiRau
-                      )}
-                    >
-                      {
-                        "the preparation time for a public talk has been reduced to one-third of its original length"
-                      }
-                    </p>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__hrPbq
-                      )}
-                    >
-                      {
-                        "the client learned to deliver compelling public talks that project the right image"
-                      }
-                    </p>
-                  </div>
-                </div>
-              </article>
-              <article className={classNames("all", sty.article__rzIrk)}>
-                <span
-                  className={classNames(
-                    "all",
-                    "span",
-                    "span__5CArW",
-                    "__wab_text",
-                    sty.span__l3F3D
-                  )}
-                >
-                  {"CASE 02"}
-                </span>
-                <h3
-                  className={classNames(
-                    "all",
-                    "h3",
-                    "h3__5CArW",
-                    "__wab_text",
-                    sty.h3__rywYj
-                  )}
-                >
-                  {"Global IT Company"}
-                </h3>
-                <div className={classNames("all", sty.freeBox__b3T9)}>
-                  <div className={classNames("all", sty.freeBox__lPmB)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4___0Bzhz
-                      )}
-                    >
-                      {"Problem to be solved"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p___1Egr
-                      )}
-                    >
-                      {
-                        "The company has recently merged. As a result, there are employees from all over the world (Spain, USA, Bulgaria, South Africa, etc.) in a newly-born organization. C-Suit level team is no exception. But they are the ones who need to set an example of CQ Leadership and how to bridge the gap between different nationalities."
-                      }
-                    </p>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__wrn8W
-                      )}
-                    >
-                      {
-                        "However, they themselves lack the required knowledge to do that effectively."
-                      }
-                    </p>
-                  </div>
-                  <div className={classNames("all", sty.freeBox__cuZe1)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__eIbpK
-                      )}
-                    >
-                      {"Solution"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__qhCbS
-                      )}
-                    >
-                      {
-                        "a pre-training questionnaire was conducted to identify the biggest gaps and the most acute problems"
-                      }
-                    </p>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__inDu
-                      )}
-                    >
-                      {
-                        "a 4-module online training program was tailor-made to accommodate all the specifics"
-                      }
-                    </p>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p___1TgHo
-                      )}
-                    >
-                      {
-                        "a post-training in a form of a chat where participants can ask a trainer any question they might have."
-                      }
-                    </p>
-                  </div>
-                  <div className={classNames("all", sty.freeBox__r3VJy)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__wR4Jw
-                      )}
-                    >
-                      {"Key results"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__sCfZt
-                      )}
-                    >
-                      {
-                        "the participants gained the required knowledge about cultural strategies"
-                      }
-                    </p>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__arz4S
-                      )}
-                    >
-                      {
-                        "the participants can consciously adapt their communication style in accordance with the context"
-                      }
-                    </p>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__vvni7
-                      )}
-                    >
-                      {
-                        "the participants learned how they can help develop CQ culture within their company"
-                      }
-                    </p>
-                  </div>
-                </div>
-              </article>
-              <article className={classNames("all", sty.article__vb4G5)}>
-                <span
-                  className={classNames(
-                    "all",
-                    "span",
-                    "span__5CArW",
-                    "__wab_text",
-                    sty.span___2OVjs
-                  )}
-                >
-                  {"CASE 03"}
-                </span>
-                <h3
-                  className={classNames(
-                    "all",
-                    "h3",
-                    "h3__5CArW",
-                    "__wab_text",
-                    sty.h3__kzBEz
-                  )}
-                >
-                  {"Pharmaceutical company"}
-                </h3>
-                <div className={classNames("all", sty.freeBox___3Fe4Z)}>
-                  <div className={classNames("all", sty.freeBox__yl2R0)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__qSM4
-                      )}
-                    >
-                      {"Problem to be solved"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p___3AosD
-                      )}
-                    >
-                      {
-                        "Employees of the company have to constantly give speeches in different contexts: conferences, pannel discussions, 1-to-1 conversations with doctors, etc. Key problems are: monotounous speeches, to much technical details, unstuctured speech, presentations fail to yield results."
-                      }
-                    </p>
-                  </div>
-                  <div className={classNames("all", sty.freeBox__aqYoO)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__plh46
-                      )}
-                    >
-                      {"Solution"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__bjvml
-                      )}
-                    >
-                      {"3 stage training programs:"}
-                    </p>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__tmT0K
-                      )}
-                    >
-                      {"Structuring and pitching your ideas"}
-                    </p>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__fKwdw
-                      )}
-                    >
-                      {"Speech delivery: making your ideas alive"}
-                    </p>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__llk71
-                      )}
-                    >
-                      {
-                        "Persuasion: how to make your ideas interesting for the audience?"
-                      }
-                    </p>
-                  </div>
-                  <div className={classNames("all", sty.freeBox___9Gk6T)}>
-                    <h4
-                      className={classNames(
-                        "all",
-                        "h4",
-                        "h4__5CArW",
-                        "__wab_text",
-                        sty.h4__mqzF1
-                      )}
-                    >
-                      {"Key results"}
-                    </h4>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__lynLb
-                      )}
-                    >
-                      {
-                        "the participants learned how to make their ideas easy to percieve and understand"
-                      }
-                    </p>
-                    <p
-                      className={classNames(
-                        "all",
-                        "p",
-                        "p__5CArW",
-                        "__wab_text",
-                        sty.p__ouwC
-                      )}
-                    >
-                      {
-                        "The participants understood how to tailor their presentations to any given audience"
-                      }
-                    </p>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </section>
-          <section
-            data-plasmic-name={"consultation"}
-            data-plasmic-override={overrides.consultation}
-            className={classNames("all", sty.consultation)}
-            id={"consultation"}
-          >
-            <div className={classNames("all", sty.freeBox__cs0S0)}>
-              <div className={classNames("all", sty.freeBox__ktRyQ)}>
-                <div className={classNames("all", sty.freeBox__z29V6)}>
-                  <div className={classNames("all", sty.freeBox___3V3Wz)}>
+              {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                $q.programs.data?.body?.data?.directions?.[0].sections?.find(
+                  s => s.key === "cases"
+                )?.groups ?? []
+              ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                const caseGroup = __plasmic_item_0;
+                const caseIndex = __plasmic_idx_0;
+                return (
+                  <article
+                    className={classNames("all", sty.article___2SvW3)}
+                    key={caseIndex}
+                  >
                     <span
                       className={classNames(
                         "all",
                         "span",
                         "span__5CArW",
                         "__wab_text",
-                        sty.span__qRmBq
+                        sty.span__qMz7L
                       )}
                     >
-                      {"08 / REQUEST A CONSULTATION"}
+                      <React.Fragment>
+                        {"CASE " + (caseIndex + 1).toString().padStart(2, "0")}
+                      </React.Fragment>
                     </span>
-                    <h2
+                    <h3
                       className={classNames(
                         "all",
-                        "h2",
-                        "h2__5CArW",
+                        "h3",
+                        "h3__5CArW",
                         "__wab_text",
-                        sty.h2__uEpPk
+                        sty.h3__awIiv
                       )}
                     >
-                      {"Sign up"}
-                    </h2>
-                  </div>
-                  <p
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.p__ro7L
-                    )}
-                  >
-                    {"Discuss the task"}
-                  </p>
-                  <PlasmicLink__
-                    className={classNames(
-                      "all",
-                      "a",
-                      "a__5CArW",
-                      "__wab_text",
-                      sty.link__ozDhO
-                    )}
-                    component={Link}
-                    href={"mailto:welcome@thinking-people.eu"}
-                    legacyBehavior={false}
-                    platform={"nextjs"}
-                  >
-                    {"welcome@thinking-people.eu \u2197"}
-                  </PlasmicLink__>
-                </div>
-                <div className={classNames("all", sty.freeBox__qvgjw)}>
-                  <div className={classNames("all", sty.freeBox__beboV)}>
-                    <div className={classNames("all", sty.freeBox__glCHp)}>
-                      <label
-                        className={classNames("all", sty.label__fGiO9)}
-                        for={"comm-first-name"}
-                      >
-                        <span
-                          className={classNames(
-                            "all",
-                            "span",
-                            "span__5CArW",
-                            "__wab_text",
-                            sty.span__fzzvc
-                          )}
-                        >
-                          {"First name"}
-                        </span>
-                      </label>
-                      <input
-                        data-plasmic-name={"textbox"}
-                        data-plasmic-override={overrides.textbox}
-                        className={classNames(
-                          "all",
-                          "input",
-                          "input__5CArW",
-                          sty.textbox
-                        )}
-                        id={"comm-first-name"}
-                        name={"first_name"}
-                        onChange={async (...eventArgs: any) => {
-                          (e => {
-                            generateStateOnChangeProp($state, [
-                              "textbox",
-                              "value"
-                            ])(e.target.value);
-                          }).apply(null, eventArgs);
-                        }}
-                        ref={ref => {
-                          $refs["textbox"] = ref;
-                        }}
-                        type={"text"}
-                        value={
-                          generateStateValueProp($state, [
-                            "textbox",
-                            "value"
-                          ]) ?? ""
-                        }
-                      />
+                      <React.Fragment>{caseGroup.title}</React.Fragment>
+                    </h3>
+                    <div className={classNames("all", sty.freeBox__h2T0)}>
+                      {(_par =>
+                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                        caseGroup.cards ?? []
+                      ).map((__plasmic_item_1, __plasmic_idx_1) => {
+                        const caseCard = __plasmic_item_1;
+                        const caseCardIndex = __plasmic_idx_1;
+                        return (
+                          <div
+                            className={classNames("all", sty.freeBox__ubvZ)}
+                            key={caseCardIndex}
+                          >
+                            <h4
+                              className={classNames(
+                                "all",
+                                "h4",
+                                "h4__5CArW",
+                                "__wab_text",
+                                sty.h4__tTtm9
+                              )}
+                            >
+                              <React.Fragment>{caseCard.title}</React.Fragment>
+                            </h4>
+                            <p
+                              className={classNames(
+                                "all",
+                                "p",
+                                "p__5CArW",
+                                "__wab_text",
+                                sty.p__ngv29
+                              )}
+                            >
+                              <React.Fragment>
+                                {caseCard.description ?? ""}
+                              </React.Fragment>
+                            </p>
+                          </div>
+                        );
+                      })}
                     </div>
-                    <div className={classNames("all", sty.freeBox__nmRa7)}>
-                      <label
-                        className={classNames("all", sty.label__sqPvg)}
-                        for={"comm-last-name"}
-                      >
-                        <span
-                          className={classNames(
-                            "all",
-                            "span",
-                            "span__5CArW",
-                            "__wab_text",
-                            sty.span__dchAl
-                          )}
-                        >
-                          {"Last name"}
-                        </span>
-                      </label>
-                      <input
-                        data-plasmic-name={"textbox2"}
-                        data-plasmic-override={overrides.textbox2}
-                        className={classNames(
-                          "all",
-                          "input",
-                          "input__5CArW",
-                          sty.textbox2
-                        )}
-                        id={"comm-last-name"}
-                        name={"last_name"}
-                        onChange={async (...eventArgs: any) => {
-                          (e => {
-                            generateStateOnChangeProp($state, [
-                              "textbox2",
-                              "value"
-                            ])(e.target.value);
-                          }).apply(null, eventArgs);
-                        }}
-                        ref={ref => {
-                          $refs["textbox2"] = ref;
-                        }}
-                        type={"text"}
-                        value={
-                          generateStateValueProp($state, [
-                            "textbox2",
-                            "value"
-                          ]) ?? ""
-                        }
-                      />
-                    </div>
-                  </div>
-                  <div className={classNames("all", sty.freeBox__kecIg)}>
-                    <div className={classNames("all", sty.freeBox___7FSto)}>
-                      <label
-                        className={classNames("all", sty.label__hBCO)}
-                        for={"comm-email"}
-                      >
-                        <span
-                          className={classNames(
-                            "all",
-                            "span",
-                            "span__5CArW",
-                            "__wab_text",
-                            sty.span__ok7Ka
-                          )}
-                        >
-                          {"Email"}
-                        </span>
-                      </label>
-                      <input
-                        data-plasmic-name={"textbox3"}
-                        data-plasmic-override={overrides.textbox3}
-                        className={classNames(
-                          "all",
-                          "input",
-                          "input__5CArW",
-                          sty.textbox3
-                        )}
-                        id={"comm-email"}
-                        name={"email"}
-                        onChange={async (...eventArgs: any) => {
-                          (e => {
-                            generateStateOnChangeProp($state, [
-                              "textbox3",
-                              "value"
-                            ])(e.target.value);
-                          }).apply(null, eventArgs);
-                        }}
-                        ref={ref => {
-                          $refs["textbox3"] = ref;
-                        }}
-                        type={"email"}
-                        value={
-                          generateStateValueProp($state, [
-                            "textbox3",
-                            "value"
-                          ]) ?? ""
-                        }
-                      />
-                    </div>
-                    <div className={classNames("all", sty.freeBox__tpqzD)}>
-                      <label
-                        className={classNames("all", sty.label__u1Oq0)}
-                        for={"comm-phone"}
-                      >
-                        <span
-                          className={classNames(
-                            "all",
-                            "span",
-                            "span__5CArW",
-                            "__wab_text",
-                            sty.span___0ApJ9
-                          )}
-                        >
-                          {"Phone"}
-                        </span>
-                      </label>
-                      <input
-                        data-plasmic-name={"textbox4"}
-                        data-plasmic-override={overrides.textbox4}
-                        className={classNames(
-                          "all",
-                          "input",
-                          "input__5CArW",
-                          sty.textbox4
-                        )}
-                        id={"comm-phone"}
-                        name={"phone"}
-                        onChange={async (...eventArgs: any) => {
-                          (e => {
-                            generateStateOnChangeProp($state, [
-                              "textbox4",
-                              "value"
-                            ])(e.target.value);
-                          }).apply(null, eventArgs);
-                        }}
-                        ref={ref => {
-                          $refs["textbox4"] = ref;
-                        }}
-                        type={"tel"}
-                        value={
-                          generateStateValueProp($state, [
-                            "textbox4",
-                            "value"
-                          ]) ?? ""
-                        }
-                      />
-                    </div>
-                  </div>
-                  <div className={classNames("all", sty.freeBox__kxf7P)}>
-                    <div className={classNames("all", sty.freeBox__rWiFf)}>
-                      <label
-                        className={classNames("all", sty.label__pD2WR)}
-                        for={"comm-company"}
-                      >
-                        <span
-                          className={classNames(
-                            "all",
-                            "span",
-                            "span__5CArW",
-                            "__wab_text",
-                            sty.span__ezl7I
-                          )}
-                        >
-                          {"Company"}
-                        </span>
-                      </label>
-                      <input
-                        data-plasmic-name={"textbox5"}
-                        data-plasmic-override={overrides.textbox5}
-                        className={classNames(
-                          "all",
-                          "input",
-                          "input__5CArW",
-                          sty.textbox5
-                        )}
-                        id={"comm-company"}
-                        name={"company"}
-                        onChange={async (...eventArgs: any) => {
-                          (e => {
-                            generateStateOnChangeProp($state, [
-                              "textbox5",
-                              "value"
-                            ])(e.target.value);
-                          }).apply(null, eventArgs);
-                        }}
-                        ref={ref => {
-                          $refs["textbox5"] = ref;
-                        }}
-                        type={"text"}
-                        value={
-                          generateStateValueProp($state, [
-                            "textbox5",
-                            "value"
-                          ]) ?? ""
-                        }
-                      />
-                    </div>
-                    <div className={classNames("all", sty.freeBox__yYgR)}>
-                      <label
-                        className={classNames("all", sty.label__wAbqH)}
-                        for={"comm-position"}
-                      >
-                        <span
-                          className={classNames(
-                            "all",
-                            "span",
-                            "span__5CArW",
-                            "__wab_text",
-                            sty.span___9Lc6F
-                          )}
-                        >
-                          {"Position"}
-                        </span>
-                      </label>
-                      <input
-                        data-plasmic-name={"textbox6"}
-                        data-plasmic-override={overrides.textbox6}
-                        className={classNames(
-                          "all",
-                          "input",
-                          "input__5CArW",
-                          sty.textbox6
-                        )}
-                        id={"comm-position"}
-                        name={"position"}
-                        onChange={async (...eventArgs: any) => {
-                          (e => {
-                            generateStateOnChangeProp($state, [
-                              "textbox6",
-                              "value"
-                            ])(e.target.value);
-                          }).apply(null, eventArgs);
-                        }}
-                        ref={ref => {
-                          $refs["textbox6"] = ref;
-                        }}
-                        type={"text"}
-                        value={
-                          generateStateValueProp($state, [
-                            "textbox6",
-                            "value"
-                          ]) ?? ""
-                        }
-                      />
-                    </div>
-                  </div>
-                  <BtnSecond
-                    data-plasmic-name={"communicationSubmit"}
-                    data-plasmic-override={overrides.communicationSubmit}
-                    className={classNames(
-                      "__wab_instance",
-                      sty.communicationSubmit
-                    )}
-                    text={"Submit"}
-                    type={"button"}
-                  />
-                </div>
-              </div>
+                  </article>
+                );
+              })}
             </div>
           </section>
-          <footer
-            data-plasmic-name={"footer"}
-            data-plasmic-override={overrides.footer}
-            className={classNames("all", sty.footer)}
-          >
-            <PlasmicLink__
-              className={classNames(
-                "all",
-                "a",
-                "a__5CArW",
-                "__wab_text",
-                sty.link__fO6W7
-              )}
-              component={Link}
-              href={`/${encodeURIComponent("en")}/test`}
-              legacyBehavior={false}
-              platform={"nextjs"}
-            >
-              {"THINKING PEOPLE"}
-            </PlasmicLink__>
-            <span
-              className={classNames(
-                "all",
-                "span",
-                "span__5CArW",
-                "__wab_text",
-                sty.span__ruan
-              )}
-            >
-              {"Learning that changes how people work."}
-            </span>
-            <PlasmicLink__
-              className={classNames(
-                "all",
-                "a",
-                "a__5CArW",
-                "__wab_text",
-                sty.link___8PSvr
-              )}
-              component={Link}
-              href={"#communication"}
-              legacyBehavior={false}
-              platform={"nextjs"}
-            >
-              {"Back to top \u2191"}
-            </PlasmicLink__>
-          </footer>
+          <FormSection
+            data-plasmic-name={"formSection"}
+            data-plasmic-override={overrides.formSection}
+            className={classNames("__wab_instance", sty.formSection)}
+          />
+
+          <FooterSection
+            data-plasmic-name={"footerSection"}
+            data-plasmic-override={overrides.footerSection}
+            className={classNames("__wab_instance", sty.footerSection)}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -4292,16 +2075,15 @@ function PlasmicCommunication__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
-    "nav",
+    "navbar",
     "communication",
     "h1",
     "challenges",
-    "approach",
+    "howWeWorkSection",
     "results",
     "programs",
     "scrollSectionHeadings",
     "programTopic1",
-    "motionScrollSection",
     "programTopic2",
     "programTopic3",
     "programTopic4",
@@ -4310,27 +2092,19 @@ const PlasmicDescendants = {
     "formats",
     "process",
     "cases",
-    "consultation",
-    "textbox",
-    "textbox2",
-    "textbox3",
-    "textbox4",
-    "textbox5",
-    "textbox6",
-    "communicationSubmit",
-    "footer"
+    "formSection",
+    "footerSection"
   ],
-  nav: ["nav"],
+  navbar: ["navbar"],
   communication: ["communication", "h1"],
   h1: ["h1"],
   challenges: ["challenges"],
-  approach: ["approach"],
+  howWeWorkSection: ["howWeWorkSection"],
   results: ["results"],
   programs: [
     "programs",
     "scrollSectionHeadings",
     "programTopic1",
-    "motionScrollSection",
     "programTopic2",
     "programTopic3",
     "programTopic4",
@@ -4338,8 +2112,7 @@ const PlasmicDescendants = {
     "programTopic6"
   ],
   scrollSectionHeadings: ["scrollSectionHeadings"],
-  programTopic1: ["programTopic1", "motionScrollSection"],
-  motionScrollSection: ["motionScrollSection"],
+  programTopic1: ["programTopic1"],
   programTopic2: ["programTopic2"],
   programTopic3: ["programTopic3"],
   programTopic4: ["programTopic4"],
@@ -4348,40 +2121,23 @@ const PlasmicDescendants = {
   formats: ["formats"],
   process: ["process"],
   cases: ["cases"],
-  consultation: [
-    "consultation",
-    "textbox",
-    "textbox2",
-    "textbox3",
-    "textbox4",
-    "textbox5",
-    "textbox6",
-    "communicationSubmit"
-  ],
-  textbox: ["textbox"],
-  textbox2: ["textbox2"],
-  textbox3: ["textbox3"],
-  textbox4: ["textbox4"],
-  textbox5: ["textbox5"],
-  textbox6: ["textbox6"],
-  communicationSubmit: ["communicationSubmit"],
-  footer: ["footer"]
+  formSection: ["formSection"],
+  footerSection: ["footerSection"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  nav: "nav";
+  navbar: typeof Navbar;
   communication: "section";
   h1: "h1";
   challenges: "section";
-  approach: "section";
+  howWeWorkSection: typeof HowWeWorkSection;
   results: "section";
   programs: "section";
   scrollSectionHeadings: typeof ScrollSectionHeadings;
   programTopic1: "div";
-  motionScrollSection: typeof MotionScrollSection;
   programTopic2: "div";
   programTopic3: "div";
   programTopic4: "div";
@@ -4390,15 +2146,8 @@ type NodeDefaultElementType = {
   formats: "section";
   process: "section";
   cases: "section";
-  consultation: "section";
-  textbox: "input";
-  textbox2: "input";
-  textbox3: "input";
-  textbox4: "input";
-  textbox5: "input";
-  textbox6: "input";
-  communicationSubmit: typeof BtnSecond;
-  footer: "footer";
+  formSection: typeof FormSection;
+  footerSection: typeof FooterSection;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -4463,16 +2212,15 @@ export const PlasmicCommunication = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    nav: makeNodeComponent("nav"),
+    navbar: makeNodeComponent("navbar"),
     communication: makeNodeComponent("communication"),
     h1: makeNodeComponent("h1"),
     challenges: makeNodeComponent("challenges"),
-    approach: makeNodeComponent("approach"),
+    howWeWorkSection: makeNodeComponent("howWeWorkSection"),
     results: makeNodeComponent("results"),
     programs: makeNodeComponent("programs"),
     scrollSectionHeadings: makeNodeComponent("scrollSectionHeadings"),
     programTopic1: makeNodeComponent("programTopic1"),
-    motionScrollSection: makeNodeComponent("motionScrollSection"),
     programTopic2: makeNodeComponent("programTopic2"),
     programTopic3: makeNodeComponent("programTopic3"),
     programTopic4: makeNodeComponent("programTopic4"),
@@ -4481,23 +2229,16 @@ export const PlasmicCommunication = Object.assign(
     formats: makeNodeComponent("formats"),
     process: makeNodeComponent("process"),
     cases: makeNodeComponent("cases"),
-    consultation: makeNodeComponent("consultation"),
-    textbox: makeNodeComponent("textbox"),
-    textbox2: makeNodeComponent("textbox2"),
-    textbox3: makeNodeComponent("textbox3"),
-    textbox4: makeNodeComponent("textbox4"),
-    textbox5: makeNodeComponent("textbox5"),
-    textbox6: makeNodeComponent("textbox6"),
-    communicationSubmit: makeNodeComponent("communicationSubmit"),
-    footer: makeNodeComponent("footer"),
+    formSection: makeNodeComponent("formSection"),
+    footerSection: makeNodeComponent("footerSection"),
 
     // Metadata about props expected for PlasmicCommunication
     internalVariantProps: PlasmicCommunication__VariantProps,
     internalArgProps: PlasmicCommunication__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
-      pageRoute: "/en/communication",
-      pagePath: "/en/communication",
+      pageRoute: "/learning/[locale]/[slug]",
+      pagePath: "/learning/[locale]/[slug]",
       params: {},
       query: {}
     })

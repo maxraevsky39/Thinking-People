@@ -70,12 +70,17 @@ createPlasmicElementProxy;
 
 export type PlasmicH2__VariantMembers = {
   white: "white";
+  left: "left";
 };
 export type PlasmicH2__VariantsArgs = {
   white?: SingleBooleanChoiceArg<"white">;
+  left?: SingleBooleanChoiceArg<"left">;
 };
 type VariantPropType = keyof PlasmicH2__VariantsArgs;
-export const PlasmicH2__VariantProps = new Array<VariantPropType>("white");
+export const PlasmicH2__VariantProps = new Array<VariantPropType>(
+  "white",
+  "left"
+);
 
 export type PlasmicH2__ArgsType = { title?: string };
 type ArgPropType = keyof PlasmicH2__ArgsType;
@@ -90,6 +95,7 @@ export type PlasmicH2__OverridesType = {
 export interface DefaultH2Props {
   title?: string;
   white?: SingleBooleanChoiceArg<"white">;
+  left?: SingleBooleanChoiceArg<"left">;
   className?: string;
 }
 
@@ -141,10 +147,18 @@ function PlasmicH2__RenderFunc(props: {
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.white
+      },
+      {
+        path: "left",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.left
       }
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
 
   const $state = useDollarState(stateSpecs, {
     $props,
@@ -169,13 +183,17 @@ function PlasmicH2__RenderFunc(props: {
         "plasmic_mixins",
         styleTokensClassNames,
         sty.root,
-        { [sty.rootwhite]: hasVariant($state, "white", "white") }
+        {
+          [sty.rootleft]: hasVariant($state, "left", "left"),
+          [sty.rootwhite]: hasVariant($state, "white", "white")
+        }
       )}
     >
       <h2
         data-plasmic-name={"h2"}
         data-plasmic-override={overrides.h2}
         className={classNames("all", "h2", "h2__5CArW", "__wab_text", sty.h2, {
+          [sty.h2left]: hasVariant($state, "left", "left"),
           [sty.h2white]: hasVariant($state, "white", "white")
         })}
       >
