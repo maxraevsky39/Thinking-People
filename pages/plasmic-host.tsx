@@ -1,3 +1,4 @@
+import { registerFeatures4 } from '../components/registerFeatures4';
 import { ScrollSectionHeadings } from "../components/ScrollSectionHeadings";
 import { registerReactBits } from "../components/registerReactBits";
 import * as React from "react";
@@ -34,6 +35,7 @@ import { FormGatedVideo } from "../components/FormGatedVideo";
 import { registerCookiePopup } from "../components/registerCookiePopup";
 registerCookiePopup();
 registerReactBits();
+registerFeatures4();
 registerComponent(ScrollSectionHeadings, {
   name: "ScrollSectionHeadings",
   displayName: "Scroll Section Headings",
