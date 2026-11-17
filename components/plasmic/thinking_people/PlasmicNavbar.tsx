@@ -304,6 +304,11 @@ function PlasmicNavbar__RenderFunc(props: {
           data-plasmic-name={"freeBox"}
           data-plasmic-override={overrides.freeBox}
           className={classNames("all", sty.freeBox, {
+            [sty.freeBoxglobal_language_lv]: hasVariant(
+              globalVariants,
+              "language",
+              "lv"
+            ),
             [sty.freeBoxnoAnimation]: hasVariant(
               $state,
               "noAnimation",
@@ -351,6 +356,37 @@ function PlasmicNavbar__RenderFunc(props: {
               return;
             }
           }}
+          razdels={
+            hasVariant(globalVariants, "language", "lv")
+              ? [
+                  {
+                    title: "Biznesa komunik\u0101cija",
+                    link: "/lv/learning/communication"
+                  },
+                  {
+                    title: "Kognit\u012bv\u0101s prasmes",
+                    link: "/lv/learning/cognitive-skills"
+                  },
+                  {
+                    title: "L\u012bder\u012bbas un vad\u012bbas prasmes",
+                    link: "/lv/learning/management-skills"
+                  }
+                ]
+              : [
+                  {
+                    title: "Business Communication",
+                    link: "/en/learning/communication"
+                  },
+                  {
+                    title: "Cognitive Skills",
+                    link: "/en/learning/cognitive-skills"
+                  },
+                  {
+                    title: "Leadership and Management Skills",
+                    link: "/en/learning/management-skills"
+                  }
+                ]
+          }
         />
 
         <div

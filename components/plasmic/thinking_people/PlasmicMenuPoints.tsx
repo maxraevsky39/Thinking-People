@@ -133,45 +133,34 @@ function PlasmicMenuPoints__RenderFunc(props: {
       Object.assign(
         {
           razdels: {
-            data: {
-              razdels: [
-                {
-                  title:
-                    "\u0411\u043b\u0435\u0441\u0442\u044f\u0449\u0438\u0435 \u0432\u044b\u0441\u0442\u0443\u043f\u043b\u0435\u043d\u0438\u044f \u0438 \u043f\u0440\u0435\u0437\u0435\u043d\u0442\u0430\u0446\u0438\u0438",
-                  documentId: "ln90putl3b5ta7suwkqsckvk"
-                },
-                {
-                  title:
-                    "\u0412\u043b\u0438\u044f\u043d\u0438\u0435 \u0438 \u0443\u0431\u0435\u0436\u0434\u0435\u043d\u0438\u0435",
-                  documentId: "d50lsk67v7p9l4vvjbr6l8l3"
-                },
-                {
-                  title:
-                    "\u041a\u0440\u043e\u0441\u0441-\u0444\u0443\u043d\u043a\u0446\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u043e\u0435 \u0432\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435",
-                  documentId: "twtmfssf40sunjv1ja3hwusm"
-                },
-                {
-                  title:
-                    "\u0420\u0430\u0437\u0432\u0438\u0442\u0438\u0435 \u043a\u043e\u0440\u043f\u043e\u0440\u0430\u0442\u0438\u0432\u043d\u043e\u0439 \u043a\u0443\u043b\u044c\u0442\u0443\u0440\u044b",
-                  documentId: "cljoxuksy12qnieypt8gjz0i"
-                },
-                {
-                  title:
-                    "\u0421\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u043c\u044b\u0448\u043b\u0435\u043d\u0438\u0435 \u0438 \u043f\u0440\u0438\u043d\u044f\u0442\u0438\u0435 \u0440\u0435\u0448\u0435\u043d\u0438\u0439",
-                  documentId: "wmljs64coqj2w8op1e43jfer"
-                },
-                {
-                  title:
-                    "\u0420\u043e\u0441\u0442 \u043f\u0440\u043e\u0434\u0430\u0436 \u0438 \u0440\u0430\u0437\u0432\u0438\u0442\u0438\u0435 \u043e\u0442\u043d\u043e\u0448\u0435\u043d\u0438\u0439 \u0441 \u043a\u043b\u0438\u0435\u043d\u0442\u0430\u043c\u0438",
-                  documentId: "k8k8p5fvig8uoun1dg0dow0o"
-                },
-                {
-                  title:
-                    "\u042d\u0444\u0444\u0435\u043a\u0442\u0438\u0432\u043d\u043e\u0435 \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e",
-                  documentId: "uqkuyssjypnnc28yhorszjyk"
-                }
-              ]
-            }
+            en: [
+              {
+                title: "Business Communication",
+                link: "/en/learning/communication"
+              },
+              {
+                title: "Cognitive Skills",
+                link: "/en/learning/cognitive-skills"
+              },
+              {
+                title: "Leadership and Management Skills",
+                link: "/en/learning/management-skills"
+              }
+            ],
+            lv: [
+              {
+                title: "Biznesa komunik\u0101cija",
+                link: "/lv/learning/communication"
+              },
+              {
+                title: "Kognit\u012bv\u0101s prasmes",
+                link: "/lv/learning/cognitive-skills"
+              },
+              {
+                title: "L\u012bder\u012bbas un vad\u012bbas prasmes",
+                link: "/lv/learning/management-skills"
+              }
+            ]
           }
         },
         Object.fromEntries(
@@ -380,20 +369,7 @@ function PlasmicMenuPoints__RenderFunc(props: {
             {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
               (() => {
                 try {
-                  return [
-                    {
-                      title: "Biznesa komunikācija",
-                      link: "/lv/learning/communication"
-                    },
-                    {
-                      title: "Kognitīvās prasmes",
-                      link: "/lv/learning/cognitive-skills"
-                    },
-                    {
-                      title: "Līderības un vadības prasmes",
-                      link: "/lv/learning/management-skills"
-                    }
-                  ];
+                  return $props.razdels;
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
