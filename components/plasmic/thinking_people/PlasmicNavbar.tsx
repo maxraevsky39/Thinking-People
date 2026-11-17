@@ -159,7 +159,20 @@ function PlasmicNavbar__RenderFunc(props: {
         path: "menuPoints.activeMenu",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          (() => {
+            try {
+              return $state.activeMenu;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       },
       {
         path: "menuPointsSecond.activeMenu",
@@ -240,6 +253,34 @@ function PlasmicNavbar__RenderFunc(props: {
           typeof $steps["closeLearningMenu"].then === "function"
         ) {
           $steps["closeLearningMenu"] = await $steps["closeLearningMenu"];
+        }
+
+        $steps["updateActiveMenu"] = true
+          ? (() => {
+              const actionArgs = {
+                variable: {
+                  objRoot: $state,
+                  variablePath: ["activeMenu"]
+                },
+                operation: 0
+              };
+              return (({ variable, value, startIndex, deleteCount }) => {
+                if (!variable) {
+                  return;
+                }
+                const { objRoot, variablePath } = variable;
+
+                $stateSet(objRoot, variablePath, value);
+                return value;
+              })?.apply(null, [actionArgs]);
+            })()
+          : undefined;
+        if (
+          $steps["updateActiveMenu"] != null &&
+          typeof $steps["updateActiveMenu"] === "object" &&
+          typeof $steps["updateActiveMenu"].then === "function"
+        ) {
+          $steps["updateActiveMenu"] = await $steps["updateActiveMenu"];
         }
       }}
     >
@@ -334,6 +375,38 @@ function PlasmicNavbar__RenderFunc(props: {
             "noAnimation"
           )
         })}
+        onMouseLeave={async event => {
+          const $steps = {};
+
+          $steps["updateMenuPointsActiveMenu"] = true
+            ? (() => {
+                const actionArgs = {
+                  variable: {
+                    objRoot: $state,
+                    variablePath: ["menuPoints", "activeMenu"]
+                  },
+                  operation: 1
+                };
+                return (({ variable, value, startIndex, deleteCount }) => {
+                  if (!variable) {
+                    return;
+                  }
+                  const { objRoot, variablePath } = variable;
+
+                  $stateSet(objRoot, variablePath, undefined);
+                  return undefined;
+                })?.apply(null, [actionArgs]);
+              })()
+            : undefined;
+          if (
+            $steps["updateMenuPointsActiveMenu"] != null &&
+            typeof $steps["updateMenuPointsActiveMenu"] === "object" &&
+            typeof $steps["updateMenuPointsActiveMenu"].then === "function"
+          ) {
+            $steps["updateMenuPointsActiveMenu"] =
+              await $steps["updateMenuPointsActiveMenu"];
+          }
+        }}
       >
         <MenuPoints
           data-plasmic-name={"menuPoints"}
