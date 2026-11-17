@@ -84,11 +84,11 @@ for (const project of plasmic.projects) for (const component of project.componen
   }
   records.push(record);
   if (originalFile !== file && originalFile !== 'pages/index.tsx') movedFiles.push({from:originalFile,to:file});
-  // Preserve the concrete URL declared in Plasmic when its wrapper has been moved to a slug route.
-  if (fixedSlug) {
+  // Preserve concrete Plasmic URLs even when the wrapper uses a fixed route.
+  if (component.path && !component.path.includes("[") && component.path !== "/") {
     let alias = (component.path || '').replace(new RegExp(`^/(${locales.join('|')})(?=/|$)`), '/[locale]');
     if (!alias.includes('[locale]')) alias = '/[locale]' + alias;
-    if (alias !== route.replace('[slug]', fixedSlug)) records.push({...record,route:alias,file:'pages'+alias+'.tsx',entries:record.entries.map(e=>({...e,url:alias.replace('[locale]',e.params.locale)+'/'}))});
+    if (alias !== route.replace('[slug]', fixedSlug || '')) records.push({...record,route:alias,file:'pages'+alias+'.tsx',entries:record.entries.map(e=>({...e,url:alias.replace('[locale]',e.params.locale)+'/'}))});
   }
 }
 const routes = new Set(), urls = new Set();
@@ -107,6 +107,20 @@ for (const r of records) {
   fs.mkdirSync(path.dirname(r.file),{recursive:true});
   fs.writeFileSync(r.file,output);
 }
+// Remove only wrappers owned by this generator; synced and handwritten pages stay intact.
+const activeFiles = new Set(records.map(r => r.file));
+function removeObsoleteManagedWrappers(directory) {
+  for (const entry of fs.readdirSync(directory, {withFileTypes:true})) {
+    const file = path.join(directory, entry.name);
+    if (entry.isDirectory()) removeObsoleteManagedWrappers(file);
+    else if (/\.tsx$/.test(file) && !activeFiles.has(file) &&
+      fs.readFileSync(file, 'utf8').startsWith('// Managed by scripts/prepare-static-pages.mjs.')) {
+      fs.unlinkSync(file);
+      console.log(`Removed obsolete managed wrapper: ${file}`);
+    }
+  }
+}
+removeObsoleteManagedWrappers('pages');
 for (const {from,to} of movedFiles) {
   if (fs.existsSync(from) && !records.some(r=>r.file===from)) {
     fs.unlinkSync(from);
