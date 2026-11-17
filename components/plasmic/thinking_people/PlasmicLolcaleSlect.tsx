@@ -285,13 +285,14 @@ function PlasmicLolcaleSlect__RenderFunc(props: {
                 const actionArgs = {
                   customFunction: async () => {
                     return (() => {
-                      const targetLocale = "en";
                       const url = new URL(window.location.href);
-                      if (/^\/(?:en|lv)(?=\/|$)/.test(url.pathname)) {
-                        url.pathname = url.pathname.replace(
-                          /^\/(?:en|lv)(?=\/|$)/,
-                          `/${targetLocale}`
-                        );
+                      const match = url.pathname.match(/^\/(en|lv)(?=\/|$)/);
+                      if (match) {
+                        const targetLocale = match[1] === "lv" ? "en" : "lv";
+                        url.pathname =
+                          "/" +
+                          targetLocale +
+                          url.pathname.slice(match[0].length);
                         return window.location.assign(url.href);
                       }
                     })();
@@ -325,11 +326,7 @@ function PlasmicLolcaleSlect__RenderFunc(props: {
               )
             })}
           >
-            {hasVariant(globalVariants, "language", "lv") ? (
-              <React.Fragment>{"en"}</React.Fragment>
-            ) : (
-              "lv"
-            )}
+            {hasVariant(globalVariants, "language", "lv") ? "en" : "lv"}
           </div>
         </div>
       </div>

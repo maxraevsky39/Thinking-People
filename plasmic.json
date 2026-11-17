@@ -110,7 +110,7 @@
           "projectId": "5CArWwg3qxRa1A2Avpz5j5",
           "renderModuleFilePath": "plasmic/thinking_people/PlasmicLeadershipDevelopmentOnTrial.tsx",
           "importSpec": {
-            "modulePath": "../pages/[locale]/events/[slug].tsx"
+            "modulePath": "../pages/[locale]/events/leadership.tsx"
           },
           "cssFilePath": "plasmic/thinking_people/PlasmicLeadershipDevelopmentOnTrial.module.css",
           "scheme": "blackbox",

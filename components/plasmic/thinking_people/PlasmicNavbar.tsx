@@ -171,7 +171,8 @@ function PlasmicNavbar__RenderFunc(props: {
         path: "lolcaleSlect.isOpen",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          hasVariant(globalVariants, "language", "lv") ? false : false
       }
     ],
     [$props, $ctx, $refs]
@@ -245,7 +246,13 @@ function PlasmicNavbar__RenderFunc(props: {
       <LolcaleSlect
         data-plasmic-name={"lolcaleSlect"}
         data-plasmic-override={overrides.lolcaleSlect}
-        className={classNames("__wab_instance", sty.lolcaleSlect)}
+        className={classNames("__wab_instance", sty.lolcaleSlect, {
+          [sty.lolcaleSlectglobal_language_lv]: hasVariant(
+            globalVariants,
+            "language",
+            "lv"
+          )
+        })}
         isOpen={generateStateValueProp($state, ["lolcaleSlect", "isOpen"])}
         onIsOpenChange={async (...eventArgs: any) => {
           generateStateOnChangeProp($state, ["lolcaleSlect", "isOpen"]).apply(
