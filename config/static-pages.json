@@ -11,10 +11,5 @@
   "collectionFilters": {
     "experts": "{ hasProfilePage: { eq: true } }"
   },
-  "unmanagedPages": {
-    "Zi_mnrHDL1l9": [
-      "/en/",
-      "/lv/"
-    ]
-  }
+  "unmanagedPages": {}
 }
