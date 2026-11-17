@@ -250,7 +250,6 @@
   --mixin-XYFhlkThgOp9_letter-spacing: -0.5px;
   --mixin-XYFhlkThgOp9_line-height: 1.1;
   --mixin-XYFhlkThgOp9_white-space: pre-wrap;
-  --mixin-i-zJnurg3m3G_color: #0070f3;
   --mixin-i-zJnurg3m3G_white-space: pre-wrap;
   --mixin-2rJD6kiARSMe_font-size: 32px;
   --mixin-2rJD6kiARSMe_font-weight: 600;
@@ -338,7 +337,7 @@
   --mixin-oobwdUrrTZni_font-weight: 600;
   --mixin-oobwdUrrTZni_line-height: 1.5;
   --mixin-oobwdUrrTZni_white-space: pre-wrap;
-  --mixin-db2L0pjkSlTH_color: #3291ff;
+  --mixin-db2L0pjkSlTH_color: var(--token-Ji6KJ35C0nYH);
   --mixin-db2L0pjkSlTH_white-space: pre-wrap;
   --mixin-zboDs8gKNjMB_white-space: pre-wrap;
   --mixin-TeddAxctr9MO_white-space: pre-wrap;
@@ -829,7 +828,6 @@ a:where(.root_reset_5CArWwg3qxRa1A2Avpz5j5.a__5CArW),
 :where(.root_reset_5CArWwg3qxRa1A2Avpz5j5 .__wab_expr_html_text) a,
 :where(.root_reset_5CArWwg3qxRa1A2Avpz5j5_tags) a,
 a:where(.root_reset_5CArWwg3qxRa1A2Avpz5j5_tags) {
-  color: var(--mixin-i-zJnurg3m3G_color);
 }
 
 :where(.root_reset_5CArWwg3qxRa1A2Avpz5j5) h3:where(.h3__5CArW),

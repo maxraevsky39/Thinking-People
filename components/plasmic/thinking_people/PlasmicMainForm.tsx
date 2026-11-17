@@ -149,30 +149,64 @@ function PlasmicMainForm__RenderFunc(props: {
     >
       <InputForm
         _class={"js-form-req"}
-        className={classNames("__wab_instance", sty.inputForm__fvxdo)}
+        className={classNames("__wab_instance", sty.inputForm__fvxdo, {
+          [sty.inputFormglobal_language_lv__fvxdok8AD2]: hasVariant(
+            globalVariants,
+            "language",
+            "lv"
+          )
+        })}
         name={"name"}
-        placeholder={"Name"}
+        placeholder={
+          hasVariant(globalVariants, "language", "lv") ? "Vārds" : "Name"
+        }
       />
 
       <InputForm
         _class={"js-form-req"}
-        className={classNames("__wab_instance", sty.inputForm___7Onbi)}
+        className={classNames("__wab_instance", sty.inputForm___7Onbi, {
+          [sty.inputFormglobal_language_lv___7OnbiK8AD2]: hasVariant(
+            globalVariants,
+            "language",
+            "lv"
+          )
+        })}
         name={"phone"}
-        placeholder={"Phone"}
+        placeholder={
+          hasVariant(globalVariants, "language", "lv") ? "Tālrunis" : "Phone"
+        }
       />
 
       <InputForm
         _class={"js-form-req"}
-        className={classNames("__wab_instance", sty.inputForm__uVMi)}
+        className={classNames("__wab_instance", sty.inputForm__uVMi, {
+          [sty.inputFormglobal_language_lv__uVMiK8AD2]: hasVariant(
+            globalVariants,
+            "language",
+            "lv"
+          )
+        })}
         name={"email"}
-        placeholder={"Email"}
+        placeholder={
+          hasVariant(globalVariants, "language", "lv") ? "E-pasts" : "Email"
+        }
       />
 
       <InputForm
         _class={""}
-        className={classNames("__wab_instance", sty.inputForm__x8M3V)}
+        className={classNames("__wab_instance", sty.inputForm__x8M3V, {
+          [sty.inputFormglobal_language_lv__x8M3VK8AD2]: hasVariant(
+            globalVariants,
+            "language",
+            "lv"
+          )
+        })}
         name={"desciption"}
-        placeholder={"How can we help your business?"}
+        placeholder={
+          hasVariant(globalVariants, "language", "lv")
+            ? "Kā mēs varam palīdzēt jūsu biznesam?"
+            : "How can we help your business?"
+        }
         textArea={true}
       />
 
@@ -181,26 +215,50 @@ function PlasmicMainForm__RenderFunc(props: {
           "all",
           "__wab_text",
           sty.text__fmmuJ,
-          "js-form-error"
+          "js-form-error",
+          {
+            [sty.textglobal_language_lv__fmmuJk8AD2]: hasVariant(
+              globalVariants,
+              "language",
+              "lv"
+            )
+          }
         )}
       >
-        {"Error!"}
+        {hasVariant(globalVariants, "language", "lv")
+          ? "Neizdev\u0101s nos\u016bt\u012bt zi\u0146u."
+          : "Error!"}
       </div>
       <div
         className={classNames(
           "all",
           "__wab_text",
           sty.text___2Uazb,
-          "js-form-success"
+          "js-form-success",
+          {
+            [sty.textglobal_language_lv___2Uazbk8AD2]: hasVariant(
+              globalVariants,
+              "language",
+              "lv"
+            )
+          }
         )}
       >
-        {"success!"}
+        {hasVariant(globalVariants, "language", "lv")
+          ? "Zi\u0146a nos\u016bt\u012bta!"
+          : "success!"}
       </div>
       <BtnSecond
         data-plasmic-name={"btnSecond"}
         data-plasmic-override={overrides.btnSecond}
-        className={classNames("__wab_instance", sty.btnSecond)}
-        text={"Send"}
+        className={classNames("__wab_instance", sty.btnSecond, {
+          [sty.btnSecondglobal_language_lv]: hasVariant(
+            globalVariants,
+            "language",
+            "lv"
+          )
+        })}
+        text={hasVariant(globalVariants, "language", "lv") ? "Nosūtīt" : "Send"}
         type={"submit"}
       />
     </form>

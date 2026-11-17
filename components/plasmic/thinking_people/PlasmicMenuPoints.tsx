@@ -71,13 +71,16 @@ createPlasmicElementProxy;
 
 export type PlasmicMenuPoints__VariantMembers = {
   white: "white";
+  second: "second";
 };
 export type PlasmicMenuPoints__VariantsArgs = {
   white?: SingleBooleanChoiceArg<"white">;
+  second?: SingleBooleanChoiceArg<"second">;
 };
 type VariantPropType = keyof PlasmicMenuPoints__VariantsArgs;
 export const PlasmicMenuPoints__VariantProps = new Array<VariantPropType>(
-  "white"
+  "white",
+  "second"
 );
 
 export type PlasmicMenuPoints__ArgsType = {
@@ -104,6 +107,7 @@ export interface DefaultMenuPointsProps {
   onActiveMenuChange?: (val: string) => void;
   razdels?: any;
   white?: SingleBooleanChoiceArg<"white">;
+  second?: SingleBooleanChoiceArg<"second">;
   className?: string;
 }
 
@@ -203,6 +207,12 @@ function PlasmicMenuPoints__RenderFunc(props: {
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.white
+      },
+      {
+        path: "second",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.second
       }
     ],
     [$props, $ctx, $refs]
@@ -232,13 +242,33 @@ function PlasmicMenuPoints__RenderFunc(props: {
         "plasmic_default_styles",
         "plasmic_mixins",
         styleTokensClassNames,
-        sty.root
+        sty.root,
+        {
+          [sty.rootglobal_language_lv]: hasVariant(
+            globalVariants,
+            "language",
+            "lv"
+          ),
+          [sty.rootglobal_language_lv_second]:
+            hasVariant($state, "second", "second") &&
+            hasVariant(globalVariants, "language", "lv"),
+          [sty.rootsecond]: hasVariant($state, "second", "second")
+        }
       )}
     >
       <NavbarPopup
         data-plasmic-name={"navbarPopup6"}
         data-plasmic-override={overrides.navbarPopup6}
         className={classNames("__wab_instance", sty.navbarPopup6, {
+          [sty.navbarPopup6global_language_lv]: hasVariant(
+            globalVariants,
+            "language",
+            "lv"
+          ),
+          [sty.navbarPopup6global_language_lv_second]:
+            hasVariant($state, "second", "second") &&
+            hasVariant(globalVariants, "language", "lv"),
+          [sty.navbarPopup6second]: hasVariant($state, "second", "second"),
           [sty.navbarPopup6white]: hasVariant($state, "white", "white")
         })}
         isHoverMenu={async menu => {
@@ -274,7 +304,16 @@ function PlasmicMenuPoints__RenderFunc(props: {
           }
         }}
         left={true}
-        link={`/${encodeURIComponent("en")}`}
+        link={
+          hasVariant($state, "second", "second") &&
+          hasVariant(globalVariants, "language", "lv")
+            ? `/${encodeURIComponent("lv")}/experts`
+            : hasVariant($state, "second", "second")
+              ? `/${encodeURIComponent("en")}/experts`
+              : hasVariant(globalVariants, "language", "lv")
+                ? `/${encodeURIComponent("en")}`
+                : `/${encodeURIComponent("en")}`
+        }
         noHover={
           hasVariant(globalVariants, "screen", "mobile") ? true : undefined
         }
@@ -323,18 +362,38 @@ function PlasmicMenuPoints__RenderFunc(props: {
             throw e;
           }
         })()}
-        text={"Learning"}
+        simple={hasVariant($state, "second", "second") ? true : undefined}
+        text={
+          hasVariant($state, "second", "second") &&
+          hasVariant(globalVariants, "language", "lv")
+            ? "M\u016bsu komanda"
+            : hasVariant($state, "second", "second")
+              ? "Our Team"
+              : hasVariant(globalVariants, "language", "lv")
+                ? "M\u016bsu komanda"
+                : "Learning"
+        }
         white={hasVariant($state, "white", "white") ? true : undefined}
       >
         <div className={classNames("all", sty.freeBox__vTPdx)}>
-          <div className={classNames("all", "__wab_text", sty.text__q3VkW)}>
-            {"\u0420\u0430\u0437\u0434\u0435\u043b\u044b"}
-          </div>
           <div className={classNames("all", sty.freeBox__lzDnm)}>
             {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
               (() => {
                 try {
-                  return $props.razdels.data.razdels;
+                  return [
+                    {
+                      title: "Biznesa komunikācija",
+                      link: "/lv/learning/communication"
+                    },
+                    {
+                      title: "Kognitīvās prasmes",
+                      link: "/lv/learning/cognitive-skills"
+                    },
+                    {
+                      title: "Līderības un vadības prasmes",
+                      link: "/lv/learning/management-skills"
+                    }
+                  ];
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -355,10 +414,29 @@ function PlasmicMenuPoints__RenderFunc(props: {
                     "a",
                     "a__5CArW",
                     "__wab_text",
-                    sty.link__aowNq
+                    sty.link__aowNq,
+                    {
+                      [sty.linkglobal_language_lv__aowNqK8AD2]: hasVariant(
+                        globalVariants,
+                        "language",
+                        "lv"
+                      )
+                    }
                   )}
                   component={Link}
-                  href={`/${encodeURIComponent("en")}`}
+                  href={(() => {
+                    try {
+                      return currentItem.link;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return `/${encodeURIComponent("en")}`;
+                      }
+                      throw e;
+                    }
+                  })()}
                   key={currentIndex}
                   legacyBehavior={false}
                   platform={"nextjs"}
@@ -395,36 +473,6 @@ function PlasmicMenuPoints__RenderFunc(props: {
               );
             })}
           </div>
-          <PlasmicLink__
-            className={classNames(
-              "all",
-              "a",
-              "a__5CArW",
-              "__wab_text",
-              sty.link___4KA9
-            )}
-            component={Link}
-            href={`/${encodeURIComponent("en")}`}
-            legacyBehavior={false}
-            platform={"nextjs"}
-            prefetch={(() => {
-              try {
-                return false;
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return undefined;
-                }
-                throw e;
-              }
-            })()}
-          >
-            {
-              "\u0412\u0441\u0435 \u0442\u0440\u0435\u043d\u0438\u043d\u0433\u0438 \u2197"
-            }
-          </PlasmicLink__>
         </div>
         <div className={classNames("all", sty.freeBox__lQUa)} />
       </NavbarPopup>
@@ -433,6 +481,11 @@ function PlasmicMenuPoints__RenderFunc(props: {
         data-plasmic-override={overrides.navbarPopup3}
         children={null}
         className={classNames("__wab_instance", sty.navbarPopup3, {
+          [sty.navbarPopup3global_language_lv]: hasVariant(
+            globalVariants,
+            "language",
+            "lv"
+          ),
           [sty.navbarPopup3white]: hasVariant($state, "white", "white")
         })}
         isHoverMenu={async menu => {
@@ -466,10 +519,18 @@ function PlasmicMenuPoints__RenderFunc(props: {
             $steps["updateActiveMenu"] = await $steps["updateActiveMenu"];
           }
         }}
-        link={`/${encodeURIComponent("en")}`}
+        link={
+          hasVariant(globalVariants, "language", "lv")
+            ? `/${encodeURIComponent("lv")}/diagnostics`
+            : `/${encodeURIComponent("en")}`
+        }
         open={undefined}
         simple={hasVariant(globalVariants, "screen", "mobile") ? true : true}
-        text={"Diagnostics"}
+        text={
+          hasVariant(globalVariants, "language", "lv")
+            ? "Diagnostika"
+            : "Diagnostics"
+        }
         white={hasVariant($state, "white", "white") ? true : undefined}
       />
 
@@ -478,6 +539,15 @@ function PlasmicMenuPoints__RenderFunc(props: {
         data-plasmic-override={overrides.navbarPopup4}
         children={null}
         className={classNames("__wab_instance", sty.navbarPopup4, {
+          [sty.navbarPopup4global_language_lv]: hasVariant(
+            globalVariants,
+            "language",
+            "lv"
+          ),
+          [sty.navbarPopup4global_language_lv_second]:
+            hasVariant($state, "second", "second") &&
+            hasVariant(globalVariants, "language", "lv"),
+          [sty.navbarPopup4second]: hasVariant($state, "second", "second"),
           [sty.navbarPopup4white]: hasVariant($state, "white", "white")
         })}
         isHoverMenu={async menu => {
@@ -511,10 +581,28 @@ function PlasmicMenuPoints__RenderFunc(props: {
             $steps["updateActiveMenu"] = await $steps["updateActiveMenu"];
           }
         }}
-        link={`/${encodeURIComponent("en")}`}
+        link={
+          hasVariant($state, "second", "second") &&
+          hasVariant(globalVariants, "language", "lv")
+            ? `/${encodeURIComponent("lv")}/about-us`
+            : hasVariant($state, "second", "second")
+              ? `/${encodeURIComponent("en")}/about-us`
+              : hasVariant(globalVariants, "language", "lv")
+                ? `/${encodeURIComponent("lv")}/cases`
+                : `/${encodeURIComponent("en")}/cases`
+        }
         open={undefined}
         simple={hasVariant(globalVariants, "screen", "mobile") ? true : true}
-        text={"Cases"}
+        text={
+          hasVariant($state, "second", "second") &&
+          hasVariant(globalVariants, "language", "lv")
+            ? "Par mums"
+            : hasVariant($state, "second", "second")
+              ? "About"
+              : hasVariant(globalVariants, "language", "lv")
+                ? "Gadījumu izpēte"
+                : "Cases"
+        }
         white={hasVariant($state, "white", "white") ? true : undefined}
       />
 

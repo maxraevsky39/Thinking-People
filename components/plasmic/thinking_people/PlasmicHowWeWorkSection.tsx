@@ -165,14 +165,32 @@ function PlasmicHowWeWorkSection__RenderFunc(props: {
           <H2
             data-plasmic-name={"h2"}
             data-plasmic-override={overrides.h2}
-            className={classNames("__wab_instance", sty.h2)}
-            title={"Your goals. Your context. Our solution."}
+            className={classNames("__wab_instance", sty.h2, {
+              [sty.h2global_language_lv]: hasVariant(
+                globalVariants,
+                "language",
+                "lv"
+              )
+            })}
+            title={
+              hasVariant(globalVariants, "language", "lv")
+                ? "Jūsu mērķi. Jūsu konteksts. Mūsu risinājums."
+                : "Your goals. Your context. Our solution."
+            }
           />
 
-          <div className={classNames("all", "__wab_text", sty.text__puXZf)}>
-            {
-              "Built around your challenge. We design the program, select the expert, and define how to measure its impact."
-            }
+          <div
+            className={classNames("all", "__wab_text", sty.text__puXZf, {
+              [sty.textglobal_language_lv__puXZfK8AD2]: hasVariant(
+                globalVariants,
+                "language",
+                "lv"
+              )
+            })}
+          >
+            {hasVariant(globalVariants, "language", "lv")
+              ? "Veidots ap j\u016bsu izaicin\u0101jumu. M\u0113s izstr\u0101d\u0101jam programmu, izv\u0113lamies ekspertu un nosak\u0101m, k\u0101 m\u0113r\u012bt t\u0101s ietekmi."
+              : "Built around your challenge. We design the program, select the expert, and define how to measure its impact."}
           </div>
         </div>
         <div className={classNames("all", sty.freeBox___5BHw, "")}>
@@ -252,9 +270,27 @@ function PlasmicHowWeWorkSection__RenderFunc(props: {
                   transformOrigin={"center center"}
                 >
                   <HwwCard
-                    className={classNames("__wab_instance", sty.hwwCard__fr5Kg)}
+                    className={classNames(
+                      "__wab_instance",
+                      sty.hwwCard__fr5Kg,
+                      {
+                        [sty.hwwCardglobal_language_lv__fr5KgK8AD2]: hasVariant(
+                          globalVariants,
+                          "language",
+                          "lv"
+                        )
+                      }
+                    )}
                     currentIndex={currentIndex}
-                    currentItem={currentItem}
+                    currentItem={
+                      hasVariant(globalVariants, "language", "lv")
+                        ? [
+                            "Biznesa izaicinājums",
+                            "Novērtējums",
+                            "Pielāgota programma"
+                          ][currentIndex]
+                        : currentItem
+                    }
                   />
                 </ScrollSection>
               );
@@ -332,9 +368,21 @@ function PlasmicHowWeWorkSection__RenderFunc(props: {
                   transformOrigin={"center center"}
                 >
                   <HwwCard
-                    className={classNames("__wab_instance", sty.hwwCard__zfnc)}
+                    className={classNames("__wab_instance", sty.hwwCard__zfnc, {
+                      [sty.hwwCardglobal_language_lv__zfncK8AD2]: hasVariant(
+                        globalVariants,
+                        "language",
+                        "lv"
+                      )
+                    })}
                     currentIndex={currentIndex}
-                    currentItem={currentItem}
+                    currentItem={
+                      hasVariant(globalVariants, "language", "lv")
+                        ? ["Prakse", "Uzvedības maiņa", "Rezultāti"][
+                            currentIndex
+                          ]
+                        : currentItem
+                    }
                     last={(() => {
                       try {
                         return currentIndex === 2;
@@ -363,20 +411,48 @@ function PlasmicHowWeWorkSection__RenderFunc(props: {
       >
         <div className={classNames("all", sty.freeBox__okZ8)}>
           <div className={classNames("all", sty.freeBox__coeqV)}>
-            <div className={classNames("all", "__wab_text", sty.text__fmOFl)}>
-              {"Or start with a proven program."}
+            <div
+              className={classNames("all", "__wab_text", sty.text__fmOFl, {
+                [sty.textglobal_language_lv__fmOFlK8AD2]: hasVariant(
+                  globalVariants,
+                  "language",
+                  "lv"
+                )
+              })}
+            >
+              {hasVariant(globalVariants, "language", "lv")
+                ? "Vai s\u0101ciet ar p\u0101rbaud\u012btu programmu."
+                : "Or start with a proven program."}
             </div>
             <BtnSecond
               data-plasmic-name={"btnSecond"}
               data-plasmic-override={overrides.btnSecond}
-              className={classNames("__wab_instance", sty.btnSecond)}
-              text={"Explore"}
+              className={classNames("__wab_instance", sty.btnSecond, {
+                [sty.btnSecondglobal_language_lv]: hasVariant(
+                  globalVariants,
+                  "language",
+                  "lv"
+                )
+              })}
+              text={
+                hasVariant(globalVariants, "language", "lv")
+                  ? "Apskatīt"
+                  : "Explore"
+              }
             />
           </div>
-          <div className={classNames("all", "__wab_text", sty.text__goNwo)}>
-            {
-              "Explore existing training programs for your team's development needs."
-            }
+          <div
+            className={classNames("all", "__wab_text", sty.text__goNwo, {
+              [sty.textglobal_language_lv__goNwok8AD2]: hasVariant(
+                globalVariants,
+                "language",
+                "lv"
+              )
+            })}
+          >
+            {hasVariant(globalVariants, "language", "lv")
+              ? "Iepaz\u012bstieties ar m\u016bsu eso\u0161aj\u0101m apm\u0101c\u012bbu programm\u0101m j\u016bsu komandas att\u012bst\u012bbas vajadz\u012bb\u0101m."
+              : "Explore existing training programs for your team's development needs."}
           </div>
         </div>
       </div>

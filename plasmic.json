@@ -285,12 +285,39 @@
           "projectId": "5CArWwg3qxRa1A2Avpz5j5",
           "renderModuleFilePath": "plasmic/thinking_people/PlasmicDiagnostics.tsx",
           "importSpec": {
-            "modulePath": "../pages/[local]/diagnostics.tsx"
+            "modulePath": "../pages/[locale]/diagnostics.tsx"
           },
           "cssFilePath": "plasmic/thinking_people/PlasmicDiagnostics.module.css",
           "scheme": "blackbox",
           "componentType": "page",
-          "path": "/[local]/diagnostics"
+          "path": "/[locale]/diagnostics"
+        },
+        {
+          "id": "Bfjzn2J7AV2H",
+          "name": "AboutUs",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicAboutUs.tsx",
+          "importSpec": {
+            "modulePath": "../pages/[locale]/about-us.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicAboutUs.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/[locale]/about-us"
+        },
+        {
+          "id": "MxR5b2Jq_5S2",
+          "name": "LolcaleSlect",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicLolcaleSlect.tsx",
+          "importSpec": {
+            "modulePath": "LolcaleSlect.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicLolcaleSlect.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -330,6 +357,11 @@
           "id": "g1FhkxcIlnEu",
           "name": "image",
           "filePath": "../public/plasmic/thinking_people/images/image.jpg"
+        },
+        {
+          "id": "TGD-5XuvGn5d",
+          "name": "IMG_0209.jpg.webp",
+          "filePath": "../public/plasmic/thinking_people/images/img0209JpgWebp.webp"
         }
       ],
       "indirect": false,

@@ -59,6 +59,7 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import LolcaleSlect from "../../LolcaleSlect"; // plasmic-import: MxR5b2Jq_5S2/component
 import { MotionScrollSection } from "../../MotionScrollSection"; // plasmic-import: za2mx6yd4yJR/codeComponent
 import MenuPoints from "../../MenuPoints"; // plasmic-import: wEtqwJLAH7eq/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/projectModule
@@ -87,13 +88,13 @@ export const PlasmicNavbar__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicNavbar__OverridesType = {
   navbar?: Flex__<"div">;
+  lolcaleSlect?: Flex__<typeof LolcaleSlect>;
   freeBox?: Flex__<"div">;
   menu?: Flex__<"div">;
-  menuPoints3?: Flex__<typeof MenuPoints>;
+  menuPoints?: Flex__<typeof MenuPoints>;
   logo?: Flex__<"div">;
   img?: Flex__<typeof PlasmicImg__>;
-  menuPoints2?: Flex__<"div">;
-  link?: Flex__<"a"> & Partial<LinkProps>;
+  menuPointsSecond?: Flex__<typeof MenuPoints>;
 };
 
 export interface DefaultNavbarProps {
@@ -149,10 +150,28 @@ function PlasmicNavbar__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.noAnimation
       },
       {
-        path: "menuPoints3.activeMenu",
+        path: "activeMenu",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
+      },
+      {
+        path: "menuPoints.activeMenu",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
+      },
+      {
+        path: "menuPointsSecond.activeMenu",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
+      },
+      {
+        path: "lolcaleSlect.isOpen",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -182,17 +201,24 @@ function PlasmicNavbar__RenderFunc(props: {
         "plasmic_default_styles",
         "plasmic_mixins",
         styleTokensClassNames,
-        sty.navbar
+        sty.navbar,
+        {
+          [sty.navbarglobal_language_lv]: hasVariant(
+            globalVariants,
+            "language",
+            "lv"
+          )
+        }
       )}
       onMouseLeave={async event => {
         const $steps = {};
 
-        $steps["updateMenuPoints3ActiveMenu"] = true
+        $steps["closeLearningMenu"] = true
           ? (() => {
               const actionArgs = {
                 variable: {
                   objRoot: $state,
-                  variablePath: ["menuPoints3", "activeMenu"]
+                  variablePath: ["activeMenu"]
                 },
                 operation: 1
               };
@@ -208,15 +234,35 @@ function PlasmicNavbar__RenderFunc(props: {
             })()
           : undefined;
         if (
-          $steps["updateMenuPoints3ActiveMenu"] != null &&
-          typeof $steps["updateMenuPoints3ActiveMenu"] === "object" &&
-          typeof $steps["updateMenuPoints3ActiveMenu"].then === "function"
+          $steps["closeLearningMenu"] != null &&
+          typeof $steps["closeLearningMenu"] === "object" &&
+          typeof $steps["closeLearningMenu"].then === "function"
         ) {
-          $steps["updateMenuPoints3ActiveMenu"] =
-            await $steps["updateMenuPoints3ActiveMenu"];
+          $steps["closeLearningMenu"] = await $steps["closeLearningMenu"];
         }
       }}
     >
+      <LolcaleSlect
+        data-plasmic-name={"lolcaleSlect"}
+        data-plasmic-override={overrides.lolcaleSlect}
+        className={classNames("__wab_instance", sty.lolcaleSlect)}
+        isOpen={generateStateValueProp($state, ["lolcaleSlect", "isOpen"])}
+        onIsOpenChange={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, ["lolcaleSlect", "isOpen"]).apply(
+            null,
+            eventArgs
+          );
+
+          if (
+            eventArgs.length > 1 &&
+            eventArgs[1] &&
+            eventArgs[1]._plasmic_state_init_
+          ) {
+            return;
+          }
+        }}
+      />
+
       <MotionScrollSection
         className={classNames(
           "__wab_instance",
@@ -269,7 +315,7 @@ function PlasmicNavbar__RenderFunc(props: {
       <div
         data-plasmic-name={"menu"}
         data-plasmic-override={overrides.menu}
-        className={classNames("all", sty.menu, {
+        className={classNames("all", sty.menu, "", {
           [sty.menunoAnimation]: hasVariant(
             $state,
             "noAnimation",
@@ -277,67 +323,36 @@ function PlasmicNavbar__RenderFunc(props: {
           )
         })}
       >
-        {(hasVariant(globalVariants, "screen", "mobile") ? false : true) ? (
-          <MenuPoints
-            data-plasmic-name={"menuPoints3"}
-            data-plasmic-override={overrides.menuPoints3}
-            activeMenu={generateStateValueProp($state, [
-              "menuPoints3",
+        <MenuPoints
+          data-plasmic-name={"menuPoints"}
+          data-plasmic-override={overrides.menuPoints}
+          activeMenu={generateStateValueProp($state, [
+            "menuPoints",
+            "activeMenu"
+          ])}
+          className={classNames("__wab_instance", sty.menuPoints, {
+            [sty.menuPointsglobal_language_lv]: hasVariant(
+              globalVariants,
+              "language",
+              "lv"
+            )
+          })}
+          onActiveMenuChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, [
+              "menuPoints",
               "activeMenu"
-            ])}
-            className={classNames("__wab_instance", sty.menuPoints3)}
-            onActiveMenuChange={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, [
-                "menuPoints3",
-                "activeMenu"
-              ]).apply(null, eventArgs);
+            ]).apply(null, eventArgs);
 
-              if (
-                eventArgs.length > 1 &&
-                eventArgs[1] &&
-                eventArgs[1]._plasmic_state_init_
-              ) {
-                return;
-              }
-            }}
-            razdels={{
-              data: {
-                razdels: [
-                  {
-                    documentId: "ln90putl3b5ta7suwkqsckvk",
-                    title:
-                      "1.\u00a0\u041f\u0443\u0431\u043b\u0438\u0447\u043d\u044b\u0435 \u0432\u044b\u0441\u0442\u0443\u043f\u043b\u0435\u043d\u0438\u044f \u0438\u00a0\u043f\u0440\u0435\u0437\u0435\u043d\u0442\u0430\u0446\u0438\u0438"
-                  },
-                  {
-                    documentId: "d50lsk67v7p9l4vvjbr6l8l3",
-                    title:
-                      "2.\u00a0\u0412\u043b\u0438\u044f\u043d\u0438\u0435, \u0443\u0431\u0435\u0436\u0434\u0435\u043d\u0438\u0435 \u0438\u00a0\u043f\u0435\u0440\u0435\u0433\u043e\u0432\u043e\u0440\u044b"
-                  },
-                  {
-                    documentId: "uqkuyssjypnnc28yhorszjyk",
-                    title:
-                      "3.\u00a0\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0438\u00a0\u043b\u0438\u0434\u0435\u0440\u0441\u0442\u0432\u043e"
-                  },
-                  {
-                    documentId: "wmljs64coqj2w8op1e43jfer",
-                    title:
-                      "4.\u00a0\u041c\u044b\u0448\u043b\u0435\u043d\u0438\u0435 \u0438\u00a0\u043f\u0440\u0438\u043d\u044f\u0442\u0438\u0435 \u0440\u0435\u0448\u0435\u043d\u0438\u0439"
-                  },
-                  {
-                    documentId: "twtmfssf40sunjv1ja3hwusm",
-                    title:
-                      "5.\u00a0\u041a\u043e\u043c\u0430\u043d\u0434\u043d\u043e\u0435 \u0432\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435"
-                  },
-                  {
-                    documentId: "uyu84ifbcuxs0wd6p28oiob4",
-                    title:
-                      "6.\u00a0\u041a\u0440\u0435\u0430\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u044c \u0438\u00a0\u0438\u043d\u043d\u043e\u0432\u0430\u0446\u0438\u0438"
-                  }
-                ]
-              }
-            }}
-          />
-        ) : null}
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+        />
+
         <div
           data-plasmic-name={"logo"}
           data-plasmic-override={overrides.logo}
@@ -386,7 +401,13 @@ function PlasmicNavbar__RenderFunc(props: {
               data-plasmic-name={"img"}
               data-plasmic-override={overrides.img}
               alt={""}
-              className={classNames(sty.img)}
+              className={classNames(sty.img, {
+                [sty.imgglobal_language_lv]: hasVariant(
+                  globalVariants,
+                  "language",
+                  "lv"
+                )
+              })}
               displayHeight={"40px"}
               displayMaxHeight={"none"}
               displayMaxWidth={"100%"}
@@ -397,10 +418,10 @@ function PlasmicNavbar__RenderFunc(props: {
               onClick={async event => {
                 const $steps = {};
 
-                $steps["goToHttpsThinkingPeopleEu"] = true
+                $steps["goToHomepage"] = true
                   ? (() => {
                       const actionArgs = {
-                        destination: "https://thinking-people.eu/"
+                        destination: `/${encodeURIComponent("lv")}`
                       };
                       return (({ destination }) => {
                         if (
@@ -417,12 +438,11 @@ function PlasmicNavbar__RenderFunc(props: {
                     })()
                   : undefined;
                 if (
-                  $steps["goToHttpsThinkingPeopleEu"] != null &&
-                  typeof $steps["goToHttpsThinkingPeopleEu"] === "object" &&
-                  typeof $steps["goToHttpsThinkingPeopleEu"].then === "function"
+                  $steps["goToHomepage"] != null &&
+                  typeof $steps["goToHomepage"] === "object" &&
+                  typeof $steps["goToHomepage"].then === "function"
                 ) {
-                  $steps["goToHttpsThinkingPeopleEu"] =
-                    await $steps["goToHttpsThinkingPeopleEu"];
+                  $steps["goToHomepage"] = await $steps["goToHomepage"];
                 }
               }}
               src={{
@@ -434,77 +454,36 @@ function PlasmicNavbar__RenderFunc(props: {
             />
           </MotionScrollSection>
         </div>
-        <div
-          data-plasmic-name={"menuPoints2"}
-          data-plasmic-override={overrides.menuPoints2}
-          className={classNames("all", sty.menuPoints2)}
-        >
-          {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
-            (() => {
-              try {
-                return [
-                  {
-                    name: "Our Team",
-                    link: "https://thinking-people.eu/experts"
-                  },
-                  {
-                    name: "Blog",
-                    link: "https://thinking-people.eu/blog"
-                  },
-                  {
-                    name: "About",
-                    link: "https://thinking-people.eu/about-us"
-                  }
-                ].slice(0, 3);
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return [];
-                }
-                throw e;
-              }
-            })()
-          ).map((__plasmic_item_0, __plasmic_idx_0) => {
-            const currentItem = __plasmic_item_0;
-            const currentIndex = __plasmic_idx_0;
-            return (
-              <PlasmicLink__
-                data-plasmic-name={"link"}
-                data-plasmic-override={overrides.link}
-                className={classNames(
-                  "all",
-                  "a",
-                  "a__5CArW",
-                  "__wab_text",
-                  sty.link
-                )}
-                component={Link}
-                href={currentItem.link}
-                key={currentIndex}
-                legacyBehavior={false}
-                platform={"nextjs"}
-              >
-                <React.Fragment>
-                  {(() => {
-                    try {
-                      return currentItem.name;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return "Built around your challenge. We design the program, select the expert, and define how to measure its impact.";
-                      }
-                      throw e;
-                    }
-                  })()}
-                </React.Fragment>
-              </PlasmicLink__>
-            );
+        <MenuPoints
+          data-plasmic-name={"menuPointsSecond"}
+          data-plasmic-override={overrides.menuPointsSecond}
+          activeMenu={generateStateValueProp($state, [
+            "menuPointsSecond",
+            "activeMenu"
+          ])}
+          className={classNames("__wab_instance", sty.menuPointsSecond, {
+            [sty.menuPointsSecondglobal_language_lv]: hasVariant(
+              globalVariants,
+              "language",
+              "lv"
+            )
           })}
-        </div>
+          onActiveMenuChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, [
+              "menuPointsSecond",
+              "activeMenu"
+            ]).apply(null, eventArgs);
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          second={true}
+        />
       </div>
     </div>
   ) as React.ReactElement | null;
@@ -513,34 +492,34 @@ function PlasmicNavbar__RenderFunc(props: {
 const PlasmicDescendants = {
   navbar: [
     "navbar",
+    "lolcaleSlect",
     "freeBox",
     "menu",
-    "menuPoints3",
+    "menuPoints",
     "logo",
     "img",
-    "menuPoints2",
-    "link"
+    "menuPointsSecond"
   ],
+  lolcaleSlect: ["lolcaleSlect"],
   freeBox: ["freeBox"],
-  menu: ["menu", "menuPoints3", "logo", "img", "menuPoints2", "link"],
-  menuPoints3: ["menuPoints3"],
+  menu: ["menu", "menuPoints", "logo", "img", "menuPointsSecond"],
+  menuPoints: ["menuPoints"],
   logo: ["logo", "img"],
   img: ["img"],
-  menuPoints2: ["menuPoints2", "link"],
-  link: ["link"]
+  menuPointsSecond: ["menuPointsSecond"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   navbar: "div";
+  lolcaleSlect: typeof LolcaleSlect;
   freeBox: "div";
   menu: "div";
-  menuPoints3: typeof MenuPoints;
+  menuPoints: typeof MenuPoints;
   logo: "div";
   img: typeof PlasmicImg__;
-  menuPoints2: "div";
-  link: "a";
+  menuPointsSecond: typeof MenuPoints;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -605,13 +584,13 @@ export const PlasmicNavbar = Object.assign(
   makeNodeComponent("navbar"),
   {
     // Helper components rendering sub-elements
+    lolcaleSlect: makeNodeComponent("lolcaleSlect"),
     freeBox: makeNodeComponent("freeBox"),
     menu: makeNodeComponent("menu"),
-    menuPoints3: makeNodeComponent("menuPoints3"),
+    menuPoints: makeNodeComponent("menuPoints"),
     logo: makeNodeComponent("logo"),
     img: makeNodeComponent("img"),
-    menuPoints2: makeNodeComponent("menuPoints2"),
-    link: makeNodeComponent("link"),
+    menuPointsSecond: makeNodeComponent("menuPointsSecond"),
 
     // Metadata about props expected for PlasmicNavbar
     internalVariantProps: PlasmicNavbar__VariantProps,

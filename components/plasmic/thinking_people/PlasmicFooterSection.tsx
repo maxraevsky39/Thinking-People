@@ -153,17 +153,47 @@ function PlasmicFooterSection__RenderFunc(props: {
             {"\u00a9 2023 \u2014 2025, Thinking People"}
           </div>
           <div className={classNames("all", sty.freeBox__um6Bp)}>
-            <div className={classNames("all", "__wab_text", sty.text__nbv2G)}>
-              {"Terms & Conditions"}
+            <div
+              className={classNames("all", "__wab_text", sty.text__nbv2G, {
+                [sty.textglobal_language_lv__nbv2GK8AD2]: hasVariant(
+                  globalVariants,
+                  "language",
+                  "lv"
+                )
+              })}
+            >
+              {hasVariant(globalVariants, "language", "lv")
+                ? "Lieto\u0161anas noteikumi"
+                : "Terms & Conditions"}
             </div>
-            <div className={classNames("all", "__wab_text", sty.text__fwACd)}>
-              {"Privacy Policy"}
+            <div
+              className={classNames("all", "__wab_text", sty.text__fwACd, {
+                [sty.textglobal_language_lv__fwACdK8AD2]: hasVariant(
+                  globalVariants,
+                  "language",
+                  "lv"
+                )
+              })}
+            >
+              {hasVariant(globalVariants, "language", "lv")
+                ? "Priv\u0101tuma politika"
+                : "Privacy Policy"}
             </div>
           </div>
         </div>
         <div className={classNames("all", sty.freeBox__ysoH8)}>
-          <div className={classNames("all", "__wab_text", sty.text___5DjDl)}>
-            {"Follow us:"}
+          <div
+            className={classNames("all", "__wab_text", sty.text___5DjDl, {
+              [sty.textglobal_language_lv___5DjDlK8AD2]: hasVariant(
+                globalVariants,
+                "language",
+                "lv"
+              )
+            })}
+          >
+            {hasVariant(globalVariants, "language", "lv")
+              ? "Sekojiet mums:"
+              : "Follow us:"}
           </div>
           <div className={classNames("all", sty.freeBox__bdQOq)}>
             <div

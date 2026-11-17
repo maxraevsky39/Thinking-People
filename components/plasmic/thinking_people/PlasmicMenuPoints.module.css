@@ -56,19 +56,6 @@
     min-width: 0;
   }
 }
-.text__q3VkW {
-  animation: none;
-  width: auto;
-  height: auto;
-  flex-shrink: 1;
-  white-space: pre;
-  font-weight: 500;
-  color: var(--token-5HSauQvnqWJr);
-  font-family: "Golos Text", sans-serif;
-  font-size: var(--token-v5RtrQYVurzK);
-  line-height: 135%;
-  letter-spacing: 0.5%;
-}
 .freeBox__lzDnm {
   animation: none;
   display: flex;
@@ -91,35 +78,25 @@
   }
 }
 .link__aowNq {
+  font-size: var(--token-iV7pzmTyxly4);
+  font-weight: 400;
+  line-height: var(--token-W3llFhI2gLwT);
+  letter-spacing: 0;
+  font-style: normal;
+  text-transform: none;
+  color: inherit;
+  font-family: var(--token-NyfZrcORdatl);
   animation: none;
   width: auto;
   height: auto;
   flex-shrink: 1;
   white-space: pre;
-  color: var(--token-5HSauQvnqWJr);
-  font-family: "Golos Text", sans-serif;
-  font-size: var(--token-tdb1P_3CpWrk);
-  line-height: 115%;
-  letter-spacing: 0.5%;
 }
 @media (max-width: 511px) {
   .link__aowNq {
     animation: none;
     white-space: pre-wrap;
   }
-}
-.link___4KA9 {
-  animation: none;
-  width: auto;
-  height: auto;
-  flex-shrink: 1;
-  white-space: pre;
-  font-weight: 400;
-  color: var(--token-nHwcJFFaplj3);
-  font-family: "Golos Text", sans-serif;
-  font-size: var(--token-tdb1P_3CpWrk);
-  line-height: 115%;
-  letter-spacing: 0.5%;
 }
 .freeBox__lQUa {
   animation: none;
@@ -140,6 +117,7 @@
   position: relative;
   height: 100%;
   min-height: 0;
+  display: none;
 }
 @media (max-width: 511px) {
   .navbarPopup3:global(.__wab_instance) {

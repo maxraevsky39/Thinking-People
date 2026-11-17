@@ -1362,8 +1362,8 @@ export const PlasmicDiagnostics = Object.assign(
     internalArgProps: PlasmicDiagnostics__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
-      pageRoute: "/[local]/diagnostics",
-      pagePath: "/[local]/diagnostics",
+      pageRoute: "/[locale]/diagnostics",
+      pagePath: "/[locale]/diagnostics",
       params: {},
       query: {}
     })
