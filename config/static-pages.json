@@ -1,0 +1,20 @@
+{
+  "defaultLocale": "en",
+  "languageVariantFile": "components/plasmic/thinking_people/PlasmicGlobalVariant__Language.tsx",
+  "collectionsByRoute": {
+    "/[locale]/cases/[slug]": "caseStudies",
+    "/[locale]/learning/[slug]": "directions",
+    "/[locale]/experts/[slug]": "experts",
+    "/[locale]/blog/[slug]": "articles"
+  },
+  "singleTypesByRoute": {},
+  "collectionFilters": {
+    "experts": "{ hasProfilePage: { eq: true } }"
+  },
+  "unmanagedPages": {
+    "Zi_mnrHDL1l9": [
+      "/en/",
+      "/lv/"
+    ]
+  }
+}

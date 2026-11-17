@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prebuild": "node scripts/prepare-static-pages.mjs",
+    "postbuild": "node scripts/verify-static-build.mjs"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",

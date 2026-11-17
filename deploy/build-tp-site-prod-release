@@ -24,10 +24,13 @@ rsync -a --exclude=.git --exclude=node_modules --exclude=.next --exclude='.env*'
 cp /home/bsadmin/shared/tp-site/app.env "$RELEASE/.env.production"
 cd "$RELEASE"
 bash "$RELEASE/deploy/prepare-dependencies"
-NODE_ENV=production NODE_OPTIONS=--max-old-space-size=4096 npm run build
+NODE_ENV=production node scripts/prepare-static-pages.mjs
+TP_STATIC_PREPARED=1 NODE_ENV=production NODE_OPTIONS=--max-old-space-size=4096 npm run build
+node scripts/verify-static-build.mjs
 RUNTIME="$RELEASE/.next/standalone"
 test -f "$RUNTIME/server.js"
 cp -a .next/static "$RUNTIME/.next/static"
+cp -a .tp-generated "$RUNTIME/.tp-generated"
 [[ ! -d public ]] || cp -a public "$RUNTIME/public"
 mkdir -p "$RUNTIME/.next/cache" /home/bsadmin/shared/tp-site/image-cache
 rm -rf "$RUNTIME/.next/cache/images"
