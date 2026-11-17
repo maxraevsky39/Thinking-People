@@ -556,7 +556,7 @@ function PlasmicDirections__RenderFunc(props: {
               navigationGap={12}
               navigationWidth={35}
               panelHeightMode={"tallest"}
-              pauseOnFocus={true}
+              pauseOnFocus={false}
               pauseOnHover={true}
               showDescriptions={false}
               showIcons={true}
