@@ -8,7 +8,9 @@
 import { createUseGlobalVariants } from "@plasmicapp/react-web";
 
 import { useScreenVariants as useScreenVariantsprv3GYhmDuqd } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: prv3gYHMDuqd/globalVariant
+import { LanguageValue, useLanguage } from "./PlasmicGlobalVariant__Language"; // plasmic-import: bUCUbLvytZOY/globalVariant
 
 export const _useGlobalVariants = createUseGlobalVariants({
-  screen: useScreenVariantsprv3GYhmDuqd
+  screen: useScreenVariantsprv3GYhmDuqd,
+  language: useLanguage
 });

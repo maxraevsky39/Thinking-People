@@ -31,7 +31,7 @@
           "projectId": "5CArWwg3qxRa1A2Avpz5j5",
           "renderModuleFilePath": "plasmic/thinking_people/PlasmicHomepage.tsx",
           "importSpec": {
-            "modulePath": "../pages/[locale]/test.tsx"
+            "modulePath": "../pages/[locale].tsx"
           },
           "cssFilePath": "plasmic/thinking_people/PlasmicHomepage.module.css",
           "scheme": "blackbox",
@@ -104,27 +104,13 @@
           "componentType": "component"
         },
         {
-          "id": "wOdb8AoicCeB",
-          "name": "Communication",
-          "type": "managed",
-          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
-          "renderModuleFilePath": "plasmic/thinking_people/PlasmicCommunication.tsx",
-          "importSpec": {
-            "modulePath": "../pages/learning/[locale]/[slug].tsx"
-          },
-          "cssFilePath": "plasmic/thinking_people/PlasmicCommunication.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/en/communication"
-        },
-        {
           "id": "etkfjESuxyJa",
           "name": "LeadershipDevelopmentOnTrial",
           "type": "managed",
           "projectId": "5CArWwg3qxRa1A2Avpz5j5",
           "renderModuleFilePath": "plasmic/thinking_people/PlasmicLeadershipDevelopmentOnTrial.tsx",
           "importSpec": {
-            "modulePath": "../pages/en.tsx"
+            "modulePath": "../pages/[locale]/events/[slug].tsx"
           },
           "cssFilePath": "plasmic/thinking_people/PlasmicLeadershipDevelopmentOnTrial.module.css",
           "scheme": "blackbox",
@@ -210,9 +196,110 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/[locale]/cases"
+        },
+        {
+          "id": "wOdb8AoicCeB",
+          "name": "Directions",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicDirections.tsx",
+          "importSpec": {
+            "modulePath": "../pages/[locale]/learning/[slug].tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicDirections.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/[locale]/learning/[slug]"
+        },
+        {
+          "id": "o4cHAydR2jyk",
+          "name": "ChallengeTabsPlasmic",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicChallengeTabsPlasmic.tsx",
+          "importSpec": {
+            "modulePath": "ChallengeTabsPlasmic.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicChallengeTabsPlasmic.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "U5Sj7VT0VOiP",
+          "name": "ExpertProfile",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicExpertProfile.tsx",
+          "importSpec": {
+            "modulePath": "../pages/[locale]/experts/[slug].tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicExpertProfile.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/[locale]/experts/[slug]"
+        },
+        {
+          "id": "Cr7fVxjZle71",
+          "name": "ExpertsCollection",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicExpertsCollection.tsx",
+          "importSpec": {
+            "modulePath": "../pages/[locale]/experts.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicExpertsCollection.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/[locale]/experts"
+        },
+        {
+          "id": "h9gIq3560dql",
+          "name": "NavbarPopup",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicNavbarPopup.tsx",
+          "importSpec": {
+            "modulePath": "NavbarPopup.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicNavbarPopup.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "wEtqwJLAH7eq",
+          "name": "MenuPoints",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicMenuPoints.tsx",
+          "importSpec": {
+            "modulePath": "MenuPoints.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicMenuPoints.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "KT_pScLo_YOZ",
+          "name": "Diagnostics",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicDiagnostics.tsx",
+          "importSpec": {
+            "modulePath": "../pages/[local]/diagnostics.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicDiagnostics.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/[local]/diagnostics"
         }
       ],
-      "icons": [],
+      "icons": [
+        {
+          "id": "Cdz8R8zqzTHE",
+          "name": "Icon12Icon",
+          "moduleFilePath": "plasmic/thinking_people/icons/PlasmicIcon__Icon12.tsx"
+        }
+      ],
       "images": [
         {
           "id": "rwoN9y9vqKdJ",
@@ -407,6 +494,12 @@
           "name": "ScrollSectionHeadings",
           "displayName": "ScrollSectionHeadings",
           "componentImportPath": "./components/ScrollSectionHeadings"
+        },
+        {
+          "id": "6A4B5A3hfdqP",
+          "name": "Features4",
+          "displayName": "Features4",
+          "componentImportPath": "./components/Features4"
         }
       ],
       "customFunctions": []
@@ -496,6 +589,12 @@
         "name": "Screen",
         "projectId": "5CArWwg3qxRa1A2Avpz5j5",
         "contextFilePath": "plasmic/thinking_people/PlasmicGlobalVariant__Screen.tsx"
+      },
+      {
+        "id": "bUCUbLvytZOY",
+        "name": "Language",
+        "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+        "contextFilePath": "plasmic/thinking_people/PlasmicGlobalVariant__Language.tsx"
       }
     ]
   },

@@ -69,7 +69,9 @@ import type {
 import type { QueryComponentNode } from "@plasmicapp/react-web/lib/data-sources";
 
 import Navbar from "../../Navbar"; // plasmic-import: 7oIiUelc00Y9/component
+import { OptimizedImage } from "../../OptimizedImage"; // plasmic-import: 2sAw0k_qEFgf/codeComponent
 import H2 from "../../H2"; // plasmic-import: Yl_PbqD71djV/component
+import { Features4 } from "../../Features4"; // plasmic-import: 6A4B5A3hfdqP/codeComponent
 import HowWeWorkSection from "../../HowWeWorkSection"; // plasmic-import: SQRx18Lz1hYn/component
 import { ScrollSectionHeadings } from "../../ScrollSectionHeadings"; // plasmic-import: -3PvrcYmT7Js/codeComponent
 import { MotionScrollSection } from "../../MotionScrollSection"; // plasmic-import: za2mx6yd4yJR/codeComponent
@@ -77,10 +79,11 @@ import FormSection from "../../FormSection"; // plasmic-import: fw8uA1_Fbkxj/com
 import FooterSection from "../../FooterSection"; // plasmic-import: DEX99TX1WJZn/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/styleTokensProvider
+import { strapiUrl as $dataTokens_5CArW_strapiUrl } from "./plasmic-data-tokens"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/dataTokens
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import sty from "./PlasmicCommunication.module.css"; // plasmic-import: wOdb8AoicCeB/css
+import sty from "./PlasmicDirections.module.css"; // plasmic-import: wOdb8AoicCeB/css
 
 import { fetchGraphQL as __fn_fetchGraphQL } from "@plasmicpkgs/graphql";
 
@@ -127,21 +130,23 @@ export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
 
 createPlasmicElementProxy;
 
-export type PlasmicCommunication__VariantMembers = {};
-export type PlasmicCommunication__VariantsArgs = {};
-type VariantPropType = keyof PlasmicCommunication__VariantsArgs;
-export const PlasmicCommunication__VariantProps = new Array<VariantPropType>();
+export type PlasmicDirections__VariantMembers = {};
+export type PlasmicDirections__VariantsArgs = {};
+type VariantPropType = keyof PlasmicDirections__VariantsArgs;
+export const PlasmicDirections__VariantProps = new Array<VariantPropType>();
 
-export type PlasmicCommunication__ArgsType = {};
-type ArgPropType = keyof PlasmicCommunication__ArgsType;
-export const PlasmicCommunication__ArgProps = new Array<ArgPropType>();
+export type PlasmicDirections__ArgsType = {};
+type ArgPropType = keyof PlasmicDirections__ArgsType;
+export const PlasmicDirections__ArgProps = new Array<ArgPropType>();
 
-export type PlasmicCommunication__OverridesType = {
+export type PlasmicDirections__OverridesType = {
   root?: Flex__<"div">;
   navbar?: Flex__<typeof Navbar>;
   communication?: Flex__<"section">;
   h1?: Flex__<"h1">;
+  optimizedImage?: Flex__<typeof OptimizedImage>;
   challenges?: Flex__<"section">;
+  challengeTabs?: Flex__<typeof Features4>;
   howWeWorkSection?: Flex__<typeof HowWeWorkSection>;
   results?: Flex__<"section">;
   programs?: Flex__<"section">;
@@ -155,11 +160,13 @@ export type PlasmicCommunication__OverridesType = {
   formats?: Flex__<"section">;
   process?: Flex__<"section">;
   cases?: Flex__<"section">;
+  article?: Flex__<"article">;
+  h4?: Flex__<"h4">;
   formSection?: Flex__<typeof FormSection>;
   footerSection?: Flex__<typeof FooterSection>;
 };
 
-export interface DefaultCommunicationProps {}
+export interface DefaultDirectionsProps {}
 
 const $$ = {
   fetchGraphQL: __fn_fetchGraphQL
@@ -211,10 +218,10 @@ function useNextRouter() {
   return undefined;
 }
 
-function PlasmicCommunication__RenderFunc(props: {
-  variants: PlasmicCommunication__VariantsArgs;
-  args: PlasmicCommunication__ArgsType;
-  overrides: PlasmicCommunication__OverridesType;
+function PlasmicDirections__RenderFunc(props: {
+  variants: PlasmicDirections__VariantsArgs;
+  args: PlasmicDirections__ArgsType;
+  overrides: PlasmicDirections__OverridesType;
   forNode?: string;
 }) {
   const { variants, overrides, forNode } = props;
@@ -408,32 +415,66 @@ function PlasmicCommunication__RenderFunc(props: {
                   aria-hidden={"true"}
                   className={classNames("all", sty.freeBox__al0Iw)}
                 >
-                  <div className={classNames("all", sty.freeBox__th8Re)}>
-                    <span
-                      className={classNames(
-                        "all",
-                        "span",
-                        "span__5CArW",
-                        "__wab_text",
-                        sty.span__q2H5K
-                      )}
-                    >
-                      {"\u201c \u201d"}
-                    </span>
-                  </div>
-                  <div className={classNames("all", sty.freeBox__p5IAv)}>
-                    <span
-                      className={classNames(
-                        "all",
-                        "span",
-                        "span__5CArW",
-                        "__wab_text",
-                        sty.span__t3Swr
-                      )}
-                    >
-                      {"\u2197"}
-                    </span>
-                  </div>
+                  <OptimizedImage
+                    data-plasmic-name={"optimizedImage"}
+                    data-plasmic-override={overrides.optimizedImage}
+                    alt={""}
+                    blurDataURL={(() => {
+                      try {
+                        return $q.programs.data.body.data.directions[0].hero
+                          .image.blurDataURL;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
+                    className={classNames("__wab_instance", sty.optimizedImage)}
+                    fill={false}
+                    format={"auto"}
+                    height={(() => {
+                      try {
+                        return $q.programs.data.body.data.directions[0].hero
+                          .image.height;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return 600;
+                        }
+                        throw e;
+                      }
+                    })()}
+                    loading={"lazy"}
+                    objectFit={"cover"}
+                    objectPosition={"center"}
+                    placeholder={"blur"}
+                    quality={75}
+                    sizes={"(max-width: 768px) 100vw, 50vw"}
+                    src={
+                      $dataTokens_5CArW_strapiUrl +
+                      $q.programs.data.body.data.directions[0].hero.image.url
+                    }
+                    width={(() => {
+                      try {
+                        return $q.programs.data.body.data.directions[0].hero
+                          .image.width;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return 800;
+                        }
+                        throw e;
+                      }
+                    })()}
+                  />
                 </div>
               </div>
               <div className={classNames("all", sty.freeBox__aoEun)}>
@@ -495,88 +536,34 @@ function PlasmicCommunication__RenderFunc(props: {
                 }
               />
             </div>
-            <div className={classNames("all", sty.freeBox__w5IVm)}>
-              {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
-                $q.programs.data?.body?.data?.directions?.[0].sections?.find(
+            <Features4
+              data-plasmic-name={"challengeTabs"}
+              data-plasmic-override={overrides.challengeTabs}
+              animationDuration={300}
+              autoPlay={true}
+              className={classNames("__wab_instance", sty.challengeTabs)}
+              columnGap={48}
+              defaultActiveIndex={0}
+              interval={10000}
+              items={
+                $q.programs.data?.body?.data?.directions?.[0]?.sections?.find(
                   s => s.key === "challenges"
                 )?.groups ?? []
-              ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                const challengeGroup = __plasmic_item_0;
-                const challengeIndex = __plasmic_idx_0;
-                return (
-                  <article
-                    className={classNames("all", sty.article__fi7Wl)}
-                    key={challengeIndex}
-                  >
-                    <span
-                      className={classNames(
-                        "all",
-                        "span",
-                        "span__5CArW",
-                        "__wab_text",
-                        sty.span___4NfYg
-                      )}
-                    >
-                      <React.Fragment>
-                        {(challengeIndex + 1).toString().padStart(2, "0") +
-                          " / PROGRAM"}
-                      </React.Fragment>
-                    </span>
-                    <h3
-                      className={classNames(
-                        "all",
-                        "h3",
-                        "h3__5CArW",
-                        "__wab_text",
-                        sty.h3__afkFr
-                      )}
-                    >
-                      <React.Fragment>{challengeGroup.title}</React.Fragment>
-                    </h3>
-                    {(_par =>
-                      !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                      challengeGroup.cards ?? []
-                    ).map((__plasmic_item_1, __plasmic_idx_1) => {
-                      const challengeCard = __plasmic_item_1;
-                      const challengeCardIndex = __plasmic_idx_1;
-                      return (
-                        <div
-                          className={classNames("all", sty.freeBox__lHNu)}
-                          key={challengeCardIndex}
-                        >
-                          <h4
-                            className={classNames(
-                              "all",
-                              "h4",
-                              "h4__5CArW",
-                              "__wab_text",
-                              sty.h4__vp5SI
-                            )}
-                          >
-                            <React.Fragment>
-                              {challengeCard.title}
-                            </React.Fragment>
-                          </h4>
-                          <p
-                            className={classNames(
-                              "all",
-                              "p",
-                              "p__5CArW",
-                              "__wab_text",
-                              sty.p__rmUG
-                            )}
-                          >
-                            <React.Fragment>
-                              {challengeCard.description ?? ""}
-                            </React.Fragment>
-                          </p>
-                        </div>
-                      );
-                    })}
-                  </article>
-                );
-              })}
-            </div>
+              }
+              itemsGap={12}
+              mobileBreakpoint={768}
+              mobileLayout={"accordion"}
+              navigationGap={12}
+              navigationWidth={35}
+              panelHeightMode={"tallest"}
+              pauseOnFocus={true}
+              pauseOnHover={true}
+              showDescriptions={false}
+              showIcons={true}
+              showNumbers={true}
+              showProgress={true}
+              stopAfterInteraction={false}
+            />
           </section>
           <HowWeWorkSection
             data-plasmic-name={"howWeWorkSection"}
@@ -1983,7 +1970,9 @@ function PlasmicCommunication__RenderFunc(props: {
                 const caseIndex = __plasmic_idx_0;
                 return (
                   <article
-                    className={classNames("all", sty.article___2SvW3)}
+                    data-plasmic-name={"article"}
+                    data-plasmic-override={overrides.article}
+                    className={classNames("all", sty.article)}
                     key={caseIndex}
                   >
                     <span
@@ -2023,12 +2012,14 @@ function PlasmicCommunication__RenderFunc(props: {
                             key={caseCardIndex}
                           >
                             <h4
+                              data-plasmic-name={"h4"}
+                              data-plasmic-override={overrides.h4}
                               className={classNames(
                                 "all",
                                 "h4",
                                 "h4__5CArW",
                                 "__wab_text",
-                                sty.h4__tTtm9
+                                sty.h4
                               )}
                             >
                               <React.Fragment>{caseCard.title}</React.Fragment>
@@ -2078,7 +2069,9 @@ const PlasmicDescendants = {
     "navbar",
     "communication",
     "h1",
+    "optimizedImage",
     "challenges",
+    "challengeTabs",
     "howWeWorkSection",
     "results",
     "programs",
@@ -2092,13 +2085,17 @@ const PlasmicDescendants = {
     "formats",
     "process",
     "cases",
+    "article",
+    "h4",
     "formSection",
     "footerSection"
   ],
   navbar: ["navbar"],
-  communication: ["communication", "h1"],
+  communication: ["communication", "h1", "optimizedImage"],
   h1: ["h1"],
-  challenges: ["challenges"],
+  optimizedImage: ["optimizedImage"],
+  challenges: ["challenges", "challengeTabs"],
+  challengeTabs: ["challengeTabs"],
   howWeWorkSection: ["howWeWorkSection"],
   results: ["results"],
   programs: [
@@ -2120,7 +2117,9 @@ const PlasmicDescendants = {
   programTopic6: ["programTopic6"],
   formats: ["formats"],
   process: ["process"],
-  cases: ["cases"],
+  cases: ["cases", "article", "h4"],
+  article: ["article", "h4"],
+  h4: ["h4"],
   formSection: ["formSection"],
   footerSection: ["footerSection"]
 } as const;
@@ -2132,7 +2131,9 @@ type NodeDefaultElementType = {
   navbar: typeof Navbar;
   communication: "section";
   h1: "h1";
+  optimizedImage: typeof OptimizedImage;
   challenges: "section";
+  challengeTabs: typeof Features4;
   howWeWorkSection: typeof HowWeWorkSection;
   results: "section";
   programs: "section";
@@ -2146,26 +2147,28 @@ type NodeDefaultElementType = {
   formats: "section";
   process: "section";
   cases: "section";
+  article: "article";
+  h4: "h4";
   formSection: typeof FormSection;
   footerSection: typeof FooterSection;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
 type NodeOverridesType<T extends NodeNameType> = Pick<
-  PlasmicCommunication__OverridesType,
+  PlasmicDirections__OverridesType,
   DescendantsType<T>
 >;
 type NodeComponentProps<T extends NodeNameType> =
   // Explicitly specify variants, args, and overrides as objects
   {
-    variants?: PlasmicCommunication__VariantsArgs;
-    args?: PlasmicCommunication__ArgsType;
+    variants?: PlasmicDirections__VariantsArgs;
+    args?: PlasmicDirections__ArgsType;
     overrides?: NodeOverridesType<T>;
   } &
     // Specify variants directly as props
-    Omit<PlasmicCommunication__VariantsArgs, ReservedPropsType> &
+    Omit<PlasmicDirections__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
-    Omit<PlasmicCommunication__ArgsType, ReservedPropsType> &
+    Omit<PlasmicDirections__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props
     Omit<
       NodeOverridesType<T>,
@@ -2187,12 +2190,12 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
         deriveRenderOpts(props, {
           name: nodeName,
           descendantNames: PlasmicDescendants[nodeName],
-          internalArgPropNames: PlasmicCommunication__ArgProps,
-          internalVariantPropNames: PlasmicCommunication__VariantProps
+          internalArgPropNames: PlasmicDirections__ArgProps,
+          internalVariantPropNames: PlasmicDirections__VariantProps
         }),
       [props, nodeName]
     );
-    return PlasmicCommunication__RenderFunc({
+    return PlasmicDirections__RenderFunc({
       variants,
       args,
       overrides,
@@ -2200,22 +2203,24 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
     });
   };
   if (nodeName === "root") {
-    func.displayName = "PlasmicCommunication";
+    func.displayName = "PlasmicDirections";
   } else {
-    func.displayName = `PlasmicCommunication.${nodeName}`;
+    func.displayName = `PlasmicDirections.${nodeName}`;
   }
   return func;
 }
 
-export const PlasmicCommunication = Object.assign(
-  // Top-level PlasmicCommunication renders the root element
+export const PlasmicDirections = Object.assign(
+  // Top-level PlasmicDirections renders the root element
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
     navbar: makeNodeComponent("navbar"),
     communication: makeNodeComponent("communication"),
     h1: makeNodeComponent("h1"),
+    optimizedImage: makeNodeComponent("optimizedImage"),
     challenges: makeNodeComponent("challenges"),
+    challengeTabs: makeNodeComponent("challengeTabs"),
     howWeWorkSection: makeNodeComponent("howWeWorkSection"),
     results: makeNodeComponent("results"),
     programs: makeNodeComponent("programs"),
@@ -2229,21 +2234,23 @@ export const PlasmicCommunication = Object.assign(
     formats: makeNodeComponent("formats"),
     process: makeNodeComponent("process"),
     cases: makeNodeComponent("cases"),
+    article: makeNodeComponent("article"),
+    h4: makeNodeComponent("h4"),
     formSection: makeNodeComponent("formSection"),
     footerSection: makeNodeComponent("footerSection"),
 
-    // Metadata about props expected for PlasmicCommunication
-    internalVariantProps: PlasmicCommunication__VariantProps,
-    internalArgProps: PlasmicCommunication__ArgProps,
+    // Metadata about props expected for PlasmicDirections
+    internalVariantProps: PlasmicDirections__VariantProps,
+    internalArgProps: PlasmicDirections__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
-      pageRoute: "/learning/[locale]/[slug]",
-      pagePath: "/learning/[locale]/[slug]",
+      pageRoute: "/[locale]/learning/[slug]",
+      pagePath: "/[locale]/learning/[slug]",
       params: {},
       query: {}
     })
   }
 );
 
-export default PlasmicCommunication;
+export default PlasmicDirections;
 /* prettier-ignore-end */

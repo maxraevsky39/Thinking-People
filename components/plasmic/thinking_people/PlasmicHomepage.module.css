@@ -444,9 +444,9 @@
   background: none;
   row-gap: var(--token-OZAZD-l-J3s2);
   min-width: 0;
-  border-radius: var(--token-KBWwsWTAvqK2);
+  border-radius: var(--token-uhrGNl5KkUTa);
   padding: var(--token-OZAZD-l-J3s2);
-  border: 0.13em solid var(--token-3xinaIcvT0eV);
+  border: 1px solid var(--token-1I5mNuI4gG5P);
 }
 @media (max-width: 511px) {
   .card2 {
@@ -560,7 +560,7 @@
   max-width: 100%;
   background: var(--token-3xinaIcvT0eV);
   min-width: 0;
-  border-radius: var(--token-KBWwsWTAvqK2);
+  border-radius: var(--token-WNUOAwSmlV02);
   padding: var(--token-sI9gwleT_mai);
 }
 .text__hsHci {

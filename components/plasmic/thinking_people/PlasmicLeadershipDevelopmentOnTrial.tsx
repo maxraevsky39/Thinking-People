@@ -845,8 +845,8 @@ export const PlasmicLeadershipDevelopmentOnTrial = Object.assign(
     internalArgProps: PlasmicLeadershipDevelopmentOnTrial__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
-      pageRoute: "/en",
-      pagePath: "/en",
+      pageRoute: "/[locale]/events/[slug]",
+      pagePath: "/[locale]/events/[slug]",
       params: {},
       query: {}
     })

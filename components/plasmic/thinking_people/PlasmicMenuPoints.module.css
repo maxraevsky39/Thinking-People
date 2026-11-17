@@ -1,0 +1,206 @@
+.root {
+  display: inline-flex;
+  flex-direction: row;
+  position: relative;
+  width: auto;
+  height: auto;
+  justify-content: flex-start;
+  align-items: center;
+  justify-self: flex-start;
+  column-gap: 16px;
+}
+@media (max-width: 511px) {
+  .root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 12px;
+    overflow: visible;
+    column-gap: 0px;
+  }
+}
+.navbarPopup6:global(.__wab_instance) {
+  animation: none;
+  position: relative;
+  height: 100%;
+  min-height: 0;
+}
+@media (max-width: 511px) {
+  .navbarPopup6:global(.__wab_instance) {
+    height: auto;
+  }
+}
+.freeBox__vTPdx {
+  animation: none;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-shrink: 1;
+  flex-grow: 0;
+  row-gap: 12px;
+  padding: 12px;
+}
+@media (max-width: 511px) {
+  .freeBox__vTPdx {
+    row-gap: 12px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    column-gap: 0px;
+    min-width: 0;
+  }
+}
+.text__q3VkW {
+  animation: none;
+  width: auto;
+  height: auto;
+  flex-shrink: 1;
+  white-space: pre;
+  font-weight: 500;
+  color: var(--token-5HSauQvnqWJr);
+  font-family: "Golos Text", sans-serif;
+  font-size: var(--token-v5RtrQYVurzK);
+  line-height: 135%;
+  letter-spacing: 0.5%;
+}
+.freeBox__lzDnm {
+  animation: none;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  row-gap: 12px;
+  min-width: 0;
+}
+@media (max-width: 511px) {
+  .freeBox__lzDnm {
+    row-gap: 6px;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 0px;
+  }
+}
+.link__aowNq {
+  animation: none;
+  width: auto;
+  height: auto;
+  flex-shrink: 1;
+  white-space: pre;
+  color: var(--token-5HSauQvnqWJr);
+  font-family: "Golos Text", sans-serif;
+  font-size: var(--token-tdb1P_3CpWrk);
+  line-height: 115%;
+  letter-spacing: 0.5%;
+}
+@media (max-width: 511px) {
+  .link__aowNq {
+    animation: none;
+    white-space: pre-wrap;
+  }
+}
+.link___4KA9 {
+  animation: none;
+  width: auto;
+  height: auto;
+  flex-shrink: 1;
+  white-space: pre;
+  font-weight: 400;
+  color: var(--token-nHwcJFFaplj3);
+  font-family: "Golos Text", sans-serif;
+  font-size: var(--token-tdb1P_3CpWrk);
+  line-height: 115%;
+  letter-spacing: 0.5%;
+}
+.freeBox__lQUa {
+  animation: none;
+  flex-direction: column;
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-shrink: 1;
+  flex-grow: 0;
+  display: none;
+  padding: 8px;
+}
+.navbarPopup3:global(.__wab_instance) {
+  animation: none;
+  position: relative;
+  height: 100%;
+  min-height: 0;
+}
+@media (max-width: 511px) {
+  .navbarPopup3:global(.__wab_instance) {
+    height: auto;
+  }
+}
+.navbarPopup4:global(.__wab_instance) {
+  animation: none;
+  position: relative;
+  height: 100%;
+  min-height: 0;
+}
+@media (max-width: 511px) {
+  .navbarPopup4:global(.__wab_instance) {
+    height: auto;
+  }
+}
+.text__xSrT0 {
+  animation: none;
+  font-size: 16px;
+  font-family: "Golos Text", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.015em;
+  line-height: 1.2000000476837158;
+  color: rgba(7, 21, 38, 1);
+  position: relative;
+  display: none;
+}
+.text___5MOre {
+  animation: none;
+  display: block;
+  font-size: 16px;
+  font-family: "Golos Text", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.015em;
+  line-height: 1.2000000476837158;
+  color: rgba(7, 21, 38, 1);
+  position: relative;
+}
+.text___6CyE {
+  animation: none;
+  display: block;
+  font-size: 16px;
+  font-family: "Golos Text", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.015em;
+  line-height: 1.2000000476837158;
+  color: rgba(7, 21, 38, 1);
+  position: relative;
+}
+.link__w69D3 {
+  animation: none;
+  display: block;
+  font-size: 16px;
+  font-family: "Golos UI VF";
+  font-weight: 400;
+  letter-spacing: 0.015em;
+  line-height: 1.2000000476837158;
+  color: rgba(7, 21, 38, 1);
+  position: relative;
+}
+.linkwhite__w69D3MhlLs {
+  color: var(--token--DRpd-zpqE3R);
+}

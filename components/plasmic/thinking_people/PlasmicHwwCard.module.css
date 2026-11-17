@@ -10,9 +10,9 @@
   column-gap: var(--token-sI9gwleT_mai);
   font-family: var(--token-NyfZrcORdatl);
   min-width: 0;
-  border-radius: var(--token-KBWwsWTAvqK2);
+  border-radius: var(--token-uhrGNl5KkUTa);
   padding: var(--token-OZAZD-l-J3s2);
-  border: 0.13em solid var(--token-3xinaIcvT0eV);
+  border: 1px solid var(--token-1I5mNuI4gG5P);
 }
 @media (max-width: 1023px) {
   .points {
@@ -65,7 +65,7 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  background: var(--token-3xinaIcvT0eV);
+  background: var(--token-cHKCTrn7_h_I);
   aspect-ratio: 1/1;
   min-width: 0;
   border-radius: var(--token-mp7K1CYWDyjO);
@@ -89,7 +89,7 @@
   letter-spacing: 0;
   font-style: normal;
   text-transform: none;
-  color: var(--token-IT77AyB9SmEq);
+  color: var(--token-5HSauQvnqWJr);
   font-family: var(--token-NyfZrcORdatl);
   width: auto;
   height: auto;

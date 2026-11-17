@@ -1156,8 +1156,8 @@ export const PlasmicHomepage = Object.assign(
     internalArgProps: PlasmicHomepage__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
-      pageRoute: "/[locale]/test",
-      pagePath: "/[locale]/test",
+      pageRoute: "/[locale]",
+      pagePath: "/[locale]",
       params: {},
       query: {}
     })

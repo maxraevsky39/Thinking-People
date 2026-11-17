@@ -1,7 +1,7 @@
 @import "../plasmic_embed_css/plasmic.css"; /* plasmic-import: 8PtdGodUbexNYgkuyBUcWu/projectcss */
 @import "../graphql/plasmic.css"; /* plasmic-import: fDWv2E51KMppM4Ticmmxiy/projectcss */
 @import "../plasmicpkgs_fetch/plasmic.css"; /* plasmic-import: xht6ggYXPaEbYDhYJJ7oxU/projectcss */
-@import url("https://fonts.googleapis.com/css2?family=Inter%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B0%2C900&family=Inconsolata%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B0%2C900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B0%2C900&family=Inconsolata%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B0%2C900&family=Golos+Text%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B0%2C900&display=swap");
 
 .plasmic_tokens_5CArWwg3qxRa1A2Avpz5j5 {
   --token-ZodPwl1Os-DS: #f6b1b5;
@@ -172,6 +172,20 @@
   --plasmic-token-layout-gutter: var(--token-hQUcYWzCW8ia);
   --token-YnSiCEmCqs74: var(--token-i6_vqal8wucu);
   --plasmic-token-layout-section-padding: var(--token-YnSiCEmCqs74);
+  --token-uhrGNl5KkUTa: 24px;
+  --plasmic-token-radius-big: var(--token-uhrGNl5KkUTa);
+  --token-v5RtrQYVurzK: 22px;
+  --plasmic-token-paragraph-l: var(--token-v5RtrQYVurzK);
+  --token-nHwcJFFaplj3: #00baf5;
+  --plasmic-token-semantic-button-pressed: var(--token-nHwcJFFaplj3);
+  --token--DRpd-zpqE3R: #ffffff;
+  --plasmic-token-semantic-text-white: var(--token--DRpd-zpqE3R);
+  --token-4Wnk1d_k2c9L: #ffffff;
+  --plasmic-token-semantic-button-default-1: var(--token-4Wnk1d_k2c9L);
+  --token-FsAq_ZwqXS4u: #ffffff;
+  --plasmic-token-basic-container-background: var(--token-FsAq_ZwqXS4u);
+  --token-k6Yg7HjlVEhy: #f2f2f2;
+  --plasmic-token-semantic-block-bg: var(--token-k6Yg7HjlVEhy);
 }
 
 @media (max-width: 1023px) {
@@ -197,6 +211,7 @@
     --token-hi1j8HmvG2Th: 12px;
     --token-hQUcYWzCW8ia: 20px;
     --token-YnSiCEmCqs74: var(--token-IOr-hWik6vtY);
+    --token-v5RtrQYVurzK: 20px;
   }
 }
 
@@ -210,7 +225,8 @@
   );
 }
 
-.plasmic_default_styles {
+.plasmic_default_styles,
+.plasmic_default_styles:where(.global_language_lv) {
   --mixin-HOO21hBmENYu_font-family: "Inter", sans-serif;
   --mixin-HOO21hBmENYu_font-size: 16px;
   --mixin-HOO21hBmENYu_font-weight: 400;
@@ -328,7 +344,8 @@
   --mixin-TeddAxctr9MO_white-space: pre-wrap;
 }
 
-.plasmic_mixins {
+.plasmic_mixins,
+.plasmic_mixins:where(.global_language_lv) {
   --mixin-jxt158593BW-_white-space: pre-wrap;
   --plasmic-mixin-h-1_white-space: var(--mixin-jxt158593BW-_white-space);
   --mixin-Bh3CZx09olg__white-space: pre-wrap;
