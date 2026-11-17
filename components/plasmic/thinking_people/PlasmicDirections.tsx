@@ -458,7 +458,7 @@ function PlasmicDirections__RenderFunc(props: {
                     sizes={"(max-width: 768px) 100vw, 50vw"}
                     src={
                       $dataTokens_5CArW_strapiUrl +
-                      $q.programs.data.body.data.directions[0].hero.image.url
+                      $q.programs.data.body.data.directions[0]?.hero?.image?.url
                     }
                     width={(() => {
                       try {
