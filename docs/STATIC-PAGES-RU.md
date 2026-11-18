@@ -148,3 +148,9 @@ node scripts/verify-static-build.mjs
 - `pages/sitemap.xml.tsx` — sitemap текущего билда.
 
 Navbar сохраняет `position: fixed`; компенсирующий `padding-top: 80px` остаётся на корневом элементе страницы в дизайне. Каталоги сохраняют AnimatedFilterGrid с `layout: masonry`.
+
+## Google Analytics / Google Tag Manager
+
+Контейнер `GTM-TJTRVDJM` установлен в `pages/_document.tsx`: стандартный bootstrap в `<head>` и noscript iframe в начале `<body>`. Он загружается один раз на документ для всех локалей; `/plasmic-host` исключён.
+
+На 18.11.2026 опубликованный контейнер направляет данные в GA4 `G-BHN4JNPDCH` и содержит автоматический учёт просмотров при изменении History API. Поэтому переходы Next.js учитываются контейнером; ручной `gtag('event', 'page_view')` или дополнительный History Change-триггер добавлять параллельно не нужно — возможны дубли. При изменении контейнера проверяйте первоначальный просмотр, переход через Next Link, Назад/Вперёд в Tag Assistant / GA4 DebugView.
