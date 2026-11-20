@@ -79,11 +79,13 @@ export const PlasmicFormSection__VariantProps = new Array<VariantPropType>();
 export type PlasmicFormSection__ArgsType = {
   title?: string;
   description?: string;
+  form?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicFormSection__ArgsType;
 export const PlasmicFormSection__ArgProps = new Array<ArgPropType>(
   "title",
-  "description"
+  "description",
+  "form"
 );
 
 export type PlasmicFormSection__OverridesType = {
@@ -92,12 +94,13 @@ export type PlasmicFormSection__OverridesType = {
   optimizedImage?: Flex__<typeof OptimizedImage>;
   h2?: Flex__<typeof H2>;
   text?: Flex__<"div">;
-  mainForm?: Flex__<typeof MainForm>;
+  formSlotHost?: Flex__<"div">;
 };
 
 export interface DefaultFormSectionProps {
   title?: string;
   description?: string;
+  form?: React.ReactNode;
   className?: string;
 }
 
@@ -228,23 +231,40 @@ function PlasmicFormSection__RenderFunc(props: {
             </React.Fragment>
           </div>
         </div>
-        <MainForm
-          data-plasmic-name={"mainForm"}
-          data-plasmic-override={overrides.mainForm}
-          className={classNames("__wab_instance", sty.mainForm)}
-        />
+        <div
+          data-plasmic-name={"formSlotHost"}
+          data-plasmic-override={overrides.formSlotHost}
+          className={classNames("all", sty.formSlotHost)}
+        >
+          {renderPlasmicSlot({
+            defaultContents: (
+              <MainForm
+                className={classNames("__wab_instance", sty.mainForm__n8EiD)}
+              />
+            ),
+
+            value: args.form
+          })}
+        </div>
       </div>
     </div>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  formMain: ["formMain", "chelik", "optimizedImage", "h2", "text", "mainForm"],
+  formMain: [
+    "formMain",
+    "chelik",
+    "optimizedImage",
+    "h2",
+    "text",
+    "formSlotHost"
+  ],
   chelik: ["chelik", "optimizedImage"],
   optimizedImage: ["optimizedImage"],
   h2: ["h2"],
   text: ["text"],
-  mainForm: ["mainForm"]
+  formSlotHost: ["formSlotHost"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -255,7 +275,7 @@ type NodeDefaultElementType = {
   optimizedImage: typeof OptimizedImage;
   h2: typeof H2;
   text: "div";
-  mainForm: typeof MainForm;
+  formSlotHost: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -324,7 +344,7 @@ export const PlasmicFormSection = Object.assign(
     optimizedImage: makeNodeComponent("optimizedImage"),
     h2: makeNodeComponent("h2"),
     text: makeNodeComponent("text"),
-    mainForm: makeNodeComponent("mainForm"),
+    formSlotHost: makeNodeComponent("formSlotHost"),
 
     // Metadata about props expected for PlasmicFormSection
     internalVariantProps: PlasmicFormSection__VariantProps,

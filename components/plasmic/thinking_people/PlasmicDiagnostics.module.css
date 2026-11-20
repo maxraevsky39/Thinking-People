@@ -588,6 +588,10 @@
 .diagnosticsContact:global(.__wab_instance) {
   max-width: 100%;
 }
+.mainForm__aM5UX:global(.__wab_instance) {
+  max-width: 100%;
+  width: 100%;
+}
 .footerSection:global(.__wab_instance) {
   max-width: 100%;
 }

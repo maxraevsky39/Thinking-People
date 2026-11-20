@@ -84,13 +84,21 @@ export type PlasmicInputForm__ArgsType = {
   type?: string;
   name?: string;
   _class?: string;
+  required?: boolean;
+  maxLength?: number;
+  autoComplete?: string;
+  textareaName?: string;
 };
 type ArgPropType = keyof PlasmicInputForm__ArgsType;
 export const PlasmicInputForm__ArgProps = new Array<ArgPropType>(
   "placeholder",
   "type",
   "name",
-  "_class"
+  "_class",
+  "required",
+  "maxLength",
+  "autoComplete",
+  "textareaName"
 );
 
 export type PlasmicInputForm__OverridesType = {
@@ -105,6 +113,10 @@ export interface DefaultInputFormProps {
   type?: string;
   name?: string;
   _class?: string;
+  required?: boolean;
+  maxLength?: number;
+  autoComplete?: string;
+  textareaName?: string;
   textArea?: SingleBooleanChoiceArg<"textArea">;
   className?: string;
 }
@@ -130,7 +142,10 @@ function PlasmicInputForm__RenderFunc(props: {
     () =>
       Object.assign(
         {
-          placeholder: "\u0418\u043c\u044f"
+          placeholder: "\u0418\u043c\u044f",
+          required: false,
+
+          textareaName: "rasskajite"
         },
         Object.fromEntries(
           Object.entries(props.args).filter(([_, v]) => v !== undefined)
@@ -206,6 +221,8 @@ function PlasmicInputForm__RenderFunc(props: {
         <input
           data-plasmic-name={"frame268"}
           data-plasmic-override={overrides.frame268}
+          aria-label={$props.placeholder}
+          autoComplete={$props.autoComplete}
           className={classNames(
             "all",
             "input",
@@ -228,6 +245,7 @@ function PlasmicInputForm__RenderFunc(props: {
               [sty.frame268textArea]: hasVariant($state, "textArea", "textArea")
             }
           )}
+          maxLength={$props.maxLength}
           name={(() => {
             try {
               return $props.name;
@@ -252,8 +270,8 @@ function PlasmicInputForm__RenderFunc(props: {
           ref={ref => {
             $refs["frame268"] = ref;
           }}
-          required={false}
-          type={"text"}
+          required={$props.required ?? false}
+          type={$props.type || "text"}
           value={generateStateValueProp($state, ["frame268", "value"]) ?? ""}
         />
       ) : null}
@@ -261,6 +279,8 @@ function PlasmicInputForm__RenderFunc(props: {
         <textarea
           data-plasmic-name={"frame274"}
           data-plasmic-override={overrides.frame274}
+          aria-label={$props.placeholder}
+          autoComplete={$props.autoComplete}
           className={classNames(
             "all",
             "textarea",
@@ -270,7 +290,8 @@ function PlasmicInputForm__RenderFunc(props: {
               [sty.frame274textArea]: hasVariant($state, "textArea", "textArea")
             }
           )}
-          name={"rasskajite"}
+          maxLength={$props.maxLength}
+          name={$props.textareaName || "rasskajite"}
           onChange={async (...eventArgs: any) => {
             (e => {
               generateStateOnChangeProp($state, ["frame274", "value"])(
@@ -282,6 +303,7 @@ function PlasmicInputForm__RenderFunc(props: {
           ref={ref => {
             $refs["frame274"] = ref;
           }}
+          required={$props.required ?? false}
           value={generateStateValueProp($state, ["frame274", "value"]) ?? ""}
         />
       ) : null}

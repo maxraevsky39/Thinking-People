@@ -64,6 +64,7 @@ import { OptimizedImage } from "../../OptimizedImage"; // plasmic-import: 2sAw0k
 import H2 from "../../H2"; // plasmic-import: Yl_PbqD71djV/component
 import { AnimatedFilterGrid } from "../../AnimatedFilterGrid"; // plasmic-import: 9eRmd_u_ufIl/codeComponent
 import FormSection from "../../FormSection"; // plasmic-import: fw8uA1_Fbkxj/component
+import ExpertSessionForm from "../../ExpertSessionForm"; // plasmic-import: aC8b1C6BfEKM/component
 import FooterSection from "../../FooterSection"; // plasmic-import: DEX99TX1WJZn/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/styleTokensProvider
@@ -130,7 +131,8 @@ export type PlasmicIndividualExpertSession__OverridesType = {
   root?: Flex__<"div">;
   navbar?: Flex__<typeof Navbar>;
   h1?: Flex__<"h1">;
-  formSection?: Flex__<typeof FormSection>;
+  expertSessionFormSection?: Flex__<typeof FormSection>;
+  expertSessionForm?: Flex__<typeof ExpertSessionForm>;
   footerSection?: Flex__<typeof FooterSection>;
 };
 
@@ -1030,11 +1032,24 @@ function PlasmicIndividualExpertSession__RenderFunc(props: {
             style={{ scrollMarginTop: "80px" }}
           >
             <FormSection
-              data-plasmic-name={"formSection"}
-              data-plasmic-override={overrides.formSection}
-              className={classNames("__wab_instance", sty.formSection)}
+              data-plasmic-name={"expertSessionFormSection"}
+              data-plasmic-override={overrides.expertSessionFormSection}
+              className={classNames(
+                "__wab_instance",
+                sty.expertSessionFormSection
+              )}
               description={
                 "Tell us what you want to work on and what kind of expertise would help. We’ll get in touch to confirm the match and agree on next steps."
+              }
+              form={
+                <ExpertSessionForm
+                  data-plasmic-name={"expertSessionForm"}
+                  data-plasmic-override={overrides.expertSessionForm}
+                  className={classNames(
+                    "__wab_instance",
+                    sty.expertSessionForm
+                  )}
+                />
               }
               title={"Request a session"}
             />
@@ -1051,10 +1066,18 @@ function PlasmicIndividualExpertSession__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "navbar", "h1", "formSection", "footerSection"],
+  root: [
+    "root",
+    "navbar",
+    "h1",
+    "expertSessionFormSection",
+    "expertSessionForm",
+    "footerSection"
+  ],
   navbar: ["navbar"],
   h1: ["h1"],
-  formSection: ["formSection"],
+  expertSessionFormSection: ["expertSessionFormSection", "expertSessionForm"],
+  expertSessionForm: ["expertSessionForm"],
   footerSection: ["footerSection"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -1064,7 +1087,8 @@ type NodeDefaultElementType = {
   root: "div";
   navbar: typeof Navbar;
   h1: "h1";
-  formSection: typeof FormSection;
+  expertSessionFormSection: typeof FormSection;
+  expertSessionForm: typeof ExpertSessionForm;
   footerSection: typeof FooterSection;
 };
 
@@ -1132,7 +1156,8 @@ export const PlasmicIndividualExpertSession = Object.assign(
     // Helper components rendering sub-elements
     navbar: makeNodeComponent("navbar"),
     h1: makeNodeComponent("h1"),
-    formSection: makeNodeComponent("formSection"),
+    expertSessionFormSection: makeNodeComponent("expertSessionFormSection"),
+    expertSessionForm: makeNodeComponent("expertSessionForm"),
     footerSection: makeNodeComponent("footerSection"),
 
     // Metadata about props expected for PlasmicIndividualExpertSession

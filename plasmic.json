@@ -332,6 +332,32 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/[locale]/expert-sessions"
+        },
+        {
+          "id": "3t4BfrKWICiE",
+          "name": "InputLabel",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicInputLabel.tsx",
+          "importSpec": {
+            "modulePath": "InputLabel.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicInputLabel.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "aC8b1C6BfEKM",
+          "name": "ExpertSessionForm",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicExpertSessionForm.tsx",
+          "importSpec": {
+            "modulePath": "ExpertSessionForm.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicExpertSessionForm.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [

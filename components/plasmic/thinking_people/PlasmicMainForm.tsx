@@ -61,6 +61,7 @@ import {
 
 import InputForm from "../../InputForm"; // plasmic-import: SufTH7TwDoua/component
 import BtnSecond from "../../BtnSecond"; // plasmic-import: gKCTmQN19iqg/component
+import InputLabel from "../../InputLabel"; // plasmic-import: 3t4BfrKWICiE/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/styleTokensProvider
 
@@ -82,6 +83,7 @@ export const PlasmicMainForm__ArgProps = new Array<ArgPropType>();
 export type PlasmicMainForm__OverridesType = {
   form?: Flex__<"form">;
   btnSecond?: Flex__<typeof BtnSecond>;
+  inputLabel?: Flex__<typeof InputLabel>;
 };
 
 export interface DefaultMainFormProps {
@@ -261,13 +263,24 @@ function PlasmicMainForm__RenderFunc(props: {
         text={hasVariant(globalVariants, "language", "lv") ? "Nosūtīt" : "Send"}
         type={"submit"}
       />
+
+      <InputLabel
+        data-plasmic-name={"inputLabel"}
+        data-plasmic-override={overrides.inputLabel}
+        className={classNames("__wab_instance", sty.inputLabel)}
+        name={"sposob_svyazi"}
+        placeholder={
+          "\u041a\u0430\u043a \u0441 \u0432\u0430\u043c\u0438 \u0441\u0432\u044f\u0437\u0430\u0442\u044c\u0441\u044f?"
+        }
+      />
     </form>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  form: ["form", "btnSecond"],
-  btnSecond: ["btnSecond"]
+  form: ["form", "btnSecond", "inputLabel"],
+  btnSecond: ["btnSecond"],
+  inputLabel: ["inputLabel"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -275,6 +288,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   form: "form";
   btnSecond: typeof BtnSecond;
+  inputLabel: typeof InputLabel;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -340,6 +354,7 @@ export const PlasmicMainForm = Object.assign(
   {
     // Helper components rendering sub-elements
     btnSecond: makeNodeComponent("btnSecond"),
+    inputLabel: makeNodeComponent("inputLabel"),
 
     // Metadata about props expected for PlasmicMainForm
     internalVariantProps: PlasmicMainForm__VariantProps,

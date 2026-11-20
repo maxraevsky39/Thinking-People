@@ -186,6 +186,10 @@
   --plasmic-token-basic-container-background: var(--token-FsAq_ZwqXS4u);
   --token-k6Yg7HjlVEhy: #f2f2f2;
   --plasmic-token-semantic-block-bg: var(--token-k6Yg7HjlVEhy);
+  --token-vHmg8OeDs1S0: #6b7280;
+  --plasmic-token-basic-text-secondary: var(--token-vHmg8OeDs1S0);
+  --token-5nSQh6CAXHgH: 14px;
+  --plasmic-token-caption-c-1: var(--token-5nSQh6CAXHgH);
 }
 
 @media (max-width: 1023px) {
@@ -195,6 +199,7 @@
     --token-jh6c66tfMfly: 38px;
     --token-hQUcYWzCW8ia: var(--token-OZAZD-l-J3s2);
     --token-YnSiCEmCqs74: var(--token-C57kUbz07RTA);
+    --token-5nSQh6CAXHgH: 12px;
   }
 }
 
