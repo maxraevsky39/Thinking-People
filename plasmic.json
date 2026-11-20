@@ -318,6 +318,20 @@
           "cssFilePath": "plasmic/thinking_people/PlasmicLolcaleSlect.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "oC4uli_AVt_u",
+          "name": "IndividualExpertSession",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicIndividualExpertSession.tsx",
+          "importSpec": {
+            "modulePath": "../pages/[locale]/expert-sessions.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicIndividualExpertSession.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/[locale]/expert-sessions"
         }
       ],
       "icons": [

@@ -390,7 +390,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 contentEditable={"true"}
               >
                 {hasVariant(globalVariants, "language", "lv")
-                  ? "Individu\u0101li risin\u0101jumi j\u016bsu komandu un vad\u012bt\u0101ju att\u012bst\u012bbai"
+                  ? "Individu\u0101li risin\u0101jumi j\u016bsu komandu un vad\u012b\u012bt\u0101ju att\u012bst\u012bbai\u012b\u012b\u012b\u012b"
                   : "Bespoke leadership development, built around your business goal"}
               </div>
             </div>
@@ -398,7 +398,13 @@ function PlasmicHomepage__RenderFunc(props: {
           <HowWeWorkSection
             data-plasmic-name={"howWeWorkSection"}
             data-plasmic-override={overrides.howWeWorkSection}
-            className={classNames("__wab_instance", sty.howWeWorkSection)}
+            className={classNames("__wab_instance", sty.howWeWorkSection, {
+              [sty.howWeWorkSectionglobal_language_lv]: hasVariant(
+                globalVariants,
+                "language",
+                "lv"
+              )
+            })}
           />
 
           <div

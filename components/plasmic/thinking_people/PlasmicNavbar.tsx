@@ -537,7 +537,7 @@ function PlasmicNavbar__RenderFunc(props: {
                 $steps["goToHomepage"] = true
                   ? (() => {
                       const actionArgs = {
-                        destination: `/${encodeURIComponent("lv")}`
+                        destination: `/${encodeURIComponent("en")}`
                       };
                       return (({ destination }) => {
                         if (
