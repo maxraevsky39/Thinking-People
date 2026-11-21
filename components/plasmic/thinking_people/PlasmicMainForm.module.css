@@ -66,4 +66,5 @@
   animation: none;
   max-width: 100%;
   flex-shrink: 0;
+  display: none;
 }
