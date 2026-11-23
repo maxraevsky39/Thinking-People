@@ -61,6 +61,9 @@ import {
 
 import Navbar from "../../Navbar"; // plasmic-import: 7oIiUelc00Y9/component
 import { OptimizedImage } from "../../OptimizedImage"; // plasmic-import: 2sAw0k_qEFgf/codeComponent
+import H2 from "../../H2"; // plasmic-import: Yl_PbqD71djV/component
+import { AnimatedFilterGrid } from "../../AnimatedFilterGrid"; // plasmic-import: 9eRmd_u_ufIl/codeComponent
+import ExpertCard from "../../ExpertCard"; // plasmic-import: 2XBnoyv77lv3/component
 import FormSection from "../../FormSection"; // plasmic-import: fw8uA1_Fbkxj/component
 import MainForm from "../../MainForm"; // plasmic-import: WC23AdBWqnVp/component
 import FooterSection from "../../FooterSection"; // plasmic-import: DEX99TX1WJZn/component
@@ -125,6 +128,10 @@ export type PlasmicLeadershipDevelopmentOnTrial__OverridesType = {
   navbar?: Flex__<typeof Navbar>;
   h1?: Flex__<"h1">;
   img?: Flex__<typeof PlasmicImg__>;
+  eventSpeakers?: Flex__<"section">;
+  speakersMasonry?: Flex__<typeof AnimatedFilterGrid>;
+  fedorSpeakerCard?: Flex__<typeof ExpertCard>;
+  romanSpeakerCard?: Flex__<typeof ExpertCard>;
   formSection?: Flex__<typeof FormSection>;
   footerSection?: Flex__<typeof FooterSection>;
 };
@@ -169,6 +176,8 @@ function PlasmicLeadershipDevelopmentOnTrial__RenderFunc(props: {
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
+
+  const globalVariants = _useGlobalVariants();
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
@@ -673,6 +682,82 @@ function PlasmicLeadershipDevelopmentOnTrial__RenderFunc(props: {
               </div>
             </div>
           </section>
+          <section
+            data-plasmic-name={"eventSpeakers"}
+            data-plasmic-override={overrides.eventSpeakers}
+            className={classNames("all", sty.eventSpeakers)}
+          >
+            <div className={classNames("all", sty.freeBox___6Ijcg)}>
+              <H2
+                className={classNames("__wab_instance", sty.h2__kAVaD)}
+                left={true}
+                title={"Meet the experts"}
+              />
+
+              <AnimatedFilterGrid
+                data-plasmic-name={"speakersMasonry"}
+                data-plasmic-override={overrides.speakersMasonry}
+                className={classNames("__wab_instance", sty.speakersMasonry)}
+                columns={1}
+                duration={0.22}
+                gap={24}
+                layout={"masonry"}
+                mobileColumns={1}
+                offsetY={8}
+                tabletColumns={1}
+              >
+                <ExpertCard
+                  data-plasmic-name={"fedorSpeakerCard"}
+                  data-plasmic-override={overrides.fedorSpeakerCard}
+                  className={classNames("__wab_instance", sty.fedorSpeakerCard)}
+                  expert={{
+                    name: "Fedor Vassilyev",
+                    slug: "fedor-vasilyev",
+                    role: "Program Lead for Cross-Cultural Communication and Negotiations",
+                    shortDescription:
+                      "an international expert in cross-cultural and client-oriented communication, Orientalist and сertified business-trainer.",
+                    hasProfilePage: true,
+                    cardPhoto: {
+                      url: "/uploads/expert_fedor_vasilyev_card_067cf707_914c27c459.jpg",
+                      width: 944,
+                      height: 1416
+                    },
+                    photo: {
+                      url: "/uploads/expert_fedor_vasilyev_portrait_ba61311c_8b5c6575a8.jpg",
+                      width: 944,
+                      height: 1416
+                    }
+                  }}
+                  wide={true}
+                />
+
+                <ExpertCard
+                  data-plasmic-name={"romanSpeakerCard"}
+                  data-plasmic-override={overrides.romanSpeakerCard}
+                  className={classNames("__wab_instance", sty.romanSpeakerCard)}
+                  expert={{
+                    name: "Roman Simdeanov",
+                    slug: "roman-simdeanov",
+                    role: "Program Lead for Team Management",
+                    shortDescription:
+                      "An international expert in team building and development, business management and client centricity. Certified business trainer and facilitator.",
+                    hasProfilePage: true,
+                    cardPhoto: {
+                      url: "/uploads/expert_roman_simdeanov_card_cd38deb3_829ab1b615.jpg",
+                      width: 944,
+                      height: 1416
+                    },
+                    photo: {
+                      url: "/uploads/expert_roman_simdeanov_portrait_762c4246_b0e3ebb63c.jpg",
+                      width: 944,
+                      height: 1416
+                    }
+                  }}
+                  wide={true}
+                />
+              </AnimatedFilterGrid>
+            </div>
+          </section>
           <section className={classNames("all", sty.section__tsiS)}>
             <h2
               className={classNames(
@@ -753,10 +838,30 @@ function PlasmicLeadershipDevelopmentOnTrial__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  page: ["page", "navbar", "h1", "img", "formSection", "footerSection"],
+  page: [
+    "page",
+    "navbar",
+    "h1",
+    "img",
+    "eventSpeakers",
+    "speakersMasonry",
+    "fedorSpeakerCard",
+    "romanSpeakerCard",
+    "formSection",
+    "footerSection"
+  ],
   navbar: ["navbar"],
   h1: ["h1"],
   img: ["img"],
+  eventSpeakers: [
+    "eventSpeakers",
+    "speakersMasonry",
+    "fedorSpeakerCard",
+    "romanSpeakerCard"
+  ],
+  speakersMasonry: ["speakersMasonry", "fedorSpeakerCard", "romanSpeakerCard"],
+  fedorSpeakerCard: ["fedorSpeakerCard"],
+  romanSpeakerCard: ["romanSpeakerCard"],
   formSection: ["formSection"],
   footerSection: ["footerSection"]
 } as const;
@@ -768,6 +873,10 @@ type NodeDefaultElementType = {
   navbar: typeof Navbar;
   h1: "h1";
   img: typeof PlasmicImg__;
+  eventSpeakers: "section";
+  speakersMasonry: typeof AnimatedFilterGrid;
+  fedorSpeakerCard: typeof ExpertCard;
+  romanSpeakerCard: typeof ExpertCard;
   formSection: typeof FormSection;
   footerSection: typeof FooterSection;
 };
@@ -838,6 +947,10 @@ export const PlasmicLeadershipDevelopmentOnTrial = Object.assign(
     navbar: makeNodeComponent("navbar"),
     h1: makeNodeComponent("h1"),
     img: makeNodeComponent("img"),
+    eventSpeakers: makeNodeComponent("eventSpeakers"),
+    speakersMasonry: makeNodeComponent("speakersMasonry"),
+    fedorSpeakerCard: makeNodeComponent("fedorSpeakerCard"),
+    romanSpeakerCard: makeNodeComponent("romanSpeakerCard"),
     formSection: makeNodeComponent("formSection"),
     footerSection: makeNodeComponent("footerSection"),
 

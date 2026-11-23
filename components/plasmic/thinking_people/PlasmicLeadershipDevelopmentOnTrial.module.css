@@ -730,6 +730,47 @@
     font-size: 17px;
   }
 }
+.eventSpeakers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  background: var(--token-JFu4cw991QFH);
+  padding: var(--token-YnSiCEmCqs74) 0;
+}
+.freeBox___6Ijcg {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: var(--token-vwjor3Wp-O4E);
+  row-gap: var(--token-IOr-hWik6vtY);
+  padding: 0 var(--token-hQUcYWzCW8ia);
+}
+@media (max-width: 511px) {
+  .freeBox___6Ijcg {
+    row-gap: var(--token-wTQ7jvmMIX_y);
+    column-gap: 0px;
+  }
+}
+.h2__kAVaD:global(.__wab_instance) {
+  max-width: 100%;
+}
+.speakersMasonry:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+.fedorSpeakerCard:global(.__wab_instance) {
+  max-width: 100%;
+  width: 100%;
+}
+.romanSpeakerCard:global(.__wab_instance) {
+  max-width: 100%;
+  width: 100%;
+}
 .section__tsiS {
   display: flex;
   flex-direction: column;

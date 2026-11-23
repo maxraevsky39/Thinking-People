@@ -358,6 +358,19 @@
           "cssFilePath": "plasmic/thinking_people/PlasmicExpertSessionForm.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "2XBnoyv77lv3",
+          "name": "ExpertCard",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicExpertCard.tsx",
+          "importSpec": {
+            "modulePath": "ExpertCard.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicExpertCard.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [

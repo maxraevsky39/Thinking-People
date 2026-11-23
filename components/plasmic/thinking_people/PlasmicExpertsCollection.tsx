@@ -70,13 +70,12 @@ import type { QueryComponentNode } from "@plasmicapp/react-web/lib/data-sources"
 
 import Navbar from "../../Navbar"; // plasmic-import: 7oIiUelc00Y9/component
 import { AnimatedFilterGrid } from "../../AnimatedFilterGrid"; // plasmic-import: 9eRmd_u_ufIl/codeComponent
-import { OptimizedImage } from "../../OptimizedImage"; // plasmic-import: 2sAw0k_qEFgf/codeComponent
+import ExpertCard from "../../ExpertCard"; // plasmic-import: 2XBnoyv77lv3/component
 import FormSection from "../../FormSection"; // plasmic-import: fw8uA1_Fbkxj/component
 import MainForm from "../../MainForm"; // plasmic-import: WC23AdBWqnVp/component
 import FooterSection from "../../FooterSection"; // plasmic-import: DEX99TX1WJZn/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/styleTokensProvider
-import { strapiUrl as $dataTokens_5CArW_strapiUrl } from "./plasmic-data-tokens"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/dataTokens
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -142,11 +141,10 @@ export type PlasmicExpertsCollection__OverridesType = {
   navbar?: Flex__<typeof Navbar>;
   expertsHero?: Flex__<"section">;
   h1?: Flex__<"h1">;
+  span?: Flex__<"span">;
   expertsDirectory?: Flex__<"section">;
   expertsMasonry?: Flex__<typeof AnimatedFilterGrid>;
-  expertCard?: Flex__<"a"> & Partial<LinkProps>;
-  expertNode45?: Flex__<typeof OptimizedImage>;
-  h3?: Flex__<"h3">;
+  expertCard?: Flex__<typeof ExpertCard>;
   formSection?: Flex__<typeof FormSection>;
   footerSection?: Flex__<typeof FooterSection>;
 };
@@ -308,12 +306,14 @@ function PlasmicExpertsCollection__RenderFunc(props: {
                 style={{ fontStyle: "normal" }}
               >
                 <span
+                  data-plasmic-name={"span"}
+                  data-plasmic-override={overrides.span}
                   className={classNames(
                     "all",
                     "span",
                     "span__5CArW",
                     "__wab_text",
-                    sty.span__yiDy
+                    sty.span
                   )}
                 >
                   {"Our experts"}
@@ -372,7 +372,7 @@ function PlasmicExpertsCollection__RenderFunc(props: {
                 columns={3}
                 duration={0.22}
                 gap={24}
-                layout={"masonry"}
+                layout={"grid"}
                 mobileColumns={1}
                 offsetY={8}
                 tabletColumns={2}
@@ -383,113 +383,13 @@ function PlasmicExpertsCollection__RenderFunc(props: {
                   const expertItem = __plasmic_item_0;
                   const caseIndex = __plasmic_idx_0;
                   return (
-                    <PlasmicLink__
+                    <ExpertCard
                       data-plasmic-name={"expertCard"}
                       data-plasmic-override={overrides.expertCard}
-                      className={classNames(
-                        "all",
-                        "a",
-                        "a__5CArW",
-                        sty.expertCard,
-                        "card-basic card-link"
-                      )}
-                      component={Link}
-                      href={
-                        expertItem.hasProfilePage
-                          ? "/" +
-                            $ctx.params.locale +
-                            "/experts/" +
-                            expertItem.slug
-                          : ""
-                      }
+                      className={classNames("__wab_instance", sty.expertCard)}
+                      expert={expertItem}
                       key={caseIndex}
-                      legacyBehavior={false}
-                      platform={"nextjs"}
-                      target={"_blank"}
-                    >
-                      <div
-                        className={classNames("all", sty.freeBox__dWVv7)}
-                        style={{ aspectRatio: "4/5" }}
-                      >
-                        <OptimizedImage
-                          data-plasmic-name={"expertNode45"}
-                          data-plasmic-override={overrides.expertNode45}
-                          alt={expertItem.name}
-                          className={classNames(
-                            "__wab_instance",
-                            sty.expertNode45
-                          )}
-                          fill={true}
-                          format={"auto"}
-                          height={600}
-                          loading={caseIndex < 3 ? "eager" : "lazy"}
-                          objectFit={"cover"}
-                          objectPosition={"center top"}
-                          placeholder={"blur"}
-                          quality={75}
-                          sizes={
-                            "(max-width: 511px) 100vw, (max-width: 1023px) 50vw, 33vw"
-                          }
-                          src={
-                            (
-                              (expertItem.cardPhoto || expertItem.photo)?.url ??
-                              ""
-                            ).startsWith("/")
-                              ? $dataTokens_5CArW_strapiUrl +
-                                (expertItem.cardPhoto || expertItem.photo).url
-                              : ((expertItem.cardPhoto || expertItem.photo)
-                                  ?.url ?? "")
-                          }
-                          width={800}
-                        />
-                      </div>
-                      <div className={classNames("all", sty.freeBox__znSvl)}>
-                        <h3
-                          data-plasmic-name={"h3"}
-                          data-plasmic-override={overrides.h3}
-                          className={classNames(
-                            "all",
-                            "h3",
-                            "h3__5CArW",
-                            "__wab_text",
-                            sty.h3
-                          )}
-                          style={{ fontStyle: "normal" }}
-                        >
-                          <React.Fragment>{expertItem.name}</React.Fragment>
-                        </h3>
-                        <p
-                          className={classNames(
-                            "all",
-                            "p",
-                            "p__5CArW",
-                            "__wab_text",
-                            sty.p__lZarb
-                          )}
-                          style={{ fontStyle: "normal" }}
-                        >
-                          <React.Fragment>
-                            {expertItem.role ||
-                              expertItem.shortDescription ||
-                              ""}
-                          </React.Fragment>
-                        </p>
-                        {!!expertItem.hasProfilePage ? (
-                          <span
-                            className={classNames(
-                              "all",
-                              "span",
-                              "span__5CArW",
-                              "__wab_text",
-                              sty.span__lDrlv
-                            )}
-                            style={{ fontStyle: "normal" }}
-                          >
-                            {"Meet the expert \u2192"}
-                          </span>
-                        ) : null}
-                      </div>
-                    </PlasmicLink__>
+                    />
                   );
                 })}
               </AnimatedFilterGrid>
@@ -520,28 +420,20 @@ const PlasmicDescendants = {
     "navbar",
     "expertsHero",
     "h1",
+    "span",
     "expertsDirectory",
     "expertsMasonry",
     "expertCard",
-    "expertNode45",
-    "h3",
     "formSection",
     "footerSection"
   ],
   navbar: ["navbar"],
-  expertsHero: ["expertsHero", "h1"],
-  h1: ["h1"],
-  expertsDirectory: [
-    "expertsDirectory",
-    "expertsMasonry",
-    "expertCard",
-    "expertNode45",
-    "h3"
-  ],
-  expertsMasonry: ["expertsMasonry", "expertCard", "expertNode45", "h3"],
-  expertCard: ["expertCard", "expertNode45", "h3"],
-  expertNode45: ["expertNode45"],
-  h3: ["h3"],
+  expertsHero: ["expertsHero", "h1", "span"],
+  h1: ["h1", "span"],
+  span: ["span"],
+  expertsDirectory: ["expertsDirectory", "expertsMasonry", "expertCard"],
+  expertsMasonry: ["expertsMasonry", "expertCard"],
+  expertCard: ["expertCard"],
   formSection: ["formSection"],
   footerSection: ["footerSection"]
 } as const;
@@ -553,11 +445,10 @@ type NodeDefaultElementType = {
   navbar: typeof Navbar;
   expertsHero: "section";
   h1: "h1";
+  span: "span";
   expertsDirectory: "section";
   expertsMasonry: typeof AnimatedFilterGrid;
-  expertCard: "a";
-  expertNode45: typeof OptimizedImage;
-  h3: "h3";
+  expertCard: typeof ExpertCard;
   formSection: typeof FormSection;
   footerSection: typeof FooterSection;
 };
@@ -627,11 +518,10 @@ export const PlasmicExpertsCollection = Object.assign(
     navbar: makeNodeComponent("navbar"),
     expertsHero: makeNodeComponent("expertsHero"),
     h1: makeNodeComponent("h1"),
+    span: makeNodeComponent("span"),
     expertsDirectory: makeNodeComponent("expertsDirectory"),
     expertsMasonry: makeNodeComponent("expertsMasonry"),
     expertCard: makeNodeComponent("expertCard"),
-    expertNode45: makeNodeComponent("expertNode45"),
-    h3: makeNodeComponent("h3"),
     formSection: makeNodeComponent("formSection"),
     footerSection: makeNodeComponent("footerSection"),
 
