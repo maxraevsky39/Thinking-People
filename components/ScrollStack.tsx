@@ -124,19 +124,46 @@ export function ScrollStack(p:ScrollStackProps) {
   const originals=Array.from(new Set([...Array.from(wrappers),...cards]),element=>({element,style:element.getAttribute('style')}));
   wrappers.forEach(element=>element.style.setProperty('display','contents'));
   cards.forEach((card,i)=>Object.assign(card.style,{position:'sticky',top:`${top}px`,bottom:'auto',left:'auto',right:'auto',width:'100%',height:'auto',flexShrink:'0',margin:'0',zIndex:String(i)}));
-  let raf=0,lastIndex=-1;
-  const update=()=>{
-   raf=0;const container=scroller.current;
+  const depth=clamp(Math.round(finite(p.depth,3)),1,6),smooth=clamp(finite(p.smooth,.16),0,.95);
+  const recipe={peek:Math.max(0,finite(p.peek,26)),scaleStep:clamp(finite(p.scaleStep,.07),0,.15),blur:clamp(finite(p.blur,4),0,30),dim:clamp(finite(p.dim,.28),0,1),radius,enter:0};
+  let raf=0,live=false,previous=0,shown=0,lastIndex=-1;
+  const measure=()=>{
+   const container=scroller.current;
    const origin=container?container.getBoundingClientRect().top+container.clientTop:0;
-   let active=0;
-   cards.forEach((card,i)=>{if(card.getBoundingClientRect().top<=origin+top+1)active=i;});
+   const scroll=origin+top-host.getBoundingClientRect().top;
+   // Read untransformed layout heights, not animated bounding boxes or sticky
+   // offsetTop. This also supports cards of different heights without feedback.
+   let start=parseFloat(win.getComputedStyle(host).paddingTop)||0;
+   for(let i=0;i<cards.length-1;i++){
+    const distance=Math.max(1,cards[i].offsetHeight+gap);
+    if(scroll<start+distance)return i+clamp((scroll-start)/distance,0,1);
+    start+=distance;
+   }
+   return cards.length-1;
+  };
+  const paint=(progress:number)=>{
+   cards.forEach((card,i)=>{
+    const offset=clamp(progress-i,0,depth);
+    const shot=pose('stack',offset,i,recipe);
+    Object.assign(card.style,{transform:shot.transform,transformOrigin:'center top',opacity:'1',filter:shot.filter,clipPath:shot.clip,willChange:'transform,filter'});
+   });
+   const active=clamp(Math.floor(progress+.0001),0,cards.length-1);
    if(active!==lastIndex){lastIndex=active;setLead(active);callback.current?.(active);}
   };
-  const wake=()=>{if(!raf)raf=win.requestAnimationFrame(update);};
-  update();doc.addEventListener('scroll',wake,{passive:true,capture:true});win.addEventListener('resize',wake);
+  const frame=(stamp:number)=>{
+   const delta=previous?Math.min(50,stamp-previous):16.67;previous=stamp;
+   const target=measure(),alpha=smooth===0?1:1-Math.exp(-delta/(30+smooth*470));
+   shown+=(target-shown)*alpha;
+   if(Math.abs(target-shown)<.0004){shown=target;live=false;}
+   paint(shown);if(live)raf=win.requestAnimationFrame(frame);
+  };
+  const wake=()=>{if(!live){live=true;previous=0;raf=win.requestAnimationFrame(frame);}};
+  shown=measure();paint(shown);
+  doc.addEventListener('scroll',wake,{passive:true,capture:true});win.addEventListener('resize',wake);
   const observer=new win.ResizeObserver(wake);observer.observe(host);cards.forEach(card=>observer.observe(card));
   return ()=>{win.cancelAnimationFrame(raf);observer.disconnect();doc.removeEventListener('scroll',wake,true);win.removeEventListener('resize',wake);originals.forEach(({element,style})=>style===null?element.removeAttribute('style'):element.setAttribute('style',style));};
- },[animate,flowMode,cards,top,gap]);
+ },[animate,flowMode,cards,top,gap,radius,p.peek,p.scaleStep,p.blur,p.dim,p.depth,p.smooth]);
+
  return <section ref={root} data-tp-stack-root="" className={className} aria-label="Scrolling card stack" style={{position:'relative',width:'100%',height:staged?available+(count-1)*available*reach:undefined}}>
   <div style={{position:staged?'sticky':'relative',top:staged?top:undefined,height:staged?available:undefined,width:'100%',minWidth:0,flexShrink:0,alignSelf:'stretch',display:'flex',alignItems:'center',justifyContent:'center',boxSizing:'border-box',paddingInline:Math.max(0,finite(p.sidePadding,24)),perspective:Math.max(200,finite(p.perspective,1400)),overflow:staged?'clip':'visible'}}>
    <div ref={content} className={p.frameClassName} style={{position:'relative',width:'100%',maxWidth:p.fullWidth?'none':Math.max(200,finite(p.cardWidth,880)),minWidth:0,height:staged?available*height:undefined,display:staged?'block':'flex',flexDirection:'column',gap}}>{children}</div>
