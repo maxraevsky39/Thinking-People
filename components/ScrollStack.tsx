@@ -6,7 +6,7 @@ export interface ScrollStackProps {
   children?: React.ReactNode; className?: string; variant?: ScrollStackVariant;
   scrollLength?: number; stickyTop?: number; peek?: number; scaleStep?: number;
   blur?: number; dim?: number; smooth?: number; depth?: number;
-  cardWidth?: number; cardHeight?: number; borderRadius?: number; perspective?: number;
+  fullWidth?: boolean; cardWidth?: number; cardHeight?: number; borderRadius?: number; perspective?: number;
   sidePadding?: number; showProgress?: boolean; showCounter?: boolean;
   progressColor?: string; listGap?: number; disabled?: boolean;
   mobileBreakpoint?: number; mobileMode?: 'list' | 'animate';
@@ -16,7 +16,7 @@ export interface ScrollStackProps {
 const clamp=(n:number,a:number,b:number)=>Math.max(a,Math.min(b,n));
 const finite=(n:number|undefined,f:number)=>Number.isFinite(n)?n!:f;
 export function ScrollStackCard({children,className}: {children?:React.ReactNode;className?:string}) {
-  return <div data-tp-stack-card="" className={className} style={{width:'100%'}}>{children}</div>;
+  return <div data-tp-stack-card="" className={className} style={{width:'100%',minWidth:0,display:'flex',flexDirection:'column',alignItems:'stretch'}}>{children}</div>;
 }
 export function ScrollStack(p:ScrollStackProps) {
  const {children,className,variant='stack',showProgress=true,showCounter=true,mobileMode='list',previewInEditor=false,respectReducedMotion=true,disabled=false}=p;
@@ -57,7 +57,7 @@ export function ScrollStack(p:ScrollStackProps) {
   const measure=()=>{
    let parent=el.parentElement;scroller.current=null;
    while(parent&&parent!==doc.documentElement){
-    if(/auto|scroll|overlay/.test(win.getComputedStyle(parent).overflowY)&&parent!==doc.scrollingElement){scroller.current=parent;break;}
+    if(parent!==doc.body&&/auto|scroll|overlay/.test(win.getComputedStyle(parent).overflowY)&&parent!==doc.scrollingElement){scroller.current=parent;break;}
     parent=parent.parentElement;
    }
    const container=scroller.current;
@@ -72,6 +72,12 @@ export function ScrollStack(p:ScrollStackProps) {
  React.useEffect(()=>{
   if(!animate)return;const el=root.current,host=content.current;if(!el||!host)return;
   const doc=el.ownerDocument,win=doc.defaultView;if(!win)return;
+  // Studio slots/Repeat can add positioned wrappers. Absolute cards must use
+  // the stack frame, not a now-empty wrapper, as their containing block.
+  const wrappers=new Set<HTMLElement>();
+  cards.forEach(card=>{let parent=card.parentElement;while(parent&&parent!==host){wrappers.add(parent);parent=parent.parentElement;}});
+  const wrapperStyles=Array.from(wrappers,element=>({element,style:element.getAttribute('style')}));
+  wrappers.forEach(element=>element.style.setProperty('display','contents'));
   const original=cards.map(c=>({style:c.getAttribute('style'),hidden:c.getAttribute('aria-hidden'),inert:c.hasAttribute('inert')}));
   let raf=0,live=false,previous=0,shown=0,lastIndex=-1;
   const recipe={peek:Math.max(0,finite(p.peek,26)),scaleStep:clamp(finite(p.scaleStep,.07),0,.15),blur:clamp(finite(p.blur,4),0,30),dim:clamp(finite(p.dim,.28),0,1),radius,enter:((1+1/height)/2)*100+3};
@@ -102,12 +108,13 @@ export function ScrollStack(p:ScrollStackProps) {
   const observer=new win.ResizeObserver(wake);observer.observe(el);
   return ()=>{
    win.cancelAnimationFrame(raf);observer.disconnect();doc.removeEventListener('scroll',wake,true);win.removeEventListener('scroll',wake);win.removeEventListener('resize',wake);
+   wrapperStyles.forEach(({element,style})=>style===null?element.removeAttribute('style'):element.setAttribute('style',style));
    cards.forEach((c,i)=>{const o=original[i];o.style===null?c.removeAttribute('style'):c.setAttribute('style',o.style);o.hidden===null?c.removeAttribute('aria-hidden'):c.setAttribute('aria-hidden',o.hidden);c.toggleAttribute('inert',o.inert);});
   };
  },[animate,cards,count,variant,top,available,height,radius,reach,p.peek,p.scaleStep,p.blur,p.dim,p.depth,p.smooth]);
  return <section ref={root} data-tp-stack-root="" className={className} aria-label="Scrolling card stack" style={{position:'relative',width:'100%',height:animate?available+(count-1)*available*reach:undefined}}>
   <div style={{position:animate?'sticky':'relative',top:animate?top:undefined,height:animate?available:undefined,display:'flex',alignItems:'center',justifyContent:'center',boxSizing:'border-box',paddingInline:Math.max(0,finite(p.sidePadding,24)),perspective:Math.max(200,finite(p.perspective,1400)),overflow:animate?'clip':'visible'}}>
-   <div ref={content} className={p.frameClassName} style={{position:'relative',width:'100%',maxWidth:Math.max(200,finite(p.cardWidth,880)),height:animate?available*height:undefined,display:animate?'block':'flex',flexDirection:'column',gap}}>{children}</div>
+   <div ref={content} className={p.frameClassName} style={{position:'relative',width:'100%',maxWidth:p.fullWidth?'none':Math.max(200,finite(p.cardWidth,880)),minWidth:0,height:animate?available*height:undefined,display:animate?'block':'flex',flexDirection:'column',gap}}>{children}</div>
    {animate&&(showCounter||showProgress)&&<div className={p.hudClassName} style={{position:'absolute',bottom:16,left:0,right:0,display:'flex',justifyContent:'center',alignItems:'center',gap:16,pointerEvents:'none',color:p.progressColor||'inherit'}}>
     {showProgress&&<span style={{position:'relative',width:150,height:2,background:'color-mix(in srgb, currentColor 20%, transparent)',overflow:'hidden'}}><span ref={rail} style={{position:'absolute',inset:0,background:'currentColor',transformOrigin:'left',transform:'scaleX(0)'}}/></span>}
     {showCounter&&<span style={{fontSize:12,fontVariantNumeric:'tabular-nums'}}>{String(Math.min(lead+1,count)).padStart(2,'0')} / {String(count).padStart(2,'0')}</span>}
