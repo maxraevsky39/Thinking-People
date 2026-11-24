@@ -1,0 +1,11 @@
+.root {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  font-family: "Golos UI VF";
+  font-size: 28px;
+  letter-spacing: -0.5%;
+  position: relative;
+  min-width: 0;
+}

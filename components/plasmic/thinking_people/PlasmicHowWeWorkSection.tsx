@@ -159,7 +159,13 @@ function PlasmicHowWeWorkSection__RenderFunc(props: {
       <div
         data-plasmic-name={"howWeWorkSection"}
         data-plasmic-override={overrides.howWeWorkSection}
-        className={classNames("all", sty.howWeWorkSection)}
+        className={classNames("all", sty.howWeWorkSection, {
+          [sty.howWeWorkSectionglobal_language_lv]: hasVariant(
+            globalVariants,
+            "language",
+            "lv"
+          )
+        })}
       >
         <div className={classNames("all", sty.freeBox__x9S5U)}>
           <H2

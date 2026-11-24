@@ -71,13 +71,12 @@ import type { QueryComponentNode } from "@plasmicapp/react-web/lib/data-sources"
 import Navbar from "../../Navbar"; // plasmic-import: 7oIiUelc00Y9/component
 import H2 from "../../H2"; // plasmic-import: Yl_PbqD71djV/component
 import { AnimatedFilterGrid } from "../../AnimatedFilterGrid"; // plasmic-import: 9eRmd_u_ufIl/codeComponent
-import { OptimizedImage } from "../../OptimizedImage"; // plasmic-import: 2sAw0k_qEFgf/codeComponent
+import CaseCard from "../../CaseCard"; // plasmic-import: aNWZrHM0kBmf/component
 import FormSection from "../../FormSection"; // plasmic-import: fw8uA1_Fbkxj/component
 import MainForm from "../../MainForm"; // plasmic-import: WC23AdBWqnVp/component
 import FooterSection from "../../FooterSection"; // plasmic-import: DEX99TX1WJZn/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/styleTokensProvider
-import { strapiUrl as $dataTokens_5CArW_strapiUrl } from "./plasmic-data-tokens"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/dataTokens
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -142,12 +141,11 @@ export type PlasmicCasesCollection__OverridesType = {
   root?: Flex__<"div">;
   navbar?: Flex__<typeof Navbar>;
   h1?: Flex__<"h1">;
+  p?: Flex__<"p">;
   h2?: Flex__<typeof H2>;
   queryStatus?: Flex__<"p">;
   animatedFilterGrid?: Flex__<typeof AnimatedFilterGrid>;
-  link?: Flex__<"a"> & Partial<LinkProps>;
-  optimizedImage?: Flex__<typeof OptimizedImage>;
-  h3?: Flex__<"h3">;
+  caseCard?: Flex__<typeof CaseCard>;
   formSection?: Flex__<typeof FormSection>;
   footerSection?: Flex__<typeof FooterSection>;
 };
@@ -327,12 +325,14 @@ function PlasmicCasesCollection__RenderFunc(props: {
                 </span>
               </h1>
               <p
+                data-plasmic-name={"p"}
+                data-plasmic-override={overrides.p}
                 className={classNames(
                   "all",
                   "p",
                   "p__5CArW",
                   "__wab_text",
-                  sty.p__fnwCj
+                  sty.p
                 )}
               >
                 {
@@ -393,98 +393,26 @@ function PlasmicCasesCollection__RenderFunc(props: {
                   const caseItem = __plasmic_item_0;
                   const caseIndex = __plasmic_idx_0;
                   return (
-                    <PlasmicLink__
-                      data-plasmic-name={"link"}
-                      data-plasmic-override={overrides.link}
-                      className={classNames(
-                        "all",
-                        "a",
-                        "a__5CArW",
-                        sty.link,
-                        "card-basic  card-link"
-                      )}
-                      component={Link}
-                      href={
-                        "/" + $ctx.params.locale + "/cases/" + caseItem.slug
-                      }
+                    <CaseCard
+                      data-plasmic-name={"caseCard"}
+                      data-plasmic-override={overrides.caseCard}
+                      caseData={caseItem}
+                      className={classNames("__wab_instance", sty.caseCard)}
                       key={caseIndex}
-                      legacyBehavior={false}
-                      platform={"nextjs"}
-                      target={"_blank"}
-                    >
-                      <div className={classNames("all", sty.freeBox__xrNaQ)}>
-                        {!!caseItem.cover?.url ? (
-                          <OptimizedImage
-                            data-plasmic-name={"optimizedImage"}
-                            data-plasmic-override={overrides.optimizedImage}
-                            alt={caseItem.title}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.optimizedImage
-                            )}
-                            fill={true}
-                            format={"auto"}
-                            height={caseItem.cover?.height ?? 600}
-                            loading={caseIndex < 3 ? "eager" : "lazy"}
-                            objectFit={"contain"}
-                            objectPosition={"center"}
-                            placeholder={"empty"}
-                            quality={75}
-                            sizes={"(max-width: 768px) 100vw, 50vw"}
-                            src={
-                              (caseItem.cover?.url ?? "").startsWith("/")
-                                ? $dataTokens_5CArW_strapiUrl +
-                                  caseItem.cover.url
-                                : (caseItem.cover?.url ?? "")
-                            }
-                            width={caseItem.cover?.width ?? 800}
-                          />
-                        ) : null}
-                      </div>
-                      <div className={classNames("all", sty.freeBox__j5IN)}>
-                        <h3
-                          data-plasmic-name={"h3"}
-                          data-plasmic-override={overrides.h3}
-                          className={classNames(
-                            "all",
-                            "h3",
-                            "h3__5CArW",
-                            "__wab_text",
-                            sty.h3
-                          )}
-                        >
-                          <React.Fragment>
-                            {caseItem.cardTitle || caseItem.title}
-                          </React.Fragment>
-                        </h3>
-                        {!!caseItem.summary ? (
-                          <p
-                            className={classNames(
-                              "all",
-                              "p",
-                              "p__5CArW",
-                              "__wab_text",
-                              sty.p__aRjol
-                            )}
-                          >
-                            <React.Fragment>
-                              {caseItem.summary ?? ""}
-                            </React.Fragment>
-                          </p>
-                        ) : null}
-                        <span
-                          className={classNames(
-                            "all",
-                            "span",
-                            "span__5CArW",
-                            "__wab_text",
-                            sty.span__mRwMf
-                          )}
-                        >
-                          {"Explore case \u2192"}
-                        </span>
-                      </div>
-                    </PlasmicLink__>
+                      odd={(() => {
+                        try {
+                          return caseIndex % 2 === 0;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [];
+                          }
+                          throw e;
+                        }
+                      })()}
+                    />
                   );
                 })}
               </AnimatedFilterGrid>
@@ -514,23 +442,21 @@ const PlasmicDescendants = {
     "root",
     "navbar",
     "h1",
+    "p",
     "h2",
     "queryStatus",
     "animatedFilterGrid",
-    "link",
-    "optimizedImage",
-    "h3",
+    "caseCard",
     "formSection",
     "footerSection"
   ],
   navbar: ["navbar"],
   h1: ["h1"],
+  p: ["p"],
   h2: ["h2"],
   queryStatus: ["queryStatus"],
-  animatedFilterGrid: ["animatedFilterGrid", "link", "optimizedImage", "h3"],
-  link: ["link", "optimizedImage", "h3"],
-  optimizedImage: ["optimizedImage"],
-  h3: ["h3"],
+  animatedFilterGrid: ["animatedFilterGrid", "caseCard"],
+  caseCard: ["caseCard"],
   formSection: ["formSection"],
   footerSection: ["footerSection"]
 } as const;
@@ -541,12 +467,11 @@ type NodeDefaultElementType = {
   root: "div";
   navbar: typeof Navbar;
   h1: "h1";
+  p: "p";
   h2: typeof H2;
   queryStatus: "p";
   animatedFilterGrid: typeof AnimatedFilterGrid;
-  link: "a";
-  optimizedImage: typeof OptimizedImage;
-  h3: "h3";
+  caseCard: typeof CaseCard;
   formSection: typeof FormSection;
   footerSection: typeof FooterSection;
 };
@@ -615,12 +540,11 @@ export const PlasmicCasesCollection = Object.assign(
     // Helper components rendering sub-elements
     navbar: makeNodeComponent("navbar"),
     h1: makeNodeComponent("h1"),
+    p: makeNodeComponent("p"),
     h2: makeNodeComponent("h2"),
     queryStatus: makeNodeComponent("queryStatus"),
     animatedFilterGrid: makeNodeComponent("animatedFilterGrid"),
-    link: makeNodeComponent("link"),
-    optimizedImage: makeNodeComponent("optimizedImage"),
-    h3: makeNodeComponent("h3"),
+    caseCard: makeNodeComponent("caseCard"),
     formSection: makeNodeComponent("formSection"),
     footerSection: makeNodeComponent("footerSection"),
 

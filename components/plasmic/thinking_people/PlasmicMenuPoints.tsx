@@ -60,6 +60,7 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import NavbarPopup from "../../NavbarPopup"; // plasmic-import: h9gIq3560dql/component
+import { OptimizedImage } from "../../OptimizedImage"; // plasmic-import: 2sAw0k_qEFgf/codeComponent
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/styleTokensProvider
 
@@ -98,6 +99,9 @@ export const PlasmicMenuPoints__ArgProps = new Array<ArgPropType>(
 export type PlasmicMenuPoints__OverridesType = {
   root?: Flex__<"div">;
   navbarPopup6?: Flex__<typeof NavbarPopup>;
+  p?: Flex__<"p">;
+  icon?: Flex__<"div">;
+  optimizedImage?: Flex__<typeof OptimizedImage>;
   navbarPopup3?: Flex__<typeof NavbarPopup>;
   navbarPopup4?: Flex__<typeof NavbarPopup>;
 };
@@ -448,6 +452,85 @@ function PlasmicMenuPoints__RenderFunc(props: {
                 </PlasmicLink__>
               );
             })}
+            <PlasmicLink__
+              className={classNames("all", "a", "a__5CArW", sty.link___81L4B)}
+              component={Link}
+              href={`/${encodeURIComponent("en")}/events/leadership`}
+              legacyBehavior={false}
+              platform={"nextjs"}
+              prefetch={(() => {
+                try {
+                  return "false";
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
+              target={undefined}
+            >
+              <p
+                data-plasmic-name={"p"}
+                data-plasmic-override={overrides.p}
+                className={classNames(
+                  "all",
+                  "p",
+                  "p__5CArW",
+                  "__wab_text",
+                  sty.p,
+                  {
+                    [sty.pglobal_language_lv]: hasVariant(
+                      globalVariants,
+                      "language",
+                      "lv"
+                    )
+                  }
+                )}
+              >
+                <React.Fragment>
+                  {(() => {
+                    try {
+                      return "Leadership Model";
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "\u042d\u0444\u0444\u0435\u043a\u0442\u0438\u0432\u043d\u043e\u0435 \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e";
+                      }
+                      throw e;
+                    }
+                  })()}
+                </React.Fragment>
+              </p>
+              <div
+                data-plasmic-name={"icon"}
+                data-plasmic-override={overrides.icon}
+                className={classNames("all", sty.icon)}
+              >
+                <OptimizedImage
+                  data-plasmic-name={"optimizedImage"}
+                  data-plasmic-override={overrides.optimizedImage}
+                  alt={""}
+                  className={classNames("__wab_instance", sty.optimizedImage)}
+                  fill={true}
+                  format={"auto"}
+                  height={473}
+                  loading={"lazy"}
+                  objectFit={"cover"}
+                  objectPosition={"center"}
+                  placeholder={"blur"}
+                  quality={75}
+                  sizes={"(max-width: 768px) 100vw, 50vw"}
+                  src={"/plasmic/thinking_people/images/icon3Png.png"}
+                  width={473}
+                />
+              </div>
+            </PlasmicLink__>
           </div>
         </div>
         <div className={classNames("all", sty.freeBox__lQUa)} />
@@ -663,8 +746,19 @@ function PlasmicMenuPoints__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "navbarPopup6", "navbarPopup3", "navbarPopup4"],
-  navbarPopup6: ["navbarPopup6"],
+  root: [
+    "root",
+    "navbarPopup6",
+    "p",
+    "icon",
+    "optimizedImage",
+    "navbarPopup3",
+    "navbarPopup4"
+  ],
+  navbarPopup6: ["navbarPopup6", "p", "icon", "optimizedImage"],
+  p: ["p"],
+  icon: ["icon", "optimizedImage"],
+  optimizedImage: ["optimizedImage"],
   navbarPopup3: ["navbarPopup3"],
   navbarPopup4: ["navbarPopup4"]
 } as const;
@@ -674,6 +768,9 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   navbarPopup6: typeof NavbarPopup;
+  p: "p";
+  icon: "div";
+  optimizedImage: typeof OptimizedImage;
   navbarPopup3: typeof NavbarPopup;
   navbarPopup4: typeof NavbarPopup;
 };
@@ -741,6 +838,9 @@ export const PlasmicMenuPoints = Object.assign(
   {
     // Helper components rendering sub-elements
     navbarPopup6: makeNodeComponent("navbarPopup6"),
+    p: makeNodeComponent("p"),
+    icon: makeNodeComponent("icon"),
+    optimizedImage: makeNodeComponent("optimizedImage"),
     navbarPopup3: makeNodeComponent("navbarPopup3"),
     navbarPopup4: makeNodeComponent("navbarPopup4"),
 

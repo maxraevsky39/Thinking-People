@@ -61,8 +61,12 @@ import {
 
 import Navbar from "../../Navbar"; // plasmic-import: 7oIiUelc00Y9/component
 import { OptimizedImage } from "../../OptimizedImage"; // plasmic-import: 2sAw0k_qEFgf/codeComponent
+import H2 from "../../H2"; // plasmic-import: Yl_PbqD71djV/component
+import { AnimatedFilterGrid } from "../../AnimatedFilterGrid"; // plasmic-import: 9eRmd_u_ufIl/codeComponent
+import BasicCard from "../../BasicCard"; // plasmic-import: h1uZWvI2U-SZ/component
 import FormSection from "../../FormSection"; // plasmic-import: fw8uA1_Fbkxj/component
 import MainForm from "../../MainForm"; // plasmic-import: WC23AdBWqnVp/component
+import BtnSecond from "../../BtnSecond"; // plasmic-import: gKCTmQN19iqg/component
 import FooterSection from "../../FooterSection"; // plasmic-import: DEX99TX1WJZn/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/styleTokensProvider
@@ -130,36 +134,35 @@ export type PlasmicDiagnostics__OverridesType = {
   copy2?: Flex__<"p">;
   copy3?: Flex__<"span">;
   optimizedImage?: Flex__<typeof OptimizedImage>;
-  copy4?: Flex__<"h2">;
-  copy5?: Flex__<"h3">;
-  copy6?: Flex__<"p">;
-  copy7?: Flex__<"h3">;
-  copy8?: Flex__<"p">;
-  copy9?: Flex__<"h3">;
-  copy10?: Flex__<"p">;
-  copy11?: Flex__<"h2">;
+  copy4?: Flex__<typeof H2>;
+  thinkingSkills?: Flex__<typeof AnimatedFilterGrid>;
+  creativeThinking?: Flex__<typeof BasicCard>;
+  criticalThinking?: Flex__<typeof BasicCard>;
+  systemsThinking?: Flex__<typeof BasicCard>;
+  copy11?: Flex__<typeof H2>;
   copy12?: Flex__<"h3">;
   copy13?: Flex__<"p">;
   copy14?: Flex__<"h3">;
   copy15?: Flex__<"p">;
-  copy16?: Flex__<"h2">;
+  copy16?: Flex__<typeof H2>;
   copy17?: Flex__<"h3">;
   copy18?: Flex__<"p">;
   copy19?: Flex__<"h3">;
   copy20?: Flex__<"p">;
   copy21?: Flex__<"h3">;
   copy22?: Flex__<"p">;
-  copy23?: Flex__<"h2">;
+  copy23?: Flex__<typeof H2>;
   copy24?: Flex__<"h3">;
   copy25?: Flex__<"p">;
   copy26?: Flex__<"h3">;
   copy27?: Flex__<"p">;
-  copy28?: Flex__<"h2">;
-  copy29?: Flex__<"p">;
-  copy30?: Flex__<"span">;
-  copy31?: Flex__<"span">;
   contactAnchor?: Flex__<"div">;
   diagnosticsContact?: Flex__<typeof FormSection>;
+  copy28?: Flex__<typeof H2>;
+  mainForm?: Flex__<typeof MainForm>;
+  copy29?: Flex__<"p">;
+  btnSecond?: Flex__<typeof BtnSecond>;
+  text?: Flex__<"div">;
   footerSection?: Flex__<typeof FooterSection>;
 };
 
@@ -394,194 +397,133 @@ function PlasmicDiagnostics__RenderFunc(props: {
           </section>
           <section className={classNames("all", sty.section___4Gh4)}>
             <div className={classNames("all", sty.freeBox__kC4Bt)}>
-              <h2
+              <H2
                 data-plasmic-name={"copy4"}
                 data-plasmic-override={overrides.copy4}
-                className={classNames(
-                  "all",
-                  "h2",
-                  "h2__5CArW",
-                  "__wab_text",
-                  sty.copy4,
-                  {
-                    [sty.copy4global_language_lv]: hasVariant(
+                className={classNames("__wab_instance", sty.copy4, {
+                  [sty.copy4global_language_lv]: hasVariant(
+                    globalVariants,
+                    "language",
+                    "lv"
+                  )
+                })}
+                title={
+                  hasVariant(globalVariants, "language", "lv")
+                    ? "Kā domāšanas prasmes uzlabo darba rezultātus"
+                    : "How thinking skills improve performance"
+                }
+              />
+
+              <AnimatedFilterGrid
+                data-plasmic-name={"thinkingSkills"}
+                data-plasmic-override={overrides.thinkingSkills}
+                className={classNames("__wab_instance", sty.thinkingSkills)}
+                columns={3}
+                duration={0.22}
+                gap={28}
+                layout={"masonry"}
+                mobileColumns={1}
+                offsetY={8}
+                tabletColumns={2}
+              >
+                <BasicCard
+                  data-plasmic-name={"creativeThinking"}
+                  data-plasmic-override={overrides.creativeThinking}
+                  className={classNames(
+                    "__wab_instance",
+                    sty.creativeThinking,
+                    {
+                      [sty.creativeThinkingglobal_language_lv]: hasVariant(
+                        globalVariants,
+                        "language",
+                        "lv"
+                      )
+                    }
+                  )}
+                  icon={"icon-1"}
+                  subtitle={
+                    hasVariant(globalVariants, "language", "lv")
+                      ? "Radiet idejas un pārvērtiet tās praktiskos jauninājumos."
+                      : "Generate ideas and turn them into practical innovations."
+                  }
+                  title={
+                    hasVariant(globalVariants, "language", "lv")
+                      ? "Radošā domāšana"
+                      : "Creative thinking"
+                  }
+                />
+
+                <BasicCard
+                  data-plasmic-name={"criticalThinking"}
+                  data-plasmic-override={overrides.criticalThinking}
+                  className={classNames(
+                    "__wab_instance",
+                    sty.criticalThinking,
+                    {
+                      [sty.criticalThinkingglobal_language_lv]: hasVariant(
+                        globalVariants,
+                        "language",
+                        "lv"
+                      )
+                    }
+                  )}
+                  icon={"icon-3"}
+                  subtitle={
+                    hasVariant(globalVariants, "language", "lv")
+                      ? "Izvērtējiet pierādījumus un pieņemiet pārdomātākus vadības lēmumus."
+                      : "Evaluate evidence and make better management decisions."
+                  }
+                  title={
+                    hasVariant(globalVariants, "language", "lv")
+                      ? "Kritiskā domāšana"
+                      : "Critical thinking"
+                  }
+                />
+
+                <BasicCard
+                  data-plasmic-name={"systemsThinking"}
+                  data-plasmic-override={overrides.systemsThinking}
+                  className={classNames("__wab_instance", sty.systemsThinking, {
+                    [sty.systemsThinkingglobal_language_lv]: hasVariant(
                       globalVariants,
                       "language",
                       "lv"
                     )
+                  })}
+                  icon={"icon-7"}
+                  subtitle={
+                    hasVariant(globalVariants, "language", "lv")
+                      ? "Saskatiet lēmumu savstarpējo ietekmi un izvērtējiet jaunus biznesa modeļus."
+                      : "See how decisions interact and evaluate new business models."
                   }
-                )}
-              >
-                {hasVariant(globalVariants, "language", "lv")
-                  ? "K\u0101 dom\u0101\u0161anas prasmes uzlabo darba rezult\u0101tus"
-                  : "How thinking skills improve performance"}
-              </h2>
-              <div className={classNames("all", sty.freeBox___7ErP2)}>
-                <div className={classNames("all", sty.freeBox__dlzE)}>
-                  <h3
-                    data-plasmic-name={"copy5"}
-                    data-plasmic-override={overrides.copy5}
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.copy5,
-                      {
-                        [sty.copy5global_language_lv]: hasVariant(
-                          globalVariants,
-                          "language",
-                          "lv"
-                        )
-                      }
-                    )}
-                  >
-                    {hasVariant(globalVariants, "language", "lv")
-                      ? "Rado\u0161\u0101 dom\u0101\u0161ana"
-                      : "Creative thinking"}
-                  </h3>
-                  <p
-                    data-plasmic-name={"copy6"}
-                    data-plasmic-override={overrides.copy6}
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.copy6,
-                      {
-                        [sty.copy6global_language_lv]: hasVariant(
-                          globalVariants,
-                          "language",
-                          "lv"
-                        )
-                      }
-                    )}
-                  >
-                    {hasVariant(globalVariants, "language", "lv")
-                      ? "Radiet idejas un p\u0101rv\u0113rtiet t\u0101s praktiskos jaunin\u0101jumos."
-                      : "Generate ideas and turn them into practical innovations."}
-                  </p>
-                </div>
-                <div className={classNames("all", sty.freeBox__ae8FF)}>
-                  <h3
-                    data-plasmic-name={"copy7"}
-                    data-plasmic-override={overrides.copy7}
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.copy7,
-                      {
-                        [sty.copy7global_language_lv]: hasVariant(
-                          globalVariants,
-                          "language",
-                          "lv"
-                        )
-                      }
-                    )}
-                  >
-                    {hasVariant(globalVariants, "language", "lv")
-                      ? "Kritisk\u0101 dom\u0101\u0161ana"
-                      : "Critical thinking"}
-                  </h3>
-                  <p
-                    data-plasmic-name={"copy8"}
-                    data-plasmic-override={overrides.copy8}
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.copy8,
-                      {
-                        [sty.copy8global_language_lv]: hasVariant(
-                          globalVariants,
-                          "language",
-                          "lv"
-                        )
-                      }
-                    )}
-                  >
-                    {hasVariant(globalVariants, "language", "lv")
-                      ? "Izv\u0113rt\u0113jiet pier\u0101d\u012bjumus un pie\u0146emiet p\u0101rdom\u0101t\u0101kus vad\u012bbas l\u0113mumus."
-                      : "Evaluate evidence and make better management decisions."}
-                  </p>
-                </div>
-                <div className={classNames("all", sty.freeBox__zQr4P)}>
-                  <h3
-                    data-plasmic-name={"copy9"}
-                    data-plasmic-override={overrides.copy9}
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.copy9,
-                      {
-                        [sty.copy9global_language_lv]: hasVariant(
-                          globalVariants,
-                          "language",
-                          "lv"
-                        )
-                      }
-                    )}
-                  >
-                    {hasVariant(globalVariants, "language", "lv")
-                      ? "Sist\u0113misk\u0101 dom\u0101\u0161ana"
-                      : "Systems thinking"}
-                  </h3>
-                  <p
-                    data-plasmic-name={"copy10"}
-                    data-plasmic-override={overrides.copy10}
-                    className={classNames(
-                      "all",
-                      "p",
-                      "p__5CArW",
-                      "__wab_text",
-                      sty.copy10,
-                      {
-                        [sty.copy10global_language_lv]: hasVariant(
-                          globalVariants,
-                          "language",
-                          "lv"
-                        )
-                      }
-                    )}
-                  >
-                    {hasVariant(globalVariants, "language", "lv")
-                      ? "Saskatiet l\u0113mumu savstarp\u0113jo ietekmi un izv\u0113rt\u0113jiet jaunus biznesa mode\u013cus."
-                      : "See how decisions interact and evaluate new business models."}
-                  </p>
-                </div>
-              </div>
+                  title={
+                    hasVariant(globalVariants, "language", "lv")
+                      ? "Sistēmiskā domāšana"
+                      : "Systems thinking"
+                  }
+                />
+              </AnimatedFilterGrid>
             </div>
           </section>
           <section className={classNames("all", sty.section__vF1H)}>
             <div className={classNames("all", sty.freeBox__tdxuN)}>
-              <h2
+              <H2
                 data-plasmic-name={"copy11"}
                 data-plasmic-override={overrides.copy11}
-                className={classNames(
-                  "all",
-                  "h2",
-                  "h2__5CArW",
-                  "__wab_text",
-                  sty.copy11,
-                  {
-                    [sty.copy11global_language_lv]: hasVariant(
-                      globalVariants,
-                      "language",
-                      "lv"
-                    )
-                  }
-                )}
-              >
-                {hasVariant(globalVariants, "language", "lv")
-                  ? "Kad izmantot diagnostiku"
-                  : "When to use diagnostics"}
-              </h2>
+                className={classNames("__wab_instance", sty.copy11, {
+                  [sty.copy11global_language_lv]: hasVariant(
+                    globalVariants,
+                    "language",
+                    "lv"
+                  )
+                })}
+                title={
+                  hasVariant(globalVariants, "language", "lv")
+                    ? "Kad izmantot diagnostiku"
+                    : "When to use diagnostics"
+                }
+              />
+
               <div className={classNames("all", sty.freeBox__cjYgg)}>
                 <div className={classNames("all", sty.freeBox__wDjec)}>
                   <h3
@@ -680,28 +622,24 @@ function PlasmicDiagnostics__RenderFunc(props: {
           </section>
           <section className={classNames("all", sty.section__nuOkQ)}>
             <div className={classNames("all", sty.freeBox__kPwaX)}>
-              <h2
+              <H2
                 data-plasmic-name={"copy16"}
                 data-plasmic-override={overrides.copy16}
-                className={classNames(
-                  "all",
-                  "h2",
-                  "h2__5CArW",
-                  "__wab_text",
-                  sty.copy16,
-                  {
-                    [sty.copy16global_language_lv]: hasVariant(
-                      globalVariants,
-                      "language",
-                      "lv"
-                    )
-                  }
-                )}
-              >
-                {hasVariant(globalVariants, "language", "lv")
-                  ? "M\u016bsu pieeja"
-                  : "Our approach"}
-              </h2>
+                className={classNames("__wab_instance", sty.copy16, {
+                  [sty.copy16global_language_lv]: hasVariant(
+                    globalVariants,
+                    "language",
+                    "lv"
+                  )
+                })}
+                title={
+                  hasVariant(globalVariants, "language", "lv")
+                    ? "Mūsu pieeja"
+                    : "Our approach"
+                }
+                white={true}
+              />
+
               <div className={classNames("all", sty.freeBox__itc11)}>
                 <div className={classNames("all", sty.freeBox__jptC0)}>
                   <h3
@@ -846,28 +784,23 @@ function PlasmicDiagnostics__RenderFunc(props: {
           </section>
           <section className={classNames("all", sty.section___75AKd)}>
             <div className={classNames("all", sty.freeBox__hWj69)}>
-              <h2
+              <H2
                 data-plasmic-name={"copy23"}
                 data-plasmic-override={overrides.copy23}
-                className={classNames(
-                  "all",
-                  "h2",
-                  "h2__5CArW",
-                  "__wab_text",
-                  sty.copy23,
-                  {
-                    [sty.copy23global_language_lv]: hasVariant(
-                      globalVariants,
-                      "language",
-                      "lv"
-                    )
-                  }
-                )}
-              >
-                {hasVariant(globalVariants, "language", "lv")
-                  ? "Ko sniedz diagnostika"
-                  : "What diagnostics delivers"}
-              </h2>
+                className={classNames("__wab_instance", sty.copy23, {
+                  [sty.copy23global_language_lv]: hasVariant(
+                    globalVariants,
+                    "language",
+                    "lv"
+                  )
+                })}
+                title={
+                  hasVariant(globalVariants, "language", "lv")
+                    ? "Ko sniedz diagnostika"
+                    : "What diagnostics delivers"
+                }
+              />
+
               <div className={classNames("all", sty.freeBox__fXSmY)}>
                 <div className={classNames("all", sty.freeBox__kvQBm)}>
                   <h3
@@ -964,142 +897,6 @@ function PlasmicDiagnostics__RenderFunc(props: {
               </div>
             </div>
           </section>
-          <section className={classNames("all", sty.section___7X6Jr)}>
-            <div className={classNames("all", sty.freeBox__qnEiv)}>
-              <h2
-                data-plasmic-name={"copy28"}
-                data-plasmic-override={overrides.copy28}
-                className={classNames(
-                  "all",
-                  "h2",
-                  "h2__5CArW",
-                  "__wab_text",
-                  sty.copy28,
-                  {
-                    [sty.copy28global_language_lv]: hasVariant(
-                      globalVariants,
-                      "language",
-                      "lv"
-                    )
-                  }
-                )}
-              >
-                {hasVariant(globalVariants, "language", "lv")
-                  ? "Izm\u0113\u0123iniet nov\u0113rt\u0113jumu"
-                  : "Try the assessment"}
-              </h2>
-              <p
-                data-plasmic-name={"copy29"}
-                data-plasmic-override={overrides.copy29}
-                className={classNames(
-                  "all",
-                  "p",
-                  "p__5CArW",
-                  "__wab_text",
-                  sty.copy29,
-                  {
-                    [sty.copy29global_language_lv]: hasVariant(
-                      globalVariants,
-                      "language",
-                      "lv"
-                    )
-                  }
-                )}
-              >
-                {hasVariant(globalVariants, "language", "lv")
-                  ? "Izm\u0113\u0123iniet \u012bso demonstr\u0101cijas versiju. Lai veiktu pilnu nov\u0113rt\u0113jumu, sazinieties ar mums."
-                  : "Take a short demo. Contact us for the full assessment."}
-              </p>
-              <div className={classNames("all", sty.freeBox__cvhuq)}>
-                <PlasmicLink__
-                  className={classNames(
-                    "all",
-                    "a",
-                    "a__5CArW",
-                    "__wab_text",
-                    sty.link__lyAwE
-                  )}
-                  component={Link}
-                  href={"https://www.1ka.si/demo-t-a"}
-                  legacyBehavior={false}
-                  platform={"nextjs"}
-                >
-                  <React.Fragment>
-                    <React.Fragment>{""}</React.Fragment>
-                    {
-                      <span
-                        data-plasmic-name={"copy30"}
-                        data-plasmic-override={overrides.copy30}
-                        className={classNames(
-                          "all",
-                          "span",
-                          "span__5CArW",
-                          "__wab_text",
-                          "plasmic_default__inline",
-                          sty.copy30,
-                          {
-                            [sty.copy30global_language_lv]: hasVariant(
-                              globalVariants,
-                              "language",
-                              "lv"
-                            )
-                          }
-                        )}
-                      >
-                        {hasVariant(globalVariants, "language", "lv")
-                          ? "Izm\u0113\u0123in\u0101t demonstr\u0101ciju"
-                          : "Try the demo"}
-                      </span>
-                    }
-                    <React.Fragment>{""}</React.Fragment>
-                  </React.Fragment>
-                </PlasmicLink__>
-                <PlasmicLink__
-                  className={classNames(
-                    "all",
-                    "a",
-                    "a__5CArW",
-                    "__wab_text",
-                    sty.link__cnFsq
-                  )}
-                  component={Link}
-                  href={"#diagnostics-contact"}
-                  legacyBehavior={false}
-                  platform={"nextjs"}
-                >
-                  <React.Fragment>
-                    <React.Fragment>{""}</React.Fragment>
-                    {
-                      <span
-                        data-plasmic-name={"copy31"}
-                        data-plasmic-override={overrides.copy31}
-                        className={classNames(
-                          "all",
-                          "span",
-                          "span__5CArW",
-                          "__wab_text",
-                          "plasmic_default__inline",
-                          sty.copy31,
-                          {
-                            [sty.copy31global_language_lv]: hasVariant(
-                              globalVariants,
-                              "language",
-                              "lv"
-                            )
-                          }
-                        )}
-                      >
-                        {hasVariant(globalVariants, "language", "lv")
-                          ? "Pieteikties konsult\u0101cijai"
-                          : "Get a consultation"}
-                      </span>
-                    }
-                    <React.Fragment>{""}</React.Fragment>
-                  </React.Fragment>
-                </PlasmicLink__>
-              </div>
-            </div>
-          </section>
           <div
             data-plasmic-name={"contactAnchor"}
             data-plasmic-override={overrides.contactAnchor}
@@ -1119,14 +916,138 @@ function PlasmicDiagnostics__RenderFunc(props: {
               description={
                 hasVariant(globalVariants, "language", "lv")
                   ? "Pastāstiet, kā varam palīdzēt jūsu uzņēmumam."
-                  : undefined
+                  : ""
+              }
+              form={
+                <div
+                  className={classNames("all", sty.freeBox___434Gf, {
+                    [sty.freeBoxglobal_language_lv___434Gfk8AD2]: hasVariant(
+                      globalVariants,
+                      "language",
+                      "lv"
+                    )
+                  })}
+                >
+                  <H2
+                    data-plasmic-name={"copy28"}
+                    data-plasmic-override={overrides.copy28}
+                    className={classNames("__wab_instance", sty.copy28, {
+                      [sty.copy28global_language_lv]: hasVariant(
+                        globalVariants,
+                        "language",
+                        "lv"
+                      )
+                    })}
+                    left={
+                      hasVariant(globalVariants, "language", "lv")
+                        ? true
+                        : undefined
+                    }
+                    title={
+                      hasVariant(globalVariants, "language", "lv")
+                        ? "Izmēģiniet novērtējumu"
+                        : "Get a consultation"
+                    }
+                    white={true}
+                  />
+
+                  <MainForm
+                    data-plasmic-name={"mainForm"}
+                    data-plasmic-override={overrides.mainForm}
+                    className={classNames("__wab_instance", sty.mainForm)}
+                  />
+                </div>
               }
               title={
                 hasVariant(globalVariants, "language", "lv")
                   ? "Kontakti"
-                  : undefined
+                  : "Try the assessment "
               }
-            />
+            >
+              <div
+                className={classNames("all", sty.freeBox__gXcgd, {
+                  [sty.freeBoxglobal_language_lv__gXcgdK8AD2]: hasVariant(
+                    globalVariants,
+                    "language",
+                    "lv"
+                  )
+                })}
+              >
+                <p
+                  data-plasmic-name={"copy29"}
+                  data-plasmic-override={overrides.copy29}
+                  className={classNames(
+                    "all",
+                    "p",
+                    "p__5CArW",
+                    "__wab_text",
+                    sty.copy29,
+                    {
+                      [sty.copy29global_language_lv]: hasVariant(
+                        globalVariants,
+                        "language",
+                        "lv"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant(globalVariants, "language", "lv")
+                    ? "Izm\u0113\u0123iniet \u012bso demonstr\u0101cijas versiju. Lai veiktu pilnu nov\u0113rt\u0113jumu, sazinieties ar mums."
+                    : "Take a short demo. Contact us for the full assessment."}
+                </p>
+                <PlasmicLink__
+                  className={classNames(
+                    "all",
+                    "a",
+                    "a__5CArW",
+                    sty.link__lJaiZ
+                  )}
+                  component={Link}
+                  href={"https://www.1ka.si/demo-t-a"}
+                  legacyBehavior={false}
+                  platform={"nextjs"}
+                  target={"_blank"}
+                >
+                  <BtnSecond
+                    data-plasmic-name={"btnSecond"}
+                    data-plasmic-override={overrides.btnSecond}
+                    className={classNames("__wab_instance", sty.btnSecond, {
+                      [sty.btnSecondglobal_language_lv]: hasVariant(
+                        globalVariants,
+                        "language",
+                        "lv"
+                      )
+                    })}
+                    text={
+                      hasVariant(globalVariants, "language", "lv")
+                        ? "Izm\u0113\u0123in\u0101t demonstr\u0101ciju"
+                        : "Try the demo"
+                    }
+                  />
+                </PlasmicLink__>
+              </div>
+              <div
+                data-plasmic-name={"text"}
+                data-plasmic-override={overrides.text}
+                className={classNames("all", "__wab_text", sty.text)}
+              >
+                <React.Fragment>
+                  {(() => {
+                    try {
+                      return $props.description;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "welcome@thinking-people.eu";
+                      }
+                      throw e;
+                    }
+                  })()}
+                </React.Fragment>
+              </div>
+            </FormSection>
           </div>
           <FooterSection
             data-plasmic-name={"footerSection"}
@@ -1148,12 +1069,10 @@ const PlasmicDescendants = {
     "copy3",
     "optimizedImage",
     "copy4",
-    "copy5",
-    "copy6",
-    "copy7",
-    "copy8",
-    "copy9",
-    "copy10",
+    "thinkingSkills",
+    "creativeThinking",
+    "criticalThinking",
+    "systemsThinking",
     "copy11",
     "copy12",
     "copy13",
@@ -1171,12 +1090,13 @@ const PlasmicDescendants = {
     "copy25",
     "copy26",
     "copy27",
-    "copy28",
-    "copy29",
-    "copy30",
-    "copy31",
     "contactAnchor",
     "diagnosticsContact",
+    "copy28",
+    "mainForm",
+    "copy29",
+    "btnSecond",
+    "text",
     "footerSection"
   ],
   navbar: ["navbar"],
@@ -1185,12 +1105,15 @@ const PlasmicDescendants = {
   copy3: ["copy3"],
   optimizedImage: ["optimizedImage"],
   copy4: ["copy4"],
-  copy5: ["copy5"],
-  copy6: ["copy6"],
-  copy7: ["copy7"],
-  copy8: ["copy8"],
-  copy9: ["copy9"],
-  copy10: ["copy10"],
+  thinkingSkills: [
+    "thinkingSkills",
+    "creativeThinking",
+    "criticalThinking",
+    "systemsThinking"
+  ],
+  creativeThinking: ["creativeThinking"],
+  criticalThinking: ["criticalThinking"],
+  systemsThinking: ["systemsThinking"],
   copy11: ["copy11"],
   copy12: ["copy12"],
   copy13: ["copy13"],
@@ -1208,12 +1131,28 @@ const PlasmicDescendants = {
   copy25: ["copy25"],
   copy26: ["copy26"],
   copy27: ["copy27"],
+  contactAnchor: [
+    "contactAnchor",
+    "diagnosticsContact",
+    "copy28",
+    "mainForm",
+    "copy29",
+    "btnSecond",
+    "text"
+  ],
+  diagnosticsContact: [
+    "diagnosticsContact",
+    "copy28",
+    "mainForm",
+    "copy29",
+    "btnSecond",
+    "text"
+  ],
   copy28: ["copy28"],
+  mainForm: ["mainForm"],
   copy29: ["copy29"],
-  copy30: ["copy30"],
-  copy31: ["copy31"],
-  contactAnchor: ["contactAnchor", "diagnosticsContact"],
-  diagnosticsContact: ["diagnosticsContact"],
+  btnSecond: ["btnSecond"],
+  text: ["text"],
   footerSection: ["footerSection"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -1226,36 +1165,35 @@ type NodeDefaultElementType = {
   copy2: "p";
   copy3: "span";
   optimizedImage: typeof OptimizedImage;
-  copy4: "h2";
-  copy5: "h3";
-  copy6: "p";
-  copy7: "h3";
-  copy8: "p";
-  copy9: "h3";
-  copy10: "p";
-  copy11: "h2";
+  copy4: typeof H2;
+  thinkingSkills: typeof AnimatedFilterGrid;
+  creativeThinking: typeof BasicCard;
+  criticalThinking: typeof BasicCard;
+  systemsThinking: typeof BasicCard;
+  copy11: typeof H2;
   copy12: "h3";
   copy13: "p";
   copy14: "h3";
   copy15: "p";
-  copy16: "h2";
+  copy16: typeof H2;
   copy17: "h3";
   copy18: "p";
   copy19: "h3";
   copy20: "p";
   copy21: "h3";
   copy22: "p";
-  copy23: "h2";
+  copy23: typeof H2;
   copy24: "h3";
   copy25: "p";
   copy26: "h3";
   copy27: "p";
-  copy28: "h2";
-  copy29: "p";
-  copy30: "span";
-  copy31: "span";
   contactAnchor: "div";
   diagnosticsContact: typeof FormSection;
+  copy28: typeof H2;
+  mainForm: typeof MainForm;
+  copy29: "p";
+  btnSecond: typeof BtnSecond;
+  text: "div";
   footerSection: typeof FooterSection;
 };
 
@@ -1327,12 +1265,10 @@ export const PlasmicDiagnostics = Object.assign(
     copy3: makeNodeComponent("copy3"),
     optimizedImage: makeNodeComponent("optimizedImage"),
     copy4: makeNodeComponent("copy4"),
-    copy5: makeNodeComponent("copy5"),
-    copy6: makeNodeComponent("copy6"),
-    copy7: makeNodeComponent("copy7"),
-    copy8: makeNodeComponent("copy8"),
-    copy9: makeNodeComponent("copy9"),
-    copy10: makeNodeComponent("copy10"),
+    thinkingSkills: makeNodeComponent("thinkingSkills"),
+    creativeThinking: makeNodeComponent("creativeThinking"),
+    criticalThinking: makeNodeComponent("criticalThinking"),
+    systemsThinking: makeNodeComponent("systemsThinking"),
     copy11: makeNodeComponent("copy11"),
     copy12: makeNodeComponent("copy12"),
     copy13: makeNodeComponent("copy13"),
@@ -1350,12 +1286,13 @@ export const PlasmicDiagnostics = Object.assign(
     copy25: makeNodeComponent("copy25"),
     copy26: makeNodeComponent("copy26"),
     copy27: makeNodeComponent("copy27"),
-    copy28: makeNodeComponent("copy28"),
-    copy29: makeNodeComponent("copy29"),
-    copy30: makeNodeComponent("copy30"),
-    copy31: makeNodeComponent("copy31"),
     contactAnchor: makeNodeComponent("contactAnchor"),
     diagnosticsContact: makeNodeComponent("diagnosticsContact"),
+    copy28: makeNodeComponent("copy28"),
+    mainForm: makeNodeComponent("mainForm"),
+    copy29: makeNodeComponent("copy29"),
+    btnSecond: makeNodeComponent("btnSecond"),
+    text: makeNodeComponent("text"),
     footerSection: makeNodeComponent("footerSection"),
 
     // Metadata about props expected for PlasmicDiagnostics

@@ -1,6 +1,6 @@
 .root {
   display: inline-flex;
-  flex-direction: row;
+  flex-direction: column;
   position: relative;
   align-items: center;
   justify-content: center;
@@ -10,11 +10,16 @@
   justify-self: flex-start;
   color: var(--token-EiQM1bzsOe9e);
   font-family: var(--token-NyfZrcORdatl);
+  row-gap: var(--token-mnlEqlMZxQPG);
   padding: 0px;
 }
 .rootleft {
   justify-content: flex-start;
   align-items: center;
+}
+.rootglobal_language_lv_left_white {
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 .h2 {
   font-size: var(--token-jh6c66tfMfly);
@@ -34,18 +39,22 @@
 .h2white {
   color: var(--token-IT77AyB9SmEq);
 }
+.h2global_language_lv_left_white {
+  text-align: left;
+}
 .freeBox {
   display: block;
-  position: absolute;
+  position: relative;
   width: 105%;
   height: 8px;
   background: var(--token-Bosj2MGV4qhO);
-  left: 50%;
+  left: auto;
   top: auto;
   right: auto;
-  bottom: -30%;
+  bottom: auto;
   z-index: 1;
-  transform: translate3d(-50%, 0%, 0px);
+  transform: none;
+  flex-shrink: 0;
   padding: 0px;
 }
 .freeBoxwhite {

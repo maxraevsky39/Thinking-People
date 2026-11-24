@@ -72,6 +72,7 @@ import Navbar from "../../Navbar"; // plasmic-import: 7oIiUelc00Y9/component
 import { OptimizedImage } from "../../OptimizedImage"; // plasmic-import: 2sAw0k_qEFgf/codeComponent
 import H2 from "../../H2"; // plasmic-import: Yl_PbqD71djV/component
 import { AnimatedFilterGrid } from "../../AnimatedFilterGrid"; // plasmic-import: 9eRmd_u_ufIl/codeComponent
+import CaseCard from "../../CaseCard"; // plasmic-import: aNWZrHM0kBmf/component
 import FormSection from "../../FormSection"; // plasmic-import: fw8uA1_Fbkxj/component
 import MainForm from "../../MainForm"; // plasmic-import: WC23AdBWqnVp/component
 import FooterSection from "../../FooterSection"; // plasmic-import: DEX99TX1WJZn/component
@@ -181,13 +182,7 @@ export type PlasmicExpertProfile__OverridesType = {
   expertNode29?: Flex__<"div">;
   expertNode30?: Flex__<typeof H2>;
   casesMasonry?: Flex__<typeof AnimatedFilterGrid>;
-  expertCaseCard?: Flex__<"a"> & Partial<LinkProps>;
-  expertNode33?: Flex__<"div">;
-  expertNode34?: Flex__<typeof OptimizedImage>;
-  expertNode35?: Flex__<"div">;
-  expertNode36?: Flex__<"h3">;
-  expertNode37?: Flex__<"p">;
-  expertNode38?: Flex__<"span">;
+  expertCaseCard?: Flex__<typeof CaseCard>;
   otherExperts?: Flex__<"section">;
   expertNode40?: Flex__<"div">;
   expertNode41?: Flex__<typeof H2>;
@@ -708,113 +703,16 @@ function PlasmicExpertProfile__RenderFunc(props: {
                     const caseItem = __plasmic_item_0;
                     const caseIndex = __plasmic_idx_0;
                     return (
-                      <PlasmicLink__
+                      <CaseCard
                         data-plasmic-name={"expertCaseCard"}
                         data-plasmic-override={overrides.expertCaseCard}
+                        caseData={caseItem}
                         className={classNames(
-                          "all",
-                          "a",
-                          "a__5CArW",
-                          sty.expertCaseCard,
-                          "card-basic card-link"
+                          "__wab_instance",
+                          sty.expertCaseCard
                         )}
-                        component={Link}
-                        href={
-                          "/" + $ctx.params.locale + "/cases/" + caseItem.slug
-                        }
                         key={caseIndex}
-                        legacyBehavior={false}
-                        platform={"nextjs"}
-                      >
-                        <div
-                          data-plasmic-name={"expertNode33"}
-                          data-plasmic-override={overrides.expertNode33}
-                          className={classNames("all", sty.expertNode33)}
-                          style={{ aspectRatio: "1/1" }}
-                        >
-                          {!!caseItem.cover?.url ? (
-                            <OptimizedImage
-                              data-plasmic-name={"expertNode34"}
-                              data-plasmic-override={overrides.expertNode34}
-                              alt={caseItem.title}
-                              className={classNames(
-                                "__wab_instance",
-                                sty.expertNode34
-                              )}
-                              fill={true}
-                              format={"auto"}
-                              height={caseItem.cover?.height ?? 600}
-                              loading={caseIndex < 3 ? "eager" : "lazy"}
-                              objectFit={"contain"}
-                              objectPosition={"center"}
-                              placeholder={"empty"}
-                              quality={75}
-                              sizes={"(max-width: 768px) 100vw, 50vw"}
-                              src={
-                                (caseItem.cover?.url ?? "").startsWith("/")
-                                  ? $dataTokens_5CArW_strapiUrl +
-                                    caseItem.cover.url
-                                  : (caseItem.cover?.url ?? "")
-                              }
-                              width={caseItem.cover?.width ?? 800}
-                            />
-                          ) : null}
-                        </div>
-                        <div
-                          data-plasmic-name={"expertNode35"}
-                          data-plasmic-override={overrides.expertNode35}
-                          className={classNames("all", sty.expertNode35)}
-                        >
-                          <h3
-                            data-plasmic-name={"expertNode36"}
-                            data-plasmic-override={overrides.expertNode36}
-                            className={classNames(
-                              "all",
-                              "h3",
-                              "h3__5CArW",
-                              "__wab_text",
-                              sty.expertNode36
-                            )}
-                            style={{ fontStyle: "normal" }}
-                          >
-                            <React.Fragment>
-                              {caseItem.cardTitle || caseItem.title}
-                            </React.Fragment>
-                          </h3>
-                          {!!caseItem.summary ? (
-                            <p
-                              data-plasmic-name={"expertNode37"}
-                              data-plasmic-override={overrides.expertNode37}
-                              className={classNames(
-                                "all",
-                                "p",
-                                "p__5CArW",
-                                "__wab_text",
-                                sty.expertNode37
-                              )}
-                              style={{ fontStyle: "normal" }}
-                            >
-                              <React.Fragment>
-                                {caseItem.summary ?? ""}
-                              </React.Fragment>
-                            </p>
-                          ) : null}
-                          <span
-                            data-plasmic-name={"expertNode38"}
-                            data-plasmic-override={overrides.expertNode38}
-                            className={classNames(
-                              "all",
-                              "span",
-                              "span__5CArW",
-                              "__wab_text",
-                              sty.expertNode38
-                            )}
-                            style={{ fontStyle: "normal" }}
-                          >
-                            {"Explore case \u2192"}
-                          </span>
-                        </div>
-                      </PlasmicLink__>
+                      />
                     );
                   })}
                 </AnimatedFilterGrid>
@@ -1017,12 +915,6 @@ const PlasmicDescendants = {
     "expertNode30",
     "casesMasonry",
     "expertCaseCard",
-    "expertNode33",
-    "expertNode34",
-    "expertNode35",
-    "expertNode36",
-    "expertNode37",
-    "expertNode38",
     "otherExperts",
     "expertNode40",
     "expertNode41",
@@ -1145,57 +1037,17 @@ const PlasmicDescendants = {
     "expertNode29",
     "expertNode30",
     "casesMasonry",
-    "expertCaseCard",
-    "expertNode33",
-    "expertNode34",
-    "expertNode35",
-    "expertNode36",
-    "expertNode37",
-    "expertNode38"
+    "expertCaseCard"
   ],
   expertNode29: [
     "expertNode29",
     "expertNode30",
     "casesMasonry",
-    "expertCaseCard",
-    "expertNode33",
-    "expertNode34",
-    "expertNode35",
-    "expertNode36",
-    "expertNode37",
-    "expertNode38"
+    "expertCaseCard"
   ],
   expertNode30: ["expertNode30"],
-  casesMasonry: [
-    "casesMasonry",
-    "expertCaseCard",
-    "expertNode33",
-    "expertNode34",
-    "expertNode35",
-    "expertNode36",
-    "expertNode37",
-    "expertNode38"
-  ],
-  expertCaseCard: [
-    "expertCaseCard",
-    "expertNode33",
-    "expertNode34",
-    "expertNode35",
-    "expertNode36",
-    "expertNode37",
-    "expertNode38"
-  ],
-  expertNode33: ["expertNode33", "expertNode34"],
-  expertNode34: ["expertNode34"],
-  expertNode35: [
-    "expertNode35",
-    "expertNode36",
-    "expertNode37",
-    "expertNode38"
-  ],
-  expertNode36: ["expertNode36"],
-  expertNode37: ["expertNode37"],
-  expertNode38: ["expertNode38"],
+  casesMasonry: ["casesMasonry", "expertCaseCard"],
+  expertCaseCard: ["expertCaseCard"],
   otherExperts: [
     "otherExperts",
     "expertNode40",
@@ -1290,13 +1142,7 @@ type NodeDefaultElementType = {
   expertNode29: "div";
   expertNode30: typeof H2;
   casesMasonry: typeof AnimatedFilterGrid;
-  expertCaseCard: "a";
-  expertNode33: "div";
-  expertNode34: typeof OptimizedImage;
-  expertNode35: "div";
-  expertNode36: "h3";
-  expertNode37: "p";
-  expertNode38: "span";
+  expertCaseCard: typeof CaseCard;
   otherExperts: "section";
   expertNode40: "div";
   expertNode41: typeof H2;
@@ -1405,12 +1251,6 @@ export const PlasmicExpertProfile = Object.assign(
     expertNode30: makeNodeComponent("expertNode30"),
     casesMasonry: makeNodeComponent("casesMasonry"),
     expertCaseCard: makeNodeComponent("expertCaseCard"),
-    expertNode33: makeNodeComponent("expertNode33"),
-    expertNode34: makeNodeComponent("expertNode34"),
-    expertNode35: makeNodeComponent("expertNode35"),
-    expertNode36: makeNodeComponent("expertNode36"),
-    expertNode37: makeNodeComponent("expertNode37"),
-    expertNode38: makeNodeComponent("expertNode38"),
     otherExperts: makeNodeComponent("otherExperts"),
     expertNode40: makeNodeComponent("expertNode40"),
     expertNode41: makeNodeComponent("expertNode41"),

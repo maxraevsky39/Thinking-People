@@ -93,6 +93,7 @@ export type PlasmicNavbar__OverridesType = {
   menu?: Flex__<"div">;
   menuPoints?: Flex__<typeof MenuPoints>;
   logo?: Flex__<"div">;
+  link?: Flex__<"a"> & Partial<LinkProps>;
   img?: Flex__<typeof PlasmicImg__>;
   menuPointsSecond?: Flex__<typeof MenuPoints>;
 };
@@ -513,61 +514,51 @@ function PlasmicNavbar__RenderFunc(props: {
             trackContentSize={false}
             transformOrigin={"center center"}
           >
-            <PlasmicImg__
-              data-plasmic-name={"img"}
-              data-plasmic-override={overrides.img}
-              alt={""}
-              className={classNames(sty.img, {
-                [sty.imgglobal_language_lv]: hasVariant(
+            <PlasmicLink__
+              data-plasmic-name={"link"}
+              data-plasmic-override={overrides.link}
+              className={classNames("all", "a", "a__5CArW", sty.link, {
+                [sty.linkglobal_language_lv]: hasVariant(
                   globalVariants,
                   "language",
                   "lv"
                 )
               })}
-              displayHeight={"40px"}
-              displayMaxHeight={"none"}
-              displayMaxWidth={"100%"}
-              displayMinHeight={"0"}
-              displayMinWidth={"0"}
-              displayWidth={"auto"}
-              loading={"lazy"}
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["goToHomepage"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        destination: `/${encodeURIComponent("en")}`
-                      };
-                      return (({ destination }) => {
-                        if (
-                          typeof destination === "string" &&
-                          destination.startsWith("#")
-                        ) {
-                          document
-                            .getElementById(destination.substr(1))
-                            .scrollIntoView({ behavior: "smooth" });
-                        } else {
-                          __nextRouter?.push(destination);
-                        }
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["goToHomepage"] != null &&
-                  typeof $steps["goToHomepage"] === "object" &&
-                  typeof $steps["goToHomepage"].then === "function"
-                ) {
-                  $steps["goToHomepage"] = await $steps["goToHomepage"];
-                }
-              }}
-              src={{
-                src: "/plasmic/thinking_people/images/thinkingPeople02Svg.svg",
-                fullWidth: 1090.65,
-                fullHeight: 361.14,
-                aspectRatio: undefined
-              }}
-            />
+              component={Link}
+              href={
+                hasVariant(globalVariants, "language", "lv")
+                  ? `/${encodeURIComponent("lv")}`
+                  : `/${encodeURIComponent("en")}`
+              }
+              legacyBehavior={false}
+              platform={"nextjs"}
+            >
+              <PlasmicImg__
+                data-plasmic-name={"img"}
+                data-plasmic-override={overrides.img}
+                alt={""}
+                className={classNames(sty.img, {
+                  [sty.imgglobal_language_lv]: hasVariant(
+                    globalVariants,
+                    "language",
+                    "lv"
+                  )
+                })}
+                displayHeight={"40px"}
+                displayMaxHeight={"none"}
+                displayMaxWidth={"100%"}
+                displayMinHeight={"0"}
+                displayMinWidth={"0"}
+                displayWidth={"auto"}
+                loading={"lazy"}
+                src={{
+                  src: "/plasmic/thinking_people/images/thinkingPeople02Svg.svg",
+                  fullWidth: 1090.65,
+                  fullHeight: 361.14,
+                  aspectRatio: undefined
+                }}
+              />
+            </PlasmicLink__>
           </MotionScrollSection>
         </div>
         <MenuPoints
@@ -613,14 +604,16 @@ const PlasmicDescendants = {
     "menu",
     "menuPoints",
     "logo",
+    "link",
     "img",
     "menuPointsSecond"
   ],
   lolcaleSlect: ["lolcaleSlect"],
   freeBox: ["freeBox"],
-  menu: ["menu", "menuPoints", "logo", "img", "menuPointsSecond"],
+  menu: ["menu", "menuPoints", "logo", "link", "img", "menuPointsSecond"],
   menuPoints: ["menuPoints"],
-  logo: ["logo", "img"],
+  logo: ["logo", "link", "img"],
+  link: ["link", "img"],
   img: ["img"],
   menuPointsSecond: ["menuPointsSecond"]
 } as const;
@@ -634,6 +627,7 @@ type NodeDefaultElementType = {
   menu: "div";
   menuPoints: typeof MenuPoints;
   logo: "div";
+  link: "a";
   img: typeof PlasmicImg__;
   menuPointsSecond: typeof MenuPoints;
 };
@@ -705,6 +699,7 @@ export const PlasmicNavbar = Object.assign(
     menu: makeNodeComponent("menu"),
     menuPoints: makeNodeComponent("menuPoints"),
     logo: makeNodeComponent("logo"),
+    link: makeNodeComponent("link"),
     img: makeNodeComponent("img"),
     menuPointsSecond: makeNodeComponent("menuPointsSecond"),
 

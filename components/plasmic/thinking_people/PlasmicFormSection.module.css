@@ -75,6 +75,27 @@
   row-gap: var(--token-mnlEqlMZxQPG);
   padding: 0px;
 }
+.freeBox__r0Xum {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.text__z5FPr {
+  font-size: var(--token-0RcsDVt_keHG);
+  font-weight: 400;
+  line-height: var(--token-W3llFhI2gLwT);
+  letter-spacing: 0;
+  font-style: normal;
+  text-transform: none;
+  color: var(--token-IT77AyB9SmEq);
+  font-family: var(--token-NyfZrcORdatl);
+  animation: none;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
 .text {
   font-size: var(--token-0RcsDVt_keHG);
   font-weight: 400;

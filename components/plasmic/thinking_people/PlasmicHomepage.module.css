@@ -142,9 +142,6 @@
     width: 100%;
   }
 }
-.textglobal_language_lv__rxP2XK8AD2 {
-  font-family: "Roboto", sans-serif;
-}
 .howWeWorkSection:global(.__wab_instance) {
   position: relative;
 }
@@ -514,80 +511,13 @@
   min-width: 0;
   padding: 0px;
 }
-.card {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
+.basicCard:global(.__wab_instance) {
   width: calc(50% - 12px);
-  height: auto;
-  max-width: 100%;
-  column-gap: var(--token-sm4uOpSrGgIV);
-  padding: 0px;
 }
 @media (max-width: 511px) {
-  .card {
+  .basicCard:global(.__wab_instance) {
     width: 100%;
   }
-}
-.freeBox__joi9X {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  align-items: stretch;
-  justify-content: flex-start;
-  width: 70px;
-  height: auto;
-  max-width: 100%;
-  aspect-ratio: 1/1;
-  overflow: visible;
-  flex-shrink: 0;
-  padding: 0px;
-}
-.optimizedImage:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-}
-.freeBox___8Tu60 {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  row-gap: var(--token-sI9gwleT_mai);
-  min-width: 0;
-  padding: 0px;
-}
-.text__bgRrV {
-  font-size: var(--token-9xgBVoR4AERT);
-  font-weight: 600;
-  line-height: var(--token-Qw3q5Jn5F8JI);
-  letter-spacing: 0;
-  font-style: normal;
-  text-transform: none;
-  color: inherit;
-  font-family: var(--token-NyfZrcORdatl);
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-}
-.text__eGAx9 {
-  font-size: var(--token-0RcsDVt_keHG);
-  font-weight: 400;
-  line-height: var(--token-W3llFhI2gLwT);
-  letter-spacing: 0;
-  font-style: normal;
-  text-transform: none;
-  color: inherit;
-  font-family: var(--token-NyfZrcORdatl);
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
 }
 .formSection:global(.__wab_instance) {
   position: relative;
@@ -595,6 +525,20 @@
 .mainForm__u7ZIa:global(.__wab_instance) {
   max-width: 100%;
   width: 100%;
+}
+.text__ozjXm {
+  font-size: var(--token-0RcsDVt_keHG);
+  font-weight: 400;
+  line-height: var(--token-W3llFhI2gLwT);
+  letter-spacing: 0;
+  font-style: normal;
+  text-transform: none;
+  color: var(--token-IT77AyB9SmEq);
+  font-family: var(--token-NyfZrcORdatl);
+  animation: none;
+  width: auto;
+  height: auto;
+  max-width: 100%;
 }
 .footerSection:global(.__wab_instance) {
   position: relative;

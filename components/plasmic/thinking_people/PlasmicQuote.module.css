@@ -1,0 +1,62 @@
+.quote {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  max-width: 920px;
+  min-width: 0;
+  padding: 0px;
+}
+.wrapper {
+  background: rgba(242, 242, 242, 1);
+  height: auto;
+  display: flex;
+  position: relative;
+  align-self: stretch;
+  overflow: hidden;
+  flex-direction: column;
+  row-gap: 16px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border-radius: 28px;
+  padding: 28px;
+}
+.authorInfoBlog:global(.__wab_instance) {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+.container2 {
+  height: auto;
+  display: flex;
+  position: relative;
+  align-self: stretch;
+  flex-direction: row;
+  column-gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+.quoteLine {
+  background: rgba(0, 174, 255, 0.6000000238418579);
+  width: 4px;
+  display: block;
+  position: relative;
+  align-self: stretch;
+  overflow: hidden;
+  flex-shrink: 0;
+  border-radius: 50px;
+}
+.text {
+  display: block;
+  flex-grow: 1;
+  font-size: var(--token-v5RtrQYVurzK);
+  font-family: "Golos Text", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 1.350000023841858;
+  color: rgba(7, 21, 38, 1);
+  position: relative;
+}

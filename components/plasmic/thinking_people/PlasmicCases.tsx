@@ -71,6 +71,9 @@ import type { QueryComponentNode } from "@plasmicapp/react-web/lib/data-sources"
 import Navbar from "../../Navbar"; // plasmic-import: 7oIiUelc00Y9/component
 import { OptimizedImage } from "../../OptimizedImage"; // plasmic-import: 2sAw0k_qEFgf/codeComponent
 import H2 from "../../H2"; // plasmic-import: Yl_PbqD71djV/component
+import BasicCard from "../../BasicCard"; // plasmic-import: h1uZWvI2U-SZ/component
+import { AnimatedFilterGrid } from "../../AnimatedFilterGrid"; // plasmic-import: 9eRmd_u_ufIl/codeComponent
+import CaseCard from "../../CaseCard"; // plasmic-import: aNWZrHM0kBmf/component
 import FormSection from "../../FormSection"; // plasmic-import: fw8uA1_Fbkxj/component
 import MainForm from "../../MainForm"; // plasmic-import: WC23AdBWqnVp/component
 import FooterSection from "../../FooterSection"; // plasmic-import: DEX99TX1WJZn/component
@@ -156,6 +159,10 @@ export type PlasmicCases__OverridesType = {
   optimizedImage?: Flex__<typeof OptimizedImage>;
   problemAndSolution?: Flex__<"section">;
   problemSolutionLayout?: Flex__<"div">;
+  basicCard?: Flex__<typeof BasicCard>;
+  otherCasesMasonry?: Flex__<typeof AnimatedFilterGrid>;
+  otherCaseCard?: Flex__<typeof CaseCard>;
+  allCasesButton?: Flex__<"a"> & Partial<LinkProps>;
   formSection?: Flex__<typeof FormSection>;
   footerSection?: Flex__<typeof FooterSection>;
 };
@@ -191,7 +198,7 @@ export const serverQueryTree: QueryComponentNode = {
           };
           __composite["request"] = {
             query:
-              "query Cases($local: I18NLocaleCode!, $slug: String!) {\n  caseStudies(filters: {slug: {eq: $slug}}, locale: $local) {\n    documentId\n    cover {\n      blurDataURL\n      url\n      width\n      height\n    }\n    summary\n    title\n    directions {\n      hero {\n        description\n        eyebrow\n        id\n      }\n      title\n    }\n    cardTitle\n    sections {\n      description\n      footerText\n      id\n      key\n      title\n      variant\n      groups {\n        description\n        id\n        key\n        title\n      }\n      cards {\n        btnLink\n        btnText\n        description\n        id\n        image {\n          blurDataURL\n          url\n          width\n          height\n        }\n        icon {\n          blurDataURL\n          url\n          width\n          height\n        }\n        title\n        link {\n          href\n          id\n          label\n        }\n      }\n    }\n  }\n}",
+              'query Cases($local: I18NLocaleCode!, $slug: String!) {\n  caseStudies(filters: {slug: {eq: $slug}}, locale: $local) {\n    documentId\n    cover {\n      blurDataURL\n      url\n      width\n      height\n    }\n    summary\n    title\n    directions {\n      hero {\n        description\n        eyebrow\n        id\n      }\n      title\n    }\n    cardTitle\n    sections {\n      description\n      footerText\n      id\n      key\n      title\n      variant\n      groups {\n        description\n        id\n        key\n        title\n      }\n      cards {\n        btnLink\n        btnText\n        description\n        id\n        image {\n          blurDataURL\n          url\n          width\n          height\n        }\n        icon {\n          blurDataURL\n          url\n          width\n          height\n        }\n        title\n        link {\n          href\n          id\n          label\n        }\n      }\n    }\n  }\n    otherCases: caseStudies(\n    locale: $local\n    filters: { slug: { ne: $slug } }\n    pagination: { limit: 3 }\n    sort: ["title:asc"]\n  ) {\n    documentId\n    slug\n    title\n    cardTitle\n    summary\n    cover {\n      blurDataURL\n      url\n      width\n      height\n    }\n  }\n}',
             variables: { local: "en", slug: "sdfsf" }
           };
           __composite["varOverrides"] = {
@@ -514,47 +521,53 @@ function PlasmicCases__RenderFunc(props: {
                         className={classNames("all", sty.freeBox__pvevy)}
                         key={caseCardIndex}
                       >
-                        <span
+                        <BasicCard
+                          data-plasmic-name={"basicCard"}
+                          data-plasmic-override={overrides.basicCard}
                           className={classNames(
-                            "all",
-                            "span",
-                            "span__5CArW",
-                            "__wab_text",
-                            sty.span__cJfrY
+                            "__wab_instance",
+                            sty.basicCard
                           )}
-                        >
-                          <React.Fragment>
-                            {String(caseCardIndex + 1).padStart(2, "0")}
-                          </React.Fragment>
-                        </span>
-                        {!!caseCard.title ? (
-                          <h3
-                            className={classNames(
-                              "all",
-                              "h3",
-                              "h3__5CArW",
-                              "__wab_text",
-                              sty.h3__o13J
-                            )}
-                          >
-                            <React.Fragment>
-                              {caseCard.title ?? ""}
-                            </React.Fragment>
-                          </h3>
-                        ) : null}
-                        <p
-                          className={classNames(
-                            "all",
-                            "p",
-                            "p__5CArW",
-                            "__wab_text",
-                            sty.p__tYL8
-                          )}
-                        >
-                          <React.Fragment>
-                            {caseCard.description ?? ""}
-                          </React.Fragment>
-                        </p>
+                          icon={(() => {
+                            try {
+                              return "icon-" + (caseCardIndex + 1);
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "icon-1";
+                              }
+                              throw e;
+                            }
+                          })()}
+                          subtitle={(() => {
+                            try {
+                              return caseCard.description ?? "";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()}
+                          title={(() => {
+                            try {
+                              return caseCard.title ?? "";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()}
+                        />
                       </div>
                     );
                   })}
@@ -741,122 +754,64 @@ function PlasmicCases__RenderFunc(props: {
                 title={"Other cases"}
               />
 
-              <div className={classNames("all", sty.freeBox__eH2Oj)}>
-                <PlasmicLink__
-                  className={classNames(
-                    "all",
-                    "a",
-                    "a__5CArW",
-                    sty.link__rcAvx
-                  )}
-                  component={Link}
-                  href={"https://thinking-people.eu/cross-cultural-teams"}
-                  legacyBehavior={false}
-                  platform={"nextjs"}
-                >
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__zdV9G
-                    )}
-                  >
-                    {"Cross-cultural teams"}
-                  </h3>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__hmJR
-                    )}
-                  >
-                    {"Read case \u2197"}
-                  </span>
-                </PlasmicLink__>
-                <PlasmicLink__
-                  className={classNames(
-                    "all",
-                    "a",
-                    "a__5CArW",
-                    sty.link__uLnA5
-                  )}
-                  component={Link}
-                  href={
-                    "https://thinking-people.eu/large-scale-cognitive-training"
-                  }
-                  legacyBehavior={false}
-                  platform={"nextjs"}
-                >
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3___49Qnf
-                    )}
-                  >
-                    {"Large-scale cognitive training"}
-                  </h3>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__nsQuD
-                    )}
-                  >
-                    {"Read case \u2197"}
-                  </span>
-                </PlasmicLink__>
-                <PlasmicLink__
-                  className={classNames("all", "a", "a__5CArW", sty.link__y7On)}
-                  component={Link}
-                  href={
-                    "https://thinking-people.eu/legal-team-and-cognitive-biases"
-                  }
-                  legacyBehavior={false}
-                  platform={"nextjs"}
-                >
-                  <h3
-                    className={classNames(
-                      "all",
-                      "h3",
-                      "h3__5CArW",
-                      "__wab_text",
-                      sty.h3__ud4De
-                    )}
-                  >
-                    {"Legal team and cognitive biases"}
-                  </h3>
-                  <span
-                    className={classNames(
-                      "all",
-                      "span",
-                      "span__5CArW",
-                      "__wab_text",
-                      sty.span__uJu31
-                    )}
-                  >
-                    {"Read case \u2197"}
-                  </span>
-                </PlasmicLink__>
-              </div>
+              <AnimatedFilterGrid
+                data-plasmic-name={"otherCasesMasonry"}
+                data-plasmic-override={overrides.otherCasesMasonry}
+                className={classNames("__wab_instance", sty.otherCasesMasonry)}
+                columns={3}
+                duration={0.22}
+                gap={24}
+                layout={"masonry"}
+                mobileColumns={1}
+                offsetY={8}
+                tabletColumns={2}
+              >
+                {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                  ($q.cases.data?.body?.data?.otherCases ?? [])
+                    .filter(item => item.slug && item.slug !== $ctx.params.slug)
+                    .slice(0, 3)
+                ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                  const caseItem = __plasmic_item_0;
+                  const caseIndex = __plasmic_idx_0;
+                  return (
+                    <CaseCard
+                      data-plasmic-name={"otherCaseCard"}
+                      data-plasmic-override={overrides.otherCaseCard}
+                      caseData={caseItem}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.otherCaseCard
+                      )}
+                      key={caseIndex}
+                      odd={(() => {
+                        try {
+                          return caseIndex % 2 === 0;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [];
+                          }
+                          throw e;
+                        }
+                      })()}
+                    />
+                  );
+                })}
+              </AnimatedFilterGrid>
               <PlasmicLink__
+                data-plasmic-name={"allCasesButton"}
+                data-plasmic-override={overrides.allCasesButton}
                 className={classNames(
                   "all",
                   "a",
                   "a__5CArW",
                   "__wab_text",
-                  sty.link___2Paf
+                  sty.allCasesButton
                 )}
                 component={Link}
-                href={"/" + $ctx.params.locale + "/cases"}
+                href={"/" + ($ctx.params.locale || "en") + "/cases"}
                 legacyBehavior={false}
                 platform={"nextjs"}
               >
@@ -892,6 +847,10 @@ const PlasmicDescendants = {
     "optimizedImage",
     "problemAndSolution",
     "problemSolutionLayout",
+    "basicCard",
+    "otherCasesMasonry",
+    "otherCaseCard",
+    "allCasesButton",
     "formSection",
     "footerSection"
   ],
@@ -899,8 +858,16 @@ const PlasmicDescendants = {
   heroSection: ["heroSection", "h1", "optimizedImage"],
   h1: ["h1"],
   optimizedImage: ["optimizedImage"],
-  problemAndSolution: ["problemAndSolution", "problemSolutionLayout"],
-  problemSolutionLayout: ["problemSolutionLayout"],
+  problemAndSolution: [
+    "problemAndSolution",
+    "problemSolutionLayout",
+    "basicCard"
+  ],
+  problemSolutionLayout: ["problemSolutionLayout", "basicCard"],
+  basicCard: ["basicCard"],
+  otherCasesMasonry: ["otherCasesMasonry", "otherCaseCard"],
+  otherCaseCard: ["otherCaseCard"],
+  allCasesButton: ["allCasesButton"],
   formSection: ["formSection"],
   footerSection: ["footerSection"]
 } as const;
@@ -915,6 +882,10 @@ type NodeDefaultElementType = {
   optimizedImage: typeof OptimizedImage;
   problemAndSolution: "section";
   problemSolutionLayout: "div";
+  basicCard: typeof BasicCard;
+  otherCasesMasonry: typeof AnimatedFilterGrid;
+  otherCaseCard: typeof CaseCard;
+  allCasesButton: "a";
   formSection: typeof FormSection;
   footerSection: typeof FooterSection;
 };
@@ -987,6 +958,10 @@ export const PlasmicCases = Object.assign(
     optimizedImage: makeNodeComponent("optimizedImage"),
     problemAndSolution: makeNodeComponent("problemAndSolution"),
     problemSolutionLayout: makeNodeComponent("problemSolutionLayout"),
+    basicCard: makeNodeComponent("basicCard"),
+    otherCasesMasonry: makeNodeComponent("otherCasesMasonry"),
+    otherCaseCard: makeNodeComponent("otherCaseCard"),
+    allCasesButton: makeNodeComponent("allCasesButton"),
     formSection: makeNodeComponent("formSection"),
     footerSection: makeNodeComponent("footerSection"),
 

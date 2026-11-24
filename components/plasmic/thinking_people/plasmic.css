@@ -1,7 +1,7 @@
 @import "../plasmic_embed_css/plasmic.css"; /* plasmic-import: 8PtdGodUbexNYgkuyBUcWu/projectcss */
 @import "../graphql/plasmic.css"; /* plasmic-import: fDWv2E51KMppM4Ticmmxiy/projectcss */
 @import "../plasmicpkgs_fetch/plasmic.css"; /* plasmic-import: xht6ggYXPaEbYDhYJJ7oxU/projectcss */
-@import url("https://fonts.googleapis.com/css2?family=Inter%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B0%2C900&family=Inconsolata%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B0%2C900&family=Roboto%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C700%3B0%2C900&family=Golos+Text%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B0%2C900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B0%2C900&family=Inconsolata%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B0%2C900&family=Golos+Text%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B0%2C900&family=Roboto+Flex%3Aital%2Cwght%400%2C400&display=swap");
 
 .plasmic_tokens_5CArWwg3qxRa1A2Avpz5j5 {
   --token-ZodPwl1Os-DS: #f6b1b5;
@@ -190,6 +190,38 @@
   --plasmic-token-basic-text-secondary: var(--token-vHmg8OeDs1S0);
   --token-5nSQh6CAXHgH: 14px;
   --plasmic-token-caption-c-1: var(--token-5nSQh6CAXHgH);
+  --token-HdGa_pkY8my-: 55px;
+  --plasmic-token-heading-h-1: var(--token-HdGa_pkY8my-);
+  --token-ZIYNpIXkBWtB: 28px;
+  --plasmic-token-heading-h-4: var(--token-ZIYNpIXkBWtB);
+  --token-XTd0u2KDLbNs: #043a81;
+  --plasmic-token-primitives-brand-brand-20: var(--token-XTd0u2KDLbNs);
+  --token-LvgtnuIkn42-: 35px;
+  --plasmic-token-heading-h-3: var(--token-LvgtnuIkn42-);
+  --token--e0JIeOZF4xV: #2563eb;
+  --plasmic-token-brand-brand: var(--token--e0JIeOZF4xV);
+  --token-AN7YZUpkZ6-T: #d1d5db;
+  --plasmic-token-basic-border: var(--token-AN7YZUpkZ6-T);
+  --token-aeV4WxxV6qqu: #00aeff99;
+  --plasmic-token-primitives-transparent-transparent-60: var(
+    --token-aeV4WxxV6qqu
+  );
+  --token-gXs4_46WHWvT: #00aeff99;
+  --plasmic-token-semantic-glossy-base: var(--token-gXs4_46WHWvT);
+  --token-UhmIuWQkWShX: #00baf5;
+  --plasmic-token-primitives-brand-brand-100: var(--token-UhmIuWQkWShX);
+  --token-NGGJtj9lJcQ1: #f2f2f2;
+  --plasmic-token-semantic-button-default-2: var(--token-NGGJtj9lJcQ1);
+  --token-kp94HthVoGa-: #071526;
+  --plasmic-token-primitives-achroma-dark-dark-100: var(--token-kp94HthVoGa-);
+  --token-09WgN3lwH9AY: 69px;
+  --plasmic-token-heading-h-0: var(--token-09WgN3lwH9AY);
+  --token-z4DxOGSMF5AH: #ffffff;
+  --plasmic-token-semantic-page-bg: var(--token-z4DxOGSMF5AH);
+  --token-27cS3whL-J5I: 16px;
+  --plasmic-token-paragraph-s: var(--token-27cS3whL-J5I);
+  --token--nIbddKCkNug: #071526;
+  --plasmic-token-semantic-text-black: var(--token--nIbddKCkNug);
 }
 
 @media (max-width: 1023px) {
@@ -217,7 +249,16 @@
     --token-hQUcYWzCW8ia: 20px;
     --token-YnSiCEmCqs74: var(--token-IOr-hWik6vtY);
     --token-v5RtrQYVurzK: 20px;
+    --token-HdGa_pkY8my-: 39px;
+    --token-ZIYNpIXkBWtB: 22px;
+    --token-LvgtnuIkn42-: 25px;
+    --token-09WgN3lwH9AY: 49px;
+    --token-27cS3whL-J5I: 13px;
   }
+}
+
+.plasmic_tokens_5CArWwg3qxRa1A2Avpz5j5.global_language_lv.global_language_lv {
+  --token-NyfZrcORdatl: Wix Madefor Display Full;
 }
 
 .plasmic_tokens_5CArWwg3qxRa1A2Avpz5j5 {

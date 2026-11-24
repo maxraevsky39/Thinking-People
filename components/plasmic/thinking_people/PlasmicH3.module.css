@@ -1,0 +1,24 @@
+.заголовок {
+  display: inline-block;
+  font-weight: 600;
+  position: relative;
+  text-align: center;
+  width: auto;
+  height: auto;
+  white-space: pre-wrap;
+  flex-grow: 0;
+  flex-shrink: 1;
+  user-select: text;
+  text-transform: uppercase;
+  color: var(--token-5HSauQvnqWJr);
+  font-family: "Roboto Flex", sans-serif;
+  font-size: var(--token-HdGa_pkY8my-);
+  line-height: 95%;
+  letter-spacing: -1%;
+}
+.заголовокleft {
+  text-align: left;
+}
+.заголовокwhite {
+  color: var(--token--DRpd-zpqE3R);
+}

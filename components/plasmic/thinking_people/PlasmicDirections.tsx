@@ -69,12 +69,17 @@ import type {
 import type { QueryComponentNode } from "@plasmicapp/react-web/lib/data-sources";
 
 import Navbar from "../../Navbar"; // plasmic-import: 7oIiUelc00Y9/component
+import BtnPrime from "../../BtnPrime"; // plasmic-import: lXQZo507qQoe/component
 import { OptimizedImage } from "../../OptimizedImage"; // plasmic-import: 2sAw0k_qEFgf/codeComponent
 import H2 from "../../H2"; // plasmic-import: Yl_PbqD71djV/component
 import { Features4 } from "../../Features4"; // plasmic-import: 6A4B5A3hfdqP/codeComponent
 import HowWeWorkSection from "../../HowWeWorkSection"; // plasmic-import: SQRx18Lz1hYn/component
 import { ScrollSectionHeadings } from "../../ScrollSectionHeadings"; // plasmic-import: -3PvrcYmT7Js/codeComponent
-import { MotionScrollSection } from "../../MotionScrollSection"; // plasmic-import: za2mx6yd4yJR/codeComponent
+import { ScrollStack } from "../../ScrollStack"; // plasmic-import: NT1X0-oopnsg/codeComponent
+import { ScrollStackCard } from "../../ScrollStack"; // plasmic-import: 8M4ohH34klFL/codeComponent
+import ProgramTopic from "../../ProgramTopic"; // plasmic-import: VEcy16D-3kem/component
+import { AnimatedFilterGrid } from "../../AnimatedFilterGrid"; // plasmic-import: 9eRmd_u_ufIl/codeComponent
+import CaseCard from "../../CaseCard"; // plasmic-import: aNWZrHM0kBmf/component
 import FormSection from "../../FormSection"; // plasmic-import: fw8uA1_Fbkxj/component
 import MainForm from "../../MainForm"; // plasmic-import: WC23AdBWqnVp/component
 import FooterSection from "../../FooterSection"; // plasmic-import: DEX99TX1WJZn/component
@@ -145,14 +150,18 @@ export type PlasmicDirections__OverridesType = {
   navbar?: Flex__<typeof Navbar>;
   communication?: Flex__<"section">;
   h1?: Flex__<"h1">;
+  btnPrime?: Flex__<typeof BtnPrime>;
   optimizedImage?: Flex__<typeof OptimizedImage>;
+  link?: Flex__<"a"> & Partial<LinkProps>;
   challenges?: Flex__<"section">;
   challengeTabs?: Flex__<typeof Features4>;
   howWeWorkSection?: Flex__<typeof HowWeWorkSection>;
   results?: Flex__<"section">;
   programs?: Flex__<"section">;
   scrollSectionHeadings?: Flex__<typeof ScrollSectionHeadings>;
-  programTopic1?: Flex__<"div">;
+  scrollStack?: Flex__<typeof ScrollStack>;
+  scrollStackCard?: Flex__<typeof ScrollStackCard>;
+  programTopic?: Flex__<typeof ProgramTopic>;
   programTopic2?: Flex__<"div">;
   programTopic3?: Flex__<"div">;
   programTopic4?: Flex__<"div">;
@@ -161,8 +170,8 @@ export type PlasmicDirections__OverridesType = {
   formats?: Flex__<"section">;
   process?: Flex__<"section">;
   cases?: Flex__<"section">;
-  article?: Flex__<"article">;
-  h4?: Flex__<"h4">;
+  animatedFilterGrid?: Flex__<typeof AnimatedFilterGrid>;
+  caseCard?: Flex__<typeof CaseCard>;
   formSection?: Flex__<typeof FormSection>;
   footerSection?: Flex__<typeof FooterSection>;
 };
@@ -199,7 +208,7 @@ export const serverQueryTree: QueryComponentNode = {
           };
           __composite["request"] = {
             query:
-              "query Directions($local: I18NLocaleCode!, $slug: String!) {\n  directions(filters: {slug: {eq: $slug}}, locale: $local) {\n    documentId\n    title\n    slug\n    sections {\n      description\n      footerText\n      groups {\n        description\n        key\n        title\n        cards {\n          btnLink\n          btnText\n          description\n          link {\n            href\n            id\n            label\n          }\n          title\n          image {\n            blurDataURL\n            height\n            url\n            width\n          }\n        }\n      }\n      key\n      title\n      variant\n      id\n      cards {\n        btnLink\n        btnText\n        description\n        id\n        link {\n          href\n          label\n          id\n        }\n        title\n        image {\n          blurDataURL\n          height\n          url\n          width\n        }\n        icon {\n          blurDataURL\n          url\n          width\n          height\n        }\n      }\n    }\n    hero {\n      description\n      eyebrow\n      id\n      title\n      link {\n        href\n        id\n        label\n      }\n      items {\n        btnLink\n        btnText\n        description\n        id\n        link {\n          href\n          id\n          label\n        }\n        title\n      }\n      image {\n        blurDataURL\n        width\n        url\n        height\n      }\n    }\n  }\n}",
+              "query Directions($local: I18NLocaleCode!, $slug: String!) {\n  directions(filters: {slug: {eq: $slug}}, locale: $local) {\n    documentId\n    title\n    slug\n    caseStudies {\n      slug\n      title\n      cover {\n        width\n        height\n        url\n        blurDataURL\n      }\n    }\n    sections {\n      description\n      footerText\n      groups {\n        description\n        image {\n                   blurDataURL\n            height\n            url\n            width\n        }\n        key\n        title\n        cards {\n          btnLink\n          btnText\n          description\n          link {\n            href\n            id\n            label\n          }\n          title\n          image {\n            blurDataURL\n            height\n            url\n            width\n          }\n        }\n      }\n      key\n      title\n      variant\n      id\n      cards {\n        btnLink\n        btnText\n        description\n        id\n        link {\n          href\n          label\n          id\n        }\n        title\n        image {\n          blurDataURL\n          height\n          url\n          width\n        }\n        icon {\n          blurDataURL\n          url\n          width\n          height\n        }\n      }\n    }\n    hero {\n      description\n      eyebrow\n      id\n      title\n      link {\n        href\n        id\n        label\n      }\n      items {\n        btnLink\n        btnText\n        description\n        id\n        link {\n          href\n          id\n          label\n        }\n        title\n      }\n      image {\n        blurDataURL\n        width\n        url\n        height\n      }\n    }\n  }\n}",
             variables: { local: "en", slug: "sdfsf" }
           };
           return __composite;
@@ -370,47 +379,15 @@ function PlasmicDirections__RenderFunc(props: {
                         ?.description ?? ""}
                     </React.Fragment>
                   </p>
-                  <PlasmicLink__
-                    className={classNames(
-                      "all",
-                      "a",
-                      "a__5CArW",
-                      sty.link__db39
-                    )}
-                    component={Link}
-                    href={
+                  <BtnPrime
+                    data-plasmic-name={"btnPrime"}
+                    data-plasmic-override={overrides.btnPrime}
+                    className={classNames("__wab_instance", sty.btnPrime)}
+                    text={
                       $q.programs.data?.body?.data?.directions?.[0]?.hero?.link
-                        ?.href || "#consultation"
+                        ?.label ?? ""
                     }
-                    legacyBehavior={false}
-                    platform={"nextjs"}
-                  >
-                    <span
-                      className={classNames(
-                        "all",
-                        "span",
-                        "span__5CArW",
-                        "__wab_text",
-                        sty.span__zwwyA
-                      )}
-                    >
-                      <React.Fragment>
-                        {$q.programs.data?.body?.data?.directions?.[0]?.hero
-                          ?.link?.label ?? ""}
-                      </React.Fragment>
-                    </span>
-                    <span
-                      className={classNames(
-                        "all",
-                        "span",
-                        "span__5CArW",
-                        "__wab_text",
-                        sty.span__zPe5A
-                      )}
-                    >
-                      {"\u2197"}
-                    </span>
-                  </PlasmicLink__>
+                  />
                 </div>
                 <div
                   aria-hidden={"true"}
@@ -487,12 +464,14 @@ function PlasmicDirections__RenderFunc(props: {
                   const heroIndex = __plasmic_idx_0;
                   return (
                     <PlasmicLink__
+                      data-plasmic-name={"link"}
+                      data-plasmic-override={overrides.link}
                       className={classNames(
                         "all",
                         "a",
                         "a__5CArW",
                         "__wab_text",
-                        sty.link__rxNxG
+                        sty.link
                       )}
                       component={Link}
                       href={
@@ -517,17 +496,6 @@ function PlasmicDirections__RenderFunc(props: {
             className={classNames("all", sty.challenges)}
           >
             <div className={classNames("all", sty.freeBox__h1DFp)}>
-              <span
-                className={classNames(
-                  "all",
-                  "span",
-                  "span__5CArW",
-                  "__wab_text",
-                  sty.span__mhcVo
-                )}
-              >
-                {"REAL CHALLENGES"}
-              </span>
               <H2
                 className={classNames("__wab_instance", sty.h2__xRgMf)}
                 title={
@@ -579,17 +547,6 @@ function PlasmicDirections__RenderFunc(props: {
           >
             <div className={classNames("all", sty.freeBox__zikZy)}>
               <div className={classNames("all", sty.freeBox__uNQjQ)}>
-                <span
-                  className={classNames(
-                    "all",
-                    "span",
-                    "span__5CArW",
-                    "__wab_text",
-                    sty.span__bbPP
-                  )}
-                >
-                  {"EXPECTED RESULTS"}
-                </span>
                 <H2
                   className={classNames("__wab_instance", sty.h2__gjqFc)}
                   title={
@@ -664,17 +621,6 @@ function PlasmicDirections__RenderFunc(props: {
           >
             <div className={classNames("all", sty.freeBox__yA4Rc)} id={"topic"}>
               <div className={classNames("all", sty.freeBox__edF85)}>
-                <span
-                  className={classNames(
-                    "all",
-                    "span",
-                    "span__5CArW",
-                    "__wab_text",
-                    sty.span__bt1L6
-                  )}
-                >
-                  {"TOPICS IN DETAIL"}
-                </span>
                 <H2
                   className={classNames("__wab_instance", sty.h2__iGbuX)}
                   title={
@@ -978,136 +924,94 @@ function PlasmicDirections__RenderFunc(props: {
                 transitionDuration={0.35}
               />
 
-              {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
-                $q.programs.data?.body?.data?.directions?.[0]?.sections?.find(
-                  s => s.key === "topics"
-                )?.groups ?? []
-              ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                const currentItem = __plasmic_item_0;
-                const currentIndex = __plasmic_idx_0;
-                return (
-                  <div
-                    data-plasmic-name={"programTopic1"}
-                    data-plasmic-override={overrides.programTopic1}
-                    className={classNames("all", sty.programTopic1)}
-                    id={(() => {
-                      try {
-                        return "topic-" + currentIndex;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return undefined;
-                        }
-                        throw e;
+              <ScrollStack
+                data-plasmic-name={"scrollStack"}
+                data-plasmic-override={overrides.scrollStack}
+                blur={4}
+                borderRadius={24}
+                cardHeight={45}
+                cardWidth={1400}
+                className={classNames("__wab_instance", sty.scrollStack)}
+                depth={3}
+                dim={0}
+                disabled={false}
+                flowGap={24}
+                fullWidth={true}
+                listGap={24}
+                mobileBreakpoint={767}
+                mobileMode={"list"}
+                peek={26}
+                perspective={1400}
+                previewInEditor={false}
+                respectReducedMotion={true}
+                scaleStep={0.1}
+                scrollLength={0.7}
+                scrollMode={"flow"}
+                showCounter={false}
+                showProgress={false}
+                sidePadding={0}
+                smooth={0.16}
+                stickyTop={160}
+                variant={"deck"}
+              >
+                {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                  (() => {
+                    try {
+                      return (
+                        $q.programs.data?.body?.data?.directions?.[0]?.sections?.find(
+                          s => s.key === "topics"
+                        )?.groups ?? []
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
                       }
-                    })()}
-                    key={currentIndex}
-                  >
-                    <div className={classNames("all", sty.freeBox__zXfLr)} />
-
-                    <h3
+                      throw e;
+                    }
+                  })()
+                ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                  const currentItem = __plasmic_item_0;
+                  const currentIndex = __plasmic_idx_0;
+                  return (
+                    <ScrollStackCard
+                      data-plasmic-name={"scrollStackCard"}
+                      data-plasmic-override={overrides.scrollStackCard}
                       className={classNames(
-                        "all",
-                        "h3",
-                        "h3__5CArW",
-                        "__wab_text",
-                        sty.h3__du6H6
+                        "__wab_instance",
+                        sty.scrollStackCard
                       )}
+                      key={currentIndex}
                     >
-                      <React.Fragment>{currentItem.title}</React.Fragment>
-                    </h3>
-                    <div className={classNames("all", sty.freeBox__zgfqe)}>
-                      {(_par =>
-                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                        currentItem.cards ?? []
-                      ).map((__plasmic_item_1, __plasmic_idx_1) => {
-                        const currentItem = __plasmic_item_1;
-                        const currentIndex = __plasmic_idx_1;
-                        return (
-                          <MotionScrollSection
-                            className={classNames(
-                              "__wab_instance",
-                              sty.motionScrollSection___9I3Fo
-                            )}
-                            ease={"none"}
-                            fromBlur={0}
-                            fromOpacity={1}
-                            fromRotation={0}
-                            fromRotationX={0}
-                            fromRotationY={0}
-                            fromScale={0.95}
-                            fromX={0}
-                            fromY={0}
-                            key={currentIndex}
-                            offsetEnd={"start 45%"}
-                            offsetStart={"start 55%"}
-                            perspective={1000}
-                            smoothing={0}
-                            toBlur={0}
-                            toOpacity={1}
-                            toRotation={0}
-                            toRotationX={0}
-                            toRotationY={0}
-                            toScale={1}
-                            toX={0}
-                            toY={0}
-                            trackContentSize={false}
-                            transformOrigin={"left center"}
-                          >
-                            <MotionScrollSection
-                              className={classNames(
-                                "__wab_instance",
-                                sty.motionScrollSection__ec7R
-                              )}
-                              ease={"none"}
-                              fromBlur={0}
-                              fromOpacity={1}
-                              fromRotation={0}
-                              fromRotationX={0}
-                              fromRotationY={0}
-                              fromScale={1}
-                              fromX={0}
-                              fromY={0}
-                              offsetEnd={"start 35%"}
-                              offsetStart={"start 45%"}
-                              perspective={1000}
-                              smoothing={0}
-                              toBlur={0}
-                              toOpacity={1}
-                              toRotation={0}
-                              toRotationX={0}
-                              toRotationY={0}
-                              toScale={0.95}
-                              toX={0}
-                              toY={0}
-                              trackContentSize={false}
-                              transformOrigin={"left center"}
-                            >
-                              <p
-                                className={classNames(
-                                  "all",
-                                  "p",
-                                  "p__5CArW",
-                                  "__wab_text",
-                                  sty.p__frTfH
-                                )}
-                              >
-                                <React.Fragment>
-                                  {currentItem.title ||
-                                    currentItem.description ||
-                                    ""}
-                                </React.Fragment>
-                              </p>
-                            </MotionScrollSection>
-                          </MotionScrollSection>
-                        );
-                      })}
-                    </div>
-                  </div>
-                );
-              })}
+                      <ProgramTopic
+                        data-plasmic-name={"programTopic"}
+                        data-plasmic-override={overrides.programTopic}
+                        className={classNames(
+                          "__wab_instance",
+                          sty.programTopic
+                        )}
+                        currentIndex={currentIndex}
+                        currentItem={currentItem}
+                        odd={(() => {
+                          try {
+                            return currentIndex % 2 === 0;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()}
+                      />
+                    </ScrollStackCard>
+                  );
+                })}
+              </ScrollStack>
               <div
                 data-plasmic-name={"programTopic2"}
                 data-plasmic-override={overrides.programTopic2}
@@ -1760,17 +1664,6 @@ function PlasmicDirections__RenderFunc(props: {
           >
             <div className={classNames("all", sty.freeBox__yyn1X)}>
               <div className={classNames("all", sty.freeBox__ptwS)}>
-                <span
-                  className={classNames(
-                    "all",
-                    "span",
-                    "span__5CArW",
-                    "__wab_text",
-                    sty.span__kmIhs
-                  )}
-                >
-                  {" FORMATS"}
-                </span>
                 <H2
                   className={classNames("__wab_instance", sty.h2___1JZtm)}
                   title={
@@ -1830,32 +1723,14 @@ function PlasmicDirections__RenderFunc(props: {
             id={"process"}
           >
             <div className={classNames("all", sty.freeBox__oGm3)}>
-              <span
-                className={classNames(
-                  "all",
-                  "span",
-                  "span__5CArW",
-                  "__wab_text",
-                  sty.span__nuvMq
-                )}
-              >
-                {"PROCESS"}
-              </span>
-              <h2
-                className={classNames(
-                  "all",
-                  "h2",
-                  "h2__5CArW",
-                  "__wab_text",
-                  sty.h2__g38Y2
-                )}
-              >
-                <React.Fragment>
-                  {$q.programs.data?.body?.data?.directions?.[0]?.sections?.find(
+              <H2
+                className={classNames("__wab_instance", sty.h2___3QDs0)}
+                title={
+                  $q.programs.data?.body?.data?.directions?.[0]?.sections?.find(
                     s => s.key === "process"
-                  )?.description ?? ""}
-                </React.Fragment>
-              </h2>
+                  )?.description ?? ""
+                }
+              />
             </div>
             <div className={classNames("all", sty.freeBox__euym)}>
               {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
@@ -1920,32 +1795,14 @@ function PlasmicDirections__RenderFunc(props: {
           >
             <div className={classNames("all", sty.freeBox__fwKnj)}>
               <div className={classNames("all", sty.freeBox__jujLa)}>
-                <span
-                  className={classNames(
-                    "all",
-                    "span",
-                    "span__5CArW",
-                    "__wab_text",
-                    sty.span__qRfSu
-                  )}
-                >
-                  {"CASES"}
-                </span>
-                <h2
-                  className={classNames(
-                    "all",
-                    "h2",
-                    "h2__5CArW",
-                    "__wab_text",
-                    sty.h2__ckJlJ
-                  )}
-                >
-                  <React.Fragment>
-                    {$q.programs.data?.body?.data?.directions?.[0].sections?.find(
+                <H2
+                  className={classNames("__wab_instance", sty.h2___9Ypu)}
+                  title={
+                    $q.programs.data?.body?.data?.directions?.[0].sections?.find(
                       s => s.key === "cases"
-                    )?.title ?? ""}
-                  </React.Fragment>
-                </h2>
+                    )?.title ?? ""
+                  }
+                />
               </div>
               <p
                 className={classNames(
@@ -1962,89 +1819,47 @@ function PlasmicDirections__RenderFunc(props: {
                   )?.description ?? ""}
                 </React.Fragment>
               </p>
-              {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
-                $q.programs.data?.body?.data?.directions?.[0].sections?.find(
-                  s => s.key === "cases"
-                )?.groups ?? []
-              ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                const caseGroup = __plasmic_item_0;
-                const caseIndex = __plasmic_idx_0;
-                return (
-                  <article
-                    data-plasmic-name={"article"}
-                    data-plasmic-override={overrides.article}
-                    className={classNames("all", sty.article)}
-                    key={caseIndex}
-                  >
-                    <span
-                      className={classNames(
-                        "all",
-                        "span",
-                        "span__5CArW",
-                        "__wab_text",
-                        sty.span__qMz7L
-                      )}
-                    >
-                      <React.Fragment>
-                        {"CASE " + (caseIndex + 1).toString().padStart(2, "0")}
-                      </React.Fragment>
-                    </span>
-                    <h3
-                      className={classNames(
-                        "all",
-                        "h3",
-                        "h3__5CArW",
-                        "__wab_text",
-                        sty.h3__awIiv
-                      )}
-                    >
-                      <React.Fragment>{caseGroup.title}</React.Fragment>
-                    </h3>
-                    <div className={classNames("all", sty.freeBox__h2T0)}>
-                      {(_par =>
-                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                        caseGroup.cards ?? []
-                      ).map((__plasmic_item_1, __plasmic_idx_1) => {
-                        const caseCard = __plasmic_item_1;
-                        const caseCardIndex = __plasmic_idx_1;
-                        return (
-                          <div
-                            className={classNames("all", sty.freeBox__ubvZ)}
-                            key={caseCardIndex}
-                          >
-                            <h4
-                              data-plasmic-name={"h4"}
-                              data-plasmic-override={overrides.h4}
-                              className={classNames(
-                                "all",
-                                "h4",
-                                "h4__5CArW",
-                                "__wab_text",
-                                sty.h4
-                              )}
-                            >
-                              <React.Fragment>{caseCard.title}</React.Fragment>
-                            </h4>
-                            <p
-                              className={classNames(
-                                "all",
-                                "p",
-                                "p__5CArW",
-                                "__wab_text",
-                                sty.p__ngv29
-                              )}
-                            >
-                              <React.Fragment>
-                                {caseCard.description ?? ""}
-                              </React.Fragment>
-                            </p>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </article>
-                );
-              })}
+              <AnimatedFilterGrid
+                data-plasmic-name={"animatedFilterGrid"}
+                data-plasmic-override={overrides.animatedFilterGrid}
+                className={classNames("__wab_instance", sty.animatedFilterGrid)}
+                columns={3}
+                duration={0.22}
+                gap={16}
+                layout={"grid"}
+                mobileColumns={1}
+                offsetY={8}
+                tabletColumns={2}
+              >
+                {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                  (() => {
+                    try {
+                      return $q.programs.data.body.data.directions[0]
+                        ?.caseStudies;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
+                    }
+                  })()
+                ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                  const currentItem = __plasmic_item_0;
+                  const currentIndex = __plasmic_idx_0;
+                  return (
+                    <CaseCard
+                      data-plasmic-name={"caseCard"}
+                      data-plasmic-override={overrides.caseCard}
+                      caseData={currentItem}
+                      className={classNames("__wab_instance", sty.caseCard)}
+                      key={currentIndex}
+                    />
+                  );
+                })}
+              </AnimatedFilterGrid>
             </div>
           </section>
           <FormSection
@@ -2070,14 +1885,18 @@ const PlasmicDescendants = {
     "navbar",
     "communication",
     "h1",
+    "btnPrime",
     "optimizedImage",
+    "link",
     "challenges",
     "challengeTabs",
     "howWeWorkSection",
     "results",
     "programs",
     "scrollSectionHeadings",
-    "programTopic1",
+    "scrollStack",
+    "scrollStackCard",
+    "programTopic",
     "programTopic2",
     "programTopic3",
     "programTopic4",
@@ -2086,15 +1905,17 @@ const PlasmicDescendants = {
     "formats",
     "process",
     "cases",
-    "article",
-    "h4",
+    "animatedFilterGrid",
+    "caseCard",
     "formSection",
     "footerSection"
   ],
   navbar: ["navbar"],
-  communication: ["communication", "h1", "optimizedImage"],
+  communication: ["communication", "h1", "btnPrime", "optimizedImage", "link"],
   h1: ["h1"],
+  btnPrime: ["btnPrime"],
   optimizedImage: ["optimizedImage"],
+  link: ["link"],
   challenges: ["challenges", "challengeTabs"],
   challengeTabs: ["challengeTabs"],
   howWeWorkSection: ["howWeWorkSection"],
@@ -2102,7 +1923,9 @@ const PlasmicDescendants = {
   programs: [
     "programs",
     "scrollSectionHeadings",
-    "programTopic1",
+    "scrollStack",
+    "scrollStackCard",
+    "programTopic",
     "programTopic2",
     "programTopic3",
     "programTopic4",
@@ -2110,7 +1933,9 @@ const PlasmicDescendants = {
     "programTopic6"
   ],
   scrollSectionHeadings: ["scrollSectionHeadings"],
-  programTopic1: ["programTopic1"],
+  scrollStack: ["scrollStack", "scrollStackCard", "programTopic"],
+  scrollStackCard: ["scrollStackCard", "programTopic"],
+  programTopic: ["programTopic"],
   programTopic2: ["programTopic2"],
   programTopic3: ["programTopic3"],
   programTopic4: ["programTopic4"],
@@ -2118,9 +1943,9 @@ const PlasmicDescendants = {
   programTopic6: ["programTopic6"],
   formats: ["formats"],
   process: ["process"],
-  cases: ["cases", "article", "h4"],
-  article: ["article", "h4"],
-  h4: ["h4"],
+  cases: ["cases", "animatedFilterGrid", "caseCard"],
+  animatedFilterGrid: ["animatedFilterGrid", "caseCard"],
+  caseCard: ["caseCard"],
   formSection: ["formSection"],
   footerSection: ["footerSection"]
 } as const;
@@ -2132,14 +1957,18 @@ type NodeDefaultElementType = {
   navbar: typeof Navbar;
   communication: "section";
   h1: "h1";
+  btnPrime: typeof BtnPrime;
   optimizedImage: typeof OptimizedImage;
+  link: "a";
   challenges: "section";
   challengeTabs: typeof Features4;
   howWeWorkSection: typeof HowWeWorkSection;
   results: "section";
   programs: "section";
   scrollSectionHeadings: typeof ScrollSectionHeadings;
-  programTopic1: "div";
+  scrollStack: typeof ScrollStack;
+  scrollStackCard: typeof ScrollStackCard;
+  programTopic: typeof ProgramTopic;
   programTopic2: "div";
   programTopic3: "div";
   programTopic4: "div";
@@ -2148,8 +1977,8 @@ type NodeDefaultElementType = {
   formats: "section";
   process: "section";
   cases: "section";
-  article: "article";
-  h4: "h4";
+  animatedFilterGrid: typeof AnimatedFilterGrid;
+  caseCard: typeof CaseCard;
   formSection: typeof FormSection;
   footerSection: typeof FooterSection;
 };
@@ -2219,14 +2048,18 @@ export const PlasmicDirections = Object.assign(
     navbar: makeNodeComponent("navbar"),
     communication: makeNodeComponent("communication"),
     h1: makeNodeComponent("h1"),
+    btnPrime: makeNodeComponent("btnPrime"),
     optimizedImage: makeNodeComponent("optimizedImage"),
+    link: makeNodeComponent("link"),
     challenges: makeNodeComponent("challenges"),
     challengeTabs: makeNodeComponent("challengeTabs"),
     howWeWorkSection: makeNodeComponent("howWeWorkSection"),
     results: makeNodeComponent("results"),
     programs: makeNodeComponent("programs"),
     scrollSectionHeadings: makeNodeComponent("scrollSectionHeadings"),
-    programTopic1: makeNodeComponent("programTopic1"),
+    scrollStack: makeNodeComponent("scrollStack"),
+    scrollStackCard: makeNodeComponent("scrollStackCard"),
+    programTopic: makeNodeComponent("programTopic"),
     programTopic2: makeNodeComponent("programTopic2"),
     programTopic3: makeNodeComponent("programTopic3"),
     programTopic4: makeNodeComponent("programTopic4"),
@@ -2235,8 +2068,8 @@ export const PlasmicDirections = Object.assign(
     formats: makeNodeComponent("formats"),
     process: makeNodeComponent("process"),
     cases: makeNodeComponent("cases"),
-    article: makeNodeComponent("article"),
-    h4: makeNodeComponent("h4"),
+    animatedFilterGrid: makeNodeComponent("animatedFilterGrid"),
+    caseCard: makeNodeComponent("caseCard"),
     formSection: makeNodeComponent("formSection"),
     footerSection: makeNodeComponent("footerSection"),
 

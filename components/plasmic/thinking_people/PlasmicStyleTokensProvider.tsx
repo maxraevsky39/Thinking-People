@@ -11,7 +11,13 @@ import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 5CArWwg3qxRa1
 
 const data = {
   base: `${"plasmic_tokens_5CArWwg3qxRa1A2Avpz5j5"}`,
-  varianted: []
+  varianted: [
+    {
+      className: "global_language_lv",
+      groupName: "language",
+      variant: "lv"
+    }
+  ]
 };
 
 export const _useStyleTokens = createUseStyleTokens(data, _useGlobalVariants);

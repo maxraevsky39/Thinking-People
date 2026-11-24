@@ -1,0 +1,75 @@
+.buttonSecondary {
+  background: rgba(255, 255, 255, 1);
+  width: auto;
+  height: auto;
+  display: inline-flex;
+  flex-direction: row;
+  column-gap: 8px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 7px 12px 8px;
+}
+.buttonSecondaryactive {
+  background: var(--token-UhmIuWQkWShX);
+}
+.buttonSecondarybordered {
+  background: none;
+  border: 1px solid var(--token--DRpd-zpqE3R);
+}
+.buttonSecondaryoffWhite {
+  background: var(--token-NGGJtj9lJcQ1);
+}
+.freeBox {
+  position: absolute;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--token-kp94HthVoGa-);
+  z-index: 2;
+  opacity: 0.1;
+  display: none;
+  padding: 8px;
+}
+.buttonSecondary:hover .freeBox {
+  display: block;
+}
+.text {
+  display: block;
+  font-weight: 400;
+  position: relative;
+  color: var(--token-nHwcJFFaplj3);
+  font-family: "Golos Text", sans-serif;
+  font-size: var(--token-tdb1P_3CpWrk);
+  line-height: 115%;
+  letter-spacing: 0.5%;
+}
+@media (max-width: 511px) {
+  .text {
+    text-align: center;
+  }
+}
+.textactive {
+  color: var(--token--DRpd-zpqE3R);
+}
+.textbordered {
+  color: var(--token--DRpd-zpqE3R);
+}
+.svg {
+  object-fit: cover;
+  max-width: 100%;
+  color: #00baf5;
+  width: 32px;
+  height: 32px;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}

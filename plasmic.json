@@ -371,6 +371,242 @@
           "cssFilePath": "plasmic/thinking_people/PlasmicExpertCard.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "aNWZrHM0kBmf",
+          "name": "CaseCard",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicCaseCard.tsx",
+          "importSpec": {
+            "modulePath": "CaseCard.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicCaseCard.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "h1uZWvI2U-SZ",
+          "name": "BasicCard",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicBasicCard.tsx",
+          "importSpec": {
+            "modulePath": "BasicCard.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicBasicCard.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "VEcy16D-3kem",
+          "name": "ProgramTopic",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicProgramTopic.tsx",
+          "importSpec": {
+            "modulePath": "ProgramTopic.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicProgramTopic.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "lXQZo507qQoe",
+          "name": "BtnPrime",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicBtnPrime.tsx",
+          "importSpec": {
+            "modulePath": "BtnPrime.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicBtnPrime.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "OqNVDtDlBELp",
+          "name": "LeadershipModel",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicLeadershipModel.tsx",
+          "importSpec": {
+            "modulePath": "../pages/[locale]/leadership-model.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicLeadershipModel.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/[locale]/leadership-model"
+        },
+        {
+          "id": "et5qAujPQfWf",
+          "name": "Blog",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicBlog.tsx",
+          "importSpec": {
+            "modulePath": "../pages/blog.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicBlog.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/blog"
+        },
+        {
+          "id": "GXMCMpZVm32m",
+          "name": "AuthorInfoBlog",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicAuthorInfoBlog.tsx",
+          "importSpec": {
+            "modulePath": "AuthorInfoBlog.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicAuthorInfoBlog.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "QRXBUaWvRqkb",
+          "name": "H3",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicH3.tsx",
+          "importSpec": {
+            "modulePath": "H3.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicH3.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "SVG6XfY6Wgw2",
+          "name": "Highlight",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicHighlight.tsx",
+          "importSpec": {
+            "modulePath": "Highlight.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicHighlight.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "2VV9roGNh6bJ",
+          "name": "BlogTitle",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicBlogTitle.tsx",
+          "importSpec": {
+            "modulePath": "BlogTitle.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicBlogTitle.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "8x9KdI3YiWFc",
+          "name": "SingleBubble",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicSingleBubble.tsx",
+          "importSpec": {
+            "modulePath": "SingleBubble.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicSingleBubble.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "kwUcGFXTDqBJ",
+          "name": "ButtonSecondary",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicButtonSecondary.tsx",
+          "importSpec": {
+            "modulePath": "ButtonSecondary.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicButtonSecondary.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "ZGfZ4rRc5Qtf",
+          "name": "BlogCta",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicBlogCta.tsx",
+          "importSpec": {
+            "modulePath": "BlogCta.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicBlogCta.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "XisQiACnSDGE",
+          "name": "Fact",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicFact.tsx",
+          "importSpec": {
+            "modulePath": "Fact.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicFact.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "bxIfOdd_ZkpT",
+          "name": "Columns",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicColumns.tsx",
+          "importSpec": {
+            "modulePath": "Columns.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicColumns.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "LaSkXd2wESDo",
+          "name": "Arrow",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicArrow.tsx",
+          "importSpec": {
+            "modulePath": "Arrow.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicArrow.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "qqIjS7wPOQWy",
+          "name": "Quote",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicQuote.tsx",
+          "importSpec": {
+            "modulePath": "Quote.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicQuote.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "ZZ-_-IYxNh6Q",
+          "name": "ToC",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicToC.tsx",
+          "importSpec": {
+            "modulePath": "ToC.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicToC.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -378,6 +614,21 @@
           "id": "Cdz8R8zqzTHE",
           "name": "Icon12Icon",
           "moduleFilePath": "plasmic/thinking_people/icons/PlasmicIcon__Icon12.tsx"
+        },
+        {
+          "id": "f-Qlr51q6F8t",
+          "name": "EyeIcon",
+          "moduleFilePath": "plasmic/thinking_people/icons/PlasmicIcon__Eye.tsx"
+        },
+        {
+          "id": "dn8rIftsz40O",
+          "name": "ShareIcon",
+          "moduleFilePath": "plasmic/thinking_people/icons/PlasmicIcon__Share.tsx"
+        },
+        {
+          "id": "mSeynmqtStCL",
+          "name": "AirplaneTakeoffIcon",
+          "moduleFilePath": "plasmic/thinking_people/icons/PlasmicIcon__AirplaneTakeoff.tsx"
         }
       ],
       "images": [
@@ -415,6 +666,46 @@
           "id": "TGD-5XuvGn5d",
           "name": "IMG_0209.jpg.webp",
           "filePath": "../public/plasmic/thinking_people/images/img0209JpgWebp.webp"
+        },
+        {
+          "id": "zhEZjHFLjHgG",
+          "name": "icon-1.png",
+          "filePath": "../public/plasmic/thinking_people/images/icon1Png.png"
+        },
+        {
+          "id": "kFYi1YzG0GI3",
+          "name": "icon-2.png",
+          "filePath": "../public/plasmic/thinking_people/images/icon2Png.png"
+        },
+        {
+          "id": "zHLxPGbIlUEW",
+          "name": "icon-3.png",
+          "filePath": "../public/plasmic/thinking_people/images/icon3Png.png"
+        },
+        {
+          "id": "BknkiN9ViWoC",
+          "name": "icon-4.png",
+          "filePath": "../public/plasmic/thinking_people/images/icon4Png.png"
+        },
+        {
+          "id": "T7rk21A5HLTP",
+          "name": "icon-5.png",
+          "filePath": "../public/plasmic/thinking_people/images/icon5Png.png"
+        },
+        {
+          "id": "Fb7nFbuepcA1",
+          "name": "icon-6.png",
+          "filePath": "../public/plasmic/thinking_people/images/icon6Png.png"
+        },
+        {
+          "id": "gvA_EjwfTwMF",
+          "name": "icon-7.png",
+          "filePath": "../public/plasmic/thinking_people/images/icon7Png.png"
+        },
+        {
+          "id": "A9a-LlY2A2f5",
+          "name": "icon-8.png",
+          "filePath": "../public/plasmic/thinking_people/images/icon8Png.png"
         }
       ],
       "indirect": false,
@@ -585,6 +876,18 @@
           "name": "Features4",
           "displayName": "Features4",
           "componentImportPath": "./components/Features4"
+        },
+        {
+          "id": "8M4ohH34klFL",
+          "name": "ScrollStackCard",
+          "displayName": "ScrollStackCard",
+          "componentImportPath": "./components/ScrollStack"
+        },
+        {
+          "id": "NT1X0-oopnsg",
+          "name": "ScrollStack",
+          "displayName": "ScrollStack",
+          "componentImportPath": "./components/ScrollStack"
         }
       ],
       "customFunctions": []

@@ -785,6 +785,20 @@
   max-width: 100%;
   width: 100%;
 }
+.text__sRu83 {
+  font-size: var(--token-0RcsDVt_keHG);
+  font-weight: 400;
+  line-height: var(--token-W3llFhI2gLwT);
+  letter-spacing: 0;
+  font-style: normal;
+  text-transform: none;
+  color: var(--token-IT77AyB9SmEq);
+  font-family: var(--token-NyfZrcORdatl);
+  animation: none;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
 .footerSection:global(.__wab_instance) {
   max-width: 100%;
 }

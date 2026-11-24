@@ -184,6 +184,10 @@ function PlasmicH2__RenderFunc(props: {
         styleTokensClassNames,
         sty.root,
         {
+          [sty.rootglobal_language_lv_left_white]:
+            hasVariant($state, "white", "white") &&
+            hasVariant($state, "left", "left") &&
+            hasVariant(globalVariants, "language", "lv"),
           [sty.rootleft]: hasVariant($state, "left", "left"),
           [sty.rootwhite]: hasVariant($state, "white", "white")
         }
@@ -193,6 +197,18 @@ function PlasmicH2__RenderFunc(props: {
         data-plasmic-name={"h2"}
         data-plasmic-override={overrides.h2}
         className={classNames("all", "h2", "h2__5CArW", "__wab_text", sty.h2, {
+          [sty.h2global_language_lv]: hasVariant(
+            globalVariants,
+            "language",
+            "lv"
+          ),
+          [sty.h2global_language_lv_left_white]:
+            hasVariant($state, "white", "white") &&
+            hasVariant($state, "left", "left") &&
+            hasVariant(globalVariants, "language", "lv"),
+          [sty.h2global_language_lv_white]:
+            hasVariant($state, "white", "white") &&
+            hasVariant(globalVariants, "language", "lv"),
           [sty.h2left]: hasVariant($state, "left", "left"),
           [sty.h2white]: hasVariant($state, "white", "white")
         })}

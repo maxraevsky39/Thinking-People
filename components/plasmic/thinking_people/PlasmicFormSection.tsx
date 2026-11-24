@@ -79,12 +79,14 @@ export const PlasmicFormSection__VariantProps = new Array<VariantPropType>();
 export type PlasmicFormSection__ArgsType = {
   title?: string;
   description?: string;
+  children?: React.ReactNode;
   form?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicFormSection__ArgsType;
 export const PlasmicFormSection__ArgProps = new Array<ArgPropType>(
   "title",
   "description",
+  "children",
   "form"
 );
 
@@ -100,6 +102,7 @@ export type PlasmicFormSection__OverridesType = {
 export interface DefaultFormSectionProps {
   title?: string;
   description?: string;
+  children?: React.ReactNode;
   form?: React.ReactNode;
   className?: string;
 }
@@ -209,6 +212,32 @@ function PlasmicFormSection__RenderFunc(props: {
             white={true}
           />
 
+          <div className={classNames("all", sty.freeBox__r0Xum)}>
+            {renderPlasmicSlot({
+              defaultContents: (
+                <div
+                  className={classNames("all", "__wab_text", sty.text__z5FPr)}
+                >
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return $props.description;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "welcome@thinking-people.eu";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
+                </div>
+              ),
+              value: args.children
+            })}
+          </div>
           <div
             data-plasmic-name={"text"}
             data-plasmic-override={overrides.text}

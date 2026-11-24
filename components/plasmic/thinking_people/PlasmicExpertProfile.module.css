@@ -308,77 +308,9 @@
   object-fit: cover;
   width: 100%;
 }
-.expertCaseCard {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-start;
-  min-width: 0px;
-  flex-shrink: 0;
-  color: var(--token-EiQM1bzsOe9e);
-  overflow: hidden;
-  width: 100%;
-  border-radius: var(--token-WNUOAwSmlV02);
-  border: 1px solid var(--token-1I5mNuI4gG5P);
-}
-.expertNode33 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-  flex-grow: 0;
-  background: var(--token-3xinaIcvT0eV);
-}
-.expertNode34:global(.__wab_instance) {
+.expertCaseCard:global(.__wab_instance) {
   max-width: 100%;
-  object-fit: cover;
   width: 100%;
-  height: 100%;
-}
-.expertNode35 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-grow: 1;
-  row-gap: var(--token-sm4uOpSrGgIV);
-  padding: var(--token-OZAZD-l-J3s2);
-}
-.expertNode36 {
-  font-size: var(--token-9xgBVoR4AERT);
-  font-weight: 600;
-  line-height: var(--token-Qw3q5Jn5F8JI);
-  letter-spacing: 0;
-  font-style: normal;
-  text-transform: none;
-  color: inherit;
-  font-family: var(--token-NyfZrcORdatl);
-  margin: 0;
-}
-.expertNode37 {
-  font-size: var(--token-iV7pzmTyxly4);
-  font-weight: 400;
-  line-height: var(--token-W3llFhI2gLwT);
-  letter-spacing: 0;
-  font-style: normal;
-  text-transform: none;
-  color: inherit;
-  font-family: var(--token-NyfZrcORdatl);
-  margin: 0;
-}
-.expertNode38 {
-  font-size: var(--token-k-28lmZ1lA1A);
-  font-weight: 700;
-  line-height: var(--token-vTnE8Xa437lb);
-  letter-spacing: 0;
-  font-style: normal;
-  text-transform: none;
-  color: inherit;
-  font-family: var(--token-NyfZrcORdatl);
-  margin-top: auto;
-  padding-top: var(--token-sm4uOpSrGgIV);
 }
 .otherExperts {
   display: flex;
@@ -505,6 +437,20 @@
 .mainForm__jA5N2:global(.__wab_instance) {
   max-width: 100%;
   width: 100%;
+}
+.text___2PQvk {
+  font-size: var(--token-0RcsDVt_keHG);
+  font-weight: 400;
+  line-height: var(--token-W3llFhI2gLwT);
+  letter-spacing: 0;
+  font-style: normal;
+  text-transform: none;
+  color: var(--token-IT77AyB9SmEq);
+  font-family: var(--token-NyfZrcORdatl);
+  animation: none;
+  width: auto;
+  height: auto;
+  max-width: 100%;
 }
 .expertNode51:global(.__wab_instance) {
   max-width: 100%;

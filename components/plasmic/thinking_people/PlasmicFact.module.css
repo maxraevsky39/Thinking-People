@@ -1,0 +1,36 @@
+.fact {
+  width: auto;
+  height: auto;
+  display: inline-flex;
+  flex-direction: column;
+  row-gap: 4px;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8px;
+  position: relative;
+  justify-self: flex-start;
+}
+.factTitle {
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  position: relative;
+  color: var(--token-5HSauQvnqWJr);
+  font-family: "Roboto Flex", sans-serif;
+  font-size: var(--token-09WgN3lwH9AY);
+  text-transform: uppercase;
+  line-height: 95%;
+  letter-spacing: -1%;
+}
+.description {
+  display: block;
+  text-align: center;
+  font-weight: 400;
+  align-self: stretch;
+  position: relative;
+  color: var(--token-5HSauQvnqWJr);
+  font-family: "Golos Text", sans-serif;
+  font-size: var(--token-v5RtrQYVurzK);
+  line-height: 135%;
+  letter-spacing: 0.5%;
+}
