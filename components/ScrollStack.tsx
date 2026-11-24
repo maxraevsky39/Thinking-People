@@ -3,7 +3,7 @@ import { usePlasmicCanvasContext } from '@plasmicapp/react-web/lib/host';
 import { pose, type ScrollStackVariant } from './scrollStackPose';
 
 export interface ScrollStackProps {
-  children?: React.ReactNode; className?: string; variant?: ScrollStackVariant;
+  children?: React.ReactNode; className?: string; scrollMode?: 'stage' | 'flow'; flowGap?: number; variant?: ScrollStackVariant;
   scrollLength?: number; stickyTop?: number; peek?: number; scaleStep?: number;
   blur?: number; dim?: number; smooth?: number; depth?: number;
   fullWidth?: boolean; cardWidth?: number; cardHeight?: number; borderRadius?: number; perspective?: number;
@@ -32,8 +32,9 @@ export function ScrollStack(p:ScrollStackProps) {
  const top=Math.max(0,finite(p.stickyTop,80)),available=Math.max(100,geometry.height-top);
  const mobile=geometry.width<=finite(p.mobileBreakpoint,767);
  const animate=geometry.ready&&count>1&&!disabled&&!(editing&&!previewInEditor)&&!(respectReducedMotion&&reduced)&&!(mobile&&mobileMode==='list');
+ const flowMode=p.scrollMode==='flow',staged=animate&&!flowMode;
  const reach=Math.max(.2,finite(p.scrollLength,1)),height=clamp(finite(p.cardHeight,68),20,95)/100;
- const radius=Math.max(0,finite(p.borderRadius,22)),gap=Math.max(0,finite(p.listGap,24));
+ const radius=Math.max(0,finite(p.borderRadius,22)),gap=Math.max(0,finite(flowMode?p.flowGap:p.listGap,24));
  const [selectorError,setSelectorError]=React.useState(false);
  React.useEffect(()=>{
   const host=content.current;if(!host)return;
@@ -70,7 +71,7 @@ export function ScrollStack(p:ScrollStackProps) {
   return ()=>{observer.disconnect();win.removeEventListener('resize',measure);media.removeEventListener('change',sync);};
  },[top]);
  React.useEffect(()=>{
-  if(!animate)return;const el=root.current,host=content.current;if(!el||!host)return;
+  if(!staged)return;const el=root.current,host=content.current;if(!el||!host)return;
   const doc=el.ownerDocument,win=doc.defaultView;if(!win)return;
   // Studio slots/Repeat can add positioned wrappers. Absolute cards must use
   // the stack frame, not a now-empty wrapper, as their containing block.
@@ -111,11 +112,35 @@ export function ScrollStack(p:ScrollStackProps) {
    wrapperStyles.forEach(({element,style})=>style===null?element.removeAttribute('style'):element.setAttribute('style',style));
    cards.forEach((c,i)=>{const o=original[i];o.style===null?c.removeAttribute('style'):c.setAttribute('style',o.style);o.hidden===null?c.removeAttribute('aria-hidden'):c.setAttribute('aria-hidden',o.hidden);c.toggleAttribute('inert',o.inert);});
   };
- },[animate,cards,count,variant,top,available,height,radius,reach,p.peek,p.scaleStep,p.blur,p.dim,p.depth,p.smooth]);
- return <section ref={root} data-tp-stack-root="" className={className} aria-label="Scrolling card stack" style={{position:'relative',width:'100%',height:animate?available+(count-1)*available*reach:undefined}}>
-  <div style={{position:animate?'sticky':'relative',top:animate?top:undefined,height:animate?available:undefined,width:'100%',minWidth:0,flexShrink:0,alignSelf:'stretch',display:'flex',alignItems:'center',justifyContent:'center',boxSizing:'border-box',paddingInline:Math.max(0,finite(p.sidePadding,24)),perspective:Math.max(200,finite(p.perspective,1400)),overflow:animate?'clip':'visible'}}>
-   <div ref={content} className={p.frameClassName} style={{position:'relative',width:'100%',maxWidth:p.fullWidth?'none':Math.max(200,finite(p.cardWidth,880)),minWidth:0,height:animate?available*height:undefined,display:animate?'block':'flex',flexDirection:'column',gap}}>{children}</div>
-   {animate&&(showCounter||showProgress)&&<div className={p.hudClassName} style={{position:'absolute',bottom:16,left:0,right:0,display:'flex',justifyContent:'center',alignItems:'center',gap:16,pointerEvents:'none',color:p.progressColor||'inherit'}}>
+ },[staged,cards,count,variant,top,available,height,radius,reach,p.peek,p.scaleStep,p.blur,p.dim,p.depth,p.smooth]);
+ // Flow mode keeps real card heights and document flow. Sticky positioning
+ // provides the overlap without adding viewport-sized scroll spacers.
+ React.useEffect(()=>{
+  if(!animate||!flowMode)return;
+  const host=content.current,el=root.current;if(!host||!el)return;
+  const doc=host.ownerDocument,win=doc.defaultView;if(!win)return;
+  const wrappers=new Set<HTMLElement>();
+  cards.forEach(card=>{for(let parent=card.parentElement;parent&&parent!==host;parent=parent.parentElement)wrappers.add(parent);});
+  const originals=Array.from(new Set([...Array.from(wrappers),...cards]),element=>({element,style:element.getAttribute('style')}));
+  wrappers.forEach(element=>element.style.setProperty('display','contents'));
+  cards.forEach((card,i)=>Object.assign(card.style,{position:'sticky',top:`${top}px`,bottom:'auto',left:'auto',right:'auto',width:'100%',height:'auto',flexShrink:'0',margin:'0',zIndex:String(i)}));
+  let raf=0,lastIndex=-1;
+  const update=()=>{
+   raf=0;const container=scroller.current;
+   const origin=container?container.getBoundingClientRect().top+container.clientTop:0;
+   let active=0;
+   cards.forEach((card,i)=>{if(card.getBoundingClientRect().top<=origin+top+1)active=i;});
+   if(active!==lastIndex){lastIndex=active;setLead(active);callback.current?.(active);}
+  };
+  const wake=()=>{if(!raf)raf=win.requestAnimationFrame(update);};
+  update();doc.addEventListener('scroll',wake,{passive:true,capture:true});win.addEventListener('resize',wake);
+  const observer=new win.ResizeObserver(wake);observer.observe(host);cards.forEach(card=>observer.observe(card));
+  return ()=>{win.cancelAnimationFrame(raf);observer.disconnect();doc.removeEventListener('scroll',wake,true);win.removeEventListener('resize',wake);originals.forEach(({element,style})=>style===null?element.removeAttribute('style'):element.setAttribute('style',style));};
+ },[animate,flowMode,cards,top,gap]);
+ return <section ref={root} data-tp-stack-root="" className={className} aria-label="Scrolling card stack" style={{position:'relative',width:'100%',height:staged?available+(count-1)*available*reach:undefined}}>
+  <div style={{position:staged?'sticky':'relative',top:staged?top:undefined,height:staged?available:undefined,width:'100%',minWidth:0,flexShrink:0,alignSelf:'stretch',display:'flex',alignItems:'center',justifyContent:'center',boxSizing:'border-box',paddingInline:Math.max(0,finite(p.sidePadding,24)),perspective:Math.max(200,finite(p.perspective,1400)),overflow:staged?'clip':'visible'}}>
+   <div ref={content} className={p.frameClassName} style={{position:'relative',width:'100%',maxWidth:p.fullWidth?'none':Math.max(200,finite(p.cardWidth,880)),minWidth:0,height:staged?available*height:undefined,display:staged?'block':'flex',flexDirection:'column',gap}}>{children}</div>
+   {staged&&(showCounter||showProgress)&&<div className={p.hudClassName} style={{position:'absolute',bottom:16,left:0,right:0,display:'flex',justifyContent:'center',alignItems:'center',gap:16,pointerEvents:'none',color:p.progressColor||'inherit'}}>
     {showProgress&&<span style={{position:'relative',width:150,height:2,background:'color-mix(in srgb, currentColor 20%, transparent)',overflow:'hidden'}}><span ref={rail} style={{position:'absolute',inset:0,background:'currentColor',transformOrigin:'left',transform:'scaleX(0)'}}/></span>}
     {showCounter&&<span style={{fontSize:12,fontVariantNumeric:'tabular-nums'}}>{String(Math.min(lead+1,count)).padStart(2,'0')} / {String(count).padStart(2,'0')}</span>}
    </div>}
