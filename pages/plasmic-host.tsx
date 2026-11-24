@@ -1,3 +1,4 @@
+import { registerScrollStack } from '../components/registerScrollStack';
 import { registerFeatures4 } from '../components/registerFeatures4';
 import { ScrollSectionHeadings } from "../components/ScrollSectionHeadings";
 import { registerReactBits } from "../components/registerReactBits";
@@ -36,6 +37,7 @@ import { registerCookiePopup } from "../components/registerCookiePopup";
 registerCookiePopup();
 registerReactBits();
 registerFeatures4();
+registerScrollStack();
 registerComponent(ScrollSectionHeadings, {
   name: "ScrollSectionHeadings",
   displayName: "Scroll Section Headings",
