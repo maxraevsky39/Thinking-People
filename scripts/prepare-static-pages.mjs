@@ -84,8 +84,9 @@ for (const project of plasmic.projects) for (const component of project.componen
   }
   records.push(record);
   if (originalFile !== file && originalFile !== 'pages/index.tsx') movedFiles.push({from:originalFile,to:file});
-  // Preserve concrete Plasmic URLs even when the wrapper uses a fixed route.
-  if (component.path && !component.path.includes("[") && component.path !== "/") {
+  // Preserve fixed-page aliases only. Collection templates may retain a stale
+  // Plasmic path (e.g. /blog); it must not alias every article to the index.
+  if (!collection && component.path && !component.path.includes("[") && component.path !== "/") {
     let alias = (component.path || '').replace(new RegExp(`^/(${locales.join('|')})(?=/|$)`), '/[locale]');
     if (!alias.includes('[locale]')) alias = '/[locale]' + alias;
     if (alias !== route.replace('[slug]', fixedSlug || '')) records.push({...record,route:alias,file:'pages'+alias+'.tsx',entries:record.entries.map(e=>({...e,url:alias.replace('[locale]',e.params.locale)+'/'}))});
