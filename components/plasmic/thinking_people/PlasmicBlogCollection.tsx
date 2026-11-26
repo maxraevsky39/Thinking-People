@@ -250,22 +250,28 @@ function PlasmicBlogCollection__RenderFunc(props: {
     $ctx as PageCtx
   );
 
-  const [isN23502254FocusVisible, triggerN23502254FocusVisibleProps] =
-    useTrigger("useFocusVisible", {
+  const [isN3726798FocusVisible, triggerN3726798FocusVisibleProps] = useTrigger(
+    "useFocusVisible",
+    {
       isTextInput: false
-    });
-  const [isN23502277FocusVisible, triggerN23502277FocusVisibleProps] =
-    useTrigger("useFocusVisible", {
+    }
+  );
+  const [isN3726821FocusVisible, triggerN3726821FocusVisibleProps] = useTrigger(
+    "useFocusVisible",
+    {
       isTextInput: false
-    });
-  const [isN23502280FocusVisible, triggerN23502280FocusVisibleProps] =
-    useTrigger("useFocusVisible", {
+    }
+  );
+  const [isN3726824FocusVisible, triggerN3726824FocusVisibleProps] = useTrigger(
+    "useFocusVisible",
+    {
       isTextInput: false
-    });
+    }
+  );
   const triggers = {
-    focusVisible_23502254: isN23502254FocusVisible,
-    focusVisible_23502277: isN23502277FocusVisible,
-    focusVisible_23502280: isN23502280FocusVisible
+    focusVisible_3726798: isN3726798FocusVisible,
+    focusVisible_3726821: isN3726821FocusVisible,
+    focusVisible_3726824: isN3726824FocusVisible
   };
 
   const styleTokensClassNames = _useStyleTokens();
@@ -591,7 +597,7 @@ function PlasmicBlogCollection__RenderFunc(props: {
                           sty.link__lnjrR,
                           {
                             [sty.link___focusVisible__lnjrR4EoIf]:
-                              triggers.focusVisible_23502254
+                              triggers.focusVisible_3726798
                           }
                         )}
                         component={Link}
@@ -601,7 +607,7 @@ function PlasmicBlogCollection__RenderFunc(props: {
                         legacyBehavior={false}
                         platform={"nextjs"}
                         data-plasmic-trigger-props={[
-                          triggerN23502254FocusVisibleProps
+                          triggerN3726798FocusVisibleProps
                         ]}
                       >
                         <span
@@ -650,7 +656,7 @@ function PlasmicBlogCollection__RenderFunc(props: {
                             sty.link__zqkul,
                             {
                               [sty.link___focusVisible__zqkulmLx0G]:
-                                triggers.focusVisible_23502277
+                                triggers.focusVisible_3726821
                             }
                           )}
                           component={Link}
@@ -669,7 +675,7 @@ function PlasmicBlogCollection__RenderFunc(props: {
                           legacyBehavior={false}
                           platform={"nextjs"}
                           data-plasmic-trigger-props={[
-                            triggerN23502277FocusVisibleProps
+                            triggerN3726821FocusVisibleProps
                           ]}
                         >
                           <span
@@ -720,7 +726,7 @@ function PlasmicBlogCollection__RenderFunc(props: {
                             sty.link__yxSf,
                             {
                               [sty.link___focusVisible__yxSFp0EXh]:
-                                triggers.focusVisible_23502280
+                                triggers.focusVisible_3726824
                             }
                           )}
                           component={Link}
@@ -736,7 +742,7 @@ function PlasmicBlogCollection__RenderFunc(props: {
                           legacyBehavior={false}
                           platform={"nextjs"}
                           data-plasmic-trigger-props={[
-                            triggerN23502280FocusVisibleProps
+                            triggerN3726824FocusVisibleProps
                           ]}
                         >
                           <span

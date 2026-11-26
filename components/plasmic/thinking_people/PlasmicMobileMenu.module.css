@@ -24,7 +24,7 @@
   column-gap: 14px;
   width: 100%;
   min-height: 56px;
-  box-shadow: 0 8px 28px 0px rgba(26, 26, 24, 0.23);
+  box-shadow: 0px 0px 0px 0px currentcolor;
   color: var(--token-IT77AyB9SmEq);
   font-family: var(--token-NyfZrcORdatl);
   font-size: var(--token-k-28lmZ1lA1A);
@@ -63,7 +63,7 @@
   width: 100%;
   max-height: min(65dvh, 470px);
   overflow-y: auto;
-  box-shadow: 0 12px 45px 0px rgba(26, 26, 24, 0.16);
+  box-shadow: 0px 0px 0px 0px currentcolor;
   background: var(--token-KbpWJO-t_Y4e);
   border-radius: var(--token-uhrGNl5KkUTa);
   padding: 9px;

@@ -43,7 +43,6 @@
   outline: none;
 }
 .span__dMb6V {
-  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -54,6 +53,7 @@
   font-size: 18px;
   line-height: var(--token-qFcTVPKYPjBs);
   background: var(--token-JFu4cw991QFH);
+  display: none;
   border-radius: var(--token-mp7K1CYWDyjO);
 }
 .button {

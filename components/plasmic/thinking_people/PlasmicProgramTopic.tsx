@@ -187,7 +187,7 @@ function PlasmicProgramTopic__RenderFunc(props: {
       )}
       id={(() => {
         try {
-          return "topic-" + $props.currentIndex;
+          return "topic-" + ($props.currentIndex + 1);
         } catch (e) {
           if (
             e instanceof TypeError ||
