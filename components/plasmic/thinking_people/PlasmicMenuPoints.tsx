@@ -98,12 +98,13 @@ export const PlasmicMenuPoints__ArgProps = new Array<ArgPropType>(
 
 export type PlasmicMenuPoints__OverridesType = {
   root?: Flex__<"div">;
+  blogMenuItem?: Flex__<typeof NavbarPopup>;
   navbarPopup6?: Flex__<typeof NavbarPopup>;
   p?: Flex__<"p">;
   icon?: Flex__<"div">;
   optimizedImage?: Flex__<typeof OptimizedImage>;
-  navbarPopup3?: Flex__<typeof NavbarPopup>;
   navbarPopup4?: Flex__<typeof NavbarPopup>;
+  navbarPopup3?: Flex__<typeof NavbarPopup>;
 };
 
 export interface DefaultMenuPointsProps {
@@ -249,6 +250,27 @@ function PlasmicMenuPoints__RenderFunc(props: {
         }
       )}
     >
+      {(hasVariant($state, "second", "second") ? true : false) ? (
+        <NavbarPopup
+          data-plasmic-name={"blogMenuItem"}
+          data-plasmic-override={overrides.blogMenuItem}
+          className={classNames("__wab_instance", sty.blogMenuItem, {
+            [sty.blogMenuItemglobal_language_lv]: hasVariant(
+              globalVariants,
+              "language",
+              "lv"
+            ),
+            [sty.blogMenuItemsecond]: hasVariant($state, "second", "second")
+          })}
+          link={
+            hasVariant(globalVariants, "language", "lv")
+              ? `/${encodeURIComponent("lv")}/blog`
+              : `/${encodeURIComponent("en")}/blog`
+          }
+          simple={true}
+          text={hasVariant(globalVariants, "language", "lv") ? "Blogs" : "Blog"}
+        />
+      ) : null}
       <NavbarPopup
         data-plasmic-name={"navbarPopup6"}
         data-plasmic-override={overrides.navbarPopup6}
@@ -453,9 +475,19 @@ function PlasmicMenuPoints__RenderFunc(props: {
               );
             })}
             <PlasmicLink__
-              className={classNames("all", "a", "a__5CArW", sty.link___81L4B)}
+              className={classNames("all", "a", "a__5CArW", sty.link___81L4B, {
+                [sty.linkglobal_language_lv___81L4Bk8AD2]: hasVariant(
+                  globalVariants,
+                  "language",
+                  "lv"
+                )
+              })}
               component={Link}
-              href={`/${encodeURIComponent("en")}/events/leadership`}
+              href={
+                hasVariant(globalVariants, "language", "lv")
+                  ? `/${encodeURIComponent("lv")}/leadership-model`
+                  : `/${encodeURIComponent("en")}/leadership-model`
+              }
               legacyBehavior={false}
               platform={"nextjs"}
               prefetch={(() => {
@@ -491,21 +523,39 @@ function PlasmicMenuPoints__RenderFunc(props: {
                   }
                 )}
               >
-                <React.Fragment>
-                  {(() => {
-                    try {
-                      return "Leadership Model";
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return "\u042d\u0444\u0444\u0435\u043a\u0442\u0438\u0432\u043d\u043e\u0435 \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e";
+                {hasVariant(globalVariants, "language", "lv") ? (
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return "Līdera ceļš";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "\u042d\u0444\u0444\u0435\u043a\u0442\u0438\u0432\u043d\u043e\u0435 \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e";
+                        }
+                        throw e;
                       }
-                      throw e;
-                    }
-                  })()}
-                </React.Fragment>
+                    })()}
+                  </React.Fragment>
+                ) : (
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return "Leadership Model";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "\u042d\u0444\u0444\u0435\u043a\u0442\u0438\u0432\u043d\u043e\u0435 \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
+                )}
               </p>
               <div
                 data-plasmic-name={"icon"}
@@ -535,64 +585,6 @@ function PlasmicMenuPoints__RenderFunc(props: {
         </div>
         <div className={classNames("all", sty.freeBox__lQUa)} />
       </NavbarPopup>
-      <NavbarPopup
-        data-plasmic-name={"navbarPopup3"}
-        data-plasmic-override={overrides.navbarPopup3}
-        children={null}
-        className={classNames("__wab_instance", sty.navbarPopup3, {
-          [sty.navbarPopup3global_language_lv]: hasVariant(
-            globalVariants,
-            "language",
-            "lv"
-          ),
-          [sty.navbarPopup3white]: hasVariant($state, "white", "white")
-        })}
-        isHoverMenu={async menu => {
-          const $steps = {};
-
-          $steps["updateActiveMenu"] = true
-            ? (() => {
-                const actionArgs = {
-                  variable: {
-                    objRoot: $state,
-                    variablePath: ["activeMenu"]
-                  },
-                  operation: 1
-                };
-                return (({ variable, value, startIndex, deleteCount }) => {
-                  if (!variable) {
-                    return;
-                  }
-                  const { objRoot, variablePath } = variable;
-
-                  $stateSet(objRoot, variablePath, undefined);
-                  return undefined;
-                })?.apply(null, [actionArgs]);
-              })()
-            : undefined;
-          if (
-            $steps["updateActiveMenu"] != null &&
-            typeof $steps["updateActiveMenu"] === "object" &&
-            typeof $steps["updateActiveMenu"].then === "function"
-          ) {
-            $steps["updateActiveMenu"] = await $steps["updateActiveMenu"];
-          }
-        }}
-        link={
-          hasVariant(globalVariants, "language", "lv")
-            ? `/${encodeURIComponent("lv")}/diagnostics`
-            : `/${encodeURIComponent("en")}`
-        }
-        open={undefined}
-        simple={hasVariant(globalVariants, "screen", "mobile") ? true : true}
-        text={
-          hasVariant(globalVariants, "language", "lv")
-            ? "Diagnostika"
-            : "Diagnostics"
-        }
-        white={hasVariant($state, "white", "white") ? true : undefined}
-      />
-
       <NavbarPopup
         data-plasmic-name={"navbarPopup4"}
         data-plasmic-override={overrides.navbarPopup4}
@@ -665,6 +657,66 @@ function PlasmicMenuPoints__RenderFunc(props: {
         white={hasVariant($state, "white", "white") ? true : undefined}
       />
 
+      {(hasVariant($state, "second", "second") ? false : true) ? (
+        <NavbarPopup
+          data-plasmic-name={"navbarPopup3"}
+          data-plasmic-override={overrides.navbarPopup3}
+          children={null}
+          className={classNames("__wab_instance", sty.navbarPopup3, {
+            [sty.navbarPopup3global_language_lv]: hasVariant(
+              globalVariants,
+              "language",
+              "lv"
+            ),
+            [sty.navbarPopup3second]: hasVariant($state, "second", "second"),
+            [sty.navbarPopup3white]: hasVariant($state, "white", "white")
+          })}
+          isHoverMenu={async menu => {
+            const $steps = {};
+
+            $steps["updateActiveMenu"] = true
+              ? (() => {
+                  const actionArgs = {
+                    variable: {
+                      objRoot: $state,
+                      variablePath: ["activeMenu"]
+                    },
+                    operation: 1
+                  };
+                  return (({ variable, value, startIndex, deleteCount }) => {
+                    if (!variable) {
+                      return;
+                    }
+                    const { objRoot, variablePath } = variable;
+
+                    $stateSet(objRoot, variablePath, undefined);
+                    return undefined;
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+            if (
+              $steps["updateActiveMenu"] != null &&
+              typeof $steps["updateActiveMenu"] === "object" &&
+              typeof $steps["updateActiveMenu"].then === "function"
+            ) {
+              $steps["updateActiveMenu"] = await $steps["updateActiveMenu"];
+            }
+          }}
+          link={
+            hasVariant(globalVariants, "language", "lv")
+              ? `/${encodeURIComponent("lv")}/diagnostics`
+              : `/${encodeURIComponent("en")}/diagnostics`
+          }
+          open={undefined}
+          simple={hasVariant(globalVariants, "screen", "mobile") ? true : true}
+          text={
+            hasVariant(globalVariants, "language", "lv")
+              ? "Diagnostika"
+              : "Diagnostics"
+          }
+          white={hasVariant($state, "white", "white") ? true : undefined}
+        />
+      ) : null}
       <div className={classNames("all", "__wab_text", sty.text__xSrT0)}>
         {"\u041a\u0435\u0439\u0441\u044b"}
       </div>
@@ -748,31 +800,34 @@ function PlasmicMenuPoints__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
+    "blogMenuItem",
     "navbarPopup6",
     "p",
     "icon",
     "optimizedImage",
-    "navbarPopup3",
-    "navbarPopup4"
+    "navbarPopup4",
+    "navbarPopup3"
   ],
+  blogMenuItem: ["blogMenuItem"],
   navbarPopup6: ["navbarPopup6", "p", "icon", "optimizedImage"],
   p: ["p"],
   icon: ["icon", "optimizedImage"],
   optimizedImage: ["optimizedImage"],
-  navbarPopup3: ["navbarPopup3"],
-  navbarPopup4: ["navbarPopup4"]
+  navbarPopup4: ["navbarPopup4"],
+  navbarPopup3: ["navbarPopup3"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  blogMenuItem: typeof NavbarPopup;
   navbarPopup6: typeof NavbarPopup;
   p: "p";
   icon: "div";
   optimizedImage: typeof OptimizedImage;
-  navbarPopup3: typeof NavbarPopup;
   navbarPopup4: typeof NavbarPopup;
+  navbarPopup3: typeof NavbarPopup;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -837,12 +892,13 @@ export const PlasmicMenuPoints = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    blogMenuItem: makeNodeComponent("blogMenuItem"),
     navbarPopup6: makeNodeComponent("navbarPopup6"),
     p: makeNodeComponent("p"),
     icon: makeNodeComponent("icon"),
     optimizedImage: makeNodeComponent("optimizedImage"),
-    navbarPopup3: makeNodeComponent("navbarPopup3"),
     navbarPopup4: makeNodeComponent("navbarPopup4"),
+    navbarPopup3: makeNodeComponent("navbarPopup3"),
 
     // Metadata about props expected for PlasmicMenuPoints
     internalVariantProps: PlasmicMenuPoints__VariantProps,

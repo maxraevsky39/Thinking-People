@@ -445,7 +445,7 @@
           "projectId": "5CArWwg3qxRa1A2Avpz5j5",
           "renderModuleFilePath": "plasmic/thinking_people/PlasmicBlog.tsx",
           "importSpec": {
-            "modulePath": "../pages/blog.tsx"
+            "modulePath": "../pages/[locale]/blog/[slug].tsx"
           },
           "cssFilePath": "plasmic/thinking_people/PlasmicBlog.module.css",
           "scheme": "blackbox",
@@ -605,6 +605,46 @@
             "modulePath": "ToC.tsx"
           },
           "cssFilePath": "plasmic/thinking_people/PlasmicToC.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "p7giZ_oxm1_y",
+          "name": "BlogCollection",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicBlogCollection.tsx",
+          "importSpec": {
+            "modulePath": "../pages/[locale]/blog.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicBlogCollection.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/[locale]/blog"
+        },
+        {
+          "id": "uwmnh-bp910y",
+          "name": "MobileMenuPoint",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicMobileMenuPoint.tsx",
+          "importSpec": {
+            "modulePath": "MobileMenuPoint.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicMobileMenuPoint.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "EiFQ1C-UFoB3",
+          "name": "MobileMenu",
+          "type": "managed",
+          "projectId": "5CArWwg3qxRa1A2Avpz5j5",
+          "renderModuleFilePath": "plasmic/thinking_people/PlasmicMobileMenu.tsx",
+          "importSpec": {
+            "modulePath": "MobileMenu.tsx"
+          },
+          "cssFilePath": "plasmic/thinking_people/PlasmicMobileMenu.module.css",
           "scheme": "blackbox",
           "componentType": "component"
         }

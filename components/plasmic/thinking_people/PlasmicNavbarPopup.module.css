@@ -52,10 +52,11 @@
     width: 100%;
     background: var(--token-4Wnk1d_k2c9L);
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    min-height: 24px;
     min-width: 0;
     border-radius: 8px;
-    padding: 8px;
+    padding: 4px 3px;
   }
 }
 @media (max-width: 511px) {
@@ -78,6 +79,12 @@
   font-family: var(--token-NyfZrcORdatl);
   display: block;
   pointer-events: none;
+}
+@media (max-width: 511px) {
+  .link {
+    font-size: var(--token-iV7pzmTyxly4);
+    white-space: pre;
+  }
 }
 .linkwhite {
   color: var(--token-FsAq_ZwqXS4u);

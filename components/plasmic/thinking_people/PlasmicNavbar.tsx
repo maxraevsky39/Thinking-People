@@ -62,6 +62,8 @@ import {
 import LolcaleSlect from "../../LolcaleSlect"; // plasmic-import: MxR5b2Jq_5S2/component
 import { MotionScrollSection } from "../../MotionScrollSection"; // plasmic-import: za2mx6yd4yJR/codeComponent
 import MenuPoints from "../../MenuPoints"; // plasmic-import: wEtqwJLAH7eq/component
+import { DynamicBottomNav } from "../../DynamicBottomNav"; // plasmic-import: g2Q--3aMH66f/codeComponent
+import MobileMenu from "../../MobileMenu"; // plasmic-import: EiFQ1C-UFoB3/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/styleTokensProvider
 
@@ -96,6 +98,8 @@ export type PlasmicNavbar__OverridesType = {
   link?: Flex__<"a"> & Partial<LinkProps>;
   img?: Flex__<typeof PlasmicImg__>;
   menuPointsSecond?: Flex__<typeof MenuPoints>;
+  mobileBottomNav?: Flex__<typeof DynamicBottomNav>;
+  mobileSiteMenu?: Flex__<typeof MobileMenu>;
 };
 
 export interface DefaultNavbarProps {
@@ -222,6 +226,11 @@ function PlasmicNavbar__RenderFunc(props: {
             globalVariants,
             "language",
             "lv"
+          ),
+          [sty.navbarnoAnimation]: hasVariant(
+            $state,
+            "noAnimation",
+            "noAnimation"
           )
         }
       )}
@@ -409,67 +418,68 @@ function PlasmicNavbar__RenderFunc(props: {
           }
         }}
       >
-        <MenuPoints
-          data-plasmic-name={"menuPoints"}
-          data-plasmic-override={overrides.menuPoints}
-          activeMenu={generateStateValueProp($state, [
-            "menuPoints",
-            "activeMenu"
-          ])}
-          className={classNames("__wab_instance", sty.menuPoints, {
-            [sty.menuPointsglobal_language_lv]: hasVariant(
-              globalVariants,
-              "language",
-              "lv"
-            )
-          })}
-          onActiveMenuChange={async (...eventArgs: any) => {
-            generateStateOnChangeProp($state, [
+        {(hasVariant(globalVariants, "screen", "mobile") ? false : true) ? (
+          <MenuPoints
+            data-plasmic-name={"menuPoints"}
+            data-plasmic-override={overrides.menuPoints}
+            activeMenu={generateStateValueProp($state, [
               "menuPoints",
               "activeMenu"
-            ]).apply(null, eventArgs);
+            ])}
+            className={classNames("__wab_instance", sty.menuPoints, {
+              [sty.menuPointsglobal_language_lv]: hasVariant(
+                globalVariants,
+                "language",
+                "lv"
+              )
+            })}
+            onActiveMenuChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "menuPoints",
+                "activeMenu"
+              ]).apply(null, eventArgs);
 
-            if (
-              eventArgs.length > 1 &&
-              eventArgs[1] &&
-              eventArgs[1]._plasmic_state_init_
-            ) {
-              return;
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            razdels={
+              hasVariant(globalVariants, "language", "lv")
+                ? [
+                    {
+                      title: "Biznesa komunik\u0101cija",
+                      link: "/lv/learning/communication"
+                    },
+                    {
+                      title: "Kognit\u012bv\u0101s prasmes",
+                      link: "/lv/learning/cognitive-skills"
+                    },
+                    {
+                      title: "L\u012bder\u012bbas un vad\u012bbas prasmes",
+                      link: "/lv/learning/management-skills"
+                    }
+                  ]
+                : [
+                    {
+                      title: "Business Communication",
+                      link: "/en/learning/communication"
+                    },
+                    {
+                      title: "Cognitive Skills",
+                      link: "/en/learning/cognitive-skills"
+                    },
+                    {
+                      title: "Leadership and Management Skills",
+                      link: "/en/learning/management-skills"
+                    }
+                  ]
             }
-          }}
-          razdels={
-            hasVariant(globalVariants, "language", "lv")
-              ? [
-                  {
-                    title: "Biznesa komunik\u0101cija",
-                    link: "/lv/learning/communication"
-                  },
-                  {
-                    title: "Kognit\u012bv\u0101s prasmes",
-                    link: "/lv/learning/cognitive-skills"
-                  },
-                  {
-                    title: "L\u012bder\u012bbas un vad\u012bbas prasmes",
-                    link: "/lv/learning/management-skills"
-                  }
-                ]
-              : [
-                  {
-                    title: "Business Communication",
-                    link: "/en/learning/communication"
-                  },
-                  {
-                    title: "Cognitive Skills",
-                    link: "/en/learning/cognitive-skills"
-                  },
-                  {
-                    title: "Leadership and Management Skills",
-                    link: "/en/learning/management-skills"
-                  }
-                ]
-          }
-        />
-
+          />
+        ) : null}
         <div
           data-plasmic-name={"logo"}
           data-plasmic-override={overrides.logo}
@@ -544,7 +554,11 @@ function PlasmicNavbar__RenderFunc(props: {
                     "lv"
                   )
                 })}
-                displayHeight={"40px"}
+                displayHeight={
+                  hasVariant(globalVariants, "screen", "mobile")
+                    ? "32px"
+                    : "40px"
+                }
                 displayMaxHeight={"none"}
                 displayMaxWidth={"100%"}
                 displayMinHeight={"0"}
@@ -561,37 +575,69 @@ function PlasmicNavbar__RenderFunc(props: {
             </PlasmicLink__>
           </MotionScrollSection>
         </div>
-        <MenuPoints
-          data-plasmic-name={"menuPointsSecond"}
-          data-plasmic-override={overrides.menuPointsSecond}
-          activeMenu={generateStateValueProp($state, [
-            "menuPointsSecond",
-            "activeMenu"
-          ])}
-          className={classNames("__wab_instance", sty.menuPointsSecond, {
-            [sty.menuPointsSecondglobal_language_lv]: hasVariant(
-              globalVariants,
-              "language",
-              "lv"
-            )
-          })}
-          onActiveMenuChange={async (...eventArgs: any) => {
-            generateStateOnChangeProp($state, [
+        {(hasVariant(globalVariants, "screen", "mobile") ? false : true) ? (
+          <MenuPoints
+            data-plasmic-name={"menuPointsSecond"}
+            data-plasmic-override={overrides.menuPointsSecond}
+            activeMenu={generateStateValueProp($state, [
               "menuPointsSecond",
               "activeMenu"
-            ]).apply(null, eventArgs);
+            ])}
+            className={classNames("__wab_instance", sty.menuPointsSecond, {
+              [sty.menuPointsSecondglobal_language_lv]: hasVariant(
+                globalVariants,
+                "language",
+                "lv"
+              )
+            })}
+            onActiveMenuChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "menuPointsSecond",
+                "activeMenu"
+              ]).apply(null, eventArgs);
 
-            if (
-              eventArgs.length > 1 &&
-              eventArgs[1] &&
-              eventArgs[1]._plasmic_state_init_
-            ) {
-              return;
-            }
-          }}
-          second={true}
-        />
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            second={true}
+          />
+        ) : null}
       </div>
+      {(hasVariant(globalVariants, "screen", "mobile") ? true : false) ? (
+        <DynamicBottomNav
+          data-plasmic-name={"mobileBottomNav"}
+          data-plasmic-override={overrides.mobileBottomNav}
+          bottom={12}
+          className={classNames("__wab_instance", sty.mobileBottomNav)}
+          collapsedWidth={320}
+          deadZone={1.5}
+          inertia={170}
+          shrinkDistance={180}
+          snapDelay={140}
+        >
+          <MobileMenu
+            data-plasmic-name={"mobileSiteMenu"}
+            data-plasmic-override={overrides.mobileSiteMenu}
+            className={classNames("__wab_instance", sty.mobileSiteMenu, {
+              [sty.mobileSiteMenuglobal_language_lv]: hasVariant(
+                globalVariants,
+                "language",
+                "lv"
+              )
+            })}
+            locale={
+              hasVariant(globalVariants, "language", "lv")
+                ? "lv"
+                : ($ctx.params?.locale ?? "en")
+            }
+          />
+        </DynamicBottomNav>
+      ) : null}
     </div>
   ) as React.ReactElement | null;
 }
@@ -606,7 +652,9 @@ const PlasmicDescendants = {
     "logo",
     "link",
     "img",
-    "menuPointsSecond"
+    "menuPointsSecond",
+    "mobileBottomNav",
+    "mobileSiteMenu"
   ],
   lolcaleSlect: ["lolcaleSlect"],
   freeBox: ["freeBox"],
@@ -615,7 +663,9 @@ const PlasmicDescendants = {
   logo: ["logo", "link", "img"],
   link: ["link", "img"],
   img: ["img"],
-  menuPointsSecond: ["menuPointsSecond"]
+  menuPointsSecond: ["menuPointsSecond"],
+  mobileBottomNav: ["mobileBottomNav", "mobileSiteMenu"],
+  mobileSiteMenu: ["mobileSiteMenu"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -630,6 +680,8 @@ type NodeDefaultElementType = {
   link: "a";
   img: typeof PlasmicImg__;
   menuPointsSecond: typeof MenuPoints;
+  mobileBottomNav: typeof DynamicBottomNav;
+  mobileSiteMenu: typeof MobileMenu;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -702,6 +754,8 @@ export const PlasmicNavbar = Object.assign(
     link: makeNodeComponent("link"),
     img: makeNodeComponent("img"),
     menuPointsSecond: makeNodeComponent("menuPointsSecond"),
+    mobileBottomNav: makeNodeComponent("mobileBottomNav"),
+    mobileSiteMenu: makeNodeComponent("mobileSiteMenu"),
 
     // Metadata about props expected for PlasmicNavbar
     internalVariantProps: PlasmicNavbar__VariantProps,
