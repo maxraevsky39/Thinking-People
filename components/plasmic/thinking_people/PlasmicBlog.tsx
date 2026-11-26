@@ -59,21 +59,22 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { useMutablePlasmicQueryData } from "@plasmicapp/query";
+
+import { usePlasmicQueries } from "@plasmicapp/react-web/lib/data-sources";
+import type {
+  PlasmicQuery,
+  PlasmicQueryResult
+} from "@plasmicapp/react-web/lib/data-sources";
+import type { QueryComponentNode } from "@plasmicapp/react-web/lib/data-sources";
+
+import Navbar from "../../Navbar"; // plasmic-import: 7oIiUelc00Y9/component
 import { OptimizedImage } from "../../OptimizedImage"; // plasmic-import: 2sAw0k_qEFgf/codeComponent
-import AuthorInfoBlog from "../../AuthorInfoBlog"; // plasmic-import: GXMCMpZVm32m/component
-import H3 from "../../H3"; // plasmic-import: QRXBUaWvRqkb/component
+import { StrapiTableOfContents } from "../../StrapiTableOfContents"; // plasmic-import: fBKilVUOE0KV/codeComponent
 import { StrapiRichText } from "../../StrapiRichText"; // plasmic-import: aX-eymI_laZQ/codeComponent
-import { MarkdownRenderer } from "../../MarkdownRenderer"; // plasmic-import: h9vyPw8CaKtX/codeComponent
-import Highlight from "../../Highlight"; // plasmic-import: SVG6XfY6Wgw2/component
-import BlogTitle from "../../BlogTitle"; // plasmic-import: 2VV9roGNh6bJ/component
-import SingleBubble from "../../SingleBubble"; // plasmic-import: 8x9KdI3YiWFc/component
-import BlogCta from "../../BlogCta"; // plasmic-import: ZGfZ4rRc5Qtf/component
-import Fact from "../../Fact"; // plasmic-import: XisQiACnSDGE/component
-import Columns from "../../Columns"; // plasmic-import: bxIfOdd_ZkpT/component
-import { SlotSlider } from "../../SlotSlider"; // plasmic-import: PqHM-RyzNCzw/codeComponent
-import Arrow from "../../Arrow"; // plasmic-import: LaSkXd2wESDo/component
-import Quote from "../../Quote"; // plasmic-import: qqIjS7wPOQWy/component
-import ToC from "../../ToC"; // plasmic-import: ZZ-_-IYxNh6Q/component
+import FormSection from "../../FormSection"; // plasmic-import: fw8uA1_Fbkxj/component
+import MainForm from "../../MainForm"; // plasmic-import: WC23AdBWqnVp/component
+import FooterSection from "../../FooterSection"; // plasmic-import: DEX99TX1WJZn/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/styleTokensProvider
 
@@ -81,8 +82,7 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 
 import sty from "./PlasmicBlog.module.css"; // plasmic-import: et5qAujPQfWf/css
 
-import EyeIcon from "./icons/PlasmicIcon__Eye"; // plasmic-import: f-Qlr51q6F8t/icon
-import ShareIcon from "./icons/PlasmicIcon__Share"; // plasmic-import: dn8rIftsz40O/icon
+import { fetchGraphQL as __fn_fetchGraphQL } from "@plasmicpkgs/graphql";
 
 const emptyProxy: any = new Proxy(() => "", {
   get(_, prop) {
@@ -128,51 +128,69 @@ export const PlasmicBlog__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicBlog__OverridesType = {
   root?: Flex__<"div">;
-  header?: Flex__<"div">;
-  coverImage?: Flex__<"div">;
-  image?: Flex__<"div">;
-  info?: Flex__<"div">;
-  main?: Flex__<"div">;
-  articleHeader?: Flex__<"div">;
-  infoRow?: Flex__<"div">;
-  tags?: Flex__<"div">;
-  tagLabel?: Flex__<"div">;
-  divider?: Flex__<"div">;
-  tagLabel2?: Flex__<"div">;
-  dateAndViews?: Flex__<"div">;
-  dateLabel?: Flex__<"div">;
-  date?: Flex__<"div">;
-  views?: Flex__<"div">;
-  viewsCount?: Flex__<"div">;
-  share?: Flex__<"div">;
-  shareButton?: Flex__<"div">;
-  title?: Flex__<"h1">;
-  description?: Flex__<"p">;
-  experts?: Flex__<"div">;
-  authorInfoBlog?: Flex__<typeof AuthorInfoBlog>;
-  h3?: Flex__<typeof H3>;
-  strapiRichText?: Flex__<typeof StrapiRichText>;
-  markdownRenderer?: Flex__<typeof MarkdownRenderer>;
-  highlight?: Flex__<typeof Highlight>;
-  bubbles?: Flex__<"div">;
-  singleBubble?: Flex__<typeof SingleBubble>;
-  blogCta?: Flex__<typeof BlogCta>;
-  img?: Flex__<"div">;
-  listOfFacts?: Flex__<"div">;
-  facts?: Flex__<"div">;
-  fact?: Flex__<typeof Fact>;
-  twoColumns?: Flex__<"div">;
-  columns?: Flex__<typeof Columns>;
-  slider?: Flex__<"div">;
-  slotSlider?: Flex__<typeof SlotSlider>;
-  quote?: Flex__<typeof Quote>;
-  tocWrapper?: Flex__<"div">;
-  toC?: Flex__<typeof ToC>;
+  articleNavbar?: Flex__<typeof Navbar>;
+  main?: Flex__<"main">;
+  article?: Flex__<"article">;
+  header?: Flex__<"header">;
+  link?: Flex__<"a"> & Partial<LinkProps>;
+  span?: Flex__<"span">;
+  h1?: Flex__<"h1">;
+  articleCover?: Flex__<typeof OptimizedImage>;
+  aside?: Flex__<"aside">;
+  articleContents?: Flex__<typeof StrapiTableOfContents>;
+  articleRichText?: Flex__<typeof StrapiRichText>;
+  articleContact?: Flex__<typeof FormSection>;
+  articleContactForm?: Flex__<typeof MainForm>;
+  articleFooter?: Flex__<typeof FooterSection>;
 };
 
 export interface DefaultBlogProps {}
 
-const $$ = {};
+const $$ = {
+  fetchGraphQL: __fn_fetchGraphQL
+};
+
+export const serverQueryTree: QueryComponentNode = {
+  type: "component",
+  queries: {
+    cases: {
+      id: "fetchGraphQL",
+      fn: $$.fetchGraphQL,
+      args: ({ $q, $props, $ctx, $state }) => [
+        (() => {
+          const __composite = {
+            method: null,
+            url: null,
+            headers: null,
+            request: null,
+            varOverrides: null
+          };
+          __composite["method"] = "POST";
+          __composite["url"] =
+            "https://staging-strapi-tp.brainfitness.info/graphql/";
+          __composite["headers"] = {
+            Authorization:
+              "Bearer 8585dac783096db3353adbe6700152577354351428bd76c7f4df05cd75a2bff935a8552cc96ff76b3ffdd86213571fcb8c3955d8688752ca5de19b6f6a40b964f700a8a071af500d3e9fa6332440b1298a4a5293c675a08504f3d9bd0294548abc7d11d05d49efa5b98bcbf90ef68299d4ed9985790bc4b4cde7d64e7a325dfa",
+            "Content-Type": "application/json"
+          };
+          __composite["request"] = {
+            query:
+              "query Cases($local: I18NLocaleCode!, $slug: String!) {\n  articles(filters: {slug: {eq: $slug}}, locale: $local) {\n    title\n    publicationDate\n    content {\n      ... on ComponentContentRichText {\n        id\n        body\n      }\n      ... on ComponentContentMedia {\n        id\n      }\n      ... on ComponentContentCta {\n        id\n      }\n    }\n    excerpt\n    featured\n    seo {\n      metaDescription\n      metaTitle\n      shareImage {\n        blurDataURL\n        url\n        width\n        height\n      }\n    }\n    cover {\n      url\n      blurDataURL\n      height\n      width\n    }\n  }\n}",
+            variables: { local: "en", slug: "sdfsf" }
+          };
+          __composite["varOverrides"] = {
+            local: $ctx.params.locale,
+            slug: $ctx.params.slug
+          };
+          return __composite;
+        })()
+      ]
+    }
+  },
+  propsContext: {},
+  stateSpecs: [],
+  children: []
+};
 
 function useNextRouter() {
   try {
@@ -211,12 +229,24 @@ function PlasmicBlog__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const $q = usePlasmicQueries(serverQueryTree, { $ctx, $props, $state: null });
+
   const globalVariants = _useGlobalVariants();
 
   const pageMetadata = generateDynamicMetadata(
-    wrapQueriesWithLoadingProxy({}),
+    wrapQueriesWithLoadingProxy($q),
     $ctx as PageCtx
   );
+
+  const [isLinkFocusVisible, triggerLinkFocusVisibleProps] = useTrigger(
+    "useFocusVisible",
+    {
+      isTextInput: false
+    }
+  );
+  const triggers = {
+    focusVisible_link: isLinkFocusVisible
+  };
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -245,1214 +275,493 @@ function PlasmicBlog__RenderFunc(props: {
             sty.root
           )}
         >
-          <div className={classNames("all", sty.freeBox__a5D7E)}>
-            <div className={classNames("all", sty.freeBox__sWkyw)}>
-              <div
-                data-plasmic-name={"header"}
-                data-plasmic-override={overrides.header}
-                className={classNames("all", sty.header)}
-              >
-                <div
-                  data-plasmic-name={"coverImage"}
-                  data-plasmic-override={overrides.coverImage}
-                  className={classNames("all", sty.coverImage)}
+          <div
+            className={classNames("all", sty.freeBox__ibcgp)}
+            id={"tp-blog-page"}
+          >
+            <Navbar
+              data-plasmic-name={"articleNavbar"}
+              data-plasmic-override={overrides.articleNavbar}
+              className={classNames("__wab_instance", sty.articleNavbar)}
+              noAnimation={true}
+            />
+
+            <main
+              data-plasmic-name={"main"}
+              data-plasmic-override={overrides.main}
+              className={classNames("all", sty.main)}
+            >
+              {Boolean($q.cases.data?.body?.data?.articles?.[0]?.title) ? (
+                <article
+                  data-plasmic-name={"article"}
+                  data-plasmic-override={overrides.article}
+                  className={classNames("all", sty.article)}
                 >
-                  <div
-                    data-plasmic-name={"image"}
-                    data-plasmic-override={overrides.image}
-                    className={classNames("all", sty.image)}
+                  <header
+                    data-plasmic-name={"header"}
+                    data-plasmic-override={overrides.header}
+                    className={classNames("all", sty.header)}
                   >
-                    <OptimizedImage
-                      alt={""}
-                      blurDataURL={(() => {
-                        try {
-                          return $q.stapiBlog.data.body.data.articles[0].cover
-                            .blurDataURL;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return undefined;
+                    <div className={classNames("all", sty.freeBox__la5Dh)}>
+                      <div className={classNames("all", sty.freeBox__w5Taa)}>
+                        <PlasmicLink__
+                          data-plasmic-name={"link"}
+                          data-plasmic-override={overrides.link}
+                          className={classNames(
+                            "all",
+                            "a",
+                            "a__5CArW",
+                            sty.link,
+                            {
+                              [sty.link___focusVisible]:
+                                triggers.focusVisible_link
+                            }
+                          )}
+                          component={Link}
+                          href={
+                            $ctx.params.locale === "lv"
+                              ? "/lv/blog"
+                              : "/en/blog"
                           }
-                          throw e;
-                        }
-                      })()}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.optimizedImage__aFf03
-                      )}
-                      fill={false}
-                      format={"auto"}
-                      height={(() => {
-                        try {
-                          return $q.stapiBlog.data.body.data.articles[0].cover
-                            .height;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return 600;
-                          }
-                          throw e;
-                        }
-                      })()}
-                      loading={"eager"}
-                      objectFit={"cover"}
-                      objectPosition={"center"}
-                      placeholder={"blur"}
-                      quality={75}
-                      sizes={"(max-width: 768px) 100vw, 50vw"}
-                      src={
-                        $dataTokens_pjxw1_strapiUrl +
-                        $q.stapiBlog.data.body.data.articles[0]?.cover?.url
-                      }
-                      width={(() => {
-                        try {
-                          return $q.stapiBlog.data.body.data.articles[0].cover
-                            .width;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return 800;
-                          }
-                          throw e;
-                        }
-                      })()}
-                    />
-                  </div>
-                  <div
-                    data-plasmic-name={"info"}
-                    data-plasmic-override={overrides.info}
-                    className={classNames("all", sty.info)}
-                  >
-                    <div
-                      data-plasmic-name={"main"}
-                      data-plasmic-override={overrides.main}
-                      className={classNames("all", sty.main)}
-                    >
-                      <div
-                        data-plasmic-name={"articleHeader"}
-                        data-plasmic-override={overrides.articleHeader}
-                        className={classNames("all", sty.articleHeader)}
-                      >
-                        <div
-                          data-plasmic-name={"infoRow"}
-                          data-plasmic-override={overrides.infoRow}
-                          className={classNames("all", sty.infoRow)}
+                          legacyBehavior={false}
+                          platform={"nextjs"}
+                          data-plasmic-trigger-props={[
+                            triggerLinkFocusVisibleProps
+                          ]}
                         >
-                          <div
-                            data-plasmic-name={"tags"}
-                            data-plasmic-override={overrides.tags}
-                            className={classNames("all", sty.tags)}
+                          <span
+                            data-plasmic-name={"span"}
+                            data-plasmic-override={overrides.span}
+                            className={classNames(
+                              "all",
+                              "span",
+                              "span__5CArW",
+                              "__wab_text",
+                              sty.span
+                            )}
                           >
-                            <div
-                              data-plasmic-name={"tagLabel"}
-                              data-plasmic-override={overrides.tagLabel}
-                              className={classNames(
-                                "all",
-                                "__wab_text",
-                                sty.tagLabel
-                              )}
-                            >
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return $q.stapiBlog.data.body.data
-                                      .articles[0].article_type[0].Name;
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "\u0421\u0442\u0430\u0442\u044c\u044f";
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            </div>
-                            <div
-                              data-plasmic-name={"divider"}
-                              data-plasmic-override={overrides.divider}
-                              className={classNames(
-                                "all",
-                                "__wab_text",
-                                sty.divider
-                              )}
-                            >
-                              {"\u2022"}
-                            </div>
-                            <div
-                              data-plasmic-name={"tagLabel2"}
-                              data-plasmic-override={overrides.tagLabel2}
-                              className={classNames(
-                                "all",
-                                "__wab_text",
-                                sty.tagLabel2
-                              )}
-                            >
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return $q.stapiBlog.data.body.data
-                                      .articles[0].category.name;
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "\u041e\u0440\u0430\u0442\u043e\u0440\u0441\u043a\u043e\u0435 \u0438\u0441\u043a\u0443\u0441\u0441\u0442\u0432\u043e";
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"dateAndViews"}
-                            data-plasmic-override={overrides.dateAndViews}
-                            className={classNames("all", sty.dateAndViews)}
+                            <React.Fragment>
+                              {$ctx.params.locale === "lv"
+                                ? "← Visi raksti"
+                                : "← All articles"}
+                            </React.Fragment>
+                          </span>
+                        </PlasmicLink__>
+                        {Boolean(
+                          $q.cases.data?.body?.data?.articles?.[0]
+                            ?.publicationDate
+                        ) &&
+                        Number.isFinite(
+                          new Date(
+                            $q.cases.data?.body?.data?.articles?.[0]
+                              ?.publicationDate
+                          ).getTime()
+                        ) ? (
+                          <p
+                            className={classNames(
+                              "all",
+                              "p",
+                              "p__5CArW",
+                              "__wab_text",
+                              sty.p__wDwQe
+                            )}
                           >
-                            <div
-                              data-plasmic-name={"dateLabel"}
-                              data-plasmic-override={overrides.dateLabel}
-                              className={classNames("all", sty.dateLabel)}
-                            >
-                              <div
-                                data-plasmic-name={"date"}
-                                data-plasmic-override={overrides.date}
-                                className={classNames(
-                                  "all",
-                                  "__wab_text",
-                                  sty.date
-                                )}
-                              >
-                                <React.Fragment>
-                                  {(() => {
-                                    try {
-                                      return new Date(
-                                        $q.stapiBlog.data.body.data.articles[0]
-                                          .publishedDate
-                                      ).toLocaleDateString("ru-RU", {
-                                        day: "numeric",
-                                        month: "long",
-                                        year: "numeric",
-                                        timeZone: "Europe/Moscow"
-                                      });
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return "12 \u0438\u044e\u043d\u044f 2026";
-                                      }
-                                      throw e;
+                            <React.Fragment>
+                              {Boolean(
+                                $q.cases.data?.body?.data?.articles?.[0]
+                                  ?.publicationDate
+                              ) &&
+                              Number.isFinite(
+                                new Date(
+                                  $q.cases.data?.body?.data?.articles?.[0]
+                                    ?.publicationDate
+                                ).getTime()
+                              )
+                                ? new Intl.DateTimeFormat(
+                                    $ctx.params.locale === "lv"
+                                      ? "lv-LV"
+                                      : "en-GB",
+                                    {
+                                      day: "numeric",
+                                      month: "long",
+                                      year: "numeric",
+                                      timeZone: "UTC"
                                     }
-                                  })()}
-                                </React.Fragment>
-                              </div>
-                            </div>
-                            <div
-                              data-plasmic-name={"views"}
-                              data-plasmic-override={overrides.views}
-                              className={classNames("all", sty.views)}
-                            >
-                              <EyeIcon
-                                className={classNames("all", sty.svg__o9MBl)}
-                                role={"img"}
-                              />
-
-                              <div
-                                data-plasmic-name={"viewsCount"}
-                                data-plasmic-override={overrides.viewsCount}
-                                className={classNames(
-                                  "all",
-                                  "__wab_text",
-                                  sty.viewsCount
-                                )}
-                              >
-                                {"3\u043a"}
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"share"}
-                            data-plasmic-override={overrides.share}
-                            className={classNames("all", sty.share)}
-                          >
-                            <ShareIcon
-                              className={classNames("all", sty.svg___68DZv)}
-                              role={"img"}
-                            />
-
-                            <div
-                              data-plasmic-name={"shareButton"}
-                              data-plasmic-override={overrides.shareButton}
-                              className={classNames(
-                                "all",
-                                "__wab_text",
-                                sty.shareButton
-                              )}
-                            >
-                              {
-                                "\u041f\u043e\u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f"
-                              }
-                            </div>
-                          </div>
-                        </div>
+                                  ).format(
+                                    new Date(
+                                      $q.cases.data?.body?.data?.articles?.[0]
+                                        ?.publicationDate
+                                    )
+                                  )
+                                : ""}
+                            </React.Fragment>
+                          </p>
+                        ) : null}
                         <h1
-                          data-plasmic-name={"title"}
-                          data-plasmic-override={overrides.title}
+                          data-plasmic-name={"h1"}
+                          data-plasmic-override={overrides.h1}
                           className={classNames(
                             "all",
                             "h1",
                             "h1__5CArW",
                             "__wab_text",
-                            sty.title,
-                            "rf-600 rf-w-75"
+                            sty.h1
                           )}
-                          itemScope={false}
+                          style={{ overflowWrap: "anywhere" }}
                         >
                           <React.Fragment>
-                            {(() => {
-                              try {
-                                return $q.stapiBlog.data.body.data.articles[0]
-                                  .title;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0441\u0442\u0430\u0442\u044c\u0438";
-                                }
-                                throw e;
-                              }
-                            })()}
+                            {$q.cases.data?.body?.data?.articles?.[0]?.title ??
+                              ""}
                           </React.Fragment>
                         </h1>
-                      </div>
-                      <p
-                        data-plasmic-name={"description"}
-                        data-plasmic-override={overrides.description}
-                        className={classNames(
-                          "all",
-                          "p",
-                          "p__5CArW",
-                          "__wab_text",
-                          sty.description
-                        )}
-                      >
-                        <React.Fragment>
-                          {(() => {
-                            try {
-                              return $q.stapiBlog.data.body.data.articles[0]
-                                .description;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435: \u043e \u0447\u0435\u043c \u0431\u0443\u0434\u0435\u0442 \u0441\u0442\u0430\u0442\u044c\u044f. \u041d\u0435 \u043e\u0447\u0435\u043d\u044c \u043c\u043d\u043e\u0433\u043e \u0442\u0435\u043a\u0441\u0442\u0430, 1 \u0430\u0431\u0437\u0430\u0446";
-                              }
-                              throw e;
-                            }
-                          })()}
-                        </React.Fragment>
-                      </p>
-                    </div>
-                    <div
-                      data-plasmic-name={"experts"}
-                      data-plasmic-override={overrides.experts}
-                      className={classNames("all", sty.experts)}
-                    >
-                      {(_par =>
-                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                        (() => {
-                          try {
-                            return $q.stapiBlog.data.body.data.articles[0]
-                              .experts;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                      ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                        const currentItem = __plasmic_item_0;
-                        const currentIndex = __plasmic_idx_0;
-                        return (
-                          <AuthorInfoBlog
-                            data-plasmic-name={"authorInfoBlog"}
-                            data-plasmic-override={overrides.authorInfoBlog}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.authorInfoBlog
-                            )}
-                            expertDescription={(() => {
-                              try {
-                                return currentItem.DescriptionForArticles;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return undefined;
-                                }
-                                throw e;
-                              }
-                            })()}
-                            expertName={(() => {
-                              try {
-                                return currentItem.name;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return undefined;
-                                }
-                                throw e;
-                              }
-                            })()}
-                            expertPhoto={
-                              currentItem.photoCover.formats.thumbnail.url
-                                ? $dataTokens_pjxw1_strapiUrl +
-                                  currentItem.photoCover.formats.thumbnail.url
-                                : undefined
-                            }
-                            key={currentIndex}
-                          />
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {(
-                hasVariant(globalVariants, "screen", "mobile") ? false : true
-              ) ? (
-                <div className={classNames("all", sty.freeBox__rsXtj)} />
-              ) : null}
-            </div>
-            <div className={classNames("all", sty.freeBox__z6YNj)}>
-              <div className={classNames("all", sty.freeBox__sqcxe, "article")}>
-                {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
-                  (() => {
-                    try {
-                      return $q.stapiBlog.data.body.data.articles[0].blocks;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return [];
-                      }
-                      throw e;
-                    }
-                  })()
-                ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                  const currentItem = __plasmic_item_0;
-                  const currentIndex = __plasmic_idx_0;
-                  return (
-                    <div
-                      className={classNames("all", sty.freeBox___7RFzs, "")}
-                      key={currentIndex}
-                    >
-                      {false ? (
-                        <H3
-                          data-plasmic-name={"h3"}
-                          data-plasmic-override={overrides.h3}
-                          className={classNames("__wab_instance", sty.h3)}
-                          heading={(() => {
-                            try {
-                              return currentItem.title;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
-                            }
-                          })()}
-                        />
-                      ) : null}
-                      {(() => {
-                        try {
-                          return (
-                            currentItem.blockType === "ComponentSharedRichText"
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <StrapiRichText
-                          data-plasmic-name={"strapiRichText"}
-                          data-plasmic-override={overrides.strapiRichText}
-                          blockId={(() => {
-                            try {
-                              return currentItem.id ?? "rich-text";
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
-                            }
-                          })()}
-                          className={classNames(
-                            "__wab_instance",
-                            sty.strapiRichText
-                          )}
-                          content={(() => {
-                            try {
-                              return currentItem.RichText;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return [];
-                              }
-                              throw e;
-                            }
-                          })()}
-                          heading2CustomClassName={""}
-                          heading3CustomClassName={""}
-                          openExternalLinksInNewTab={true}
-                          scrollOffset={120}
-                          typography={true}
-                        />
-                      ) : null}
-                      {(() => {
-                        try {
-                          return (
-                            currentItem.blockType === "ComponentSharedTable"
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <div className={classNames("all", sty.freeBox__d6FG9)}>
-                          <MarkdownRenderer
-                            data-plasmic-name={"markdownRenderer"}
-                            data-plasmic-override={overrides.markdownRenderer}
-                            allowImages={true}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.markdownRenderer
-                            )}
-                            markdown={(() => {
-                              try {
-                                return currentItem.TableContent;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return undefined;
-                                }
-                                throw e;
-                              }
-                            })()}
-                            openExternalLinksInNewTab={true}
-                          />
-                        </div>
-                      ) : null}
-                      {(() => {
-                        try {
-                          return (
-                            currentItem.blockType === "ComponentSharedHighlight"
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <Highlight
-                          data-plasmic-name={"highlight"}
-                          data-plasmic-override={overrides.highlight}
-                          blue={(() => {
-                            try {
-                              return currentItem?.Color === "blue";
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return [];
-                              }
-                              throw e;
-                            }
-                          })()}
-                          className={classNames(
-                            "__wab_instance",
-                            sty.highlight
-                          )}
-                          currentItem={currentItem}
-                        />
-                      ) : null}
-                      {(() => {
-                        try {
-                          return (
-                            currentItem.blockType === "ComponentSharedBubble"
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <div
-                          data-plasmic-name={"bubbles"}
-                          data-plasmic-override={overrides.bubbles}
-                          className={classNames("all", sty.bubbles)}
-                        >
-                          <BlogTitle
-                            className={classNames(
-                              "__wab_instance",
-                              sty.blogTitle___54Uem
-                            )}
-                            currentItem={currentItem.Title}
-                          />
-
-                          <div
-                            className={classNames("all", sty.freeBox___5Crq5)}
-                          >
-                            {(_par =>
-                              !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                              (() => {
-                                try {
-                                  return currentItem.BubbleMessage;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return [];
-                                  }
-                                  throw e;
-                                }
-                              })()
-                            ).map((__plasmic_item_1, __plasmic_idx_1) => {
-                              const currentItem = __plasmic_item_1;
-                              const currentIndex = __plasmic_idx_1;
-                              return (
-                                <SingleBubble
-                                  data-plasmic-name={"singleBubble"}
-                                  data-plasmic-override={overrides.singleBubble}
-                                  className={classNames(
-                                    "__wab_instance",
-                                    sty.singleBubble
-                                  )}
-                                  key={currentIndex}
-                                  text={(() => {
-                                    try {
-                                      return currentItem.Message;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
-                                    }
-                                  })()}
-                                  you={(() => {
-                                    try {
-                                      return currentItem.Position === "You";
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return [];
-                                      }
-                                      throw e;
-                                    }
-                                  })()}
-                                />
-                              );
-                            })}
-                          </div>
-                        </div>
-                      ) : null}
-                      {(() => {
-                        try {
-                          return currentItem.blockType === "ComponentSharedCta";
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <BlogCta
-                          data-plasmic-name={"blogCta"}
-                          data-plasmic-override={overrides.blogCta}
-                          className={classNames("__wab_instance", sty.blogCta)}
-                          currentItem={currentItem}
-                        />
-                      ) : null}
-                      {(() => {
-                        try {
-                          return (
-                            currentItem.blockType === "ComponentSharedMedia"
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <div
-                          data-plasmic-name={"img"}
-                          data-plasmic-override={overrides.img}
-                          className={classNames("all", sty.img)}
-                        >
-                          <div
-                            className={classNames("all", sty.freeBox__n0SeU)}
-                          >
-                            <div
-                              className={classNames("all", sty.freeBox___8Gu3A)}
-                            >
-                              {(_par =>
-                                !_par
-                                  ? []
-                                  : Array.isArray(_par)
-                                    ? _par
-                                    : [_par])(
-                                (() => {
-                                  try {
-                                    return currentItem.file;
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return [];
-                                    }
-                                    throw e;
-                                  }
-                                })()
-                              ).map((__plasmic_item_1, __plasmic_idx_1) => {
-                                const currentItem = __plasmic_item_1;
-                                const currentIndex = __plasmic_idx_1;
-                                return (
-                                  <OptimizedImage
-                                    alt={""}
-                                    className={classNames(
-                                      "__wab_instance",
-                                      sty.optimizedImage__d75Ux
-                                    )}
-                                    fill={false}
-                                    format={"auto"}
-                                    height={(() => {
-                                      try {
-                                        return currentItem.height;
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return 600;
-                                        }
-                                        throw e;
-                                      }
-                                    })()}
-                                    key={currentIndex}
-                                    loading={"lazy"}
-                                    objectFit={"cover"}
-                                    objectPosition={"center"}
-                                    placeholder={"blur"}
-                                    quality={75}
-                                    sizes={"(max-width: 768px) 100vw, 50vw"}
-                                    src={
-                                      $dataTokens_pjxw1_strapiUrl +
-                                      currentItem.url
-                                    }
-                                    width={(() => {
-                                      try {
-                                        return currentItem.width;
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return 800;
-                                        }
-                                        throw e;
-                                      }
-                                    })()}
-                                  />
-                                );
-                              })}
-                            </div>
-                            <div
-                              className={classNames(
-                                "all",
-                                "__wab_text",
-                                sty.text__scNbX
-                              )}
-                            >
-                              <React.Fragment>
-                                {currentItem.description}
-                              </React.Fragment>
-                            </div>
-                          </div>
-                        </div>
-                      ) : null}
-                      {(() => {
-                        try {
-                          return (
-                            currentItem.blockType ===
-                            "ComponentSharedListOfFacts"
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <div
-                          data-plasmic-name={"listOfFacts"}
-                          data-plasmic-override={overrides.listOfFacts}
-                          className={classNames("all", sty.listOfFacts)}
-                        >
-                          <BlogTitle
-                            className={classNames(
-                              "__wab_instance",
-                              sty.blogTitle__hPawP
-                            )}
-                            currentItem={currentItem.Title}
-                          />
-
-                          <div
-                            data-plasmic-name={"facts"}
-                            data-plasmic-override={overrides.facts}
-                            className={classNames("all", sty.facts)}
-                          >
-                            {(_par =>
-                              !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                              (() => {
-                                try {
-                                  return currentItem.Facts;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return [];
-                                  }
-                                  throw e;
-                                }
-                              })()
-                            ).map((__plasmic_item_1, __plasmic_idx_1) => {
-                              const currentItem = __plasmic_item_1;
-                              const currentIndex = __plasmic_idx_1;
-                              return (
-                                <Fact
-                                  data-plasmic-name={"fact"}
-                                  data-plasmic-override={overrides.fact}
-                                  className={classNames(
-                                    "__wab_instance",
-                                    sty.fact
-                                  )}
-                                  desrriptionFact={(() => {
-                                    try {
-                                      return currentItem.Description;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
-                                    }
-                                  })()}
-                                  key={currentIndex}
-                                  titleFact={(() => {
-                                    try {
-                                      return currentItem.Title;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
-                                    }
-                                  })()}
-                                />
-                              );
-                            })}
-                          </div>
-                        </div>
-                      ) : null}
-                      {(() => {
-                        try {
-                          return (
-                            currentItem.blockType ===
-                            "ComponentSharedTwoColumns"
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <div
-                          data-plasmic-name={"twoColumns"}
-                          data-plasmic-override={overrides.twoColumns}
-                          className={classNames("all", sty.twoColumns)}
-                        >
-                          {(() => {
-                            try {
-                              return currentItem?.Title;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return true;
-                              }
-                              throw e;
-                            }
-                          })() ? (
-                            <BlogTitle
-                              className={classNames(
-                                "__wab_instance",
-                                sty.blogTitle__mBdIp
-                              )}
-                              currentItem={currentItem.Title}
-                            />
-                          ) : null}
-                          <Columns
-                            data-plasmic-name={"columns"}
-                            data-plasmic-override={overrides.columns}
-                            big={(() => {
-                              try {
-                                return currentItem.isBig;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return [];
-                                }
-                                throw e;
-                              }
-                            })()}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.columns
-                            )}
-                            currentItem={currentItem}
-                          />
-                        </div>
-                      ) : null}
-                      {(() => {
-                        try {
-                          return (
-                            currentItem.blockType === "ComponentSharedSlider"
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <div
-                          data-plasmic-name={"slider"}
-                          data-plasmic-override={overrides.slider}
-                          className={classNames("all", sty.slider)}
-                        >
-                          {(() => {
-                            try {
-                              return (
-                                $q.stapiProgram.data.body.data.programs[0]
-                                  .experts.length > 3
-                              );
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return true;
-                              }
-                              throw e;
-                            }
-                          })() ? (
-                            <SlotSlider
-                              data-plasmic-name={"slotSlider"}
-                              data-plasmic-override={overrides.slotSlider}
-                              ariaLabel={"Slider"}
-                              arrowHeight={"60px"}
-                              arrowMode={"overlay"}
-                              arrowTop={"50%"}
-                              arrowWidth={"60px"}
-                              arrowZIndex={3}
-                              className={classNames(
-                                "__wab_instance",
-                                sty.slotSlider
-                              )}
-                              disableOpacity={0.35}
-                              disabledArrowBehavior={"hide"}
-                              dragEnabled={true}
-                              gap={"6px"}
-                              items={(_par =>
-                                !_par
-                                  ? []
-                                  : Array.isArray(_par)
-                                    ? _par
-                                    : [_par])(
-                                (() => {
-                                  try {
-                                    return currentItem.files;
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return [];
-                                    }
-                                    throw e;
-                                  }
-                                })()
-                              ).map((__plasmic_item_1, __plasmic_idx_1) => {
-                                const currentItem = __plasmic_item_1;
-                                const currentIndex = __plasmic_idx_1;
-                                return (
-                                  <OptimizedImage
-                                    alt={""}
-                                    className={classNames(
-                                      "__wab_instance",
-                                      sty.optimizedImage__rZjjh
-                                    )}
-                                    fill={false}
-                                    format={"auto"}
-                                    height={600}
-                                    key={currentIndex}
-                                    loading={"lazy"}
-                                    objectFit={"cover"}
-                                    objectPosition={"center"}
-                                    placeholder={"blur"}
-                                    quality={75}
-                                    sizes={"(max-width: 768px) 100vw, 50vw"}
-                                    src={
-                                      $dataTokens_pjxw1_strapiUrl +
-                                      currentItem.url
-                                    }
-                                    width={800}
-                                  />
-                                );
-                              })}
-                              leftArrow={
-                                <Arrow
-                                  className={classNames(
-                                    "__wab_instance",
-                                    sty.arrow__fFngl
-                                  )}
-                                />
-                              }
-                              leftArrowOffset={"-30px"}
-                              loop={false}
-                              mobileBreakpoint={520}
-                              nextLabel={"Next slide"}
-                              previousLabel={"Previous slide"}
-                              rightArrow={
-                                <Arrow
-                                  className={classNames(
-                                    "__wab_instance",
-                                    sty.arrow__m35Nv
-                                  )}
-                                />
-                              }
-                              rightArrowOffset={"-30px"}
-                              startIndex={0}
-                              step={1}
-                              tabletBreakpoint={820}
-                              transitionMs={420}
-                              visibleItems={1}
-                              visibleItemsMobile={1}
-                              visibleItemsTablet={1}
-                            />
-                          ) : null}
-                          <div
+                        {Boolean(
+                          $q.cases.data?.body?.data?.articles?.[0]?.excerpt
+                        ) ? (
+                          <p
                             className={classNames(
                               "all",
+                              "p",
+                              "p__5CArW",
                               "__wab_text",
-                              sty.text__eccoO
+                              sty.p___506
                             )}
                           >
                             <React.Fragment>
-                              {currentItem.description}
+                              {$q.cases.data?.body?.data?.articles?.[0]
+                                ?.excerpt ?? ""}
                             </React.Fragment>
-                          </div>
+                          </p>
+                        ) : null}
+                      </div>
+                      {Boolean(
+                        $q.cases.data?.body?.data?.articles?.[0]?.cover?.url
+                      ) ? (
+                        <div
+                          className={classNames("all", sty.freeBox__e1Ugj)}
+                          style={
+                            hasVariant(globalVariants, "screen", "mobile")
+                              ? { aspectRatio: "5/4" }
+                              : { aspectRatio: "5/4" }
+                          }
+                        >
+                          <OptimizedImage
+                            data-plasmic-name={"articleCover"}
+                            data-plasmic-override={overrides.articleCover}
+                            alt={""}
+                            className={classNames(
+                              "__wab_instance",
+                              sty.articleCover
+                            )}
+                            fill={true}
+                            format={"auto"}
+                            height={600}
+                            loading={"eager"}
+                            objectFit={"cover"}
+                            objectPosition={"center"}
+                            placeholder={"empty"}
+                            quality={75}
+                            sizes={
+                              "(max-width: 767px) 100vw, (max-width: 1023px) 720px, 510px"
+                            }
+                            src={
+                              (
+                                $q.cases.data?.body?.data?.articles?.[0]?.cover
+                                  ?.url ?? ""
+                              ).startsWith("/")
+                                ? "https://staging-strapi-tp.brainfitness.info" +
+                                  $q.cases.data?.body?.data?.articles?.[0]
+                                    ?.cover?.url
+                                : ($q.cases.data?.body?.data?.articles?.[0]
+                                    ?.cover?.url ?? "")
+                            }
+                            width={800}
+                          />
                         </div>
                       ) : null}
-                      {(() => {
-                        try {
-                          return (
-                            currentItem.blockType === "ComponentSharedQuote"
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <Quote
-                          data-plasmic-name={"quote"}
-                          data-plasmic-override={overrides.quote}
-                          className={classNames("__wab_instance", sty.quote)}
-                          expertDescription={(() => {
-                            try {
-                              return (
-                                currentItem.ExpertDescription ??
-                                currentItem.experts?.[0].DescriptionForArticles
-                              );
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
-                            }
-                          })()}
-                          expertName={(() => {
-                            try {
-                              return (
-                                currentItem?.ExpertName ??
-                                currentItem?.experts?.[0].name
-                              );
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
-                            }
-                          })()}
-                          expertPhoto={
-                            $dataTokens_pjxw1_strapiUrl +
-                              (currentItem.ExpertPhoto?.formats?.thumbnail
-                                .url ??
-                                currentItem?.experts?.[0]?.photoCover?.formats
-                                  ?.thumbnail.url) ?? ""
-                          }
-                          quoteText={(() => {
-                            try {
-                              return currentItem.body;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
-                            }
-                          })()}
-                        />
-                      ) : null}
                     </div>
-                  );
-                })}
-              </div>
-              {(
-                hasVariant(globalVariants, "screen", "mobile") ? false : true
-              ) ? (
+                  </header>
+                  {(
+                    $q.cases.data?.body?.data?.articles?.[0]?.content ?? []
+                  ).some(
+                    block =>
+                      Array.isArray(block?.body) && Boolean(block.body.length)
+                  ) ? (
+                    <div className={classNames("all", sty.freeBox___1R3Qv)}>
+                      {(() => {
+                        const blocks =
+                          $q.cases.data?.body?.data?.articles?.[0]?.content ??
+                          [];
+                        const levels = blocks.flatMap(block =>
+                          Array.isArray(block?.body)
+                            ? block.body
+                                .filter(
+                                  node =>
+                                    node?.type === "heading" &&
+                                    Number.isInteger(Number(node.level))
+                                )
+                                .map(node => Number(node.level))
+                            : []
+                        );
+                        const firstLevel = levels.length
+                          ? Math.min(...levels)
+                          : 2;
+                        return blocks.map((block, index) =>
+                          Array.isArray(block?.body)
+                            ? {
+                                ...block,
+                                id: block.id ?? "block-" + index,
+                                __typename: "ComponentContentRichText",
+                                body: block.body.map(node =>
+                                  node?.type === "heading"
+                                    ? {
+                                        ...node,
+                                        level: Math.min(
+                                          6,
+                                          Math.max(
+                                            2,
+                                            (Number(node.level) || firstLevel) -
+                                              firstLevel +
+                                              2
+                                          )
+                                        )
+                                      }
+                                    : node
+                                )
+                              }
+                            : block
+                        );
+                      })().some(
+                        block =>
+                          Array.isArray(block?.body) &&
+                          block.body.some(
+                            node => node?.type === "heading" && node.level === 2
+                          )
+                      ) ? (
+                        <aside
+                          data-plasmic-name={"aside"}
+                          data-plasmic-override={overrides.aside}
+                          className={classNames("all", sty.aside)}
+                          id={"tp-blog-toc"}
+                        >
+                          <StrapiTableOfContents
+                            data-plasmic-name={"articleContents"}
+                            data-plasmic-override={overrides.articleContents}
+                            ariaLabel={
+                              $ctx.params.locale === "lv"
+                                ? "Raksta saturs"
+                                : "Article contents"
+                            }
+                            blocks={(() => {
+                              const blocks =
+                                $q.cases.data?.body?.data?.articles?.[0]
+                                  ?.content ?? [];
+                              const levels = blocks.flatMap(block =>
+                                Array.isArray(block?.body)
+                                  ? block.body
+                                      .filter(
+                                        node =>
+                                          node?.type === "heading" &&
+                                          Number.isInteger(Number(node.level))
+                                      )
+                                      .map(node => Number(node.level))
+                                  : []
+                              );
+                              const firstLevel = levels.length
+                                ? Math.min(...levels)
+                                : 2;
+                              return blocks.map((block, index) =>
+                                Array.isArray(block?.body)
+                                  ? {
+                                      ...block,
+                                      id: block.id ?? "block-" + index,
+                                      __typename: "ComponentContentRichText",
+                                      body: block.body.map(node =>
+                                        node?.type === "heading"
+                                          ? {
+                                              ...node,
+                                              level: Math.min(
+                                                6,
+                                                Math.max(
+                                                  2,
+                                                  (Number(node.level) ||
+                                                    firstLevel) -
+                                                    firstLevel +
+                                                    2
+                                                )
+                                              )
+                                            }
+                                          : node
+                                      )
+                                    }
+                                  : block
+                              );
+                            })().filter(
+                              block =>
+                                Array.isArray(block?.body) &&
+                                Boolean(block.body.length)
+                            )}
+                            className={classNames(
+                              "__wab_instance",
+                              sty.articleContents
+                            )}
+                            hideWhenEmpty={true}
+                            highlightActiveSection={true}
+                            observerOffset={112}
+                            richTextTypeName={"ComponentContentRichText"}
+                            title={""}
+                          />
+                        </aside>
+                      ) : null}
+                      <div
+                        className={classNames("all", sty.freeBox__lzynl)}
+                        id={"tp-blog-copy"}
+                      >
+                        {(_par =>
+                          !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                          (() => {
+                            const blocks =
+                              $q.cases.data?.body?.data?.articles?.[0]
+                                ?.content ?? [];
+                            const levels = blocks.flatMap(block =>
+                              Array.isArray(block?.body)
+                                ? block.body
+                                    .filter(
+                                      node =>
+                                        node?.type === "heading" &&
+                                        Number.isInteger(Number(node.level))
+                                    )
+                                    .map(node => Number(node.level))
+                                : []
+                            );
+                            const firstLevel = levels.length
+                              ? Math.min(...levels)
+                              : 2;
+                            return blocks.map((block, index) =>
+                              Array.isArray(block?.body)
+                                ? {
+                                    ...block,
+                                    id: block.id ?? "block-" + index,
+                                    __typename: "ComponentContentRichText",
+                                    body: block.body.map(node =>
+                                      node?.type === "heading"
+                                        ? {
+                                            ...node,
+                                            level: Math.min(
+                                              6,
+                                              Math.max(
+                                                2,
+                                                (Number(node.level) ||
+                                                  firstLevel) -
+                                                  firstLevel +
+                                                  2
+                                              )
+                                            )
+                                          }
+                                        : node
+                                    )
+                                  }
+                                : block
+                            );
+                          })().filter(
+                            block =>
+                              Array.isArray(block?.body) &&
+                              Boolean(block.body.length)
+                          )
+                        ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                          const currentItem = __plasmic_item_0;
+                          const currentIndex = __plasmic_idx_0;
+                          return (
+                            <div
+                              className={classNames("all", sty.freeBox___2EoA4)}
+                              key={currentIndex}
+                            >
+                              <StrapiRichText
+                                data-plasmic-name={"articleRichText"}
+                                data-plasmic-override={
+                                  overrides.articleRichText
+                                }
+                                blockId={
+                                  currentItem.id ?? "block-" + currentIndex
+                                }
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.articleRichText
+                                )}
+                                codeCustomClassName={"tp-blog-code"}
+                                content={currentItem.body}
+                                headingCustomClassName={"tp-blog-heading"}
+                                linkCustomClassName={"tp-blog-link"}
+                                listCustomClassName={"tp-blog-list"}
+                                openExternalLinksInNewTab={true}
+                                paragraphCustomClassName={"tp-blog-p"}
+                                quoteCustomClassName={"tp-blog-quote"}
+                                scrollOffset={112}
+                                typography={false}
+                              />
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ) : null}
+                </article>
+              ) : null}
+              {!$q.cases.data?.body?.data?.articles?.[0]?.title ? (
                 <div
-                  data-plasmic-name={"tocWrapper"}
-                  data-plasmic-override={overrides.tocWrapper}
-                  className={classNames("all", sty.tocWrapper, "")}
+                  className={classNames("all", sty.freeBox__iSox4)}
+                  role={"status"}
                 >
-                  <ToC
-                    data-plasmic-name={"toC"}
-                    data-plasmic-override={overrides.toC}
-                    className={classNames("__wab_instance", sty.toC)}
-                    stapiBlog={$q.stapiBlog}
+                  <p
+                    className={classNames(
+                      "all",
+                      "p",
+                      "p__5CArW",
+                      "__wab_text",
+                      sty.p__iqZd
+                    )}
+                  >
+                    <React.Fragment>
+                      {$q.cases.isLoading
+                        ? $ctx.params.locale === "lv"
+                          ? "Raksts tiek ielādēts…"
+                          : "Loading article…"
+                        : $ctx.params.locale === "lv"
+                          ? "Raksts nav pieejams."
+                          : "This article is unavailable."}
+                    </React.Fragment>
+                  </p>
+                </div>
+              ) : null}
+              {Boolean($q.cases.data?.body?.data?.articles?.[0]?.title) ? (
+                <div className={classNames("all", sty.freeBox__rhLl7)}>
+                  <FormSection
+                    data-plasmic-name={"articleContact"}
+                    data-plasmic-override={overrides.articleContact}
+                    className={classNames("__wab_instance", sty.articleContact)}
+                    form={
+                      <MainForm
+                        data-plasmic-name={"articleContactForm"}
+                        data-plasmic-override={overrides.articleContactForm}
+                        className={classNames(
+                          "__wab_instance",
+                          sty.articleContactForm
+                        )}
+                      />
+                    }
+                    title={
+                      $ctx.params.locale === "lv"
+                        ? "Sazinieties ar mums"
+                        : "Get in touch"
+                    }
                   />
                 </div>
               ) : null}
-            </div>
+            </main>
+            <FooterSection
+              data-plasmic-name={"articleFooter"}
+              data-plasmic-override={overrides.articleFooter}
+              className={classNames("__wab_instance", sty.articleFooter)}
+            />
           </div>
         </div>
       </div>
@@ -1463,243 +772,78 @@ function PlasmicBlog__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
+    "articleNavbar",
+    "main",
+    "article",
     "header",
-    "coverImage",
-    "image",
-    "info",
-    "main",
-    "articleHeader",
-    "infoRow",
-    "tags",
-    "tagLabel",
-    "divider",
-    "tagLabel2",
-    "dateAndViews",
-    "dateLabel",
-    "date",
-    "views",
-    "viewsCount",
-    "share",
-    "shareButton",
-    "title",
-    "description",
-    "experts",
-    "authorInfoBlog",
-    "h3",
-    "strapiRichText",
-    "markdownRenderer",
-    "highlight",
-    "bubbles",
-    "singleBubble",
-    "blogCta",
-    "img",
-    "listOfFacts",
-    "facts",
-    "fact",
-    "twoColumns",
-    "columns",
-    "slider",
-    "slotSlider",
-    "quote",
-    "tocWrapper",
-    "toC"
+    "link",
+    "span",
+    "h1",
+    "articleCover",
+    "aside",
+    "articleContents",
+    "articleRichText",
+    "articleContact",
+    "articleContactForm",
+    "articleFooter"
   ],
-  header: [
-    "header",
-    "coverImage",
-    "image",
-    "info",
-    "main",
-    "articleHeader",
-    "infoRow",
-    "tags",
-    "tagLabel",
-    "divider",
-    "tagLabel2",
-    "dateAndViews",
-    "dateLabel",
-    "date",
-    "views",
-    "viewsCount",
-    "share",
-    "shareButton",
-    "title",
-    "description",
-    "experts",
-    "authorInfoBlog"
-  ],
-  coverImage: [
-    "coverImage",
-    "image",
-    "info",
-    "main",
-    "articleHeader",
-    "infoRow",
-    "tags",
-    "tagLabel",
-    "divider",
-    "tagLabel2",
-    "dateAndViews",
-    "dateLabel",
-    "date",
-    "views",
-    "viewsCount",
-    "share",
-    "shareButton",
-    "title",
-    "description",
-    "experts",
-    "authorInfoBlog"
-  ],
-  image: ["image"],
-  info: [
-    "info",
-    "main",
-    "articleHeader",
-    "infoRow",
-    "tags",
-    "tagLabel",
-    "divider",
-    "tagLabel2",
-    "dateAndViews",
-    "dateLabel",
-    "date",
-    "views",
-    "viewsCount",
-    "share",
-    "shareButton",
-    "title",
-    "description",
-    "experts",
-    "authorInfoBlog"
-  ],
+  articleNavbar: ["articleNavbar"],
   main: [
     "main",
-    "articleHeader",
-    "infoRow",
-    "tags",
-    "tagLabel",
-    "divider",
-    "tagLabel2",
-    "dateAndViews",
-    "dateLabel",
-    "date",
-    "views",
-    "viewsCount",
-    "share",
-    "shareButton",
-    "title",
-    "description"
+    "article",
+    "header",
+    "link",
+    "span",
+    "h1",
+    "articleCover",
+    "aside",
+    "articleContents",
+    "articleRichText",
+    "articleContact",
+    "articleContactForm"
   ],
-  articleHeader: [
-    "articleHeader",
-    "infoRow",
-    "tags",
-    "tagLabel",
-    "divider",
-    "tagLabel2",
-    "dateAndViews",
-    "dateLabel",
-    "date",
-    "views",
-    "viewsCount",
-    "share",
-    "shareButton",
-    "title"
+  article: [
+    "article",
+    "header",
+    "link",
+    "span",
+    "h1",
+    "articleCover",
+    "aside",
+    "articleContents",
+    "articleRichText"
   ],
-  infoRow: [
-    "infoRow",
-    "tags",
-    "tagLabel",
-    "divider",
-    "tagLabel2",
-    "dateAndViews",
-    "dateLabel",
-    "date",
-    "views",
-    "viewsCount",
-    "share",
-    "shareButton"
-  ],
-  tags: ["tags", "tagLabel", "divider", "tagLabel2"],
-  tagLabel: ["tagLabel"],
-  divider: ["divider"],
-  tagLabel2: ["tagLabel2"],
-  dateAndViews: ["dateAndViews", "dateLabel", "date", "views", "viewsCount"],
-  dateLabel: ["dateLabel", "date"],
-  date: ["date"],
-  views: ["views", "viewsCount"],
-  viewsCount: ["viewsCount"],
-  share: ["share", "shareButton"],
-  shareButton: ["shareButton"],
-  title: ["title"],
-  description: ["description"],
-  experts: ["experts", "authorInfoBlog"],
-  authorInfoBlog: ["authorInfoBlog"],
-  h3: ["h3"],
-  strapiRichText: ["strapiRichText"],
-  markdownRenderer: ["markdownRenderer"],
-  highlight: ["highlight"],
-  bubbles: ["bubbles", "singleBubble"],
-  singleBubble: ["singleBubble"],
-  blogCta: ["blogCta"],
-  img: ["img"],
-  listOfFacts: ["listOfFacts", "facts", "fact"],
-  facts: ["facts", "fact"],
-  fact: ["fact"],
-  twoColumns: ["twoColumns", "columns"],
-  columns: ["columns"],
-  slider: ["slider", "slotSlider"],
-  slotSlider: ["slotSlider"],
-  quote: ["quote"],
-  tocWrapper: ["tocWrapper", "toC"],
-  toC: ["toC"]
+  header: ["header", "link", "span", "h1", "articleCover"],
+  link: ["link", "span"],
+  span: ["span"],
+  h1: ["h1"],
+  articleCover: ["articleCover"],
+  aside: ["aside", "articleContents"],
+  articleContents: ["articleContents"],
+  articleRichText: ["articleRichText"],
+  articleContact: ["articleContact", "articleContactForm"],
+  articleContactForm: ["articleContactForm"],
+  articleFooter: ["articleFooter"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  header: "div";
-  coverImage: "div";
-  image: "div";
-  info: "div";
-  main: "div";
-  articleHeader: "div";
-  infoRow: "div";
-  tags: "div";
-  tagLabel: "div";
-  divider: "div";
-  tagLabel2: "div";
-  dateAndViews: "div";
-  dateLabel: "div";
-  date: "div";
-  views: "div";
-  viewsCount: "div";
-  share: "div";
-  shareButton: "div";
-  title: "h1";
-  description: "p";
-  experts: "div";
-  authorInfoBlog: typeof AuthorInfoBlog;
-  h3: typeof H3;
-  strapiRichText: typeof StrapiRichText;
-  markdownRenderer: typeof MarkdownRenderer;
-  highlight: typeof Highlight;
-  bubbles: "div";
-  singleBubble: typeof SingleBubble;
-  blogCta: typeof BlogCta;
-  img: "div";
-  listOfFacts: "div";
-  facts: "div";
-  fact: typeof Fact;
-  twoColumns: "div";
-  columns: typeof Columns;
-  slider: "div";
-  slotSlider: typeof SlotSlider;
-  quote: typeof Quote;
-  tocWrapper: "div";
-  toC: typeof ToC;
+  articleNavbar: typeof Navbar;
+  main: "main";
+  article: "article";
+  header: "header";
+  link: "a";
+  span: "span";
+  h1: "h1";
+  articleCover: typeof OptimizedImage;
+  aside: "aside";
+  articleContents: typeof StrapiTableOfContents;
+  articleRichText: typeof StrapiRichText;
+  articleContact: typeof FormSection;
+  articleContactForm: typeof MainForm;
+  articleFooter: typeof FooterSection;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1764,54 +908,28 @@ export const PlasmicBlog = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    header: makeNodeComponent("header"),
-    coverImage: makeNodeComponent("coverImage"),
-    image: makeNodeComponent("image"),
-    info: makeNodeComponent("info"),
+    articleNavbar: makeNodeComponent("articleNavbar"),
     main: makeNodeComponent("main"),
-    articleHeader: makeNodeComponent("articleHeader"),
-    infoRow: makeNodeComponent("infoRow"),
-    tags: makeNodeComponent("tags"),
-    tagLabel: makeNodeComponent("tagLabel"),
-    divider: makeNodeComponent("divider"),
-    tagLabel2: makeNodeComponent("tagLabel2"),
-    dateAndViews: makeNodeComponent("dateAndViews"),
-    dateLabel: makeNodeComponent("dateLabel"),
-    date: makeNodeComponent("date"),
-    views: makeNodeComponent("views"),
-    viewsCount: makeNodeComponent("viewsCount"),
-    share: makeNodeComponent("share"),
-    shareButton: makeNodeComponent("shareButton"),
-    title: makeNodeComponent("title"),
-    description: makeNodeComponent("description"),
-    experts: makeNodeComponent("experts"),
-    authorInfoBlog: makeNodeComponent("authorInfoBlog"),
-    h3: makeNodeComponent("h3"),
-    strapiRichText: makeNodeComponent("strapiRichText"),
-    markdownRenderer: makeNodeComponent("markdownRenderer"),
-    highlight: makeNodeComponent("highlight"),
-    bubbles: makeNodeComponent("bubbles"),
-    singleBubble: makeNodeComponent("singleBubble"),
-    blogCta: makeNodeComponent("blogCta"),
-    img: makeNodeComponent("img"),
-    listOfFacts: makeNodeComponent("listOfFacts"),
-    facts: makeNodeComponent("facts"),
-    fact: makeNodeComponent("fact"),
-    twoColumns: makeNodeComponent("twoColumns"),
-    columns: makeNodeComponent("columns"),
-    slider: makeNodeComponent("slider"),
-    slotSlider: makeNodeComponent("slotSlider"),
-    quote: makeNodeComponent("quote"),
-    tocWrapper: makeNodeComponent("tocWrapper"),
-    toC: makeNodeComponent("toC"),
+    article: makeNodeComponent("article"),
+    header: makeNodeComponent("header"),
+    link: makeNodeComponent("link"),
+    span: makeNodeComponent("span"),
+    h1: makeNodeComponent("h1"),
+    articleCover: makeNodeComponent("articleCover"),
+    aside: makeNodeComponent("aside"),
+    articleContents: makeNodeComponent("articleContents"),
+    articleRichText: makeNodeComponent("articleRichText"),
+    articleContact: makeNodeComponent("articleContact"),
+    articleContactForm: makeNodeComponent("articleContactForm"),
+    articleFooter: makeNodeComponent("articleFooter"),
 
     // Metadata about props expected for PlasmicBlog
     internalVariantProps: PlasmicBlog__VariantProps,
     internalArgProps: PlasmicBlog__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
-      pageRoute: "/blog",
-      pagePath: "/blog",
+      pageRoute: "/[locale]/blog/[slug]",
+      pagePath: "/[locale]/blog/[slug]",
       params: {},
       query: {}
     })

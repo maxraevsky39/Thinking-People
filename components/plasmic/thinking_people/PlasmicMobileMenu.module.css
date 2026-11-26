@@ -1,0 +1,103 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+}
+.freeBox__oJwGa {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  row-gap: 8px;
+  width: min(400px, calc(100vw - 24px));
+  margin-bottom: 0px;
+  font-family: var(--token-NyfZrcORdatl);
+  position: relative;
+}
+.menuToggle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 14px;
+  width: 100%;
+  min-height: 56px;
+  box-shadow: 0 8px 28px 0px rgba(26, 26, 24, 0.23);
+  color: var(--token-IT77AyB9SmEq);
+  font-family: var(--token-NyfZrcORdatl);
+  font-size: var(--token-k-28lmZ1lA1A);
+  font-weight: 700;
+  line-height: var(--token-vTnE8Xa437lb);
+  cursor: pointer;
+  background: var(--token-bzHF43-qiu9q);
+  border-radius: var(--token-mp7K1CYWDyjO);
+  padding: 8px 9px 8px 22px;
+  border: 1px solid var(--token-5Er63pUPtPzZ);
+}
+.root .menuToggle___focusVisible {
+  outline: none;
+}
+.span__t5Oi {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  color: var(--token-EiQM1bzsOe9e);
+  font-size: 0px;
+  line-height: var(--token-qFcTVPKYPjBs);
+  font-weight: 600;
+  background: var(--token-Bosj2MGV4qhO);
+  border-radius: var(--token-mp7K1CYWDyjO);
+}
+.menuPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  row-gap: 2px;
+  width: 100%;
+  max-height: min(65dvh, 470px);
+  overflow-y: auto;
+  box-shadow: 0 12px 45px 0px rgba(26, 26, 24, 0.16);
+  background: var(--token-KbpWJO-t_Y4e);
+  border-radius: var(--token-uhrGNl5KkUTa);
+  padding: 9px;
+  border: 1px solid var(--token-1I5mNuI4gG5P);
+}
+.mobileLearning:global(.__wab_instance) {
+  max-width: 100%;
+  width: 100%;
+}
+.mobileCases:global(.__wab_instance) {
+  max-width: 100%;
+  width: 100%;
+}
+.mobileDiagnostics:global(.__wab_instance) {
+  max-width: 100%;
+  width: 100%;
+}
+.freeBox__uDrUu {
+  display: block;
+  width: calc(100% - 24px);
+  height: 1px;
+  background: var(--token-1I5mNuI4gG5P);
+  flex-shrink: 0;
+  margin: 4px 12px;
+}
+.mobileBlog:global(.__wab_instance) {
+  max-width: 100%;
+  width: 100%;
+}
+.mobileTeam:global(.__wab_instance) {
+  max-width: 100%;
+  width: 100%;
+}
+.mobileAbout:global(.__wab_instance) {
+  max-width: 100%;
+  width: 100%;
+}
