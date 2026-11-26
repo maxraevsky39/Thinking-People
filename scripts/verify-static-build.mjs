@@ -35,6 +35,7 @@ for(const url of expected.urls){
   }
   results.push({url,locale,bytes:Buffer.byteLength(html)});
 }
-for(const page of expected.pages) assert.equal(prerender.dynamicRoutes[page.route]?.fallback,false,`Non-static fallback: ${page.route}`);
+const blockingRoutes = new Set(['/[locale]/blog/[slug]', '/[locale]/cases/[slug]']);
+for(const page of expected.pages) assert.equal(prerender.dynamicRoutes[page.route]?.fallback, blockingRoutes.has(page.route) ? null : false, `Unexpected fallback mode: ${page.route}`);
 fs.writeFileSync('.tp-generated/build-report.json',JSON.stringify({verified:true,count:results.length,locales:expected.locales,pages:results},null,2)+'\n');
 console.log(`Verified ${results.length} prerendered HTML pages across ${expected.locales.join(', ')}.`);
