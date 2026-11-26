@@ -165,24 +165,28 @@ function PlasmicMobileMenuPoint__RenderFunc(props: {
     $refs
   });
 
-  const [isN23502555FocusVisible, triggerN23502555FocusVisibleProps] =
-    useTrigger("useFocusVisible", {
+  const [isN3727099FocusVisible, triggerN3727099FocusVisibleProps] = useTrigger(
+    "useFocusVisible",
+    {
       isTextInput: false
-    });
+    }
+  );
   const [isButtonFocusVisible, triggerButtonFocusVisibleProps] = useTrigger(
     "useFocusVisible",
     {
       isTextInput: false
     }
   );
-  const [isN23502569FocusVisible, triggerN23502569FocusVisibleProps] =
-    useTrigger("useFocusVisible", {
+  const [isN3727113FocusVisible, triggerN3727113FocusVisibleProps] = useTrigger(
+    "useFocusVisible",
+    {
       isTextInput: false
-    });
+    }
+  );
   const triggers = {
-    focusVisible_23502555: isN23502555FocusVisible,
+    focusVisible_3727099: isN3727099FocusVisible,
     focusVisible_button: isButtonFocusVisible,
-    focusVisible_23502569: isN23502569FocusVisible
+    focusVisible_3727113: isN3727113FocusVisible
   };
 
   const styleTokensClassNames = _useStyleTokens();
@@ -207,7 +211,7 @@ function PlasmicMobileMenuPoint__RenderFunc(props: {
           <PlasmicLink__
             className={classNames("all", "a", "a__5CArW", sty.link__iBrfk, {
               [sty.link___focusVisible__iBrfkqn2F6]:
-                triggers.focusVisible_23502555
+                triggers.focusVisible_3727099
             })}
             component={Link}
             href={$props.href}
@@ -237,11 +241,11 @@ function PlasmicMobileMenuPoint__RenderFunc(props: {
             }}
             platform={"nextjs"}
             style={
-              triggers.focusVisible_23502555
+              triggers.focusVisible_3727099
                 ? { outlineOffset: "-2px" }
                 : undefined
             }
-            data-plasmic-trigger-props={[triggerN23502555FocusVisibleProps]}
+            data-plasmic-trigger-props={[triggerN3727099FocusVisibleProps]}
           >
             <span
               className={classNames(
@@ -387,7 +391,7 @@ function PlasmicMobileMenuPoint__RenderFunc(props: {
                       sty.link__pnQa7,
                       {
                         [sty.link___focusVisible__pnQa7Q8Yhx]:
-                          triggers.focusVisible_23502569
+                          triggers.focusVisible_3727113
                       }
                     )}
                     component={Link}
@@ -420,12 +424,12 @@ function PlasmicMobileMenuPoint__RenderFunc(props: {
                     }}
                     platform={"nextjs"}
                     style={
-                      triggers.focusVisible_23502569
+                      triggers.focusVisible_3727113
                         ? { outlineOffset: "-2px" }
                         : undefined
                     }
                     data-plasmic-trigger-props={[
-                      triggerN23502569FocusVisibleProps
+                      triggerN3727113FocusVisibleProps
                     ]}
                   >
                     <span
