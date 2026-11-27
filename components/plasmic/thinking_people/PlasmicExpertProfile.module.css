@@ -7,10 +7,10 @@
   color: var(--token-EiQM1bzsOe9e);
   font-family: var(--token-NyfZrcORdatl);
   height: 100%;
-  padding-top: 80px;
   background: var(--token-KbpWJO-t_Y4e);
   min-width: 0;
   min-height: 0;
+  padding: var(--token-MrnPxabM_h3-) 0px 0px;
 }
 .expertNode2:global(.__wab_instance) {
   max-width: 100%;

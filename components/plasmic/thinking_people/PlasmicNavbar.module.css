@@ -12,6 +12,11 @@
   font-family: var(--token-NyfZrcORdatl);
   padding: 0px;
 }
+@media (max-width: 511px) {
+  .navbar {
+    height: 60px;
+  }
+}
 .lolcaleSlect:global(.__wab_instance) {
   position: absolute;
   top: auto;
@@ -41,6 +46,11 @@
   background: var(--token-KbpWJO-t_Y4e);
   min-width: 0;
   padding: 0px;
+}
+@media (max-width: 511px) {
+  .freeBox {
+    height: 60px;
+  }
 }
 .menu {
   display: flex;

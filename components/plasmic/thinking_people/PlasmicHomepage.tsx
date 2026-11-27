@@ -70,9 +70,11 @@ import type { QueryComponentNode } from "@plasmicapp/react-web/lib/data-sources"
 
 import Navbar from "../../Navbar"; // plasmic-import: 7oIiUelc00Y9/component
 import { ContactSheet } from "../../ContactSheet"; // plasmic-import: A9lCeBSgsYEF/codeComponent
+import BtnPrime from "../../BtnPrime"; // plasmic-import: lXQZo507qQoe/component
 import HowWeWorkSection from "../../HowWeWorkSection"; // plasmic-import: SQRx18Lz1hYn/component
 import H2 from "../../H2"; // plasmic-import: Yl_PbqD71djV/component
-import { ScrollSection } from "../../ScrollSection"; // plasmic-import: mqp2cBG_dizY/codeComponent
+import { MotionScrollSection } from "../../MotionScrollSection"; // plasmic-import: za2mx6yd4yJR/codeComponent
+import { OptimizedImage } from "../../OptimizedImage"; // plasmic-import: 2sAw0k_qEFgf/codeComponent
 import BtnSecond from "../../BtnSecond"; // plasmic-import: gKCTmQN19iqg/component
 import { About13 } from "../../About13"; // plasmic-import: w2c8KkWos3P4/codeComponent
 import BasicCard from "../../BasicCard"; // plasmic-import: h1uZWvI2U-SZ/component
@@ -137,12 +139,14 @@ export type PlasmicHomepage__OverridesType = {
   heroSection?: Flex__<"div">;
   contactSheet?: Flex__<typeof ContactSheet>;
   content?: Flex__<"div">;
+  btnPrime?: Flex__<typeof BtnPrime>;
   howWeWorkSection?: Flex__<typeof HowWeWorkSection>;
   basicCardSection2?: Flex__<"div">;
   cardWrapper2?: Flex__<"div">;
-  scrollSection?: Flex__<typeof ScrollSection>;
-  card2?: Flex__<"div">;
+  motionScrollSection?: Flex__<typeof MotionScrollSection>;
+  card2?: Flex__<"a"> & Partial<LinkProps>;
   point?: Flex__<"div">;
+  optimizedImage?: Flex__<typeof OptimizedImage>;
   leadershipSection2?: Flex__<"div">;
   btnSecond?: Flex__<typeof BtnSecond>;
   about13?: Flex__<typeof About13>;
@@ -184,7 +188,7 @@ export const serverQueryTree: QueryComponentNode = {
           };
           __composite["request"] = {
             query:
-              "query Strapi($local: I18NLocaleCode!) {\n  homepage(locale: $local) {\n    heroSpan\n    h1\n    heroBtnText\n    heroBtnLink\n    heroSecondBtnText\n    heroSecondBtnLink\n    heroImg {\n      url\n      width\n      height\n    }\n    section {\n      ... on ComponentBasicBlock {\n        id\n        shared_block {\n          btnLink\n          btnText\n          card {\n            btnLink\n            btnText\n            description\n            icon {\n              url\n              width\n              height\n            }\n            title\n          }\n          description\n          extraDescription\n          extraTitle\n          name\n          title\n          type\n        }\n      }\n    }\n    heroDescription\n  }\n  experts(pagination: {pageSize: 20}) {\n    name\n    cardPhoto {\n      url\n      width\n      height\n      blurDataURL\n    }\n  }\n}",
+              "query Strapi($local: I18NLocaleCode!) {\n  homepage(locale: $local) {\n    heroSpan\n    h1\n    heroBtnText\n    heroBtnLink\n    heroSecondBtnText\n    heroSecondBtnLink\n    heroImg {\n      url\n      width\n      height\n    }\n    section {\n      ... on ComponentBasicBlock {\n        id\n        shared_block {\n          btnLink\n          btnText\n          card {\n            btnLink\n            btnText\n            description\n            icon {\n              url\n              width\n              height\n            }\n            title\n          }\n          description\n          extraDescription\n          extraTitle\n          name\n          title\n          type\n        }\n      }\n    }\n    heroDescription\n  }\n  experts(pagination: {pageSize: 20}) {\n    name\n    cardPhoto {\n      url\n      width\n      height\n      blurDataURL\n    }\n  }\n  directions(pagination: {limit: 3}) {\n    slug\n    title\n    hero {\n      image {\n        width\n        height\n        url\n        blurDataURL\n      }\n    }\n  }\n}",
             variables: { local: "en" }
           };
           __composite["varOverrides"] = {
@@ -403,6 +407,23 @@ function PlasmicHomepage__RenderFunc(props: {
                   ? "Individu\u0101li risin\u0101jumi j\u016bsu komandu un vad\u012bt\u0101ju att\u012bst\u012bbai"
                   : "Bespoke leadership development, built around your business goal"}
               </div>
+              <BtnPrime
+                data-plasmic-name={"btnPrime"}
+                data-plasmic-override={overrides.btnPrime}
+                className={classNames("__wab_instance", sty.btnPrime, {
+                  [sty.btnPrimeglobal_language_lv]: hasVariant(
+                    globalVariants,
+                    "language",
+                    "lv"
+                  )
+                })}
+                link={"#form"}
+                text={
+                  hasVariant(globalVariants, "language", "lv")
+                    ? "Sa\u0146emt konsult\u0101ciju"
+                    : undefined
+                }
+              />
             </div>
           </div>
           <HowWeWorkSection
@@ -448,77 +469,119 @@ function PlasmicHomepage__RenderFunc(props: {
                   : undefined
               }
             >
-              {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))([
-                {
-                  title: {
-                    en: "Business Communication",
-                    lv: "Biznesa komunikācija"
-                  },
-                  description: {
-                    en: "Helping people understand each other faster and solve work-related challenges more effectively.",
-                    lv: "Palīdzam cilvēkiem ātrāk saprast vienam otru un efektīvāk risināt darba izaicinājumus."
-                  },
-                  topics: [
-                    { en: "Negotiation", lv: "Pārrunas" },
-                    { en: "Feedback", lv: "Atgriezeniskā saite" },
-                    { en: "Public Speaking", lv: "Publiskā uzstāšanās" }
-                  ]
-                },
-                {
-                  title: { en: "Cognitive Skills", lv: "Kognitīvās prasmes" },
-                  description: {
-                    en: "Helping teams think more clearly, analyze information, and make better decisions.",
-                    lv: "Palīdzam komandām domāt skaidrāk, analizēt informāciju un pieņemt labākus lēmumus."
-                  },
-                  topics: [
-                    { en: "Critical Thinking", lv: "Kritiskā domāšana" },
-                    { en: "Cognitive Skills", lv: "Kognitīvās prasmes" },
-                    { en: "Decision-Making", lv: "Lēmumu pieņemšana" }
-                  ]
-                },
-                {
-                  title: {
-                    en: "Leadership and Management Skills",
-                    lv: "Līderības un vadības prasmes"
-                  },
-                  description: {
-                    en: "Helping strong professionals become effective leaders.",
-                    lv: "Palīdzam spēcīgiem profesionāļiem kļūt par efektīviem vadītājiem."
-                  },
-                  topics: [
-                    { en: "Team Management", lv: "Komandas vadība" },
-                    { en: "Delegation", lv: "Deleģēšana" },
-                    {
-                      en: "Leading Through Change",
-                      lv: "Vadība pārmaiņu laikā"
+              {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                (() => {
+                  try {
+                    return [
+                      {
+                        title: {
+                          en: "Business Communication",
+                          lv: "Biznesa komunikācija"
+                        },
+                        description: {
+                          en: "Helping people understand each other faster and solve work-related challenges more effectively.",
+                          lv: "Palīdzam cilvēkiem ātrāk saprast vienam otru un efektīvāk risināt darba izaicinājumus."
+                        },
+                        topics: [
+                          {
+                            en: "Negotiation",
+                            lv: "Pārrunas"
+                          },
+                          {
+                            en: "Feedback",
+                            lv: "Atgriezeniskā saite"
+                          },
+                          {
+                            en: "Public Speaking",
+                            lv: "Publiskā uzstāšanās"
+                          }
+                        ]
+                      },
+                      {
+                        title: {
+                          en: "Cognitive Skills",
+                          lv: "Kognitīvās prasmes"
+                        },
+                        description: {
+                          en: "Helping teams think more clearly, analyze information, and make better decisions.",
+                          lv: "Palīdzam komandām domāt skaidrāk, analizēt informāciju un pieņemt labākus lēmumus."
+                        },
+                        topics: [
+                          {
+                            en: "Critical Thinking",
+                            lv: "Kritiskā domāšana"
+                          },
+                          {
+                            en: "Cognitive Skills",
+                            lv: "Kognitīvās prasmes"
+                          },
+                          {
+                            en: "Decision-Making",
+                            lv: "Lēmumu pieņemšana"
+                          }
+                        ]
+                      },
+                      {
+                        title: {
+                          en: "Leadership and Management Skills",
+                          lv: "Līderības un vadības prasmes"
+                        },
+                        description: {
+                          en: "Helping strong professionals become effective leaders.",
+                          lv: "Palīdzam spēcīgiem profesionāļiem kļūt par efektīviem vadītājiem."
+                        },
+                        topics: [
+                          {
+                            en: "Team Management",
+                            lv: "Komandas vadība"
+                          },
+                          {
+                            en: "Delegation",
+                            lv: "Deleģēšana"
+                          },
+                          {
+                            en: "Leading Through Change",
+                            lv: "Vadība pārmaiņu laikā"
+                          }
+                        ]
+                      }
+                    ];
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return [];
                     }
-                  ]
-                }
-              ]).map((__plasmic_item_0, __plasmic_idx_0) => {
+                    throw e;
+                  }
+                })()
+              ).map((__plasmic_item_0, __plasmic_idx_0) => {
                 const currentItem = __plasmic_item_0;
                 const currentIndex = __plasmic_idx_0;
                 return (
-                  <ScrollSection
-                    data-plasmic-name={"scrollSection"}
-                    data-plasmic-override={overrides.scrollSection}
-                    animationClassName={""}
-                    className={classNames("__wab_instance", sty.scrollSection)}
-                    ease={"power2.inOut"}
-                    end={"top 50%"}
+                  <MotionScrollSection
+                    data-plasmic-name={"motionScrollSection"}
+                    data-plasmic-override={overrides.motionScrollSection}
+                    className={classNames(
+                      "__wab_instance",
+                      sty.motionScrollSection
+                    )}
+                    ease={"sine.inOut"}
                     fromBlur={0}
                     fromOpacity={0}
                     fromRotation={0}
                     fromRotationX={0}
                     fromRotationY={0}
-                    fromScale={1}
+                    fromScale={0.95}
                     fromX={0}
                     fromY={(() => {
                       try {
                         return currentIndex === 0
-                          ? "210px"
+                          ? 210
                           : currentIndex === 1
-                            ? "160px"
-                            : "80px";
+                            ? 160
+                            : 80;
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -530,11 +593,10 @@ function PlasmicHomepage__RenderFunc(props: {
                       }
                     })()}
                     key={currentIndex}
-                    markers={false}
+                    offsetEnd={"start 50%"}
+                    offsetStart={"start 95%"}
                     perspective={1000}
-                    pin={false}
-                    scrub={0.5}
-                    start={"top 90%"}
+                    smoothing={0.1}
                     toBlur={0}
                     toOpacity={1}
                     toRotation={0}
@@ -542,29 +604,72 @@ function PlasmicHomepage__RenderFunc(props: {
                     toRotationY={0}
                     toScale={1}
                     toX={0}
-                    toY={(() => {
-                      try {
-                        return currentIndex === 0
-                          ? "40px"
-                          : currentIndex === 1
-                            ? "20px"
-                            : 0;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return 0;
-                        }
-                        throw e;
-                      }
-                    })()}
+                    toY={
+                      hasVariant(globalVariants, "screen", "mobile")
+                        ? (() => {
+                            try {
+                              return 0;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return 0;
+                              }
+                              throw e;
+                            }
+                          })()
+                        : (() => {
+                            try {
+                              return currentIndex === 0
+                                ? 40
+                                : currentIndex === 1
+                                  ? 20
+                                  : 0;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return 0;
+                              }
+                              throw e;
+                            }
+                          })()
+                    }
+                    trackContentSize={false}
                     transformOrigin={"center center"}
                   >
-                    <div
+                    <PlasmicLink__
                       data-plasmic-name={"card2"}
                       data-plasmic-override={overrides.card2}
-                      className={classNames("all", sty.card2, "")}
+                      className={classNames(
+                        "all",
+                        "a",
+                        "a__5CArW",
+                        sty.card2,
+                        "card-basic  card-link"
+                      )}
+                      component={Link}
+                      href={`/${encodeURIComponent("en")}/learning/${encodeURIComponent(
+                        (() => {
+                          try {
+                            return $q.strapi.data.body.data.directions[
+                              currentIndex
+                            ].slug;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      )}`}
+                      legacyBehavior={false}
+                      platform={"nextjs"}
                     >
                       <div className={classNames("all", sty.freeBox__aiMu1)}>
                         <div className={classNames("all", sty.freeBox__bgWCj)}>
@@ -601,6 +706,77 @@ function PlasmicHomepage__RenderFunc(props: {
                                 })()}
                               </React.Fragment>
                             </div>
+                            <OptimizedImage
+                              data-plasmic-name={"optimizedImage"}
+                              data-plasmic-override={overrides.optimizedImage}
+                              alt={""}
+                              blurDataURL={(() => {
+                                try {
+                                  return $q.strapi.data.body.data.directions[
+                                    currentIndex
+                                  ].hero.image.blurDataURL;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                              className={classNames(
+                                "__wab_instance",
+                                sty.optimizedImage
+                              )}
+                              fill={true}
+                              format={"auto"}
+                              height={(() => {
+                                try {
+                                  return $q.strapi.data.body.data.directions[
+                                    currentIndex
+                                  ].hero.image.height;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return 600;
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                              loading={"lazy"}
+                              objectFit={"cover"}
+                              objectPosition={"center"}
+                              placeholder={"blur"}
+                              quality={75}
+                              sizes={"(max-width: 768px) 100vw, 50vw"}
+                              src={
+                                $dataTokens_5CArW_strapiUrl +
+                                $q.strapi.data.body.data.directions[
+                                  currentIndex
+                                ].hero.image.url
+                              }
+                              width={(() => {
+                                try {
+                                  return $q.strapi.data.body.data.directions[
+                                    currentIndex
+                                  ].hero.image.width;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return 800;
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            />
                           </div>
                           <div
                             className={classNames(
@@ -703,8 +879,8 @@ function PlasmicHomepage__RenderFunc(props: {
                           );
                         })}
                       </div>
-                    </div>
-                  </ScrollSection>
+                    </PlasmicLink__>
+                  </MotionScrollSection>
                 );
               })}
             </div>
@@ -1010,12 +1186,14 @@ const PlasmicDescendants = {
     "heroSection",
     "contactSheet",
     "content",
+    "btnPrime",
     "howWeWorkSection",
     "basicCardSection2",
     "cardWrapper2",
-    "scrollSection",
+    "motionScrollSection",
     "card2",
     "point",
+    "optimizedImage",
     "leadershipSection2",
     "btnSecond",
     "about13",
@@ -1026,21 +1204,35 @@ const PlasmicDescendants = {
     "footerSection"
   ],
   navbar: ["navbar"],
-  heroSection: ["heroSection", "contactSheet", "content"],
+  heroSection: ["heroSection", "contactSheet", "content", "btnPrime"],
   contactSheet: ["contactSheet"],
-  content: ["content"],
+  content: ["content", "btnPrime"],
+  btnPrime: ["btnPrime"],
   howWeWorkSection: ["howWeWorkSection"],
   basicCardSection2: [
     "basicCardSection2",
     "cardWrapper2",
-    "scrollSection",
+    "motionScrollSection",
     "card2",
-    "point"
+    "point",
+    "optimizedImage"
   ],
-  cardWrapper2: ["cardWrapper2", "scrollSection", "card2", "point"],
-  scrollSection: ["scrollSection", "card2", "point"],
-  card2: ["card2", "point"],
-  point: ["point"],
+  cardWrapper2: [
+    "cardWrapper2",
+    "motionScrollSection",
+    "card2",
+    "point",
+    "optimizedImage"
+  ],
+  motionScrollSection: [
+    "motionScrollSection",
+    "card2",
+    "point",
+    "optimizedImage"
+  ],
+  card2: ["card2", "point", "optimizedImage"],
+  point: ["point", "optimizedImage"],
+  optimizedImage: ["optimizedImage"],
   leadershipSection2: ["leadershipSection2", "btnSecond", "about13"],
   btnSecond: ["btnSecond"],
   about13: ["about13"],
@@ -1059,12 +1251,14 @@ type NodeDefaultElementType = {
   heroSection: "div";
   contactSheet: typeof ContactSheet;
   content: "div";
+  btnPrime: typeof BtnPrime;
   howWeWorkSection: typeof HowWeWorkSection;
   basicCardSection2: "div";
   cardWrapper2: "div";
-  scrollSection: typeof ScrollSection;
-  card2: "div";
+  motionScrollSection: typeof MotionScrollSection;
+  card2: "a";
   point: "div";
+  optimizedImage: typeof OptimizedImage;
   leadershipSection2: "div";
   btnSecond: typeof BtnSecond;
   about13: typeof About13;
@@ -1141,12 +1335,14 @@ export const PlasmicHomepage = Object.assign(
     heroSection: makeNodeComponent("heroSection"),
     contactSheet: makeNodeComponent("contactSheet"),
     content: makeNodeComponent("content"),
+    btnPrime: makeNodeComponent("btnPrime"),
     howWeWorkSection: makeNodeComponent("howWeWorkSection"),
     basicCardSection2: makeNodeComponent("basicCardSection2"),
     cardWrapper2: makeNodeComponent("cardWrapper2"),
-    scrollSection: makeNodeComponent("scrollSection"),
+    motionScrollSection: makeNodeComponent("motionScrollSection"),
     card2: makeNodeComponent("card2"),
     point: makeNodeComponent("point"),
+    optimizedImage: makeNodeComponent("optimizedImage"),
     leadershipSection2: makeNodeComponent("leadershipSection2"),
     btnSecond: makeNodeComponent("btnSecond"),
     about13: makeNodeComponent("about13"),

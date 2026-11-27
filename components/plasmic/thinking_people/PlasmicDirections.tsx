@@ -383,6 +383,7 @@ function PlasmicDirections__RenderFunc(props: {
                     data-plasmic-name={"btnPrime"}
                     data-plasmic-override={overrides.btnPrime}
                     className={classNames("__wab_instance", sty.btnPrime)}
+                    link={"#form"}
                     text={
                       $q.programs.data?.body?.data?.directions?.[0]?.hero?.link
                         ?.label ?? ""

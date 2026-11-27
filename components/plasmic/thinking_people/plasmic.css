@@ -222,6 +222,8 @@
   --plasmic-token-paragraph-s: var(--token-27cS3whL-J5I);
   --token--nIbddKCkNug: #071526;
   --plasmic-token-semantic-text-black: var(--token--nIbddKCkNug);
+  --token-MrnPxabM_h3-: 80px;
+  --plasmic-token-layout-page-padding-top: var(--token-MrnPxabM_h3-);
 }
 
 @media (max-width: 1023px) {
@@ -254,6 +256,7 @@
     --token-LvgtnuIkn42-: 25px;
     --token-09WgN3lwH9AY: 49px;
     --token-27cS3whL-J5I: 13px;
+    --token-MrnPxabM_h3-: 60px;
   }
 }
 

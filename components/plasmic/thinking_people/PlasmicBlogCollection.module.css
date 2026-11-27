@@ -4,13 +4,13 @@
   align-items: stretch;
   justify-content: flex-start;
   width: 100%;
-  padding-top: 80px;
   font-family: var(--token-NyfZrcORdatl);
   color: var(--token-EiQM1bzsOe9e);
   background: var(--token-KbpWJO-t_Y4e);
   height: 100%;
   min-width: 0;
   min-height: 0;
+  padding: var(--token-MrnPxabM_h3-) 0px 0px;
 }
 .blogNavbar:global(.__wab_instance) {
   max-width: 100%;

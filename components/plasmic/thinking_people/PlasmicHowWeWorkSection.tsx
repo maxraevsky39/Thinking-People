@@ -60,7 +60,7 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import H2 from "../../H2"; // plasmic-import: Yl_PbqD71djV/component
-import { ScrollSection } from "../../ScrollSection"; // plasmic-import: mqp2cBG_dizY/codeComponent
+import { MotionScrollSection } from "../../MotionScrollSection"; // plasmic-import: za2mx6yd4yJR/codeComponent
 import HwwCard from "../../HwwCard"; // plasmic-import: 9uBh2eQE-yqj/component
 import BtnSecond from "../../BtnSecond"; // plasmic-import: gKCTmQN19iqg/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 5CArWwg3qxRa1A2Avpz5j5/projectModule
@@ -89,6 +89,7 @@ export type PlasmicHowWeWorkSection__OverridesType = {
   pointsWrapper?: Flex__<"div">;
   pointsWrapper3?: Flex__<"div">;
   provenProgram?: Flex__<"div">;
+  link?: Flex__<"a"> & Partial<LinkProps>;
   btnSecond?: Flex__<typeof BtnSecond>;
 };
 
@@ -227,14 +228,12 @@ function PlasmicHowWeWorkSection__RenderFunc(props: {
               const currentItem = __plasmic_item_0;
               const currentIndex = __plasmic_idx_0;
               return (
-                <ScrollSection
-                  animationClassName={""}
+                <MotionScrollSection
                   className={classNames(
                     "__wab_instance",
-                    sty.scrollSection__g4V6Z
+                    sty.motionScrollSection__nhJq0
                   )}
-                  ease={"power2.inOut"}
-                  end={"top 60%"}
+                  ease={"sine.inOut"}
                   fromBlur={0}
                   fromOpacity={0}
                   fromRotation={0}
@@ -245,26 +244,25 @@ function PlasmicHowWeWorkSection__RenderFunc(props: {
                   fromY={(() => {
                     try {
                       return currentIndex === 0
-                        ? "30px"
+                        ? 30
                         : currentIndex === 1
-                          ? "60px"
-                          : "120px";
+                          ? 60
+                          : 120;
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
                         e?.plasmicType === "PlasmicUndefinedDataError"
                       ) {
-                        return 0;
+                        return 80;
                       }
                       throw e;
                     }
                   })()}
                   key={currentIndex}
-                  markers={false}
+                  offsetEnd={"start 60%"}
+                  offsetStart={"start 90%"}
                   perspective={1000}
-                  pin={false}
-                  scrub={0.5}
-                  start={"top bottom"}
+                  smoothing={0.1}
                   toBlur={0}
                   toOpacity={1}
                   toRotation={0}
@@ -273,6 +271,7 @@ function PlasmicHowWeWorkSection__RenderFunc(props: {
                   toScale={1}
                   toX={0}
                   toY={0}
+                  trackContentSize={false}
                   transformOrigin={"center center"}
                 >
                   <HwwCard
@@ -298,7 +297,7 @@ function PlasmicHowWeWorkSection__RenderFunc(props: {
                         : currentItem
                     }
                   />
-                </ScrollSection>
+                </MotionScrollSection>
               );
             })}
           </div>
@@ -325,14 +324,12 @@ function PlasmicHowWeWorkSection__RenderFunc(props: {
               const currentItem = __plasmic_item_0;
               const currentIndex = __plasmic_idx_0;
               return (
-                <ScrollSection
-                  animationClassName={""}
+                <MotionScrollSection
                   className={classNames(
                     "__wab_instance",
-                    sty.scrollSection__hPxOp
+                    sty.motionScrollSection__zkhhb
                   )}
-                  ease={"power2.inOut"}
-                  end={"top 55%"}
+                  ease={"sine.inOut"}
                   fromBlur={0}
                   fromOpacity={0}
                   fromRotation={0}
@@ -343,26 +340,25 @@ function PlasmicHowWeWorkSection__RenderFunc(props: {
                   fromY={(() => {
                     try {
                       return currentIndex === 0
-                        ? "30px"
+                        ? 30
                         : currentIndex === 1
-                          ? "60px"
-                          : "120px";
+                          ? 60
+                          : 120;
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
                         e?.plasmicType === "PlasmicUndefinedDataError"
                       ) {
-                        return 0;
+                        return 80;
                       }
                       throw e;
                     }
                   })()}
                   key={currentIndex}
-                  markers={false}
+                  offsetEnd={"start 60%"}
+                  offsetStart={"start 90%"}
                   perspective={1000}
-                  pin={false}
-                  scrub={0.5}
-                  start={"top 95%"}
+                  smoothing={0.1}
                   toBlur={0}
                   toOpacity={1}
                   toRotation={0}
@@ -371,22 +367,29 @@ function PlasmicHowWeWorkSection__RenderFunc(props: {
                   toScale={1}
                   toX={0}
                   toY={0}
+                  trackContentSize={false}
                   transformOrigin={"center center"}
                 >
                   <HwwCard
-                    className={classNames("__wab_instance", sty.hwwCard__zfnc, {
-                      [sty.hwwCardglobal_language_lv__zfncK8AD2]: hasVariant(
-                        globalVariants,
-                        "language",
-                        "lv"
-                      )
-                    })}
+                    className={classNames(
+                      "__wab_instance",
+                      sty.hwwCard__uzKNj,
+                      {
+                        [sty.hwwCardglobal_language_lv__uzKNjK8AD2]: hasVariant(
+                          globalVariants,
+                          "language",
+                          "lv"
+                        )
+                      }
+                    )}
                     currentIndex={currentIndex}
                     currentItem={
                       hasVariant(globalVariants, "language", "lv")
-                        ? ["Prakse", "Uzvedības maiņa", "Rezultāti"][
-                            currentIndex
-                          ]
+                        ? [
+                            "Biznesa izaicinājums",
+                            "Novērtējums",
+                            "Pielāgota programma"
+                          ][currentIndex]
                         : currentItem
                     }
                     last={(() => {
@@ -404,7 +407,7 @@ function PlasmicHowWeWorkSection__RenderFunc(props: {
                     })()}
                     secondRow={true}
                   />
-                </ScrollSection>
+                </MotionScrollSection>
               );
             })}
           </div>
@@ -427,9 +430,38 @@ function PlasmicHowWeWorkSection__RenderFunc(props: {
               })}
             >
               {hasVariant(globalVariants, "language", "lv")
-                ? "Vai s\u0101ciet ar p\u0101rbaud\u012btu programmu."
-                : "Or start with a proven program."}
+                ? "Vai s\u0101ciet ar gatavu programmu."
+                : "Or start with a ready-made program."}
             </div>
+          </div>
+          <div
+            className={classNames("all", "__wab_text", sty.text__goNwo, {
+              [sty.textglobal_language_lv__goNwok8AD2]: hasVariant(
+                globalVariants,
+                "language",
+                "lv"
+              )
+            })}
+          >
+            {hasVariant(globalVariants, "language", "lv")
+              ? "Sazinieties ar m\u016bsu komandu, lai atrastu j\u016bsu vajadz\u012bb\u0101m piem\u0113rotu programmu."
+              : "Contact our team to find a program that fits your needs."}
+          </div>
+          <PlasmicLink__
+            data-plasmic-name={"link"}
+            data-plasmic-override={overrides.link}
+            className={classNames("all", "a", "a__5CArW", sty.link, {
+              [sty.linkglobal_language_lv]: hasVariant(
+                globalVariants,
+                "language",
+                "lv"
+              )
+            })}
+            component={Link}
+            href={"#form"}
+            legacyBehavior={false}
+            platform={"nextjs"}
+          >
             <BtnSecond
               data-plasmic-name={"btnSecond"}
               data-plasmic-override={overrides.btnSecond}
@@ -442,24 +474,11 @@ function PlasmicHowWeWorkSection__RenderFunc(props: {
               })}
               text={
                 hasVariant(globalVariants, "language", "lv")
-                  ? "Apskatīt"
-                  : "Explore"
+                  ? "Piepras\u012bt programmas"
+                  : "Request programs"
               }
             />
-          </div>
-          <div
-            className={classNames("all", "__wab_text", sty.text__goNwo, {
-              [sty.textglobal_language_lv__goNwok8AD2]: hasVariant(
-                globalVariants,
-                "language",
-                "lv"
-              )
-            })}
-          >
-            {hasVariant(globalVariants, "language", "lv")
-              ? "Iepaz\u012bstieties ar m\u016bsu eso\u0161aj\u0101m apm\u0101c\u012bbu programm\u0101m j\u016bsu komandas att\u012bst\u012bbas vajadz\u012bb\u0101m."
-              : "Explore existing training programs for your team's development needs."}
-          </div>
+          </PlasmicLink__>
         </div>
       </div>
     </div>
@@ -474,6 +493,7 @@ const PlasmicDescendants = {
     "pointsWrapper",
     "pointsWrapper3",
     "provenProgram",
+    "link",
     "btnSecond"
   ],
   howWeWorkSection: [
@@ -485,7 +505,8 @@ const PlasmicDescendants = {
   h2: ["h2"],
   pointsWrapper: ["pointsWrapper"],
   pointsWrapper3: ["pointsWrapper3"],
-  provenProgram: ["provenProgram", "btnSecond"],
+  provenProgram: ["provenProgram", "link", "btnSecond"],
+  link: ["link", "btnSecond"],
   btnSecond: ["btnSecond"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -498,6 +519,7 @@ type NodeDefaultElementType = {
   pointsWrapper: "div";
   pointsWrapper3: "div";
   provenProgram: "div";
+  link: "a";
   btnSecond: typeof BtnSecond;
 };
 
@@ -568,6 +590,7 @@ export const PlasmicHowWeWorkSection = Object.assign(
     pointsWrapper: makeNodeComponent("pointsWrapper"),
     pointsWrapper3: makeNodeComponent("pointsWrapper3"),
     provenProgram: makeNodeComponent("provenProgram"),
+    link: makeNodeComponent("link"),
     btnSecond: makeNodeComponent("btnSecond"),
 
     // Metadata about props expected for PlasmicHowWeWorkSection

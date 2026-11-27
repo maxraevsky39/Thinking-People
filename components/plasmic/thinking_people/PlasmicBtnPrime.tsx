@@ -111,7 +111,9 @@ function PlasmicBtnPrime__RenderFunc(props: {
   const args = React.useMemo(
     () =>
       Object.assign(
-        {},
+        {
+          text: "Get a consultation"
+        },
         Object.fromEntries(
           Object.entries(props.args).filter(([_, v]) => v !== undefined)
         )
@@ -148,7 +150,8 @@ function PlasmicBtnPrime__RenderFunc(props: {
         "plasmic_default_styles",
         "plasmic_mixins",
         styleTokensClassNames,
-        sty.root
+        sty.root,
+        "card-basic  card-link"
       )}
       type={"button"}
     >

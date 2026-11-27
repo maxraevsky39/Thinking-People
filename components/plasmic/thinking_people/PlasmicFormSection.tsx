@@ -166,6 +166,7 @@ function PlasmicFormSection__RenderFunc(props: {
         styleTokensClassNames,
         sty.formMain
       )}
+      id={"form"}
     >
       <div className={classNames("all", sty.freeBox__qStvy)}>
         <div
